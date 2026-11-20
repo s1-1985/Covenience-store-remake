@@ -1,0 +1,136 @@
+{
+  "issue": 232,
+  "date": "2026-11-20",
+  "status": "DIAGNOSTIC_NOT_APPROVED",
+  "source_branch": "chatgpt/map-assets-isolated-20260922",
+  "source_head": "4eeab0ba1bb0e9236399f6f4ac6acec4bdd20e96",
+  "verification": {
+    "real_pngs_full_decoded": 5,
+    "source_crc_pass": 5,
+    "source_adler_pass": 5,
+    "generated_pngs_full_decoded": 3,
+    "measured_edges": 5
+  },
+  "verified": [
+    {
+      "asset_id": "river_ns",
+      "source_sha": "a5c0b606ce3f2653e3f0c3532eaa52211af59a53",
+      "source_ref": "chatgpt/map-assets-isolated-20260922",
+      "bytes": 8912,
+      "crc": "pass",
+      "adler32": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "asset_id": "map_river_mouth_s",
+      "source_sha": "2d4d320668dba58a7f38a892bfdf86a0a93a1430",
+      "source_ref": "chatgpt/map-assets-isolated-20260922",
+      "bytes": 9801,
+      "crc": "pass",
+      "adler32": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "asset_id": "map_river_mouth_s_square",
+      "source_sha": "53e4639bdef1396268828bc7c7855605d1df452d",
+      "source_ref": "chatgpt/map-assets-isolated-20260922",
+      "bytes": 9520,
+      "crc": "pass",
+      "adler32": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "asset_id": "map_inlet_w",
+      "source_sha": "0313cc140595aafcb898f3363586fc23a75e7644",
+      "source_ref": "chatgpt/map-assets-isolated-20260922",
+      "bytes": 9176,
+      "crc": "pass",
+      "adler32": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "asset_id": "map_sea_waves",
+      "source_sha": "b49adc261a87c0bc2bdbd3ac01b8c62a360da80f",
+      "source_ref": "main",
+      "bytes": 8144,
+      "crc": "pass",
+      "adler32": "pass",
+      "rgba_decode": "pass"
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "river_mouth_s",
+      "positions": {
+        "1,0": "river_ns",
+        "1,1": "map_river_mouth_s",
+        "1,2": "map_sea_waves"
+      },
+      "seams": [
+        {
+          "from": "river_ns",
+          "to": "map_river_mouth_s",
+          "side": "S",
+          "rgb_mae": 22.986,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "map_river_mouth_s",
+          "to": "map_sea_waves",
+          "side": "S",
+          "rgb_mae": 3.597,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "name": "river_mouth_s_square",
+      "positions": {
+        "1,0": "river_ns",
+        "1,1": "map_river_mouth_s_square",
+        "1,2": "map_sea_waves"
+      },
+      "seams": [
+        {
+          "from": "river_ns",
+          "to": "map_river_mouth_s_square",
+          "side": "S",
+          "rgb_mae": 20.014,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "map_river_mouth_s_square",
+          "to": "map_sea_waves",
+          "side": "S",
+          "rgb_mae": 2.861,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "name": "inlet_w",
+      "positions": {
+        "0,1": "map_sea_waves",
+        "1,1": "map_inlet_w"
+      },
+      "seams": [
+        {
+          "from": "map_sea_waves",
+          "to": "map_inlet_w",
+          "side": "E",
+          "rgb_mae": 61.847,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "accepted": false
+    }
+  ],
+  "limitations": [
+    "Sea PNG read only from main",
+    "RGB seam error is not acceptance; inlet seam requires visual inspection",
+    "No Godot runtime or original PS1 visual comparison",
+    "No existing files modified"
+  ]
+}
