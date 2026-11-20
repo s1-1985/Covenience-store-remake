@@ -1,0 +1,125 @@
+{
+  "resets": [
+    {
+      "period": 1,
+      "hour": 0,
+      "subhour": 0,
+      "flag_after": 0
+    },
+    {
+      "period": 1,
+      "hour": 0,
+      "subhour": 1,
+      "flag_after": 1
+    },
+    {
+      "period": 1,
+      "hour": 1,
+      "subhour": 0,
+      "flag_after": 1
+    },
+    {
+      "period": 1,
+      "hour": 1,
+      "subhour": 1,
+      "flag_after": 1
+    },
+    {
+      "period": 2,
+      "hour": 0,
+      "subhour": 0,
+      "flag_after": 1
+    },
+    {
+      "period": 2,
+      "hour": 0,
+      "subhour": 1,
+      "flag_after": 1
+    },
+    {
+      "period": 2,
+      "hour": 1,
+      "subhour": 0,
+      "flag_after": 1
+    },
+    {
+      "period": 2,
+      "hour": 1,
+      "subhour": 1,
+      "flag_after": 1
+    },
+    {
+      "period": 4,
+      "hour": 0,
+      "subhour": 0,
+      "flag_after": 1
+    },
+    {
+      "period": 4,
+      "hour": 0,
+      "subhour": 1,
+      "flag_after": 1
+    },
+    {
+      "period": 4,
+      "hour": 1,
+      "subhour": 0,
+      "flag_after": 1
+    },
+    {
+      "period": 4,
+      "hour": 1,
+      "subhour": 1,
+      "flag_after": 1
+    }
+  ],
+  "transactions": [
+    {
+      "flag_before": 0,
+      "cash_before": 499999,
+      "fee": 500000,
+      "allowed": false,
+      "paid": 0,
+      "cash_after": 499999,
+      "flag_after": 0
+    },
+    {
+      "flag_before": 0,
+      "cash_before": 500000,
+      "fee": 500000,
+      "allowed": true,
+      "paid": 500000,
+      "cash_after": 0,
+      "flag_after": 1
+    },
+    {
+      "flag_before": 0,
+      "cash_before": 500001,
+      "fee": 500000,
+      "allowed": true,
+      "paid": 500000,
+      "cash_after": 1,
+      "flag_after": 1
+    },
+    {
+      "flag_before": 1,
+      "cash_before": 0,
+      "fee": 0,
+      "allowed": true,
+      "paid": 0,
+      "cash_after": 0,
+      "flag_after": 1
+    },
+    {
+      "flag_before": 1,
+      "cash_before": 1,
+      "fee": 0,
+      "allowed": true,
+      "paid": 0,
+      "cash_after": 1,
+      "flag_after": 1
+    }
+  ],
+  "original_excerpt_calls": 26,
+  "scope": "12 monthly flag gates + 5 fee + 5 funding + 4 real payment excerpts; no UI/acquisition/operating update"
+}

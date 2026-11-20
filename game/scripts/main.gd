@@ -1822,11 +1822,19 @@ func _on_map_tapped(tile: Vector2i) -> void:
 
 
 func _show_rival(rival_id: String) -> void:
+    if simulation.program_town != null and phone_ui != null and phone_ui.has_method("show_source_rival"):
+        _rival_id=""
+        rival_panel.hide()
+        phone_ui.show_source_rival(rival_id)
+        return
     _rival_id = rival_id
     _refresh_rival_panel()
 
 
 func _refresh_rival_panel() -> void:
+    if simulation.program_town != null and phone_ui != null and phone_ui.has_method("show_source_rival"):
+        rival_panel.hide()
+        return
     rival_panel.visible = not _rival_id.is_empty() and town_view.visible and not selecting_site
     if not rival_panel.visible:
         return

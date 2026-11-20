@@ -2249,7 +2249,10 @@ func rival_investigated(rival_id: String) -> bool:
     return _investigated_rivals.has(rival_id)
 
 
-func try_investigate_rival(rival_id: String) -> bool:
+func try_investigate_rival(rival_id: String, expected: Dictionary = {}) -> bool:
+    if program_town != null:
+        var quote := source_rival_action_quote(rival_id,"investigate")
+        if not bool(quote.allowed) or not _source_rival_request_matches(expected,quote): return false
     if is_game_over or _rival_guide_entry(rival_id).is_empty() or rival_investigated(rival_id):
         return false
     if _rival_index(rival_id) < 0 or economy.cash_yen < rival_investigation_cost_yen():
@@ -2262,7 +2265,10 @@ func try_investigate_rival(rival_id: String) -> bool:
     return true
 
 
-func try_buy_out_rival(rival_id: String) -> bool:
+func try_buy_out_rival(rival_id: String, expected: Dictionary = {}) -> bool:
+    if program_town != null:
+        var quote := source_rival_action_quote(rival_id,"buyout")
+        if not bool(quote.allowed) or not _source_rival_request_matches(expected,quote): return false
     var index := _rival_index(rival_id)
     if is_game_over or index < 0 or not rival_is_buyable(rival_id):
         return false
@@ -2277,6 +2283,7 @@ func try_buy_out_rival(rival_id: String) -> bool:
     if acquired != null:
         _rival_cash_yen += price
     _rival_stores.remove_at(index)
+    _investigated_rivals.erase(rival_id)
     player_store_count += 1
 
 
@@ -2323,6 +2330,48 @@ func try_buy_out_rival(rival_id: String) -> bool:
         "new_store_index": store_index,
         "expense_id": expense["expense_id"],
     })
+    return true
+
+
+# Mobile confirmation token: revalidate the original fee/target before debit.
+# This is an application identity guard, not original random negotiation.
+func source_rival_action_quote(rival_id: String, action: String) -> Dictionary:
+    var result := {"allowed":false,"reason":"店舗を選び直して下さい","rival_id":rival_id,"action":action,"cost_yen":0,"name":"ライバル店"}
+    if program_town == null or action not in ["investigate","buyout"]: return result
+    var index := _rival_index(rival_id)
+    if index<0: return result
+    var rival: Dictionary = _rival_stores[index]
+    result.merge({"serial":int(rival.get("serial",1)),"origin":[rival.position.x,rival.position.y],"month":month_count,"buyer_uid":_store_uid,"inspected":rival_investigated(rival_id)})
+    result.name="ライバル本店" if int(result.serial)==1 else "ライバル%d号店" % int(result.serial)
+    if is_game_over or source_calendar_blocked() or not renovation_session.is_empty():
+        result.reason="現在は取引できません"
+        return result
+    if not has_store_site():
+        result.reason="先に自社店舗を開設して下さい"
+        return result
+    if action=="investigate":
+        result.cost_yen=preload("res://scripts/domain/program_inspection.gd").fee(int(bool(result.inspected)))
+        if result.inspected:
+            result.reason="今月は調査済みです"
+            return result
+    else:
+        if int(result.serial)==1:
+            result.reason="ライバル本店は買収できません"
+            return result
+        if store_types().is_empty():return result
+        result.cost_yen=rival_buyout_price_yen(rival_id)
+    if not preload("res://scripts/domain/program_inspection.gd").affordable(economy.cash_yen,int(result.cost_yen)):
+        result.reason="資金が足りません"
+        return result
+    result.allowed=true
+    result.reason=""
+    return result
+
+
+func _source_rival_request_matches(expected: Dictionary, current: Dictionary) -> bool:
+    if expected.is_empty(): return true # Existing direct callers use current state.
+    for key in ["rival_id","action","serial","origin","month","buyer_uid","inspected","cost_yen"]:
+        if not expected.has(key) or expected[key]!=current.get(key): return false
     return true
 
 
@@ -5073,6 +5122,8 @@ func month_operating_statement() -> Dictionary:
 
 func _settle_month_end(prepared: Dictionary = {}) -> void:
     if prepared.is_empty() and program_town != null and not bool(config.simulation.get("rival_child",false)):
+        # Source235E0 expires inspection at incoming month start.
+        if preload("res://scripts/domain/program_inspection.gd").expires(1,minute_of_day/60,minute_of_day%60): _investigated_rivals.clear()
         # Incoming representative period1, before finance and shop reviews.
         _fire_source_promotions(1,month_count+1)
         _apply_source_donations()
@@ -5474,6 +5525,7 @@ func _begin_source_day_boundary() -> void:
     var closing := _days_completed_this_month>=REPRESENTATIVE_DAYS_PER_MONTH
     var tail := {"closing":closing}
     if closing:
+        if preload("res://scripts/domain/program_inspection.gd").expires(1,minute_of_day/60,minute_of_day%60): _investigated_rivals.clear()
         _fire_source_promotions(1,month_count+1)
         _apply_source_donations()
         tail["capital"]=_capital_spent_this_month_yen()

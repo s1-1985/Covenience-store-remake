@@ -35,6 +35,10 @@ var _price_uid := -1
 var _price_name := ""
 var _ad_draft: Array = []
 var _ad_before: Array = []
+var _rival_target := ""
+var _rival_request: Dictionary = {}
+var _rival_error := ""
+var rival_actions: Dictionary = {}
 var _calendar_key := ""
 var _calendar_notice_source = null
 var _calendar_touches: Dictionary = {}
@@ -67,6 +71,7 @@ var _claimed_touches: Dictionary = {}
 
 
 func setup(owner_main) -> void:
+    rival_actions=JSON.parse_string(FileAccess.get_file_as_string("res://data/source_rival_actions.json"))
     glyphs = JSON.parse_string(FileAccess.get_file_as_string("res://assets/ps1/ui/glyphs.json"))
     profiles = JSON.parse_string(FileAccess.get_file_as_string("res://assets/ps1/ui/profiles.json"))
     portrait_codes = JSON.parse_string(FileAccess.get_file_as_string("res://assets/ps1/ui/portraits.json"))
@@ -706,6 +711,9 @@ func _draw_screen(_target: Node2D) -> void:
         _site_selection()
         return
     match screen:
+        "rival_actions": _rival_actions()
+        "rival_details": _rival_details()
+        "rival_confirm": _rival_confirmation()
         "view": _list([["店内へ", "show_store"], ["町へ", "show_town"], ["全店舗一覧", "stores"]], Rect2(70,64,140,0))
         "stores": _store_overview()
         "root": _list([["店舗", "enter"], ["不動産", "realestate"], ["販促", "promotion"], ["調査", "research"], ["システム", "system"]], Rect2(45,56,70,0))
@@ -840,6 +848,95 @@ func _floor_materials() -> void:
                 main.store_view.queue_redraw()
                 handle_cancel(), i)
         _ink(Vector2(80 + i * 64, 141), "床材%d" % (i + 1))
+
+# REMAKE_BALANCED_DEFAULT: original3-choice branch in readable paper rows,
+# with a separate mobile cost confirmation. Known inspection opens detail only.
+func show_source_rival(rival_id: String) -> void:
+    if main.simulation.source_calendar_blocked() or not main.simulation.renovation_session.is_empty(): return
+    close_window()
+    _rival_target=rival_id
+    _rival_request={}
+    _rival_error=""
+    if rival_id.is_empty() or main.simulation._rival_index(rival_id)<0: return
+    open_window("rival_details" if main.simulation.rival_investigated(rival_id) else "rival_actions")
+
+func _rival_actions() -> void:
+    var sim=main.simulation
+    var index:int=sim._rival_index(_rival_target)
+    _paper(Rect2(44,54,232,150))
+    if index<0:
+        _center(80,"店舗がありません")
+        _option(Rect2(100,166,120,26),"戻る",close_window,0)
+        return
+    var entry:Dictionary=sim._rival_guide_entry(_rival_target)
+    _center(62,str(entry.get("name","ライバル店")))
+    _option(Rect2(56,88,208,26),str(rival_actions.menu[0])+" "+_money(sim.rival_investigation_cost_yen()),func():_confirm_source_rival("investigate"),0)
+    var price:int=sim.rival_buyout_price_yen(_rival_target)
+    _option(Rect2(56,120,208,26),str(rival_actions.menu[1])+(" "+_money(price) if sim.rival_is_buyable(_rival_target) else "（本店）"),func():_confirm_source_rival("buyout"),1)
+    _option(Rect2(56,160,208,26),str(rival_actions.menu[2]),close_window,2)
+
+func _confirm_source_rival(action: String) -> void:
+    _rival_request=main.simulation.source_rival_action_quote(_rival_target,action)
+    _rival_error=str(_rival_request.reason)
+    open_window("rival_confirm")
+
+func _rival_confirmation() -> void:
+    _paper(Rect2(32,58,256,142))
+    _center(66,str(_rival_request.get("name","ライバル店")))
+    var action:String=_rival_request.get("action","")
+    _center(88,"調査費 "+_money(int(_rival_request.get("cost_yen",0))) if action=="investigate" else "買収費 "+_money(int(_rival_request.get("cost_yen",0))))
+    if not _rival_error.is_empty():
+        var line := ""
+        var y := 116
+        for ch in _rival_error:
+            if readable_font.get_string_size(line+ch,HORIZONTAL_ALIGNMENT_LEFT,-1,27).x/ZOOM>236:
+                _ink_small(Vector2(42,y),line)
+                line=""
+                y+=12
+            line+=ch
+        if not line.is_empty():_ink_small(Vector2(42,y),line)
+        _option(Rect2(98,162,124,26),"戻る",handle_cancel,0)
+        return
+    _center(116,"この内容でよろしいですか？")
+    _option(Rect2(50,162,94,26),"いいえ",handle_cancel,0)
+    _option(Rect2(176,162,94,26),"はい",_commit_source_rival,1)
+
+func _commit_source_rival() -> void:
+    var sim=main.simulation
+    var action:String=_rival_request.get("action","")
+    var ok:bool=sim.try_investigate_rival(_rival_target,_rival_request) if action=="investigate" else sim.try_buy_out_rival(_rival_target,_rival_request)
+    if not ok:
+        _rival_error="店舗の状態・資金が変わりました。選び直して下さい"
+        surface.queue_redraw()
+        return
+    close_window()
+    if action=="investigate":open_window("rival_details")
+    else:
+        _rival_target=""
+        main.town_view.queue_redraw()
+    main._refresh_ui()
+
+func _rival_details() -> void:
+    var sim=main.simulation
+    _paper(Rect2(44,42,232,178))
+    var index:int=sim._rival_index(_rival_target)
+    if index<0 or not sim.rival_investigated(_rival_target):
+        _center(70,"調査内容が更新されています")
+        _option(Rect2(96,182,128,26),"戻る",close_window,0)
+        return
+    var entry:Dictionary=sim._rival_guide_entry(_rival_target)
+    var data:Dictionary=entry.guide_data
+    var child=sim._program_rival_simulation(sim._rival_stores[index])
+    _center(50,str(entry.name))
+    _ink(Vector2(52,74),"営業時間 "+str(data.hours))
+    _ink(Vector2(52,96),"評価")
+    _stars(Vector2(108,96),int(child.star_rating))
+    for i in 2:
+        _ink(Vector2(52,120+i*24),["人気","サービス"][i])
+        _ink(Vector2(118,120+i*24),str(int(data[["popularity","service"][i]])))
+        _ink(Vector2(170,120+i*24),["清掃","警備"][i])
+        _ink(Vector2(236,120+i*24),str(int(data[["cleaning","security"][i]])))
+    _option(Rect2(96,182,128,26),"戻る",close_window,0)
 
 func _hours() -> void:
     var presets: Array = main.simulation.business_hours_presets()

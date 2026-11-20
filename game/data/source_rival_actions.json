@@ -1,0 +1,6 @@
+{
+  "evidence_note": "CONFIRMED_BINARY: 4D6EC/60E70 uninspected three choices; inspected detail/default2; 235E0 monthly expiry; fee500000. REMAKE_BALANCED_DEFAULT: readable mobile paper menu adds an explicit cost confirmation and optimistic target/price token before payment.",
+  "menu": ["調査する", "買収する", "何もしない"],
+  "inspection_fee_yen": 500000,
+  "source_messages": [299, 300, 301]
+}
