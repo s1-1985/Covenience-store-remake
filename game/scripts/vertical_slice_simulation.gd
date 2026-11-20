@@ -990,6 +990,15 @@ func _raise_manager(figures: Array, points: int) -> void:
 # wins when both hit) -- unless a 交番 (robbery) or 消防署 (fire) stands
 # within 7 squares of the store. ---
 func _step_incidents() -> void:
+    if _native_source_people():
+        # Source asset/financial gates precede BOTH draws. A nearby facility
+        # and the customer trait check come after selecting the incident.
+        if not _source_incident_eligible(): return
+        var mode: int = preload("res://scripts/domain/program_incidents.gd").draw(_program_rng)
+        if mode < 0 or _source_incident_blocked(mode) or not _incident_customer_possible(): return
+        if mode == 1: _run_fire()
+        else: _run_robbery()
+        return
     var rules: Dictionary = _program_demand.tables["incidents"]
     var robbery: bool = _report_rng.randi_range(0, int(rules["robbery_roll"][0]) - 1) == int(rules["robbery_roll"][1])
     var fire: bool = _report_rng.randi_range(0, int(rules["fire_roll"][0]) - 1) == int(rules["fire_roll"][1])
@@ -1003,6 +1012,8 @@ func _step_incidents() -> void:
 
 
 func incident_possible() -> bool:
+    if _native_source_people():
+        return _source_incident_eligible() and _incident_customer_possible()
     var rules: Dictionary = _program_demand.tables["incidents"]
     if popularity <= int(_store_values()["security"]):
         return false
@@ -1015,13 +1026,38 @@ func incident_possible() -> bool:
             return true
     return false
 
+func _source_incident_eligible() -> bool:
+    var rule = preload("res://scripts/domain/program_incidents.gd")
+    if not rule.financial_gate(
+        bool(config.simulation.get("rival_child",false)),int(_store_values().security),popularity,
+        _store_visitor_heads,_store_sales_last_month,store_sales_today_yen()): return false
+    return rule.signed32(_store_assets_yen()) > 99999
+
+func _incident_customer_possible() -> bool:
+    var people: Array = customers.active_customers()
+    for person in people.slice(0,program_max_groups()):
+        if person.source_state != 0 and int(person.visit.get("manners",100)) < 31: return true
+    return false
+
+func _source_incident_blocked(mode: int) -> bool:
+    # Original clipped rectangular cell scan; one matching component cell
+    # is sufficient, including newly induced/removed facilities.
+    var low := 60 if mode == 0 else 64
+    var high := 63 if mode == 0 else 69
+    for y in range(maxi(0,store_site_origin.y-7),mini(50,store_site_origin.y+store_site.footprint.y+7)):
+        for x in range(maxi(0,store_site_origin.x-7),mini(60,store_site_origin.x+store_site.footprint.x+7)):
+            var tile := int(program_town.cells[y*60+x][0])
+            if tile >= low and tile <= high: return true
+    return false
+
 
 # What the program adds up as the store's worth (0x8001D018 + 0x8001D618):
 # its fixtures' prices and its goods at cost.
 func _store_assets_yen() -> int:
     var total := 0
     for fixture in layout.fixtures:
-        total += int(_fixture_catalog.get(str(fixture.get("catalog_id", "")), {}).get("purchase_price_yen", 0))
+        var kind := program_fixture_kind(fixture) if program_town != null else -1
+        total += int(_recovery.fixture_records[kind][1]) if kind >= 0 and kind < 53 else int(_fixture_catalog.get(str(fixture.get("catalog_id", "")), {}).get("purchase_price_yen", 0))
     for product_id in inventory.product_order:
         var product = inventory.get_product(product_id)
         total += product.stock_units * product.restock_unit_cost_yen
@@ -1051,7 +1087,17 @@ func _run_robbery() -> void:
     economy.record_explicit_expense("robbery", minute_of_day, loss, {"store_index": active_store})
     _store_sales_at_day_start += today
     _store_sales_at_month_start += today
+    _finish_source_incident()
     _record_event("robbery", {"store_index": active_store, "loss_yen": loss})
+
+func _finish_source_incident() -> void:
+    # Original common tail 8003CDC0: both robbery and fire exhaust every
+    # assigned person without changing their task, route or identity.
+    if not _native_source_people(): return
+    for person in staff.all_staff():
+        person.stamina = 0
+        person.exhausted = person.stamina_max > 0
+    popularity = 5
 
 
 # Every fixture but the register and the break room burns with its goods
