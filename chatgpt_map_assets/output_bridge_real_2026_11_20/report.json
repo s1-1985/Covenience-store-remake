@@ -1,0 +1,269 @@
+{
+  "issue": 232,
+  "date": "2026-11-20",
+  "status": "DIAGNOSTIC_NOT_APPROVED",
+  "source_branch": "chatgpt/map-assets-isolated-20260922",
+  "source_head": "8d6e4c86be91a6ccbd75d963cd1920b0a01ecb0a",
+  "verified_sources": [
+    {
+      "id": "road_ns",
+      "sha": "360c16bfe0c0a874af1ffac34e42eee51ce0e7c1",
+      "bytes": 8620,
+      "crc": "pass",
+      "adler": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "id": "road_ew",
+      "sha": "96dc9c5f90d134db6096295d649ee88d45b18f3a",
+      "bytes": 8931,
+      "crc": "pass",
+      "adler": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "id": "rail_ns",
+      "sha": "3ecc57989beab8f74b97a5079d14fc557de15e5b",
+      "bytes": 11115,
+      "crc": "pass",
+      "adler": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "id": "rail_ew",
+      "sha": "17ae09cf4b389d22832dc6289804971ff53fb2fa",
+      "bytes": 10943,
+      "crc": "pass",
+      "adler": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "id": "river_ns",
+      "sha": "a5c0b606ce3f2653e3f0c3532eaa52211af59a53",
+      "bytes": 8912,
+      "crc": "pass",
+      "adler": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "id": "river_ew",
+      "sha": "e983dec2d4a21efaba521f490d9ad87bf750ba3a",
+      "bytes": 9227,
+      "crc": "pass",
+      "adler": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "id": "map_road_bridge_ew",
+      "sha": "e3d8830a407a0191d401360e3f9f497d3afca398",
+      "bytes": 10236,
+      "crc": "pass",
+      "adler": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "id": "map_road_bridge_ns",
+      "sha": "f6b790cef82d6e9a5c69de1409b874d06a13ff17",
+      "bytes": 8627,
+      "crc": "pass",
+      "adler": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "id": "map_rail_bridge_ew",
+      "sha": "cc9e9cfc4d579d141d866cd1dac6858dfee4bf30",
+      "bytes": 11447,
+      "crc": "pass",
+      "adler": "pass",
+      "rgba_decode": "pass"
+    },
+    {
+      "id": "map_rail_bridge_ns",
+      "sha": "8568e2684b4ccb980ca45588f75a1e9c708c76f4",
+      "bytes": 10778,
+      "crc": "pass",
+      "adler": "pass",
+      "rgba_decode": "pass"
+    }
+  ],
+  "verification": {
+    "real_pngs_full_decoded": 10,
+    "source_png_crc_pass": 10,
+    "source_zlib_adler_pass": 10,
+    "fixture_pngs_full_decoded": 4,
+    "connected_edges_measured": 16,
+    "errors": 0
+  },
+  "fixtures": [
+    {
+      "name": "road_bridge_ew",
+      "positions": {
+        "1,1": "map_road_bridge_ew",
+        "0,1": "road_ew",
+        "2,1": "road_ew",
+        "1,0": "river_ns",
+        "1,2": "river_ns"
+      },
+      "seams": [
+        {
+          "from": "map_road_bridge_ew",
+          "to": "road_ew",
+          "side": "E",
+          "rgb_mae": 46.694,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "map_road_bridge_ew",
+          "to": "river_ns",
+          "side": "S",
+          "rgb_mae": 55.806,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "road_ew",
+          "to": "map_road_bridge_ew",
+          "side": "E",
+          "rgb_mae": 53.403,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "river_ns",
+          "to": "map_road_bridge_ew",
+          "side": "S",
+          "rgb_mae": 50.486,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "name": "road_bridge_ns",
+      "positions": {
+        "1,1": "map_road_bridge_ns",
+        "1,0": "road_ns",
+        "1,2": "road_ns",
+        "0,1": "river_ew",
+        "2,1": "river_ew"
+      },
+      "seams": [
+        {
+          "from": "map_road_bridge_ns",
+          "to": "river_ew",
+          "side": "E",
+          "rgb_mae": 45.833,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "map_road_bridge_ns",
+          "to": "road_ns",
+          "side": "S",
+          "rgb_mae": 16.167,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "road_ns",
+          "to": "map_road_bridge_ns",
+          "side": "S",
+          "rgb_mae": 21.292,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "river_ew",
+          "to": "map_road_bridge_ns",
+          "side": "E",
+          "rgb_mae": 47.222,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "name": "rail_bridge_ew",
+      "positions": {
+        "1,1": "map_rail_bridge_ew",
+        "0,1": "rail_ew",
+        "2,1": "rail_ew",
+        "1,0": "river_ns",
+        "1,2": "river_ns"
+      },
+      "seams": [
+        {
+          "from": "map_rail_bridge_ew",
+          "to": "rail_ew",
+          "side": "E",
+          "rgb_mae": 53.542,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "map_rail_bridge_ew",
+          "to": "river_ns",
+          "side": "S",
+          "rgb_mae": 48.681,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "rail_ew",
+          "to": "map_rail_bridge_ew",
+          "side": "E",
+          "rgb_mae": 51.708,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "river_ns",
+          "to": "map_rail_bridge_ew",
+          "side": "S",
+          "rgb_mae": 39.639,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "name": "rail_bridge_ns",
+      "positions": {
+        "1,1": "map_rail_bridge_ns",
+        "1,0": "rail_ns",
+        "1,2": "rail_ns",
+        "0,1": "river_ew",
+        "2,1": "river_ew"
+      },
+      "seams": [
+        {
+          "from": "map_rail_bridge_ns",
+          "to": "river_ew",
+          "side": "E",
+          "rgb_mae": 45.972,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "map_rail_bridge_ns",
+          "to": "rail_ns",
+          "side": "S",
+          "rgb_mae": 34.125,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "rail_ns",
+          "to": "map_rail_bridge_ns",
+          "side": "S",
+          "rgb_mae": 41.806,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "from": "river_ew",
+          "to": "map_rail_bridge_ns",
+          "side": "E",
+          "rgb_mae": 49.958,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "accepted": false
+    }
+  ],
+  "limitations": [
+    "Water/river adjacency inferred from known bridge orientation; port contract not runtime-tested",
+    "RGB MAE is diagnostic and not acceptance",
+    "No PS1 reference approval, Godot run or game regression",
+    "Only new files on ChatGPT isolated branch"
+  ]
+}
