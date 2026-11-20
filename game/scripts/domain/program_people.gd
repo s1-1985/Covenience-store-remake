@@ -201,7 +201,9 @@ static func move(s, actor, ability: int, is_staff: bool) -> void:
         actor.source_goal = OFF
     elif stepped:
         actor.route.clear()
-    elif s._program_wait_at_checkout(actor, false):
+    # Source exit 80035770 does not call the shopping/checkout wait helper.
+    # In particular, unpaid goods retained after theft are not sold on exit.
+    elif actor.source_state != 5 and s._program_wait_at_checkout(actor, false):
         actor.basket.clear()
         change_state(actor, 5)
     elif s._program_rng.randi() % 100 + 1 <= ability:
@@ -299,8 +301,7 @@ static func customer(s, p) -> void:
             change_state(p, 4)
             return
         if not target(s, p, "exit" if p.source_state == 5 else "checkout", 1) and p.source_state == 3:
-            p.set_meta("checkout_patience", 0)
-            s._program_wait_at_checkout(p, false)
+            s._program_wait_at_checkout(p, false, true)
             p.basket.clear()
             change_state(p, 5)
         return
@@ -364,13 +365,7 @@ static func service(s, p) -> void:
         worker.source_served = true
         if Rules.checkout_ready(worker.register_skill, int(p.visit.get("quickness", 100)), s._program_rng):
             s._grow_staff(worker, "checkout")
-            var record: Dictionary = s.economy.settle_basket(p.customer_id, s.minute_of_day, p.basket)
-            p.mark_settled(record)
-            s._store_sales_yen += int(record["total_yen"])
-            for line in p.basket:
-                var prod = s.inventory.get_product(str(line["product_id"]))
-                s._sold_counts[prod.catalog_id] = int(s._sold_counts.get(prod.catalog_id, 0)) + int(line["quantity"])
-            p.basket.clear()
+            s._settle_source_basket(p)
             worker.checkouts_done += 1
             s._record_event("checkout_completed", {"customer_id": p.customer_id, "staff_id": worker.staff_id, "transaction_id": p.settled_transaction_id})
             p.source_wanted = ""

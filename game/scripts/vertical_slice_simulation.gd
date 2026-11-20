@@ -6495,33 +6495,53 @@ func _program_rival_monthly() -> void:
     _record_event("rival_opened", {"rival_id": id, "position": [origin.x, origin.y]})
 
 
-func _program_wait_at_checkout(customer, being_served: bool) -> bool:
+func _settle_source_basket(customer) -> Dictionary:
+    # Original cart+0A belongs to the current unpaid batch, not to the whole
+    # visit. Posting clears it immediately, even on the abandonment branch.
+    if customer.basket.is_empty(): return {}
+    var key := "source-payment-%d" % economy.sale_records.size()
+    var record: Dictionary = economy.settle_basket(customer.customer_id,minute_of_day,customer.basket,key)
+    customer.mark_settled(record,true)
+    _store_sales_yen += int(record["total_yen"])
+    for line in customer.basket:
+        var product = inventory.get_product(str(line["product_id"]))
+        _sold_counts[product.catalog_id] = int(_sold_counts.get(product.catalog_id,0))+int(line["quantity"])
+    customer.basket.clear()
+    return record
+
+func _program_wait_at_checkout(customer, being_served: bool, force: bool = false) -> bool:
     var roll: int = _program_rng.randi_range(1, 100)
     var patience: int = int(customer.get_meta("checkout_patience", customer.visit.get("stamina", 100)))
+    if force: patience = 0
     if patience > 0 and _program_rng.randi() & 3 == 0:
         patience -= 1
     customer.set_meta("checkout_patience", patience)
     if patience > 0:
         return false
+    # Source 80035D58 posts any remaining cart before the common roll's
+    # staff/rating consequences. No additional deduction from the wallet.
+    if customer.source_native:
+        _settle_source_basket(customer)
+    elif not customer.basket.is_empty():
+        var record: Dictionary = economy.settle_basket(customer.customer_id, minute_of_day, customer.basket)
+        customer.mark_settled(record)
+        _store_sales_yen += int(record["total_yen"])
+        customer.basket.clear()
     if roll % 3 == 0:
         for member in staff.all_staff():
             _program_rng.randi()
-            for field in ["register_skill", "replenishment_skill", "cleaning_skill", "service_skill"]:
+            for field in ["register_skill", "replenishment_skill", "cleaning_skill", "security_skill"]:
                 if int(member.get(field)) >= 2:
                     member.set(field, int(member.get(field)) - 1)
     if roll % 10 == 0 and internal_rating_value >= 6:
         internal_rating_value -= 1
         star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
-    if not customer.basket.is_empty():
-        var record: Dictionary = economy.settle_basket(customer.customer_id, minute_of_day, customer.basket)
-        customer.mark_settled(record)
-        _store_sales_yen += int(record["total_yen"])
     _checkout_queue.erase(customer.customer_id)
     if being_served:
         staff.checkout_staff().state = "idle"
     customer.phase = "leaving"
     customer.route = layout.find_path(customer.position, layout.exit)
-    _notice_counts["angry"] = int(_notice_counts["angry"]) + 1
+    _notice_counts["angry"] = mini(127,int(_notice_counts["angry"]) + 1)
     _record_event("checkout_anger_triggered", {"customer_id": customer.customer_id, "internal_rating_value": internal_rating_value})
     return true
 

@@ -84,12 +84,12 @@ func basket_total_yen() -> int:
     return total
 
 
-func mark_settled(record: Dictionary) -> void:
-    assert(settled_transaction_id.is_empty())
+func mark_settled(record: Dictionary, allow_repeated: bool = false) -> void:
+    assert(settled_transaction_id.is_empty() or allow_repeated)
     assert(record["customer_id"] == customer_id)
     assert(int(record["total_yen"]) == basket_total_yen())
     settled_transaction_id = str(record["transaction_id"])
-    settled_total_yen = int(record["total_yen"])
+    settled_total_yen = settled_total_yen + int(record["total_yen"]) if allow_repeated else int(record["total_yen"])
 
 
 func move_along_route(next_phase: String) -> bool:

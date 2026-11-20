@@ -31,11 +31,13 @@ func reset() -> void:
 func settle_basket(
     customer_id: String,
     minute_of_day: int,
-    lines: Array[Dictionary]
+    lines: Array[Dictionary],
+    settlement_key: String = ""
 ) -> Dictionary:
     assert(not customer_id.is_empty())
     assert(minute_of_day >= 0 and minute_of_day < 24 * 60)
-    assert(not lines.is_empty() and not _settled_customer_ids.has(customer_id))
+    var payment_id := customer_id if settlement_key.is_empty() else settlement_key
+    assert(not lines.is_empty() and not _settled_customer_ids.has(payment_id))
     var total_yen := 0
     for line in lines:
         assert(line.has("product_id") and not str(line["product_id"]).is_empty())
@@ -51,7 +53,7 @@ func settle_basket(
         "total_yen": total_yen,
     }
     _next_sale_sequence += 1
-    _settled_customer_ids[customer_id] = true
+    _settled_customer_ids[payment_id] = true
     sale_records.append(record)
     cash_yen += total_yen
     completed_sales = sale_records.size()
