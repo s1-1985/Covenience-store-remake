@@ -6252,20 +6252,52 @@ func source_price_setting(category: String) -> int:
     return 100 - int(_recovery["products"][index][1]) if index >= 0 else 0
 
 
-func try_set_product_price(category: String, setting: int) -> bool:
-    if is_game_over or program_town == null or setting < 0 or setting > 100:
-        return false
-    var index: int = _recovery["product_ids"].find(category)
-    if index < 0 or index >= 26:
-        return false
-    product_price_settings[category] = setting
+func source_price_settings() -> Dictionary:
+    var result := {}
+    for id in _recovery.get("product_ids",[]).slice(0,26):
+        result[str(id)] = source_price_setting(str(id))
+    return result
+
+
+func source_price_preview(settings: Dictionary) -> Array:
+    var rows: Array = []
+    for i in mini(26,_recovery.get("product_ids",[]).size()):
+        var id: String = _recovery.product_ids[i]
+        var product: Array = _recovery.products[i]
+        var setting := int(settings.get(id,source_price_setting(id)))
+        var base := int(product[0])
+        var cost := int(product[1])
+        rows.append({"category":id,"setting":setting,"base_yen":base,"cost_yen":base*cost/100,"unit_yen":preload("res://scripts/domain/program_pricing.gd").unit(base,cost,setting)})
+    return rows
+
+
+func try_commit_source_prices(settings: Dictionary, expected_uid := -1, expected_before: Dictionary = {}) -> bool:
+    if is_game_over or program_town == null or settings.size()!=26: return false
+    if expected_uid >= 0 and expected_uid != _store_uid: return false
+    var ids: Array = _recovery.product_ids.slice(0,26)
+    for id in ids:
+        if not settings.has(id): return false
+        var value = settings[id]
+        if (not value is int and not value is float) or float(value)!=floorf(float(value)) or int(value)<0 or int(value)>100: return false
+        if not expected_before.is_empty() and (not expected_before.has(id) or int(expected_before[id])!=source_price_setting(str(id))): return false
+    var changed: bool = ids.any(func(id):return int(settings[id])!=source_price_setting(str(id)))
+    if not changed: return true
     var delta := 0
-    for id in _recovery["product_ids"].slice(0, 26):
-        var j: int = _recovery["product_ids"].find(id)
-        delta += source_price_setting(str(id)) - (100 - int(_recovery["products"][j][1]))
-    price_change_pct = delta / 26
-    _record_event("price_policy_changed", {"category": category, "setting": setting})
+    for i in 26:
+        var id: String = ids[i]
+        var value := int(settings[id])
+        product_price_settings[id] = value
+        delta += value-(100-int(_recovery.products[i][1]))
+    price_change_pct = delta/26
+    if changed: _record_event("price_policy_changed",{"settings":settings.duplicate(true),"price_change_pct":price_change_pct})
     return true
+
+
+func try_set_product_price(category: String, setting: int) -> bool:
+    var settings := source_price_settings()
+    if not settings.has(category): return false
+    settings[category] = setting
+    return try_commit_source_prices(settings)
 
 
 func source_shelf_price_percent() -> int:

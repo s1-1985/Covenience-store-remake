@@ -28,6 +28,11 @@ var _close_target := "interior"
 var _close_store_uid := -1
 var _permit_selected: Array[String] = []
 var _permit_request: Dictionary = {}
+var _price_draft: Dictionary = {}
+var _price_before: Dictionary = {}
+var _price_individual_before: Dictionary = {}
+var _price_uid := -1
+var _price_name := ""
 var selection := 0
 var choice := 0
 var page := 0
@@ -150,6 +155,13 @@ func open_window(id: String) -> void:
         return
     if main.selecting_site:
         return
+    if id == "prices" and screen not in ["stock_prices","price_confirm"] and not _restoring_menu:
+        _price_before = main.simulation.source_price_settings()
+        _price_draft = _price_before.duplicate()
+        _price_uid = main.simulation._store_uid
+        _price_name = main.simulation.store_name
+    if id == "stock_prices" and not _restoring_menu:
+        _price_individual_before = _price_draft.duplicate()
     if id == "renovation" and not _restoring_menu: _renovation_permits.clear()
     if id == "permits" and screen != "permit_confirm" and not _restoring_menu:
         _permit_selected.clear()
@@ -228,6 +240,7 @@ func handle_command() -> void:
 func handle_cancel() -> bool:
     if screen.is_empty():
         return false
+    if screen == "stock_prices": _price_draft = _price_individual_before.duplicate()
     if screen == "interior" and floor_mode.is_empty() and not main.simulation.renovation_session.is_empty():
         open_window("renovation_finish")
         return true
@@ -603,6 +616,7 @@ func _draw_screen(_target: Node2D) -> void:
         "policy": _list([["営業時間", "hours"], ["商品価格", "prices"], ["販売許可", "permits"]], Rect2(192,64,118,0))
         "hours": _hours()
         "prices": _prices()
+        "price_confirm": _price_confirmation()
         "stock_prices": _individual_prices()
         "permits": _permits()
         "permit_confirm": _permit_confirmation()
@@ -734,40 +748,65 @@ func _hours() -> void:
         handle_cancel(),1)
     _option(Rect2(155,123,48,16),"いいえ",handle_cancel,2)
 
+func _price_group_step(direction: int) -> void:
+    var ids: Array = _price_draft.keys()
+    var values: Array = ids.map(func(id):return _price_draft[id])
+    var changed: Array = preload("res://scripts/domain/program_pricing.gd").step(values,direction)
+    if changed.is_empty():
+        show_notice("上限または下限のため変更できません")
+        return
+    for i in ids.size(): _price_draft[ids[i]] = changed[i]
+
 func _prices() -> void:
-    _paper(Rect2(75,86,166,102))
-    _ink(Vector2(80,91),"商品価格を決定して下さい")
-    _ink(Vector2(80,107),"全商品平均利益率")
-    var s = main.simulation
-    var margin := 0
-    # REMAKE_BALANCED_DEFAULT: portfolio margin is derived from the actual
-    # catalog below, never copied as the screenshot's fixed 40 percent.
-    var sale := 0.0
-    var cost := 0.0
-    for entry in main.config["product_catalog"]:
-        sale += s._apply_price_policy(int(entry.get("sale_price_yen",0)),str(entry["catalog_id"]))
-        cost += int(entry.get("purchase_price_yen",entry.get("cost_price_yen",entry.get("restock_unit_cost_yen",0))))
-    if sale > 0: margin = roundi((sale-cost)*100/sale)
-    _ink(Vector2(200,107),"%d%%" % margin)
-    _option(Rect2(80,137,64,16),"全体に設定",func():
-        s.try_set_price_policy(s.price_change_pct + 5 if s.price_change_pct < 50 else -50),0)
-    _option(Rect2(156,137,78,16),"◁ %s ▷" % ("定価" if s.price_change_pct == 0 else "%+d%%" % s.price_change_pct),func():
-        s.try_set_price_policy(s.price_change_pct - 5 if s.price_change_pct > -50 else 50),1)
-    _option(Rect2(80,153,76,16),"個別に設定",func(): open_window("stock_prices"),2)
-    _footer(170)
+    _paper(Rect2(44,46,232,164))
+    _center(54,_price_name+"の商品価格")
+    var total := 0
+    for value in _price_draft.values(): total += int(value)
+    _center(80,"平均設定値 %d%%" % (total/26))
+    _option(Rect2(56,105,100,22),"全商品 −1",func():_price_group_step(-1),0)
+    _option(Rect2(164,105,100,22),"全商品 ＋1",func():_price_group_step(1),1)
+    _option(Rect2(56,137,208,22),"個別に設定",func():open_window("stock_prices"),2)
+    _option(Rect2(56,177,80,22),"戻る",handle_cancel,3)
+    _option(Rect2(150,177,114,22),"変更を確認",func():open_window("price_confirm"),4)
 
 func _individual_prices() -> void:
-    _paper(Rect2(44,46,230,166))
-    _center(51,"商品価格を決定して下さい")
-    var entries: Array = main.config["product_catalog"]
-    page = clampi(page,0,maxi(0,(entries.size()-1)/7))
-    for i in mini(7,entries.size()-page*7):
-        var entry: Dictionary = entries[page*7+i]
-        var id := str(entry["catalog_id"])
-        _ink(Vector2(50,73+i*16),main.tr(id))
-        _option(Rect2(170,73+i*16,95,16),"◁ 設定%d ▷" % main.simulation.source_price_setting(id),func():
-            main.simulation.try_set_product_price(id,(main.simulation.source_price_setting(id)+1)%11),i)
-    _footer(193)
+    _paper(Rect2(8,40,304,184))
+    _center(45,"商品価格を決定して下さい")
+    var rows: Array = main.simulation.source_price_preview(_price_draft)
+    page = clampi(page,0,maxi(0,(rows.size()-1)/6))
+    for i in mini(6,rows.size()-page*6):
+        var row: Dictionary = rows[page*6+i]
+        var id: String = row.category
+        var y := 68+i*20
+        _ink(Vector2(16,y),main.tr(id))
+        _ink(Vector2(132,y),_money(int(row.unit_yen)))
+        _ink(Vector2(203,y),"%d%%" % int(row.setting))
+        _option(Rect2(238,y-2,26,20),"−",func():
+            if int(_price_draft[id])>0: _price_draft[id]=int(_price_draft[id])-1,i*2)
+        _option(Rect2(276,y-2,26,20),"＋",func():
+            if int(_price_draft[id])<100: _price_draft[id]=int(_price_draft[id])+1,i*2+1)
+    _option(Rect2(16,195,52,22),"戻る",handle_cancel,20)
+    _option(Rect2(84,195,30,22),"◁",func():handle_shoulder(-1),21)
+    _center(198,"%d/%d" % [page+1,(rows.size()+5)/6],117,50)
+    _option(Rect2(174,195,30,22),"▷",func():handle_shoulder(1),22)
+    _option(Rect2(218,195,86,22),"設定して戻る",func():
+        _price_individual_before = _price_draft.duplicate()
+        handle_cancel(),23)
+
+func _price_confirmation() -> void:
+    _paper(Rect2(32,64,256,136))
+    _center(72,"商品価格を変更しますか?")
+    var changed := 0
+    for id in _price_draft:
+        if int(_price_draft[id])!=int(_price_before.get(id,-1)): changed += 1
+    _center(104,_price_name+" 変更%d商品" % changed)
+    _center(130,"確定するまで価格は変わりません")
+    _option(Rect2(50,168,80,22),"戻る",handle_cancel,0)
+    _option(Rect2(170,168,100,22),"変更する",func():
+        if main.simulation.try_commit_source_prices(_price_draft,_price_uid,_price_before):
+            close_window()
+            main._refresh_ui()
+        else: show_notice("店舗か設定が変わっています。開き直して下さい"),1)
 
 func _permits() -> void:
     var sim = main.simulation
