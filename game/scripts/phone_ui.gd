@@ -974,7 +974,7 @@ func _show_event_notices() -> void:
         if int(record["sequence"]) <= _heard_sequence:
             continue
         var event_type := str(record["event_type"])
-        if main.simulation.program_town != null and event_type in ["manager_advice", "manager_report", "sales_report", "store_rank_changed", "month_end_settlement", "owner_review", "rival_withdrew", "rival_opened", "town_press", "promotion_fired", "promotion_cancelled"]:
+        if main.simulation.program_town != null and event_type in ["manager_advice", "manager_report", "sales_report", "store_rank_changed", "month_end_settlement", "owner_review", "rival_withdrew", "rival_opened", "town_press", "promotion_fired", "promotion_cancelled", "company_donation"]:
             continue
         if EVENT_NOTICES.has(event_type):
             var details: Dictionary = record.get("details", {})
@@ -990,6 +990,8 @@ func _show_event_notices() -> void:
 
 func _notice_text(event_type: String, details: Dictionary) -> String:
     match event_type:
+        "company_donation":
+            return "資金に余裕があるので、町の発展のために寄付します。\n寄付金 ¥%s" % main._format_integer(int(details.get("amount_yen",0)))
         "store_milestone":
             return "店舗が%d店舗になりました！" % int(details.get("count", 0))
         "month_end_settlement":

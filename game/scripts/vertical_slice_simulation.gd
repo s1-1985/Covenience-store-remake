@@ -45,7 +45,7 @@ const CAPITAL_EXPENSE_TYPES := [
     "store_site", "store_construction", "store_renovation", "chain_expansion", "rival_buyout",
     "rival_investigation", "fixture_purchase", "fixture_sold", "permit_purchase",
     "sample_layout_loaded", "inducement_aid", "inducement_place",
-    "product_procurement", "product_returned", "store_sold", "company_advertising",
+    "product_procurement", "product_returned", "store_sold", "company_advertising", "company_donation",
 ]
 
 
@@ -264,6 +264,8 @@ var source_actor_tables: Dictionary = {}
 var renovation_session: Dictionary = {}
 var source_promotions: Dictionary = {}
 var _source_advertising_last_clock := ""
+var _source_donation_last_month := -1
+var rival_donation_records: Array[Dictionary] = []
 var _chain_visitors_total := 0
 
 
@@ -544,6 +546,8 @@ func tick() -> void:
 func _drop_branches() -> void:
     source_promotions.clear()
     _source_advertising_last_clock = ""
+    _source_donation_last_month = -1
+    rival_donation_records.clear()
     renovation_session.clear()
     _store_uid = 1
     _next_store_uid = 2
@@ -1678,12 +1682,14 @@ func try_commit_source_promotions(selected: Array, expected_before: Variant = nu
     return true
 
 
-func _fire_source_promotions() -> void:
+func _fire_source_promotions(period_override := -1, month_override := -1) -> void:
     if program_town == null or minute_of_day%60!=0: return
-    var clock := "%d:%d:%d" % [month_count,_days_completed_this_month,minute_of_day]
+    var period: int = _days_completed_this_month+1 if period_override<0 else period_override
+    var month: int = month_count if month_override<0 else month_override
+    var clock := "%d:%d:%d" % [month,period-1,minute_of_day]
     if _source_advertising_last_clock==clock: return
     _source_advertising_last_clock=clock
-    var result: Dictionary = preload("res://scripts/domain/program_advertising.gd").plan(config.promotions,source_promotions.keys(),_days_completed_this_month+1,minute_of_day/60,0,economy.cash_yen)
+    var result: Dictionary = preload("res://scripts/domain/program_advertising.gd").plan(config.promotions,source_promotions.keys(),period,minute_of_day/60,0,economy.cash_yen)
     source_promotions.clear()
     for id in result.enabled: source_promotions[str(id)]=true
     for action in result.actions:
@@ -1702,6 +1708,38 @@ func _fire_source_promotions() -> void:
         details["expense_id"]=expense.expense_id
         _record_event("promotion_fired",details)
     assert(economy.cash_yen==int(result.cash_yen))
+
+
+# CONFIRMED_BINARY: 80027C80 after month-start ads, before finance close.
+# Both company gates/payment routes are independent; child stores must not
+# run this company operation again while their monthly accounts catch up.
+func _apply_source_donations() -> void:
+    if program_town == null or bool(config.simulation.get("rival_child",false)) or minute_of_day!=0: return
+    if _days_completed_this_month not in [0,REPRESENTATIVE_DAYS_PER_MONTH]: return
+    var target_month: int = month_count+1 if _days_completed_this_month==REPRESENTATIVE_DAYS_PER_MONTH else month_count
+    if _source_donation_last_month==target_month: return
+    _source_donation_last_month=target_month
+    var rule = preload("res://scripts/domain/program_donations.gd")
+    var amount: int = rule.amount(economy.cash_yen,1,0,0)
+    if amount>0:
+        var old_uid: int = economy.current_store_uid
+        economy.current_store_uid=0
+        var expense: Dictionary = economy.record_explicit_expense("company_donation",minute_of_day,amount,{"company_wide":true})
+        economy.current_store_uid=old_uid
+        _for_each_store(func():
+            if has_store_site():
+                internal_rating_value=rule.next_rating(internal_rating_value,true,0,0,true)
+                star_rating=_store_rating.star_rank_for_internal_value(internal_rating_value))
+        _record_event("company_donation",{"amount_yen":amount,"expense_id":expense.expense_id,"company_wide":true,"rating_gain":5})
+    var rival_amount: int = rule.amount(_rival_cash_yen,1,0,0)
+    if rival_amount>0:
+        _rival_cash_yen-=rival_amount
+        for rival in _rival_stores:
+            var child = _program_rival_simulation(rival)
+            child.internal_rating_value=rule.next_rating(int(child.internal_rating_value),true,1,1,true)
+            child.star_rating=child._store_rating.star_rank_for_internal_value(child.internal_rating_value)
+        # Separate company1 payment history: never debit the player's book.
+        rival_donation_records.append({"month":target_month,"amount_yen":rival_amount,"cash_after_yen":_rival_cash_yen})
 
 
 # Task #56: CONFIRMED_OFFICIAL (docs/research/quick-reference-guide-part1-
@@ -4080,6 +4118,8 @@ func save_state() -> Dictionary:
         "renovation_session": renovation_session.duplicate(true),
         "source_promotions": source_promotions.keys(),
         "source_advertising_last_clock": _source_advertising_last_clock,
+        "source_donation_last_month": _source_donation_last_month,
+        "rival_donation_records": rival_donation_records.duplicate(true),
         "source_settings_bits": int(config.get("source_settings_bits", 0)),
         "source_notifications": notifications.snapshot(),
         "scenario_id": str(config["scenario_id"]),
@@ -4225,6 +4265,14 @@ func _store_save_block() -> Dictionary:
 
 
 func load_state(data: Dictionary) -> bool:
+    var donation_month = data.get("source_donation_last_month",-1)
+    if (not donation_month is int and not donation_month is float) or float(donation_month)!=floorf(float(donation_month)) or donation_month < -1: return false
+    if not data.get("rival_donation_records",[]) is Array: return false
+    for row in data.get("rival_donation_records",[]):
+        if not row is Dictionary: return false
+        for key in ["month","amount_yen","cash_after_yen"]:
+            var value = row.get(key,-1)
+            if (not value is int and not value is float) or float(value)!=floorf(float(value)) or value<0: return false
     if data.has("source_promotions"):
         if not data.source_promotions is Array: return false
         for id in data.source_promotions:
@@ -4412,6 +4460,8 @@ func load_state(data: Dictionary) -> bool:
             _promotions_used_this_month.clear()
             _scheduled_promotions.clear())
     _source_advertising_last_clock=str(data.get("source_advertising_last_clock",""))
+    _source_donation_last_month=int(donation_month)
+    rival_donation_records.assign(data.get("rival_donation_records",[]))
     renovation_session = edit_session.duplicate(true)
     config["source_settings_bits"] = int(audio_bits)
     notifications = loaded_notices
@@ -4535,6 +4585,8 @@ func _reserve_source_notice(event_type: String, details: Dictionary) -> void:
             if manager != null:
                 parameter = int(_staff_candidate_catalog.get(manager.candidate_id, {}).get("source_index", 0))
             sound = 34 if event_type == "manager_report" or (event_type == "sales_report" and not bool(details.get("selling_well", false))) else 29 if event_type == "sales_report" else 28
+        "company_donation":
+            sound = 29
         "promotion_fired", "promotion_cancelled":
             kind = 4
             parameter = config.promotions.map(func(entry):return str(entry.promotion_id)).find(str(details.get("promotion_id","")))
@@ -4991,6 +5043,10 @@ func month_operating_statement() -> Dictionary:
 
 
 func _settle_month_end() -> void:
+    if program_town != null and not bool(config.simulation.get("rival_child",false)):
+        # Incoming representative period1, before finance and shop reviews.
+        _fire_source_promotions(1,month_count+1)
+        _apply_source_donations()
     var capital_yen := _capital_spent_this_month_yen()
     var statement := month_operating_statement()
     var month_sales_yen: int = int(statement["monthly"]["sales_yen"])

@@ -1161,3 +1161,6 @@ msgstr "改築を取り消しました"
 
 msgid "promotion settings changed"
 msgstr "宣伝の設定を変更しました"
+
+msgid "company donation"
+msgstr "町へ寄付しました"

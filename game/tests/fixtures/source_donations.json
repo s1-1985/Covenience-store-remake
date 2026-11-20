@@ -1,0 +1,813 @@
+{
+  "stores": [
+    {
+      "active": 1,
+      "company": 0,
+      "rating": 20
+    },
+    {
+      "active": 0,
+      "company": 0,
+      "rating": 30
+    },
+    {
+      "active": 1,
+      "company": 1,
+      "rating": 40
+    },
+    {
+      "active": 0,
+      "company": 1,
+      "rating": 50
+    },
+    {
+      "active": 1,
+      "company": 0,
+      "rating": 99
+    },
+    {
+      "active": 1,
+      "company": 1,
+      "rating": 99
+    },
+    {
+      "active": 1,
+      "company": 0,
+      "rating": 100
+    },
+    {
+      "active": 1,
+      "company": 1,
+      "rating": 100
+    },
+    {
+      "active": 0,
+      "company": 0,
+      "rating": 100
+    },
+    {
+      "active": 0,
+      "company": 1,
+      "rating": 100
+    }
+  ],
+  "cases": [
+    {
+      "company": 0,
+      "cash_before": 1499999999,
+      "period": 1,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1499999999,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 1499999999,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1499999999,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 1499999999,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1499999999,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 1500000000,
+      "period": 1,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1500000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 1500000000,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1500000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 1500000000,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1500000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 1500000001,
+      "period": 1,
+      "hour": 0,
+      "fired": true,
+      "paid": 500000001,
+      "cash_after": 1000000000,
+      "ratings": [
+        25,
+        30,
+        40,
+        50,
+        100,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 1500000001,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1500000001,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 1500000001,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1500000001,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 1600000000,
+      "period": 1,
+      "hour": 0,
+      "fired": true,
+      "paid": 600000000,
+      "cash_after": 1000000000,
+      "ratings": [
+        25,
+        30,
+        40,
+        50,
+        100,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 1600000000,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1600000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 1600000000,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1600000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 2000000000,
+      "period": 1,
+      "hour": 0,
+      "fired": true,
+      "paid": 1000000000,
+      "cash_after": 1000000000,
+      "ratings": [
+        25,
+        30,
+        40,
+        50,
+        100,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 2000000000,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 2000000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 2000000000,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 2000000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 2147483647,
+      "period": 1,
+      "hour": 0,
+      "fired": true,
+      "paid": 1147483647,
+      "cash_after": 1000000000,
+      "ratings": [
+        25,
+        30,
+        40,
+        50,
+        100,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 2147483647,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 2147483647,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 0,
+      "cash_before": 2147483647,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 2147483647,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1499999999,
+      "period": 1,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1499999999,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1499999999,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1499999999,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1499999999,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1499999999,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1500000000,
+      "period": 1,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1500000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1500000000,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1500000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1500000000,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1500000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1500000001,
+      "period": 1,
+      "hour": 0,
+      "fired": true,
+      "paid": 500000001,
+      "cash_after": 1000000000,
+      "ratings": [
+        20,
+        30,
+        45,
+        50,
+        99,
+        100,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1500000001,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1500000001,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1500000001,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1500000001,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1600000000,
+      "period": 1,
+      "hour": 0,
+      "fired": true,
+      "paid": 600000000,
+      "cash_after": 1000000000,
+      "ratings": [
+        20,
+        30,
+        45,
+        50,
+        99,
+        100,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1600000000,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1600000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 1600000000,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 1600000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 2000000000,
+      "period": 1,
+      "hour": 0,
+      "fired": true,
+      "paid": 1000000000,
+      "cash_after": 1000000000,
+      "ratings": [
+        20,
+        30,
+        45,
+        50,
+        99,
+        100,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 2000000000,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 2000000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 2000000000,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 2000000000,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 2147483647,
+      "period": 1,
+      "hour": 0,
+      "fired": true,
+      "paid": 1147483647,
+      "cash_after": 1000000000,
+      "ratings": [
+        20,
+        30,
+        45,
+        50,
+        99,
+        100,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 2147483647,
+      "period": 2,
+      "hour": 0,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 2147483647,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "company": 1,
+      "cash_before": 2147483647,
+      "period": 1,
+      "hour": 1,
+      "fired": false,
+      "paid": 0,
+      "cash_after": 2147483647,
+      "ratings": [
+        20,
+        30,
+        40,
+        50,
+        99,
+        99,
+        100,
+        100,
+        100,
+        100
+      ]
+    }
+  ],
+  "scope": "36 partial original executions, real payment child, stop before player text/notification; normal first-slot owner0"
+}
