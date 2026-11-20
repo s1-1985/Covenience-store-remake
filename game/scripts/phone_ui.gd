@@ -922,7 +922,7 @@ func _pump_notices() -> void:
             var text := _notice_text(str(context.get("event_type", "")), context.get("details", {}))
             var details: Dictionary = context.get("details", {})
             var store_index := int(details.get("store_index", -1))
-            if int(record["mode"]) == 1 and sim.store_count() > 1 and store_index >= 0 and store_index < sim.store_count():
+            if int(record["mode"]) == 1 and sim.store_count() > 1 and store_index >= 0 and store_index < sim.store_count() and not bool(details.get("company_wide",false)):
                 text = "［%s］%s" % [sim.store_field(store_index, "store_name"), text]
             if int(record["mode"]) == 2:
                 text = "月次報告\n前月収支 ¥%s（前々月比 %s）\n他経費 ¥%s（前々月比 %s）\n町人口 %s人（前々月比 %s人）" % [
@@ -974,7 +974,7 @@ func _show_event_notices() -> void:
         if int(record["sequence"]) <= _heard_sequence:
             continue
         var event_type := str(record["event_type"])
-        if main.simulation.program_town != null and event_type in ["manager_advice", "manager_report", "sales_report", "store_rank_changed", "month_end_settlement", "owner_review", "rival_withdrew", "rival_opened", "town_press"]:
+        if main.simulation.program_town != null and event_type in ["manager_advice", "manager_report", "sales_report", "store_rank_changed", "month_end_settlement", "owner_review", "rival_withdrew", "rival_opened", "town_press", "promotion_fired", "promotion_cancelled"]:
             continue
         if EVENT_NOTICES.has(event_type):
             var details: Dictionary = record.get("details", {})

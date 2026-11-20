@@ -45,7 +45,7 @@ const CAPITAL_EXPENSE_TYPES := [
     "store_site", "store_construction", "store_renovation", "chain_expansion", "rival_buyout",
     "rival_investigation", "fixture_purchase", "fixture_sold", "permit_purchase",
     "sample_layout_loaded", "inducement_aid", "inducement_place",
-    "product_procurement", "product_returned", "store_sold",
+    "product_procurement", "product_returned", "store_sold", "company_advertising",
 ]
 
 
@@ -262,6 +262,8 @@ var _store_sales_last_month := 0
 var source_actor_tables: Dictionary = {}
 # Native editor checkpoint, not a raw PS memory-card block.
 var renovation_session: Dictionary = {}
+var source_promotions: Dictionary = {}
+var _source_advertising_last_clock := ""
 var _chain_visitors_total := 0
 
 
@@ -540,6 +542,8 @@ func tick() -> void:
 
 # Back to 本店 alone (a new game, or before loading a save).
 func _drop_branches() -> void:
+    source_promotions.clear()
+    _source_advertising_last_clock = ""
     renovation_session.clear()
     _store_uid = 1
     _next_store_uid = 2
@@ -1619,6 +1623,11 @@ func _apply_price_policy(list_price_yen: int, category := "") -> int:
 
 
 func try_purchase_promotion(promotion_id: String) -> bool:
+    if program_town != null:
+        if source_promotions.has(promotion_id): return false
+        var selected: Array = source_promotions.keys()
+        selected.append(promotion_id)
+        return try_commit_source_promotions(selected)
     # Task #100: allowed while customers are in the store -- this changes
     # no fixture, route or basket (during opening hours the store is almost
     # never empty, so waiting for it blocked the action for good).
@@ -1649,6 +1658,50 @@ func try_purchase_promotion(promotion_id: String) -> bool:
         "trigger_hour": trigger_hour,
     })
     return true
+
+
+func try_commit_source_promotions(selected: Array, expected_before: Variant = null) -> bool:
+    if program_town == null or is_game_over or not renovation_session.is_empty(): return false
+    # Optional optimistic comparison used by the native confirmation UI.
+    if expected_before != null:
+        if not expected_before is Array: return false
+        if expected_before.size()!=source_promotions.size(): return false
+        for id in expected_before:
+            if not source_promotions.has(str(id)): return false
+    var flags := {}
+    for id in selected:
+        if not _promotion_catalog.has(str(id)): return false
+        flags[str(id)] = true
+    if flags==source_promotions: return true
+    source_promotions=flags
+    _record_event("promotion_settings_changed",{"enabled":source_promotions.keys()})
+    return true
+
+
+func _fire_source_promotions() -> void:
+    if program_town == null or minute_of_day%60!=0: return
+    var clock := "%d:%d:%d" % [month_count,_days_completed_this_month,minute_of_day]
+    if _source_advertising_last_clock==clock: return
+    _source_advertising_last_clock=clock
+    var result: Dictionary = preload("res://scripts/domain/program_advertising.gd").plan(config.promotions,source_promotions.keys(),_days_completed_this_month+1,minute_of_day/60,0,economy.cash_yen)
+    source_promotions.clear()
+    for id in result.enabled: source_promotions[str(id)]=true
+    for action in result.actions:
+        var details := {"promotion_id":str(action.promotion_id),"cost_yen":int(action.cost_yen),"company_wide":true}
+        if not action.fired:
+            _record_event("promotion_cancelled",details)
+            continue
+        var old_uid: int = economy.current_store_uid
+        economy.current_store_uid=0 # company payment, no individual shop owner
+        var expense: Dictionary = economy.record_explicit_expense("company_advertising",minute_of_day,int(action.cost_yen),{"promotion_id":str(action.promotion_id),"company_wide":true})
+        economy.current_store_uid=old_uid
+        _for_each_store(func():
+            if has_store_site(): popularity=mini(100,popularity+int(action.gain)))
+        details["popularity_gain"]=int(action.gain)
+        details["popularity_after"]=popularity
+        details["expense_id"]=expense.expense_id
+        _record_event("promotion_fired",details)
+    assert(economy.cash_yen==int(result.cash_yen))
 
 
 # Task #56: CONFIRMED_OFFICIAL (docs/research/quick-reference-guide-part1-
@@ -4025,6 +4078,8 @@ func save_state() -> Dictionary:
         "unassigned_staff": _unassigned_staff.duplicate(true),
         "retired_month_sales": _retired_month_sales,
         "renovation_session": renovation_session.duplicate(true),
+        "source_promotions": source_promotions.keys(),
+        "source_advertising_last_clock": _source_advertising_last_clock,
         "source_settings_bits": int(config.get("source_settings_bits", 0)),
         "source_notifications": notifications.snapshot(),
         "scenario_id": str(config["scenario_id"]),
@@ -4170,6 +4225,11 @@ func _store_save_block() -> Dictionary:
 
 
 func load_state(data: Dictionary) -> bool:
+    if data.has("source_promotions"):
+        if not data.source_promotions is Array: return false
+        for id in data.source_promotions:
+            if not _promotion_catalog.has(str(id)): return false
+    if not data.get("source_advertising_last_clock","") is String: return false
     if not data.get("renovation_session",{}) is Dictionary: return false
     var edit_session: Dictionary = data.get("renovation_session",{})
     if not edit_session.is_empty():
@@ -4334,6 +4394,24 @@ func load_state(data: Dictionary) -> bool:
         if not _source_runtime_to_restore.is_empty():
             _restore_source_runtime(_source_runtime_to_restore)
             _source_runtime_to_restore = {})
+    source_promotions.clear()
+    if data.has("source_promotions"):
+        for id in data.source_promotions: source_promotions[str(id)]=true
+    elif program_town != null:
+        # Old per-store reservations become one persistent company setting.
+        var blocks: Array = [data]
+        blocks.append_array(data.get("branches",[]))
+        for block in blocks:
+            for id in block.get("promotions_used_this_month",[]):
+                if _promotion_catalog.has(str(id)): source_promotions[str(id)]=true
+            for row in block.get("scheduled_promotions",[]):
+                var id := str(row.get("promotion_id",""))
+                if _promotion_catalog.has(id): source_promotions[id]=true
+    if program_town != null:
+        _for_each_store(func():
+            _promotions_used_this_month.clear()
+            _scheduled_promotions.clear())
+    _source_advertising_last_clock=str(data.get("source_advertising_last_clock",""))
     renovation_session = edit_session.duplicate(true)
     config["source_settings_bits"] = int(audio_bits)
     notifications = loaded_notices
@@ -4457,6 +4535,10 @@ func _reserve_source_notice(event_type: String, details: Dictionary) -> void:
             if manager != null:
                 parameter = int(_staff_candidate_catalog.get(manager.candidate_id, {}).get("source_index", 0))
             sound = 34 if event_type == "manager_report" or (event_type == "sales_report" and not bool(details.get("selling_well", false))) else 29 if event_type == "sales_report" else 28
+        "promotion_fired", "promotion_cancelled":
+            kind = 4
+            parameter = config.promotions.map(func(entry):return str(entry.promotion_id)).find(str(details.get("promotion_id","")))
+            sound = 31 if event_type=="promotion_cancelled" else 100
         "month_end_settlement":
             if int(config.get("source_settings_bits", 0)) & 2:
                 return
@@ -4704,10 +4786,11 @@ func _all_staff_are_walkable() -> bool:
 
 func _advance_minute_of_day() -> void:
     minute_of_day += _step_game_minutes
-    _for_each_store(_fire_due_promotions)
+    if program_town == null: _for_each_store(_fire_due_promotions)
     while minute_of_day >= 24 * 60:
         minute_of_day -= 24 * 60
         _handle_day_boundary()
+    if program_town != null: _fire_source_promotions()
     _fire_due_chain_visitor_milestones()
 
 

@@ -1158,3 +1158,6 @@ msgstr "改築を確定しました"
 
 msgid "renovation cancelled"
 msgstr "改築を取り消しました"
+
+msgid "promotion settings changed"
+msgstr "宣伝の設定を変更しました"

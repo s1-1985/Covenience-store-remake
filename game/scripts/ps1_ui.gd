@@ -33,6 +33,8 @@ var _price_before: Dictionary = {}
 var _price_individual_before: Dictionary = {}
 var _price_uid := -1
 var _price_name := ""
+var _ad_draft: Array = []
+var _ad_before: Array = []
 var selection := 0
 var choice := 0
 var page := 0
@@ -155,6 +157,9 @@ func open_window(id: String) -> void:
         return
     if main.selecting_site:
         return
+    if id == "advertising" and not _restoring_menu:
+        _ad_before = main.simulation.source_promotions.keys()
+        _ad_draft = _ad_before.duplicate()
     if id == "prices" and screen not in ["stock_prices","price_confirm"] and not _restoring_menu:
         _price_before = main.simulation.source_price_settings()
         _price_draft = _price_before.duplicate()
@@ -856,26 +861,36 @@ func _permit_confirmation() -> void:
             show_notice(str(quote.reason) if not str(quote.reason).is_empty() else "店舗または申請内容を確認して下さい"),1)
 
 func _advertising() -> void:
-    _paper(Rect2(51,45,230,120))
-    _center(50,"宣伝方法を選択して下さい(複数選択可)")
-    var entries: Array = main.config["promotions"]
+    var sim = main.simulation
+    _paper(Rect2(32,44,256,164))
+    _center(50,"宣伝方法（複数選択可）")
+    var entries: Array = sim.config.promotions
     choice = clampi(choice,0,entries.size()-1)
-    var e: Dictionary = entries[choice]
-    _ink(Vector2(72,66), main.tr(str(e["promotion_id"])))
-    _ink(Vector2(176,66), _money(int(e["cost_yen"]))+"/月")
+    var selected: Dictionary = entries[choice]
+    _ink(Vector2(48,70),main.tr(str(selected.promotion_id)))
+    _ink(Vector2(180,70),_money(int(selected.cost_yen)))
     var total := 0
-    for id in main.simulation._promotions_used_this_month:
-        for entry in entries:
-            if entry["promotion_id"] == id: total += int(entry["cost_yen"])
-    _ink(Vector2(72,82),"費用合計")
-    _ink(Vector2(176,82),_money(total)+"/月")
     for i in mini(5,entries.size()):
-        var id := str(entries[i]["promotion_id"])
+        var id: String = entries[i].promotion_id
         var index := i
-        _icon(Rect2(68+i*40,96,32,32),_texture(UI_ICON_DIR+str(PROMOTION_ICONS.get(id,""))+".png"),func():
-            choice = index
-            if not main.simulation.try_purchase_promotion(id): show_notice("今月は申請済みか資金が足りません"),i)
-    _footer(143)
+        var rect := Rect2(52+i*44,94,32,32)
+        _icon(rect,_texture(UI_ICON_DIR+str(PROMOTION_ICONS.get(id,""))+".png"),func():
+            choice=index
+            if _ad_draft.has(id): _ad_draft.erase(id)
+            else: _ad_draft.append(id),i)
+        if _ad_draft.has(id):
+            surface.draw_rect(rect.grow(2),PINK,false,1.5)
+            total+=int(entries[i].cost_yen)
+        _ink(Vector2(60+i*44,128),"○" if _ad_draft.has(id) else "−")
+    _ink(Vector2(48,146),"費用合計")
+    _ink(Vector2(180,146),_money(total))
+    _ink_small(Vector2(48,163),"実施時に支払・翌月も継続")
+    _option(Rect2(48,181,80,22),"戻る",handle_cancel,10)
+    _option(Rect2(150,181,122,22),"設定を確定",func():
+        if sim.try_commit_source_promotions(_ad_draft,_ad_before):
+            close_window()
+            main._refresh_ui()
+        else: show_notice("宣伝設定が変わっています。開き直して下さい"),11)
 
 func _facilities() -> void:
     var entries: Array = main.simulation.inducement_facilities()

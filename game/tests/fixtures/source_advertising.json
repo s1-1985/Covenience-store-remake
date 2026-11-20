@@ -1,0 +1,138 @@
+{
+  "masters": [
+    {
+      "index": 0,
+      "cost_yen": 100000,
+      "parameter": 0,
+      "gain": 12,
+      "period": 2,
+      "hour": 10
+    },
+    {
+      "index": 1,
+      "cost_yen": 500000,
+      "parameter": 1,
+      "gain": 20,
+      "period": 2,
+      "hour": 7
+    },
+    {
+      "index": 2,
+      "cost_yen": 1000000,
+      "parameter": 2,
+      "gain": 40,
+      "period": 3,
+      "hour": 15
+    },
+    {
+      "index": 3,
+      "cost_yen": 3000000,
+      "parameter": 3,
+      "gain": 60,
+      "period": 1,
+      "hour": 17
+    },
+    {
+      "index": 4,
+      "cost_yen": 5000000,
+      "parameter": 4,
+      "gain": 90,
+      "period": 1,
+      "hour": 19
+    }
+  ],
+  "cases": [
+    {
+      "index": 0,
+      "cash_before": 499999,
+      "fired": false,
+      "cash_after": 499999,
+      "paid": 0,
+      "gain": 0,
+      "flag": 0
+    },
+    {
+      "index": 0,
+      "cash_before": 500000,
+      "fired": true,
+      "cash_after": 400000,
+      "paid": 100000,
+      "gain": 12,
+      "flag": 1
+    },
+    {
+      "index": 1,
+      "cash_before": 2499999,
+      "fired": false,
+      "cash_after": 2499999,
+      "paid": 0,
+      "gain": 0,
+      "flag": 0
+    },
+    {
+      "index": 1,
+      "cash_before": 2500000,
+      "fired": true,
+      "cash_after": 2000000,
+      "paid": 500000,
+      "gain": 20,
+      "flag": 1
+    },
+    {
+      "index": 2,
+      "cash_before": 4999999,
+      "fired": false,
+      "cash_after": 4999999,
+      "paid": 0,
+      "gain": 0,
+      "flag": 0
+    },
+    {
+      "index": 2,
+      "cash_before": 5000000,
+      "fired": true,
+      "cash_after": 4000000,
+      "paid": 1000000,
+      "gain": 40,
+      "flag": 1
+    },
+    {
+      "index": 3,
+      "cash_before": 14999999,
+      "fired": false,
+      "cash_after": 14999999,
+      "paid": 0,
+      "gain": 0,
+      "flag": 0
+    },
+    {
+      "index": 3,
+      "cash_before": 15000000,
+      "fired": true,
+      "cash_after": 12000000,
+      "paid": 3000000,
+      "gain": 60,
+      "flag": 1
+    },
+    {
+      "index": 4,
+      "cash_before": 24999999,
+      "fired": false,
+      "cash_after": 24999999,
+      "paid": 0,
+      "gain": 0,
+      "flag": 0
+    },
+    {
+      "index": 4,
+      "cash_before": 25000000,
+      "fired": true,
+      "cash_after": 20000000,
+      "paid": 5000000,
+      "gain": 90,
+      "flag": 1
+    }
+  ],
+  "original_excerpt_entries": 10,
+  "scope": "cash gate, accumulator, real company-payment child; stop before text/notice; no full hourly/controller update"
+}
