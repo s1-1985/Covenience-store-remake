@@ -51,9 +51,51 @@ func run() -> void:
     assert(s.store_type_id==old and s.economy.cash_yen==11999999)
     s.economy.cash_yen=12000000
     await tap(Vector2(210,178))
-    assert(ui.screen.is_empty() and s.economy.cash_yen==0 and s.is_open_now())
+    assert(ui.screen=="interior" and not s.renovation_session.is_empty() and s.economy.cash_yen==0 and not s.is_open_now())
+    ui.close_window()
+    await process_frame
+    await process_frame
+    assert(ui.screen=="renovation_finish")
+    await tap(Vector2(170,120))
+    assert(ui.screen=="interior")
+    ui.close_window()
+    await process_frame
+    await process_frame
+    await tap(Vector2(170,150))
+    assert(ui.screen.is_empty() and s.renovation_session.is_empty() and s.economy.cash_yen==0 and s.is_open_now())
     assert(s.store_type_id==str(s.store_types()[2].id))
     assert(game.store_view.simulation==s and game.config==s.config)
+    s.economy.cash_yen=1000000000
+    ui._navigate("renovation")
+    await process_frame
+    await process_frame
+    await tap(Vector2(130,147))
+    await tap(Vector2(160,107))
+    await tap(Vector2(170,150))
+    assert(ui.screen=="renovation_permits")
+    await tap(Vector2(200,88))
+    await tap(Vector2(170,188))
+    assert(ui.screen=="renovation_confirm" and ui._renovation_permits.size()==1)
+    await tap(Vector2(210,178))
+    assert(not s.renovation_session.is_empty() and s.has_permit("tobacco"))
+    assert(s.try_set_source_floor(5))
+    var saved:Dictionary=JSON.parse_string(JSON.stringify(s.save_state()))
+    var restored=load("res://scripts/vertical_slice_simulation.gd").new(s.config)
+    assert(restored.load_state(saved))
+    game.simulation=restored
+    s=restored
+    game._store_layout_changed()
+    ui.close_hours=""
+    ui._resume_renovation_edit()
+    assert(ui.screen=="interior" and not ui.close_hours.is_empty())
+    ui.close_window()
+    await process_frame
+    await process_frame
+    await tap(Vector2(170,180))
+    assert(ui.screen=="renovation" and s.renovation_session.is_empty() and s.economy.cash_yen==1000000000)
+    assert(s.store_type_id==str(s.store_types()[2].id) and not s.has_permit("tobacco"))
+    ui.close_window()
+    assert(s.is_open_now())
     # Closing a temporary-closure flow after changing selected store must
     # restore the hours of the original store, not overwrite the other one.
     s.economy.cash_yen=1000000000

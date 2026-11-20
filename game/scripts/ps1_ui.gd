@@ -23,6 +23,7 @@ var _pending_taps: Dictionary = {}
 var _dismiss_request: Dictionary = {}
 var _sale_request: Dictionary = {}
 var _renovation_request: Dictionary = {}
+var _renovation_permits: Array[String] = []
 var _close_target := "interior"
 var _close_store_uid := -1
 var _permit_selected: Array[String] = []
@@ -76,6 +77,7 @@ func setup(owner_main) -> void:
     _ready_ui = true
     main.store_view.fixture_selected.connect(_fixture_action)
     refresh()
+    call_deferred("_resume_renovation_edit")
 
 func _build_background() -> void:
     var background: ColorRect = main.get_node("Background")
@@ -148,6 +150,7 @@ func open_window(id: String) -> void:
         return
     if main.selecting_site:
         return
+    if id == "renovation" and not _restoring_menu: _renovation_permits.clear()
     if id == "permits" and screen != "permit_confirm" and not _restoring_menu:
         _permit_selected.clear()
         _permit_request.clear()
@@ -181,6 +184,9 @@ func open_window(id: String) -> void:
 
 func close_window() -> void:
     if not _ready_ui:
+        return
+    if not main.simulation.renovation_session.is_empty():
+        open_window("renovation_finish")
         return
     if not close_hours.is_empty():
         var sim = main.simulation
@@ -222,6 +228,9 @@ func handle_command() -> void:
 func handle_cancel() -> bool:
     if screen.is_empty():
         return false
+    if screen == "interior" and floor_mode.is_empty() and not main.simulation.renovation_session.is_empty():
+        open_window("renovation_finish")
+        return true
     if not floor_mode.is_empty():
         floor_mode = ""
         main.store_view.selected_fixture_id = ""
@@ -272,6 +281,7 @@ func handle_accept() -> bool:
     return true
 
 func handle_shoulder(direction: int) -> bool:
+    if not main.simulation.renovation_session.is_empty() and not screen in ["fixtures","floor_material"]: return true
     if main.selecting_site:
         if not main.site_buy_button.disabled: main._on_buy_site_pressed()
         return true
@@ -604,6 +614,8 @@ func _draw_screen(_target: Node2D) -> void:
         "transfer": _transfer()
         "renovation": _renovation()
         "renovation_confirm": _renovation_confirmation()
+        "renovation_finish": _renovation_finish()
+        "renovation_permits": _renovation_permit_panel()
         "shop": _shop_details()
         "shop_graph", "results": _graph()
         "survey": _survey()
@@ -1041,18 +1053,80 @@ func _renovation_confirmation() -> void:
     _center(72,"この店舗へ改築しますか?")
     var entry: Dictionary = s.GuideStartingStoreScript.store_type_entry(s.config,id)
     _center(96,main.store_type_caption(entry))
-    _center(120,"改築費用 "+_money(int(_renovation_request.get("total_yen",0))))
+    var permit_quote: Dictionary = s.permit_application_quote(_renovation_permits)
+    var total: int = int(_renovation_request.get("total_yen",0))+int(permit_quote.total_yen)
+    _center(120,"費用合計 "+_money(total))
+    _option(Rect2(48,140,224,22),"販売許可を選択（%d件）" % _renovation_permits.size(),func():open_window("renovation_permits"),2)
     _option(Rect2(50,168,80,22),"戻る",handle_cancel,0)
     _option(Rect2(170,168,100,22),"改築する",func():
-        if s.try_renovate_store(id,int(_renovation_request.get("store_uid",-1)),str(_renovation_request.get("from_type",""))):
+        if s.begin_renovation_edit(id,_renovation_permits,int(_renovation_request.get("store_uid",-1)),str(_renovation_request.get("from_type","")),close_hours):
             main.store_view.selected_fixture_id = ""
             main._store_layout_changed()
             _renovation_request.clear()
-            close_window()
+            history.clear()
+            _history_states.clear()
+            open_window("interior")
             main._refresh_ui()
         else:
             var quote: Dictionary = s.renovation_quote(id)
-            show_notice(str(quote.reason) if not str(quote.reason).is_empty() else "店舗または改築内容を確認して下さい"),1)
+            var reason: String = str(quote.reason)
+            if reason.is_empty() and not permit_quote.allowed: reason = str(permit_quote.reason)
+            if reason.is_empty() and s.economy.cash_yen < total: reason = "資金が足りません"
+            show_notice(reason if not reason.is_empty() else "店舗または改築内容を確認して下さい"),1)
+
+func _renovation_permit_panel() -> void:
+    var sim = main.simulation
+    _paper(Rect2(32,48,256,160))
+    _center(54,"販売許可を選択して下さい")
+    for i in 3:
+        var id: String = sim.ProgramPermitsScript.IDS[i]
+        var held: bool = sim.has_permit(id)
+        var allowed: bool = sim._can_acquire_permit(id)
+        var selected: bool = _renovation_permits.has(id)
+        var y := 78+i*24
+        _ink(Vector2(44,y),sim.ProgramPermitsScript.NAMES[id])
+        var text := "申請済み" if held else ("ここでは扱えません" if not allowed else ("選択 " if selected else "□ ")+_money(int(sim._permit_catalog[id]["fee_yen"])))
+        _option(Rect2(112,y,164,22),text,func():
+            if held or not allowed: return
+            if _renovation_permits.has(id): _renovation_permits.erase(id)
+            else: _renovation_permits.append(id),i)
+    _center(153,"追加費用 "+_money(int(sim.permit_application_quote(_renovation_permits).total_yen)))
+    _option(Rect2(48,178,224,22),"選択を終える",handle_cancel,3)
+
+func _resume_renovation_edit() -> void:
+    var sim = main.simulation
+    if sim.renovation_session.is_empty(): return
+    for index in sim.store_count():
+        if int(sim.store_field(index,"_store_uid")) == int(sim.renovation_session.store_uid):
+            main.select_store(index)
+            close_hours = str(sim.renovation_session.get("restore_hours",""))
+            _close_store_uid = int(sim.renovation_session.store_uid)
+            _close_target = "renovation"
+            open_window("interior")
+            return
+
+func _renovation_finish() -> void:
+    _paper(Rect2(32,72,256,132))
+    _center(80,"改築の内装を終了しますか?")
+    _option(Rect2(48,110,224,22),"内装を続ける",func():
+        history.clear()
+        _history_states.clear()
+        open_window("interior"),0)
+    _option(Rect2(48,140,224,22),"改築を確定する",func(): _finish_renovation_edit(true),1)
+    _option(Rect2(48,170,224,22),"改築を取り消す",func(): _finish_renovation_edit(false),2)
+
+func _finish_renovation_edit(accept: bool) -> void:
+    if not main.simulation.finish_renovation_edit(accept):
+        show_notice("編集中の店舗を確認して下さい")
+        return
+    floor_mode = ""
+    main.store_view.selected_fixture_id = ""
+    main._store_layout_changed()
+    history.clear()
+    _history_states.clear()
+    if accept: close_window()
+    else: open_window("renovation")
+    main._refresh_ui()
 
 func _selector(y: float = 43) -> void:
     _ink(Vector2(204,y),main.simulation.store_name)

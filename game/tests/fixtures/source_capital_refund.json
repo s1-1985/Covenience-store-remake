@@ -1,0 +1,102 @@
+{
+  "cases": [
+    {
+      "company": 0,
+      "amount": 12000000,
+      "cash": [
+        188000000,
+        200000000
+      ],
+      "ledger": [
+        12000007,
+        7
+      ]
+    },
+    {
+      "company": 0,
+      "amount": -12000000,
+      "cash": [
+        212000000,
+        200000000
+      ],
+      "ledger": [
+        -11999993,
+        7
+      ]
+    },
+    {
+      "company": 0,
+      "amount": -3000000,
+      "cash": [
+        203000000,
+        200000000
+      ],
+      "ledger": [
+        -2999993,
+        7
+      ]
+    },
+    {
+      "company": 0,
+      "amount": 0,
+      "cash": [
+        200000000,
+        200000000
+      ],
+      "ledger": [
+        7,
+        7
+      ]
+    },
+    {
+      "company": 1,
+      "amount": 12000000,
+      "cash": [
+        200000000,
+        188000000
+      ],
+      "ledger": [
+        7,
+        12000007
+      ]
+    },
+    {
+      "company": 1,
+      "amount": -12000000,
+      "cash": [
+        200000000,
+        212000000
+      ],
+      "ledger": [
+        7,
+        -11999993
+      ]
+    },
+    {
+      "company": 1,
+      "amount": -3000000,
+      "cash": [
+        200000000,
+        203000000
+      ],
+      "ledger": [
+        7,
+        -2999993
+      ]
+    },
+    {
+      "company": 1,
+      "amount": 0,
+      "cash": [
+        200000000,
+        200000000
+      ],
+      "ledger": [
+        7,
+        7
+      ]
+    }
+  ],
+  "original_function_entries": 8,
+  "scope": "capital posting only; not original remodel controller or gameplay"
+}

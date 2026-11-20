@@ -260,6 +260,8 @@ var _store_sales_last_month := 0
 
 
 var source_actor_tables: Dictionary = {}
+# Native editor checkpoint, not a raw PS memory-card block.
+var renovation_session: Dictionary = {}
 var _chain_visitors_total := 0
 
 
@@ -503,6 +505,7 @@ func demand_admit_if_due() -> bool:
 
 
 func tick_idle_for_demand() -> bool:
+    if not renovation_session.is_empty(): return false
     if is_game_over or (program_town != null and (int(source_progress["pending"]) >= 0 or int(source_progress["save_finished"]) == 255)):
         return false
     _advance_minute_of_day()
@@ -520,6 +523,7 @@ func tick_idle_for_demand() -> bool:
 # tick_idle_for_demand() keep their narrower semantics for the existing
 # scripted smoke scenarios.
 func tick() -> void:
+    if not renovation_session.is_empty(): return 
     if is_game_over or (program_town != null and (int(source_progress["pending"]) >= 0 or int(source_progress["save_finished"]) == 255 or source_management_has_vacancy())):
         return
     step()
@@ -536,6 +540,7 @@ func tick() -> void:
 
 # Back to 本店 alone (a new game, or before loading a save).
 func _drop_branches() -> void:
+    renovation_session.clear()
     _store_uid = 1
     _next_store_uid = 2
     _unassigned_staff.clear()
@@ -599,6 +604,7 @@ func _for_each_store(action: Callable) -> void:
 
 # The player looks at (and acts on) store `index` from now on.
 func select_store(index: int) -> bool:
+    if not renovation_session.is_empty() and (index < 0 or index >= store_count() or int(store_field(index,"_store_uid")) != int(renovation_session.store_uid)): return false
     if index < 0 or index >= _stores.size():
         return false
     _switch_store(index)
@@ -1478,6 +1484,7 @@ func permit_application_quote(selected: Array) -> Dictionary:
 
 
 func try_purchase_permits(selected: Array, expected_uid := -1) -> bool:
+    if not renovation_session.is_empty(): return false
     if expected_uid >= 0 and expected_uid != _store_uid: return false
     var quote := permit_application_quote(selected)
     if not quote.allowed or quote.new_permits.is_empty(): return false
@@ -2346,6 +2353,7 @@ func store_site_quote(origin: Vector2i) -> Dictionary:
 # from the site. Only once per game (a new store elsewhere is a separate,
 # not yet built flow).
 func try_buy_store_site(origin: Vector2i, type_id := "") -> bool:
+    if not renovation_session.is_empty(): return false
     if is_game_over or store_site == null:
         return false
     if has_store_site():
@@ -2524,7 +2532,8 @@ func renovation_price_yen(type_id: String) -> int:
 func renovation_quote(type_id: String) -> Dictionary:
     var reason := ""
     var price_yen := renovation_price_yen(type_id)
-    if is_game_over: reason = "ゲーム終了後は改築できません"
+    if not renovation_session.is_empty(): reason = "内装の編集を終了して下さい"
+    elif is_game_over: reason = "ゲーム終了後は改築できません"
     elif not can_renovate_to(type_id): reason = "この店舗へは改築できません"
     elif program_town != null and not has_store_site(): reason = "店舗を選択して下さい"
     elif program_town != null and is_open_now(): reason = "開店中は改装できません"
@@ -2637,6 +2646,47 @@ func try_renovate_store(type_id: String, expected_uid := -1, expected_from := ""
 # Sets `fixture` (an old fixture_snapshot() row) down on the first free spot
 # of the new store where it fits with a reachable front, with `goods` (its
 # inventory.snapshot() row, or {}) back on it.
+# Original 63E44 checkpoint ordering: premises fees first, then an
+# interior checkpoint. Editor payments are restored on either outcome.
+func begin_renovation_edit(type_id: String, selected_permits: Array = [], expected_uid := -1, expected_from := "", restore_hours := "") -> bool:
+    if program_town == null or not renovation_session.is_empty(): return false
+    var size_quote := renovation_quote(type_id)
+    var permit_quote := permit_application_quote(selected_permits)
+    if not size_quote.allowed or not permit_quote.allowed or economy.cash_yen < int(size_quote.total_yen)+int(permit_quote.total_yen): return false
+    if (expected_uid >= 0 and expected_uid != _store_uid) or (not expected_from.is_empty() and expected_from != store_type_id): return false
+    var old_permits := _permits_held.duplicate()
+    if not try_renovate_store(type_id,expected_uid,expected_from): return false
+    if not permit_quote.new_permits.is_empty():
+        var bought: bool = try_purchase_permits(permit_quote.new_permits,_store_uid)
+        assert(bought) # call remains active in release builds
+    renovation_session = {"version":1,"store_uid":_store_uid,"size_fee":int(size_quote.total_yen),"permit_fee":int(permit_quote.total_yen),"new_permits":permit_quote.new_permits.duplicate(),"old_permits":old_permits,"store":_store_save_block().duplicate(true),"economy":economy.snapshot(),"settled":economy._settled_customer_ids.duplicate(),"events":event_log.snapshot(),"restore_hours":restore_hours}
+    return true
+
+
+func finish_renovation_edit(accept: bool) -> bool:
+    if renovation_session.is_empty() or _store_uid != int(renovation_session.store_uid): return false
+    var session := renovation_session.duplicate(true)
+    economy.restore_snapshot(session.economy)
+    economy._settled_customer_ids = session.settled.duplicate()
+    event_log.restore_snapshot(session.events)
+    if not accept:
+        # Snapshot is AFTER the new-size selection. Keep that tier/layout,
+        # reverse premises fees and restore only the former permit flags.
+        _restore_store_block(session.store,[])
+        if not _source_runtime_to_restore.is_empty():
+            _restore_source_runtime(_source_runtime_to_restore)
+            _source_runtime_to_restore = {}
+        _permits_held = session.old_permits.duplicate()
+        economy.record_explicit_expense("store_renovation",minute_of_day,-int(session.size_fee),{"cancelled":true,"store_uid":_store_uid})
+        for id in session.new_permits:
+            economy.record_explicit_expense("permit_purchase",minute_of_day,-int(_permit_catalog[id]["fee_yen"]),{"permit_id":id,"cancelled":true})
+    renovation_session.clear()
+    program_town.rebuild_flags(_program_store_descriptors())
+    _allocate_program_day()
+    _record_event("renovation_completed" if accept else "renovation_cancelled",{"store_uid":_store_uid,"size_fee_yen":int(session.size_fee),"permit_fee_yen":int(session.permit_fee)})
+    return true
+
+
 func _place_on_renovation_spot(fixture: Dictionary, spots: Array, used_spots: Dictionary, goods: Dictionary) -> bool:
     var catalog_entry: Dictionary = _fixture_catalog[str(fixture["catalog_id"])]
     for index in spots.size():
@@ -2801,6 +2851,12 @@ func _reroute_after_layout_change(checkout_before: Vector2i) -> bool:
                 return false
             plans.append([customer, layout.find_path(customer.position, goal), phase_after])
     for staff_member in staff.all_staff():
+        if _native_source_people() and staff_member.source_state == 0:
+            # Native rest positions lie inside the break-room footprint,
+            # not on a walkable aisle. Rebind them only after validation.
+            var rest_route: Array[Vector2i] = []
+            plans.append([staff_member,rest_route,"idle"])
+            continue
         if not layout.is_walkable(staff_member.position) or not layout.is_walkable(staff_member.home_position()):
             return false
         var goal := NO_STORE_SITE
@@ -2837,6 +2893,10 @@ func _reroute_after_layout_change(checkout_before: Vector2i) -> bool:
             mover.state = plan[2]
         else:
             mover.phase = plan[2]
+    if _native_source_people():
+        for person in staff.all_staff():
+            if person.source_state == 0:
+                _reset_transferred_source_staff(person,active_store,person.staff_id)
     return true
 
 
@@ -3308,6 +3368,7 @@ func try_load_sample_layout(sample_id: String) -> bool:
 
 
 func step() -> void:
+    if not renovation_session.is_empty(): return 
     if is_game_over or (program_town != null and (int(source_progress["pending"]) >= 0 or int(source_progress["save_finished"]) == 255 or source_management_has_vacancy())):
         return
     var viewed := active_store
@@ -3963,6 +4024,7 @@ func save_state() -> Dictionary:
         "next_store_uid": _next_store_uid,
         "unassigned_staff": _unassigned_staff.duplicate(true),
         "retired_month_sales": _retired_month_sales,
+        "renovation_session": renovation_session.duplicate(true),
         "source_settings_bits": int(config.get("source_settings_bits", 0)),
         "source_notifications": notifications.snapshot(),
         "scenario_id": str(config["scenario_id"]),
@@ -4108,6 +4170,23 @@ func _store_save_block() -> Dictionary:
 
 
 func load_state(data: Dictionary) -> bool:
+    if not data.get("renovation_session",{}) is Dictionary: return false
+    var edit_session: Dictionary = data.get("renovation_session",{})
+    if not edit_session.is_empty():
+        for key in ["store_uid","size_fee","permit_fee","new_permits","old_permits","store","economy","settled","events","restore_hours"]:
+            if not edit_session.has(key): return false
+        if int(edit_session.get("version",0)) != 1: return false
+        for key in ["old_permits","store","economy","settled"]:
+            if not edit_session[key] is Dictionary: return false
+        if not edit_session.new_permits is Array or not edit_session.events is Array or not edit_session.restore_hours is String: return false
+        var uids:Array=[int(data.get("store_uid",1))]
+        for block in data.get("branches",[]): uids.append(int(block.get("store_uid",0)))
+        if not int(edit_session.store_uid) in uids or int(edit_session.store.get("store_uid",0)) != int(edit_session.store_uid): return false
+        if int(edit_session.size_fee) < 0 or int(edit_session.permit_fee) < 0: return false
+        for key in ["cash_yen","sale_records","expense_records","month_end_records","next_sale_sequence"]:
+            if not edit_session.economy.has(key): return false
+        for id in edit_session.new_permits:
+            if not _permit_catalog.has(str(id)): return false
     var audio_bits = data.get("source_settings_bits", config.get("source_settings_bits", 0))
     if (not audio_bits is int and not audio_bits is float) or float(audio_bits) != floorf(float(audio_bits)) or int(audio_bits) < 0 or int(audio_bits) & ~0x303 or ((int(audio_bits) >> 8) & 3) > 2:
         return false
@@ -4255,6 +4334,7 @@ func load_state(data: Dictionary) -> bool:
         if not _source_runtime_to_restore.is_empty():
             _restore_source_runtime(_source_runtime_to_restore)
             _source_runtime_to_restore = {})
+    renovation_session = edit_session.duplicate(true)
     config["source_settings_bits"] = int(audio_bits)
     notifications = loaded_notices
     var loaded_progress: Dictionary = data.get("source_progress", {})
@@ -6532,6 +6612,7 @@ func graph_data(chain_view := false) -> Dictionary:
     return preload("res://scripts/domain/program_graph.gd").plan(totals if chain_view else profit_history,totals,counts)
 
 func store_sale_quote(index: int) -> Dictionary:
+    if not renovation_session.is_empty(): return {"allowed":false,"reason":"内装の編集を終了して下さい"}
     if index < 0 or index >= store_count(): return {"allowed":false,"reason":"店舗がありません"}
     var home := active_store
     _switch_store(index)

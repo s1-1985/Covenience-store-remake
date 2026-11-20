@@ -1152,3 +1152,9 @@ msgstr "店員がレジ業務を終えた"
 
 msgid "store sold"
 msgstr "店舗を売却しました"
+
+msgid "renovation completed"
+msgstr "改築を確定しました"
+
+msgid "renovation cancelled"
+msgstr "改築を取り消しました"
