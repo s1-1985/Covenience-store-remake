@@ -543,6 +543,11 @@ static func operating_state(s) -> void:
         s.layout.source_work_grid.clear()
 
 static func step(s) -> void:
+    if bool(s.config.store.get("source_fire_recount",false)):
+        s._parking_used = 0
+        for p in s.customers.active_customers():
+            if p.source_state != 0 and str(p.visit.get("arrival","")) == "自動車": s._parking_used += p.group_size
+        s.config.store.erase("source_fire_recount")
     operating_state(s)
     if base_grid(s).is_empty():
         return

@@ -1107,6 +1107,9 @@ func _finish_source_incident() -> void:
 # REMAKE_BALANCED_DEFAULT: the floor is left dirty up to this project's dirt
 # cap (the program makes every empty floor tile dirty).
 func _run_fire() -> void:
+    if _native_source_people():
+        _run_source_fire()
+        return
     var rules: Dictionary = _program_demand.tables["incidents"]
     var checkout_before := _checkout_interaction
     for customer_state in customers.active_customers():
@@ -1142,6 +1145,63 @@ func _run_fire() -> void:
     popularity = int(rules["popularity_after_fire"])
     var damage := (_store_sales_yen - _store_sales_at_day_start) * int(rules["loss_day_multiple"])
     _record_event("fire", {"store_index": active_store, "damage_yen": damage, "burned": burned})
+
+func _source_fire_grid() -> Array:
+    # Reconstruct only the fields read by the fire loop. Fixture bodies and
+    # walls are nonzero; actors mark empty occupied cells without replacing
+    # an anchor's fixture descriptor. Geometry remains in the native model.
+    var grid: Array = []
+    for y in layout.height_subcells:
+        var row: Array = []
+        for x in layout.width_subcells:
+            row.append(1 if layout.blocked.has(Vector2i(x,y)) else 0)
+        grid.append(row)
+    for fixture in layout.fixtures:
+        var at := _vec2i_from_array(fixture.origin_subcell)
+        var kind := program_fixture_kind(fixture)
+        if kind < 0: continue
+        var direction: int = [0,3,1,2][int(fixture.get("rotation_quarter_turns",0))]
+        grid[at.y][at.x] = 0x80000000 | (kind << 12) | (direction << 22)
+    for person in customers.active_customers()+staff.all_staff():
+        var at: Vector2i = person.position
+        if at.x < 0 or at.y < 0 or at.x >= layout.width_subcells or at.y >= layout.height_subcells: continue
+        if int(grid[at.y][at.x]) == 0: grid[at.y][at.x] = 650 << 12
+    return grid
+
+func _run_source_fire() -> void:
+    var before_sales := store_sales_today_yen()
+    var grid := _source_fire_grid()
+    var result: Dictionary = preload("res://scripts/domain/program_fire.gd").scan(grid,config.store.source_floor,_recovery.fixture_records,_program_rng)
+    var burned: Array[String] = []
+    for fixture in layout.fixtures.duplicate():
+        if result.burned.has(_vec2i_from_array(fixture.origin_subcell)):
+            burned.append(str(fixture.id))
+    # Remove goods without refunds, customer rerouting or staff task resets.
+    # The original staff task/goal/route remain intact until the next update.
+    for id in inventory.product_order.duplicate():
+        if burned.has(str(inventory.get_product(id).fixture_id)): inventory.remove_product(id)
+    for id in burned: layout.try_remove_fixture(id)
+    # Original scans all 20 customer slots, not only the admission cap. Native
+    # objects use phase=done to represent the original state0, retaining data.
+    for person in customers.customers.values():
+        if person.source_native and person.source_state != 0:
+            person.source_state = 0
+            person.phase = "done"
+    _checkout_queue.clear()
+    _finish_source_incident()
+    # Derive navigation/drawing from the changed grid on demand. Do not run
+    # the renovation helper, which would change surviving workers' tasks.
+    layout.source_work_grid.clear()
+    _dirty_cells.clear()
+    for y in layout.height_subcells:
+        for x in layout.width_subcells:
+            var code := int(config.store.source_floor[y/2][x/2])
+            if code >= 0 and code < 15 and code % 5 and layout.is_walkable(Vector2i(x,y)):
+                _dirty_cells.append(Vector2i(x,y))
+    # Parking is a derived native counter. Refresh at the next operating
+    # update, rather than adding an immediate recount inside the source tail.
+    config.store["source_fire_recount"] = true
+    _record_event("fire",{"store_index":active_store,"damage_yen":before_sales*8,"burned":burned,"floor_writes":result.floor_writes})
 
 
 func _stocked_categories() -> Array[String]:
