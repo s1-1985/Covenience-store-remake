@@ -20,5 +20,7 @@
   "full_headless_reason": "passed terminator but 5 missing-source_catalog SCRIPT ERROR messages",
   "device_verified": false,
   "muse_source": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
-  "apk_smoke_scripts_excluded": true
+  "apk_smoke_scripts_excluded": true,
+  "implementation_commit": "edabfa814fbb43cb9734ebbe2565ea4ea4b115d8",
+  "pr": 273
 }

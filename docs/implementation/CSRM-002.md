@@ -3,7 +3,7 @@
 - 採用指示書: muse/analysis / 2b3e990aacf69487520ca1ffd7b6519df7285fdb / docs/muse/ready/CSRM-002.md v1
 - 基準コミット: eaaab30bdafda034467f6d54d2886cd13d282f99
 - 実装ブランチ: chatgpt/muse-runtime-consistency-20261121
-- PR: 作成後追記
+- PR: #273 https://github.com/s1-1985/Covenience-store-remake/pull/273
 - マージ: 未実施、Museレビュー待ち
 
 ## 実装

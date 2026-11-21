@@ -65,8 +65,8 @@
     "full_headless_errors": 5,
     "apk_updated": true
   },
-  "latest_runtime_checkpoint": "de25b168de01381988dee94521e93939f22e7190",
-  "latest_pr": null,
+  "latest_runtime_checkpoint": "edabfa814fbb43cb9734ebbe2565ea4ea4b115d8",
+  "latest_pr": 273,
   "muse_instructions": {
     "source_commit": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
     "CSRM-001": "v1 recorded; successor-artifact deviation pending review",
