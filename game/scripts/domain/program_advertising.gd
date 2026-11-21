@@ -1,4 +1,23 @@
 extends RefCounted
+
+# CONFIRMED_BINARY 80027624..27770. The control is the signed scenario
+# byte CD8A8, not a player-advertising probability or a new random default.
+static func rival_selection(entries: Array, cash: int, control: int, rng) -> Array:
+    var roll: int = rng.randi() % 4
+    if roll > control: return []
+    for index in range(entries.size()-1,-1,-1):
+        if cash >= int(entries[index].cost_yen)*10:
+            return [str(entries[index].promotion_id)]
+    return []
+
+# 80027A5C..27C64: no second cash gate. The payment is made once if
+# an active rival exists; selection itself never reserves or debits cash.
+static func rival_actions(entries: Array, enabled: Array, period: int, hour: int) -> Array:
+    var actions: Array = []
+    for entry in entries:
+        if enabled.has(str(entry.promotion_id)) and period==int(entry.trigger_day) and hour==int(entry.trigger_hour):
+            actions.append({"promotion_id":str(entry.promotion_id),"cost_yen":int(entry.cost_yen),"gain":int(entry.popularity_gain)})
+    return actions
 # CONFIRMED_BINARY 800275F8: exact representative period/hour at minute0,
 # persistent company flags; insufficient cash (<5*cost) disables that flag.
 static func plan(entries: Array, enabled: Array, period: int, hour: int, minute: int, cash: int) -> Dictionary:

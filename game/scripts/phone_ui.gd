@@ -1065,6 +1065,9 @@ func _notice_text(event_type: String, details: Dictionary) -> String:
             return "%sで火災が発生しました!\n被害総額　%s円" % [main.simulation.store_field(int(details.get("store_index", 0)), "store_name"), main._format_integer(int(details.get("damage_yen", 0)))]
         "sales_report":
             return ("店長より：\n最近、%sが\nとってもよく売れています" if bool(details.get("selling_well", false)) else "店長より：\n最近、%sが\nあまり売れていません") % main.tr(str(details.get("product", "")))
+        "promotion_fired":
+            var owner := "ライバル" if not str(details.get("rival_id", "")).is_empty() else "自社"
+            return "%sが\n%sの宣伝活動を\n実施しました" % [owner,main.tr(str(details.get("promotion_id", "")))]
         "promotion_cancelled":
             return "資金が乏しいので\n%sの宣伝活動を\n止めることにしました" % main.tr(str(details.get("promotion_id", "")))
     return main.tr(event_type.replace("_", " "))

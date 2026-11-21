@@ -1,0 +1,32 @@
+{
+  "version": "0.8.6-rival-advertising",
+  "code": 86,
+  "date_jst": "2026-11-21",
+  "base_commit": "9a32d4659eb37133c7bec78a767d2ea554a62624",
+  "package": "com.conveniremake.touchfix",
+  "engine": "4.6.3",
+  "apk_name": "Conveni-v0.8.6.apk",
+  "apk_bytes": 45069206,
+  "apk_sha256": "7226174c3d11cc100870b2db50c307113ca32eb26852edc30b7875803733f072",
+  "certificate_sha256": "4e1ea772ac6aea449573f8c151028082d011f82945170272b8dc61b43bec29a4",
+  "source_excerpts": 233,
+  "godot_related_pass": 52,
+  "godot_broader_pass": 52,
+  "godot_broader_preexisting_failures": 4,
+  "python_total": 789,
+  "python_success": 786,
+  "python_existing_failures": 2,
+  "python_expected_failures": 1,
+  "android_device_verified": false,
+  "remaining": [
+    "Historical physical rival-slot ordering and complete operating RNG equivalence unverified",
+    "Original year-start/full notice control sequence/native card format remain",
+    "Legacy test assumptions remain: full headless town dimensions; four broader checks fail on unchanged base",
+    "Existing six unresolved research items remain"
+  ],
+  "compiled_scripts": {
+    "assets/scripts/vertical_slice_simulation.gdc": "2752fe032ee8e068452f76f7cc48e905b4ef349573e48ecd6d479eca910664a9",
+    "assets/scripts/domain/program_advertising.gdc": "586fee320791f1321601d0c89a9eeffefd1bb31d7a7269e7e9c0bfa6a406f175",
+    "assets/scripts/phone_ui.gdc": "547ad45f80c8721f0f447dd93211efd5713e66daf5a5b13f21e4ffe7f6608ff9"
+  }
+}

@@ -264,6 +264,7 @@ var source_actor_tables: Dictionary = {}
 # Native editor checkpoint, not a raw PS memory-card block.
 var renovation_session: Dictionary = {}
 var source_promotions: Dictionary = {}
+var source_rival_promotions: Array = []
 var _source_advertising_last_clock := ""
 var _source_donation_last_month := -1
 var rival_donation_records: Array[Dictionary] = []
@@ -552,6 +553,7 @@ func tick() -> void:
 func _drop_branches() -> void:
     source_calendar = SourceCalendar.initial()
     source_promotions.clear()
+    source_rival_promotions.clear()
     _source_advertising_last_clock = ""
     _source_donation_last_month = -1
     rival_donation_records.clear()
@@ -1807,12 +1809,16 @@ func try_commit_source_promotions(selected: Array, expected_before: Variant = nu
 
 
 func _fire_source_promotions(period_override := -1, month_override := -1) -> void:
-    if program_town == null or minute_of_day%60!=0: return
+    if program_town == null or minute_of_day%60!=0 or bool(config.simulation.get("rival_child",false)): return
     var period: int = _days_completed_this_month+1 if period_override<0 else period_override
     var month: int = month_count if month_override<0 else month_override
     var clock := "%d:%d:%d" % [month,period-1,minute_of_day]
     if _source_advertising_last_clock==clock: return
     _source_advertising_last_clock=clock
+    var ads = preload("res://scripts/domain/program_advertising.gd")
+    if period==1 and minute_of_day==0:
+        var control: int = int(config.get("source_scenario",{}).get("mode",config.get("source_scenario_index",0)))
+        source_rival_promotions=ads.rival_selection(config.promotions,_rival_cash_yen,control,_program_rng)
     var result: Dictionary = preload("res://scripts/domain/program_advertising.gd").plan(config.promotions,source_promotions.keys(),period,minute_of_day/60,0,economy.cash_yen)
     source_promotions.clear()
     for id in result.enabled: source_promotions[str(id)]=true
@@ -1832,6 +1838,26 @@ func _fire_source_promotions(period_override := -1, month_override := -1) -> voi
         details["expense_id"]=expense.expense_id
         _record_event("promotion_fired",details)
     assert(economy.cash_yen==int(result.cash_yen))
+    for action in ads.rival_actions(config.promotions,source_rival_promotions,period,minute_of_day/60):
+        _fire_source_rival_promotion(action)
+
+
+func _fire_source_rival_promotion(action: Dictionary) -> void:
+    # CONFIRMED_BINARY 80027ABC: first active rival pays once. Historical
+    # physical slot order remains a client bridge (same as town-press ties).
+    if _rival_stores.is_empty(): return
+    var first: Dictionary = _rival_stores[0]
+    var payer = _program_rival_simulation(first)
+    payer.economy.cash_yen=_rival_cash_yen
+    var old_uid: int = payer.economy.current_store_uid
+    payer.economy.current_store_uid=0
+    var expense: Dictionary = payer.economy.record_explicit_expense("company_advertising",minute_of_day,int(action.cost_yen),{"promotion_id":str(action.promotion_id),"company_wide":true})
+    payer.economy.current_store_uid=old_uid
+    _rival_cash_yen=payer.economy.cash_yen
+    for rival in _rival_stores:
+        var child = _program_rival_simulation(rival)
+        child.popularity=mini(100,child.popularity+int(action.gain))
+    _record_event("promotion_fired",{"promotion_id":str(action.promotion_id),"cost_yen":int(action.cost_yen),"popularity_gain":int(action.gain),"company_wide":true,"rival_id":str(first.id),"expense_id":expense.expense_id})
 
 
 # CONFIRMED_BINARY: 80027C80 after month-start ads, before finance close.
@@ -4299,6 +4325,7 @@ func save_state() -> Dictionary:
         "retired_month_sales": _retired_month_sales,
         "renovation_session": renovation_session.duplicate(true),
         "source_promotions": source_promotions.keys(),
+        "source_rival_promotions": source_rival_promotions.duplicate(),
         "source_advertising_last_clock": _source_advertising_last_clock,
         "source_donation_last_month": _source_donation_last_month,
         "rival_donation_records": rival_donation_records.duplicate(true),
@@ -4457,6 +4484,10 @@ func load_state(data: Dictionary) -> bool:
         for key in ["month","amount_yen","cash_after_yen"]:
             var value = row.get(key,-1)
             if (not value is int and not value is float) or float(value)!=floorf(float(value)) or value<0: return false
+    if data.has("source_rival_promotions"):
+        if not data.source_rival_promotions is Array: return false
+        for id in data.source_rival_promotions:
+            if not _promotion_catalog.has(str(id)): return false
     if data.has("source_promotions"):
         if not data.source_promotions is Array: return false
         for id in data.source_promotions:
@@ -4637,6 +4668,7 @@ func load_state(data: Dictionary) -> bool:
         if not _source_runtime_to_restore.is_empty():
             _restore_source_runtime(_source_runtime_to_restore)
             _source_runtime_to_restore = {})
+    source_rival_promotions.assign(data.get("source_rival_promotions",[]))
     source_promotions.clear()
     if data.has("source_promotions"):
         for id in data.source_promotions: source_promotions[str(id)]=true
@@ -4785,7 +4817,7 @@ func _reserve_source_notice(event_type: String, details: Dictionary) -> void:
         "promotion_fired", "promotion_cancelled":
             kind = 4
             parameter = config.promotions.map(func(entry):return str(entry.promotion_id)).find(str(details.get("promotion_id","")))
-            sound = 31 if event_type=="promotion_cancelled" else 100
+            sound = 31 if event_type=="promotion_cancelled" else 101 if not str(details.get("rival_id","")).is_empty() else 100
         "month_end_settlement":
             if int(config.get("source_settings_bits", 0)) & 2:
                 return
@@ -5043,6 +5075,9 @@ func _all_staff_are_walkable() -> bool:
 
 func _advance_minute_of_day() -> void:
     if source_calendar_blocked(): return
+    # Initial midnight is otherwise skipped by advance-before-store updates.
+    if day_count==0 and minute_of_day==0 and _source_advertising_last_clock.is_empty():
+        _fire_source_promotions()
     minute_of_day += _step_game_minutes
     if program_town == null: _for_each_store(_fire_due_promotions)
     while minute_of_day >= 24 * 60:

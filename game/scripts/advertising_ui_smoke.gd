@@ -88,6 +88,21 @@ func run() -> void:
     assert(s.notifications.current.context.event_type=="promotion_cancelled")
     assert(ui._fallback_notice_queue.is_empty(),"Source notification must not duplicate the fallback notice")
     ui._finish_notice()
+    s.notifications.reset()
+    ui._fallback_notice_queue.clear()
+    ui._source_notice_visible=false
+    s.source_rival_promotions=["tv"]
+    s._days_completed_this_month=0
+    s.minute_of_day=19*60
+    s._rival_cash_yen=0
+    s._fire_source_promotions()
+    game._refresh_ui()
+    assert(ui._source_notice_visible and s.notifications.current.kind==4)
+    assert(s.notifications.current.sounds==[29])
+    var shown:String=ui._notice_text("promotion_fired",s.notifications.current.context.details)
+    assert("ライバル" in shown and game.tr("tv") in shown)
+    assert(ui._fallback_notice_queue.is_empty())
+    ui._finish_notice()
     print("ADVERTISING_UI_PASS native multi-select toggle/cancel/commit, no advance debit, company sharing, stale rejection, past-time low-cash setup and single source cancellation notice")
     ui.hits.clear()
     ui._active_action=Callable()
