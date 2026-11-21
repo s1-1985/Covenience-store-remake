@@ -1,8 +1,8 @@
 {
   "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
-  "branch": "chatgpt/android-analysis-integration-20261105",
-  "base": "4e04e2cb8debc228ea0064d4e24e6cf25eaae84d",
-  "updated": "2026-11-06",
+  "branch": "chatgpt/ps-ui-touch-audit-20261119",
+  "base": "00ac60d87c4e47e289a8c88e7326e471bd4fa5b8",
+  "updated": "2026-11-21",
   "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
   "checkpoints": "実装・小さな検証・GitHub保存を繰り返す。中断前に変更ファイルと次の手順を明記する。",
   "items": [
@@ -15,14 +15,14 @@
     {
       "id": "operations",
       "status": "partial",
-      "done": "24内装サンプル・原営業データ・町処理を接続",
-      "remaining": "入力の確定取消保持、出店従業員、価格、許可・改装の未移植境界を照合"
+      "done": "0.6.9～0.8.5: 調査/グラフ/店舗売却/許可/改築/内装確定取消/個別価格/宣伝/寄付/暦演出/調査失効/人事保持/購入断念/事件/火災後処理/品切れ補充/店長報告/雑誌コンテストを順次接続。各handoff参照",
+      "remaining": "全入力経路・原活動スロット履歴順・ライバル宣伝AI・原通知全制御列等は未完。解決済み項目を再び未反映として数えない"
     },
     {
       "id": "notifications",
       "status": "partial",
-      "done": "50枠予約消費・表示モード・月次年次・JSON再開",
-      "remaining": "全生成元・原文画面。音声終了との接続は実装済み"
+      "done": "50枠予約消費・表示モード・月次年次・JSON・原音声待ち、寄付/祭り来客記念/事件/補充/報告/町受賞生成元を接続",
+      "remaining": "全生成元・原文の全制御列と表示入力順。原作年初の同関数分岐等は未完"
     },
     {
       "id": "endings",
@@ -45,11 +45,12 @@
     {
       "id": "android",
       "status": "milestone_built",
-      "remaining": "Android実機のインストール・タッチ・音量・性能確認と、全反映後の最終版",
-      "done": "0.5.1-people-service/code27、従来と同一署名、165音源を保持。店員/客/接客音を修正"
+      "remaining": "Android実機インストール/タッチ/音量/性能、全反映後の最終版は未確認",
+      "done": "0.8.5-town-press/code85、従来touchfix署名。今回の解析/実装をAPKへ接続"
     }
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
-  "latest_runtime_checkpoint": "f7662277f5ef5efaea860c0d7b7c0b3fb99fadc5",
-  "latest_build": "2026-11-06-v051-build.json"
+  "latest_runtime_checkpoint": "00ac60d87c4e47e289a8c88e7326e471bd4fa5b8",
+  "latest_build": "2026-11-21-v085-build.json",
+  "latest_handoff": "2026-11-21-town-press.md"
 }

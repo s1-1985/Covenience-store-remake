@@ -893,10 +893,12 @@ func _step_manager_reports() -> void:
 # 人気のある / 清潔な / サービスの良い / 安い お店 (highest 人気, 清掃,
 # サービス, 100 - 値段%; the cheap one only when someone sells under the list
 # price). Ties are drawn at random. The magazine raises the winning store's
-# manager's 学歴 and one more figure by 2 (never past 100). A rival's 清掃 is
-# its guide figure; REMAKE_BALANCED_DEFAULT: a rival's 評価 stays at the
-# new-store figure, its monthly rating not being simulated. ---
+# manager's 学歴 and one more figure by 2 (never past 100). Native rivals
+# use their running store values and receive the same company/manager award.
 func _step_town_press() -> void:
+    # World event: original caller 800234E8 runs once, outside shop updates.
+    # Native rival children must not consume another global press RNG roll.
+    if bool(config.simulation.get("rival_child", false)): return
     var rules: Dictionary = _program_demand.tables["town_press"]
     if _report_rng.randi_range(1, int(rules["chance_one_in"])) != 1 or program_town_heads < int(rules["min_town_heads"]):
         return
@@ -907,18 +909,12 @@ func _step_town_press() -> void:
 func _run_town_press(kind: String) -> bool:
     var rules: Dictionary = _program_demand.tables["town_press"]
     var entries: Array = []
-    _for_each_store(func(): entries.append({"store_index": active_store, "value": _press_value(kind)}))
+    _for_each_store(func():
+        if has_store_site(): entries.append({"store_index": active_store, "value": _press_value(kind)}))
     for rival in _rival_stores:
         entries.append({"rival_id": str(rival["id"]), "value": _press_rival_value(kind, rival)})
-    if entries.size() < int(rules["min_stores"]):
-        return false
-    var best := -1000
-    for entry in entries:
-        best = maxi(best, int(entry["value"]))
-    if kind == "cheap" and best <= 0:
-        return false
-    var winners: Array = entries.filter(func(entry): return int(entry["value"]) == best)
-    var winner: Dictionary = winners[_report_rng.randi_range(0, winners.size() - 1)]
+    var winner: Dictionary = preload("res://scripts/domain/program_town_press.gd").choose(entries,kind,_report_rng)
+    if winner.is_empty(): return false
     var details := {"kind": kind, "store_index": int(winner.get("store_index", -1)), "rival_id": str(winner.get("rival_id", ""))}
     if kind == "contest":
         details["prize_yen"] = entries.size() * int(rules["prize_yen_per_store"])
@@ -930,6 +926,25 @@ func _run_town_press(kind: String) -> bool:
         else:
             _raise_manager(rules["raises"][kind], int(rules["manager_raise"]))
         _switch_store(home)
+    elif program_town != null:
+        for rival in _rival_stores:
+            if str(rival.id) != str(winner.rival_id): continue
+            var child = _program_rival_simulation(rival)
+            if kind == "contest":
+                child.economy.cash_yen = _rival_cash_yen
+                child.economy.record_explicit_expense("contest_prize",minute_of_day,-int(details.prize_yen),{"rival_id":str(rival.id)})
+                _rival_cash_yen = child.economy.cash_yen
+            else:
+                child._raise_manager(rules.raises[kind],int(rules.manager_raise))
+                var manager = child.staff.members.get(str(child.config.staff.manager_staff_id))
+                if manager != null:
+                    # Candidate traits belong to the person, including after
+                    # acquisition, dismissal and hiring by another company.
+                    var raises: Dictionary = _candidate_raises.get(manager.candidate_id,{})
+                    for figure in rules.raises[kind]:
+                        raises[str(figure)] = int(child._candidate_figures(manager.candidate_id).get(str(figure),0))-int(_staff_candidate_catalog[manager.candidate_id].get(str(figure),0))
+                    _candidate_raises[manager.candidate_id] = raises
+            break
     _record_event("town_press", details)
     return true
 
@@ -944,10 +959,12 @@ func _press_value(kind: String) -> int:
             return int(_store_values()["cleaning"])
         "service":
             return int(_store_values()["service"])
-    return -price_change_pct
+    return 100-source_shelf_price_percent() if program_town != null else -price_change_pct
 
 
 func _press_rival_value(kind: String, rival: Dictionary) -> int:
+    if program_town != null:
+        return _program_rival_simulation(rival)._press_value(kind)
     var profile := _program_rival_profile(rival)
     match kind:
         "contest":
