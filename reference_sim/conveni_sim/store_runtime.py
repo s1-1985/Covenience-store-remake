@@ -299,6 +299,12 @@ class StoreRuntimeHarness:
         """Settle and finish an already-active checkout service explicitly."""
         self._require_placed_fixture(checkout_fixture_id, role="checkout")
         checkout = self._checkouts[checkout_fixture_id]
+        # Reconcile first: if the served customer has left WAITING_CHECKOUT
+        # (e.g. force_eject), refresh releases the stale staff assignment, so
+        # the lookup below fails before any settlement is applied. Settling
+        # first and raising afterwards would partially apply the sale
+        # (review-notes memo item 3 / CSRM-004).
+        checkout.refresh_waiting()
         customer_id = checkout.customer_being_served_by(staff_id)
         if customer_id is None:
             raise KeyError(f"staff member {staff_id!r} has no active checkout service")
