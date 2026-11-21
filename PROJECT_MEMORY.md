@@ -1,6 +1,6 @@
 # Convenience Store Remake — Project Memory
 
-Last updated: 2026-09-24 (JST)
+Last updated: 2026-11-21 (JST)
 
 This file is the canonical memory checkpoint for the project. If chat context is lost, start by reading this file and the files under `docs/research/`.
 
@@ -2631,3 +2631,11 @@ ce51a5a基点から、原作の50枠予約／消費／表示計画を移植し�
 
 
 **2026-11-21 / decision0238（APK未更新）**: 0.8.8後の共通特性参照を監査。native店員の障害物回避と旧体力回復だけが初期機敏さを読み続けていたため、既存の現在特性取得へ統一。成長判定/原native休憩則は変更なし。原復元モデルとの照合であり、新規EXE実行ではない。ローカル環境unavailableをGitHub Actions/Godot4.6.3で代替し、関連8本とPython21件成功。初回のテスト乱数設定/スマホ起動引数を訂正、SCRIPT ERRORを明示拒否。配布済みAPKは0.8.8のままで今回修正は未収録。全体既存失敗と未解決項目は維持。詳細docs/handoff/2026-11-21-live-staff-traits.md。
+
+
+**2026-11-21 / 0.8.9 (decision0239, LEGACY-0239)**: ユーザーの実装専任指示に従い既存20261113資料を移植。即時決済SE9/万引き成功VOS21/清掃完了VOS24/勤務体力切れVOS25と、既存開始22/終了23/会計10/補充24を7bit昇順へ集約。新しい原作解析なし。関連Godot10本成功、Python786成功/既存2失敗/想定1。清掃完了日本語訳漏れ修正。APK0.8.9/code89に前回の機敏さ参照修正も収録、従来署名/実機実聴未確認。原SE OFF時のフラグ持越し等は未移植。レビュー用ブランチchatgpt/source-operating-audio-20261121、元本体へのマージ未実施。詳細docs/handoff/2026-11-21-operating-audio.md。
+
+
+**2026-11-21 / CSRM-001 v1 (decision0240)**: Muse030e468fの指示書を採用。既作成0.8.9と後継ブランチを対象に0238祖先/収録、v2/v3署名・versionを確認。指定Godot8本成功、全Python786成功/既存2失敗/想定1、全体headless既知町寸法失敗を名前付きで記録。ゲームロジック追加なし。別作業LEGACY-0239を含む成果物を使う差分はMuseレビュー待ち。実機未確認。詳細docs/implementation/CSRM-001.md。
+
+**2026-11-21 / CSRM-003 v1 (decision0241)**: 今後の新規文書・追記では既存未解決6件（U-1〜U-6）をID付きで参照。Muse登録表の示唆/未確定を維持し正本を編集しない。最初の適用はdecision0241。過去チェックポイント非改変、ゲームコード変更なし。詳細docs/implementation/CSRM-003.md。CSRM-002は未着手。
