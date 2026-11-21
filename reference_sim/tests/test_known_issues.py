@@ -92,6 +92,30 @@ class StaffAssignmentKnownIssueTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             runtime.begin_checkout_service("checkout", staff_id="s1", customer_id="c1")
 
+    def test_ejected_customer_in_service_is_not_settled_by_finish_checkout_sale(self):
+        """メモ項目3: eject 済みの接客中客は finish_checkout_sale で精算されない。
+
+        docs/handoff/chatgpt-review-notes.md 項目3 / CSRM-004。
+        以前は settle が先に適用されてから finish_service が例外を上げる
+        部分適用になっていた。精算は一切発生せず、接客割当も解放される
+        ことが期待動作である。
+        """
+        runtime = self.make_runtime()
+        runtime.staff.add_staff("s1")
+        self.send_customer_to_checkout(runtime, "c1")
+        runtime.begin_checkout_service("checkout", staff_id="s1", customer_id="c1")
+
+        runtime.customers.force_eject("c1", reason="manual")
+
+        with self.assertRaises((KeyError, ValueError)):
+            runtime.finish_checkout_sale("checkout", staff_id="s1")
+
+        self.assertFalse(runtime.purchases.basket("c1").settled)
+        checkout = runtime.checkout("checkout")
+        checkout.refresh_waiting()
+        self.assertIsNone(checkout.customer_being_served_by("s1"))
+        self.assertEqual(runtime.staff.staff_member("s1").task, StaffTask.IDLE)
+
     def test_checkout_timing_completion_returns_the_declared_sale_type(self):
         """会計タイミングの完了結果は宣言どおり CheckoutSaleCompletion を返す。"""
         runtime = self.make_runtime()
