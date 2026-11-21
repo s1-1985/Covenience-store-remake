@@ -1,7 +1,7 @@
 {
   "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
-  "branch": "chatgpt/muse-runtime-consistency-20261121",
-  "base": "eaaab30bdafda034467f6d54d2886cd13d282f99",
+  "branch": "chatgpt/legacy-audio-flags-20261121",
+  "base": "6705aa9240c8d8f53fabe19de553b68ceb24e1b3",
   "updated": "2026-11-21",
   "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
   "checkpoints": "関連する未反映境界をまとめて実装し、必要な検証を一括実施してGitHubへ保存する。APKはまとまった進捗と署名環境がそろった時点で作成し、コード更新とAPK収録を区別する。",
@@ -39,23 +39,23 @@
       "id": "source_audio",
       "status": "partial",
       "next": "native_saves / operations の未反映境界を照合",
-      "remaining": "その他の原フラグ生成元、原SE OFF時の持越し/全フラグ保存、描画更新単位と原割込み周期の差、SPU音質/実機実聴",
-      "done": "XA130、BGM7、SE16、VOS12の165資産と原設定3項目・通知音声待ち・終了音声/BGM接続。ミュート復帰とタイトル音声停止。18回帰はERROR/WARNINGなし。 0.5.1:会計SE10/レジ開始VOS22/終了VOS23を接続、非表示店舗音を抑止。 0.8.9: 即時決済9/万引き成功21/清掃24/体力切れ25、既知7bit順/集約。"
+      "remaining": "その他の原フラグ生成元、原カード保存形式、描画更新単位と原割込み周期の差、SPU音質/実機実聴",
+      "done": "XA130、BGM7、SE16、VOS12の165資産と原設定3項目・通知音声待ち・終了音声/BGM接続。ミュート復帰とタイトル音声停止。18回帰はERROR/WARNINGなし。 0.5.1:会計SE10/レジ開始VOS22/終了VOS23を接続、非表示店舗音を抑止。 0.8.9: 即時決済9/万引き成功21/清掃24/体力切れ25、既知7bit順/集約。 0.8.11: 既知フラグのSE OFF/裏店舗持越し、店舗別JSON保存と選択時消費。"
     },
     {
       "id": "android",
       "status": "milestone_built",
       "remaining": "Android実機インストール/タッチ/音量/性能、全反映後の最終版確認",
-      "done": "0.8.10-checkout-consistency/code90、従来touchfix署名。native強制退店時の会計誤継続を修正"
+      "done": "0.8.11-pending-audio/code91、従来touchfix署名。店舗別音声フラグ保持を収録"
     }
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
-  "latest_build": "2026-11-21-v0810-build.json",
-  "latest_handoff": "2026-11-21-runtime-consistency.md",
+  "latest_build": "2026-11-21-v0811-build.json",
+  "latest_handoff": "2026-11-21-pending-audio.md",
   "latest_validation": {
-    "base_commit": "eaaab30bdafda034467f6d54d2886cd13d282f99",
+    "base_commit": "6705aa9240c8d8f53fabe19de553b68ceb24e1b3",
     "godot_version": "4.6.3",
-    "focused_godot_passed": 9,
+    "focused_godot_passed": 10,
     "python_success": 793,
     "python_existing_failures": 0,
     "python_expected_failures": 0,
@@ -66,12 +66,13 @@
     "apk_updated": true
   },
   "latest_runtime_checkpoint": "edabfa814fbb43cb9734ebbe2565ea4ea4b115d8",
-  "latest_pr": 273,
+  "latest_pr": null,
   "muse_instructions": {
     "source_commit": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
     "CSRM-001": "v1 recorded; successor-artifact deviation pending review",
     "CSRM-003": "v1 applied; pending review",
     "CSRM-002": "v1 partial; source_catalog legacy configuration question pending",
     "CSRM-004": "v1 implemented; pending review"
-  }
+  },
+  "implementation_priority": "ユーザー指示2026-11-21: Muse新規解析より、自分の過去解析の未反映分を優先"
 }
