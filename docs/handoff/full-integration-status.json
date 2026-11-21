@@ -1,15 +1,15 @@
 {
   "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
   "branch": "chatgpt/ps-ui-touch-audit-20261119",
-  "base": "5e5c4b6fbdaaec4c5efe44059f82c288574154d3",
+  "base": "8dadb65e92a507f95f6474f3deb42679fd6b843a",
   "updated": "2026-11-21",
   "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
-  "checkpoints": "実装・小さな検証・GitHub保存を繰り返す。中断前に変更ファイルと次の手順を明記する。",
+  "checkpoints": "関連する未反映境界をまとめて実装し、必要な検証を一括実施してGitHubへ保存する。APKはまとまった進捗と署名環境がそろった時点で作成し、コード更新とAPK収録を区別する。",
   "items": [
     {
       "id": "people",
       "status": "partial",
-      "done": "原人物状態、経路、作業マップ、役職画像、JSON再開を接続。0.5.1:休憩中の店員表示、原人物への補間と暫定足運びを接続。0.8.8: 年初35人加齢/基本特性/給与を両社で共通化、未配属/撤退/再採用/保存へ接続",
+      "done": "原人物状態、経路、作業マップ、役職画像、JSON再開を接続。0.5.1:休憩中の店員表示、原人物への補間と暫定足運びを接続。0.8.8: 年初35人加齢/基本特性/給与を両社で共通化、未配属/撤退/再採用/保存へ接続。decision0238: native回避判定と旧回復経路の機敏さ参照漏れを修正、JSON継続を確認",
       "remaining": "未照合の状態・乱数列と複数レジ等の差異を監査。原歩行差分と行列幾何の完全一致は未確認"
     },
     {
@@ -45,12 +45,22 @@
     {
       "id": "android",
       "status": "milestone_built",
-      "remaining": "Android実機インストール/タッチ/音量/性能、全反映後の最終版は未確認",
-      "done": "0.8.8-annual-personnel/code88、従来touchfix署名。今回の解析/実装をAPKへ接続"
+      "remaining": "decision0238以降の変更を従来署名で再ビルド、Android実機インストール/タッチ/音量/性能、全反映後の最終版確認",
+      "done": "配布済み0.8.8-annual-personnel/code88、従来touchfix署名。decision0238のコード修正はまだAPK未収録"
     }
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
-  "latest_runtime_checkpoint": "5e5c4b6fbdaaec4c5efe44059f82c288574154d3",
+  "latest_runtime_checkpoint": "a65af72a14578066a40448a84d4271846716aa29",
   "latest_build": "2026-11-21-v088-build.json",
-  "latest_handoff": "2026-11-21-annual-personnel.md"
+  "latest_handoff": "2026-11-21-live-staff-traits.md",
+  "latest_validation": {
+    "commit": "a65af72a14578066a40448a84d4271846716aa29",
+    "workflow_run": 44868102242,
+    "url": "https://github.com/s1-1985/Covenience-store-remake/actions/runs/44868102242",
+    "godot_version": "4.6.3",
+    "focused_godot_passed": 8,
+    "focused_python_passed": 21,
+    "full_suites_rerun": false,
+    "apk_updated": false
+  }
 }
