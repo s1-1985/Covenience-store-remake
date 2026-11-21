@@ -2,7 +2,7 @@
 
 ## 背景・根拠
 
-ユーザー指示によるLEGACY-0246。Muse新規解析は採用せず、自分の既存資料と本体を照合。基点db9b596a1599f8e4b22fe6ac40c4f34c2ff2642b、main688876aおよびPR270/272/273/274/275のHEADを確認。ブランチchatgpt/legacy-daily-costs-20261121。PRは作成後追記。
+ユーザー指示によるLEGACY-0246。Muse新規解析は採用せず、自分の既存資料と本体を照合。基点db9b596a1599f8e4b22fe6ac40c4f34c2ff2642b、main688876aおよびPR270/272/273/274/275のHEADを確認。ブランチchatgpt/legacy-daily-costs-20261121。PR #276 https://github.com/s1-1985/Covenience-store-remake/pull/276。
 
 既存のps1-analysis-checkpoints/analysis/20261103-operating-continuation/source-reference/operating_costs.py（保管commit a1f45981ffc1479e9a8e0b4ff429d4fc4cb85ea4、SHA256はsource_daily_costs.jsonに固定）を根拠とする。8001D8AC/D980/DB5C/DBE4/DD7Cと日次支払の既存読解であり、新たな原EXE/ディスク/CPU解析は行っていない。
 

@@ -66,8 +66,8 @@
     "apk_updated": true,
     "model_cases": 21
   },
-  "latest_runtime_checkpoint": "cb87272afcc40821b30bdef285fb51bcfac7b3b5",
-  "latest_pr": null,
+  "latest_runtime_checkpoint": "a3a8d2adbf3d7649b35f736116eeb915614c4e04",
+  "latest_pr": 276,
   "muse_instructions": {
     "source_commit": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
     "CSRM-001": "v1 recorded; successor-artifact deviation pending review",

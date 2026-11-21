@@ -2,7 +2,7 @@
 
 ユーザーの優先指示に従い、Muse新規解析ではなく既存operating_costs.pyの日次費用式をnativeへ接続した。店長130倍の途中積、時間積/費用合計/支払後現金のsigned32、負額非破棄、kind53以上の維持費表アクセス除外を実装。非native/通常の時給や倍率は変更していない。
 
-base db9b596a1599f8e4b22fe6ac40c4f34c2ff2642b、branch chatgpt/legacy-daily-costs-20261121。PRは作成後追記。根拠/ファイル/制約はdecision0246。
+base db9b596a1599f8e4b22fe6ac40c4f34c2ff2642b、branch chatgpt/legacy-daily-costs-20261121。PR #276 https://github.com/s1-1985/Covenience-store-remake/pull/276。根拠/ファイル/制約はdecision0246。
 
 既存モデル21条件とnative負額/現金/月次/JSON/対象外番号/休業を確認。関連Godot10本、Python793件成功。広域headless既存source_catalog欠落SCRIPT ERROR5回は残り全体合格とはしない。APK0.8.13/code93従来署名、実機未確認。
 

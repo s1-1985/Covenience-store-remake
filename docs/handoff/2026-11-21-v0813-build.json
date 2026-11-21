@@ -24,5 +24,7 @@
   "full_headless_existing_errors": 5,
   "device_verified": false,
   "apk_smoke_scripts_excluded": true,
-  "task_id": "LEGACY-0246"
+  "task_id": "LEGACY-0246",
+  "pr": 276,
+  "implementation_commit": "a3a8d2adbf3d7649b35f736116eeb915614c4e04"
 }
