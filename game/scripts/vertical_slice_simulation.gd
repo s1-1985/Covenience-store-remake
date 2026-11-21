@@ -497,8 +497,13 @@ func try_eject_customer(customer_id: String) -> bool:
         _checkout_queue.erase(customer_id)
     else:
         staff.checkout_staff().state = "idle"
-    ejected_customer.phase = "leaving"
-    ejected_customer.route = layout.find_path(ejected_customer.position, layout.exit)
+    if ejected_customer.source_native:
+        # Native actors dispatch on source_state, not phase. Leaving that at
+        # checkout (3) could settle the ejected customer's unpaid basket.
+        preload("res://scripts/domain/program_people.gd").change_state(ejected_customer, 5)
+    else:
+        ejected_customer.phase = "leaving"
+        ejected_customer.route = layout.find_path(ejected_customer.position, layout.exit)
     _record_event("customer_ejected", {
         "customer_id": customer_id,
         "had_unsettled_basket": not ejected_customer.basket.is_empty(),

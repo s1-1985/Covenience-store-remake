@@ -2,9 +2,8 @@
 
 対象コミット: 016cc29 (2026-09-06)
 
-ここにあるテストは「こうあるべき」という期待を書いたもので、現在は失敗する。
-修正されると XPASS になるので、`pytest -q` の出力で直ったことが機械的に分かる。
-修正後は `@unittest.expectedFailure` を外して通常のテストに戻すこと。
+ここにあるテストは、既知不具合の修正後に通常の回帰テストへ昇格したものである。
+CSRM-002で最後の想定失敗（メモ項目11）を修正し、全件を通常検査へ戻した。
 
 各項目の背景は docs/handoff/chatgpt-review-notes.md を参照。
 """
@@ -293,7 +292,6 @@ class RemovedFixtureKnownIssueTests(unittest.TestCase):
 
 
 class StoreStepKnownIssueTests(unittest.TestCase):
-    @unittest.expectedFailure
     def test_a_failing_purchase_phase_does_not_leave_the_clock_advanced(self):
         """メモ項目11: step() が購入評価の例外で中断し、時計だけ進んだ状態になる。
 
@@ -352,9 +350,48 @@ class StoreStepKnownIssueTests(unittest.TestCase):
             runtime.customers.tick()
 
         before = runtime.subday_clock.absolute_minutes
+        session = runtime.customers.customer("c1")
+        before_session = vars(session).copy()
+        before_inventory = runtime.inventory.slot("slot-a").units
         with self.assertRaises(ValueError):
             orchestrator.step(1)
         self.assertEqual(runtime.subday_clock.absolute_minutes, before)
+        self.assertIs(runtime.customers.customer("c1"), session)
+        self.assertEqual(vars(session), before_session)
+        self.assertEqual(runtime.inventory.slot("slot-a").units, before_inventory)
+
+        # Roll back partial effects and retain references held by callers, not
+        # merely the clock. Retrying the failure must not consume owned RNG.
+        from random import Random
+        from unittest.mock import patch
+
+        runtime.rollback_probe = {"events": ["before"]}
+        runtime.rollback_rng = Random(17)
+        events = runtime.rollback_probe["events"]
+        slot = runtime.inventory.slot("slot-a")
+        before_rng = runtime.rollback_rng.getstate()
+        before_cash = runtime.cash.known_cash_yen
+
+        def partially_applied_purchase(*args):
+            slot.units = 0
+            runtime.cash.record_sale(100, source_id="failure-probe")
+            runtime.rollback_rng.random()
+            events.append("partial")
+            session.ejection_reason = "partial"
+            raise RuntimeError("purchase interrupted")
+
+        with patch.object(coordinator, "evaluate", side_effect=partially_applied_purchase):
+            for _ in range(2):
+                with self.assertRaisesRegex(RuntimeError, "purchase interrupted"):
+                    orchestrator.step(1)
+                self.assertEqual(runtime.subday_clock.absolute_minutes, before)
+                self.assertIs(runtime.inventory.slot("slot-a"), slot)
+                self.assertEqual(slot.units, before_inventory)
+                self.assertEqual(runtime.cash.known_cash_yen, before_cash)
+                self.assertEqual(runtime.rollback_rng.getstate(), before_rng)
+                self.assertIs(runtime.rollback_probe["events"], events)
+                self.assertEqual(events, ["before"])
+                self.assertEqual(vars(session), before_session)
 
 
 class BaselineDataKnownIssueTests(unittest.TestCase):

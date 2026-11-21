@@ -1,7 +1,7 @@
 {
   "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
-  "branch": "chatgpt/source-operating-audio-20261121",
-  "base": "9dfa80b98bf584b90d2a5a53b46ad67dc49838af",
+  "branch": "chatgpt/muse-runtime-consistency-20261121",
+  "base": "eaaab30bdafda034467f6d54d2886cd13d282f99",
   "updated": "2026-11-21",
   "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
   "checkpoints": "関連する未反映境界をまとめて実装し、必要な検証を一括実施してGitHubへ保存する。APKはまとまった進捗と署名環境がそろった時点で作成し、コード更新とAPK収録を区別する。",
@@ -9,7 +9,7 @@
     {
       "id": "people",
       "status": "partial",
-      "done": "原人物状態、経路、作業マップ、役職画像、JSON再開を接続。0.5.1:休憩中の店員表示、原人物への補間と暫定足運びを接続。0.8.8: 年初35人加齢/基本特性/給与を両社で共通化、未配属/撤退/再採用/保存へ接続。decision0238: native回避判定と旧回復経路の機敏さ参照漏れを修正、JSON継続を確認",
+      "done": "原人物状態、経路、作業マップ、役職画像、JSON再開を接続。0.5.1:休憩中の店員表示、原人物への補間と暫定足運びを接続。0.8.8: 年初35人加齢/基本特性/給与を両社で共通化、未配属/撤退/再採用/保存へ接続。decision0238: native回避判定と旧回復経路の機敏さ参照漏れを修正、JSON継続を確認。0.8.10: 強制退店をnative状態5へ接続し旧会計目標を消去",
       "remaining": "未照合の状態・乱数列と複数レジ等の差異を監査。原歩行差分と行列幾何の完全一致は未確認"
     },
     {
@@ -46,31 +46,32 @@
       "id": "android",
       "status": "milestone_built",
       "remaining": "Android実機インストール/タッチ/音量/性能、全反映後の最終版確認",
-      "done": "0.8.9-operating-audio/code89、従来touchfix署名。前回の機敏さ参照修正も収録"
+      "done": "0.8.10-checkout-consistency/code90、従来touchfix署名。native強制退店時の会計誤継続を修正"
     }
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
-  "latest_build": "2026-11-21-v089-build.json",
-  "latest_handoff": "2026-11-21-muse-implementation.md",
+  "latest_build": "2026-11-21-v0810-build.json",
+  "latest_handoff": "2026-11-21-runtime-consistency.md",
   "latest_validation": {
-    "base_commit": "9dfa80b98bf584b90d2a5a53b46ad67dc49838af",
+    "base_commit": "eaaab30bdafda034467f6d54d2886cd13d282f99",
     "godot_version": "4.6.3",
-    "focused_godot_passed": 10,
-    "python_success": 786,
-    "python_existing_failures": 2,
-    "python_expected_failures": 1,
+    "focused_godot_passed": 9,
+    "python_success": 793,
+    "python_existing_failures": 0,
+    "python_expected_failures": 0,
     "full_python_rerun": true,
     "full_headless_rerun": true,
-    "apk_updated": true,
-    "unique_related_godot_passed": 15,
-    "full_headless_pass": false
+    "full_headless_pass": false,
+    "full_headless_errors": 5,
+    "apk_updated": true
   },
   "latest_runtime_checkpoint": "de25b168de01381988dee94521e93939f22e7190",
-  "latest_pr": 272,
+  "latest_pr": null,
   "muse_instructions": {
-    "source_commit": "030e468f1b21684d3304026c858e387e5f5d9b45",
+    "source_commit": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
     "CSRM-001": "v1 recorded; successor-artifact deviation pending review",
     "CSRM-003": "v1 applied; pending review",
-    "CSRM-002": "v1 ready; not started"
+    "CSRM-002": "v1 partial; source_catalog legacy configuration question pending",
+    "CSRM-004": "v1 implemented; pending review"
   }
 }

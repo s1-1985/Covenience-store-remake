@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Callable, Optional
 
 from .economy import FinancialEvent, StoreCashLedger
 from .inventory import InventoryMutation, StoreInventoryRuntime
@@ -72,11 +72,13 @@ class StorePurchaseRuntime:
     self-service fixture; the caller chooses when to settle the basket.
     """
 
-    def __init__(self, inventory: StoreInventoryRuntime, cash: StoreCashLedger) -> None:
+    def __init__(self, inventory: StoreInventoryRuntime, cash: StoreCashLedger, *,
+                 settlement_allowed: Optional[Callable[[str], bool]] = None) -> None:
         self.inventory = inventory
         self.cash = cash
         self._baskets: dict[str, CustomerBasket] = {}
         self._settlements: list[SaleSettlement] = []
+        self._settlement_allowed = settlement_allowed
 
     @property
     def settlements(self) -> tuple[SaleSettlement, ...]:
@@ -119,6 +121,8 @@ class StorePurchaseRuntime:
         return BasketPickResult(mutation, line)
 
     def settle(self, customer_id: str, *, source_id: Optional[str] = None) -> SaleSettlement:
+        if self._settlement_allowed is not None and not self._settlement_allowed(customer_id):
+            raise ValueError("departing or cancelled customer cannot settle a basket")
         basket = self._baskets[customer_id]
         if basket.settled:
             raise ValueError("basket has already been settled")

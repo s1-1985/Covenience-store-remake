@@ -45,6 +45,7 @@ class CheckoutStationRuntime:
         self._waiting: list[str] = []
         self._active_by_staff: dict[str, str] = {}
         self._service_history: list[CheckoutServiceRecord] = []
+        customers.register_ejection_listener(fixture_id, self._detach_customer)
 
     @property
     def waiting_customer_ids(self) -> tuple[str, ...]:
@@ -72,6 +73,7 @@ class CheckoutStationRuntime:
             if (
                 session.checkout_fixture_id == self.fixture_id
                 and session.state is CustomerState.WAITING_CHECKOUT
+                and not session.settlement_blocked
                 and session.id not in active_customers
             ):
                 eligible.append(session.id)
@@ -132,7 +134,23 @@ class CheckoutStationRuntime:
         return record
 
     def cancel_customer(self, customer_id: str) -> bool:
-        """Detach an ejected/abandoned customer without guessing consequences."""
+        """Cancel this wait until an explicit session transition resumes it.
+
+        No departure, payment, penalty or new patience rule is inferred.
+        """
+        removed = self._detach_customer(customer_id)
+        try:
+            session = self.customers.customer(customer_id)
+        except KeyError:
+            return removed
+        if session.checkout_fixture_id == self.fixture_id and session.state is CustomerState.WAITING_CHECKOUT:
+            session.state = CustomerState.CHECKOUT_CANCELLED
+            session.settlement_blocked = True
+            removed = True
+        return removed
+
+    def _detach_customer(self, customer_id: str) -> bool:
+        """Release only station/roster state; also used by forced departure."""
         removed = False
         if customer_id in self._waiting:
             self._waiting.remove(customer_id)
