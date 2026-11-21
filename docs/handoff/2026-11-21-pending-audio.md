@@ -4,7 +4,7 @@
 
 店舗別の発生時OR→原設定/選択ガード→bit昇順消費、店舗切替/JSON保存読込/旧保存0/リセットへ接続。OFF中に消失していた既知音声要求がON時に一度だけ再生される。追加の原解析・新しい仮仕様なし。
 
-ブランチchatgpt/legacy-audio-flags-20261121、基点6705aa9240c8d8f53fabe19de553b68ceb24e1b3。PRは作成後追記。Python793成功、関連Godot10本成功。広域headless既存source_catalog欠落5回は継続し全体合格とはしない。APK0.8.11/code91従来署名、実機/実聴未確認。詳細decision0244とv0811-build.json。
+ブランチchatgpt/legacy-audio-flags-20261121、基点6705aa9240c8d8f53fabe19de553b68ceb24e1b3。PR #274 https://github.com/s1-1985/Covenience-store-remake/pull/274。Python793成功、関連Godot10本成功。広域headless既存source_catalog欠落5回は継続し全体合格とはしない。APK0.8.11/code91従来署名、実機/実聴未確認。詳細decision0244とv0811-build.json。
 
 ## 旧引継ぎの未反映表記の扱い
 

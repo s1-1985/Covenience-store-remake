@@ -2,7 +2,7 @@
 
 ## 背景・採用根拠
 
-ユーザーの2026-11-21指示「Museの解析はまだ実装しなくてよい。あなたが過去に解析して未実装のものから実装」に基づくLEGACY-0244。Muse readyの新規採用ではない。基点6705aa9240c8d8f53fabe19de553b68ceb24e1b3、main688876aと未マージPR270/272/273を確認。実装ブランチchatgpt/legacy-audio-flags-20261121。PRは作成後追記。
+ユーザーの2026-11-21指示「Museの解析はまだ実装しなくてよい。あなたが過去に解析して未実装のものから実装」に基づくLEGACY-0244。Muse readyの新規採用ではない。基点6705aa9240c8d8f53fabe19de553b68ceb24e1b3、main688876aと未マージPR270/272/273を確認。実装ブランチchatgpt/legacy-audio-flags-20261121。PR #274 https://github.com/s1-1985/Covenience-store-remake/pull/274。
 
 過去のdocs/handoff/2026-11-21-operating-audio.mdとdecision0239は、原SE OFF時のフラグ持越しを明確に未移植としていた。現行main._play_event_soundsはローカル変数でフラグを集約してenabled=1で消費し、実際の音声ラッパーだけがSE OFFを拒否するため要求を失っていた。
 
