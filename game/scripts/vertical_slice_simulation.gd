@@ -220,7 +220,7 @@ const STORE_FIELDS := [
     "_store_size_tier", "store_site_origin", "_player_store_position", "store_type_id",
     "_sample_layout_catalog", "store_name", "_store_sales_yen",
     "_store_sales_at_month_start", "_store_sales_at_day_start", "stored_fixtures",
-    "_program_counts", "_parking_used", "outdoor_fixtures", "_notice_counts", "_sold_counts",
+    "_program_counts", "_parking_used", "outdoor_fixtures", "_notice_counts", "_sold_counts", "source_audio_flags",
     "_store_visitor_heads", "_store_sales_last_month", "_annual_sales_yen", "_source_annual_sales_history", "_source_runtime_to_restore",
 ]
 
@@ -258,6 +258,9 @@ var outdoor_fixtures: Array = []
 
 var _notice_counts := {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
 var _sold_counts: Dictionary = {}
+# CONFIRMED_BINARY: original main retains the per-store u16 flags while SE
+# is off or another store is selected (20261113-staff-sound-data).
+var source_audio_flags := 0
 
 
 var _store_visitor_heads := 0
@@ -426,6 +429,7 @@ func reset() -> void:
     outdoor_fixtures = []
     _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
     _sold_counts = {}
+    source_audio_flags = 0
 
 
     player_store_count = 1
@@ -589,6 +593,7 @@ func _drop_branches() -> void:
     last_owner_review = {}
     _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
     _sold_counts = {}
+    source_audio_flags = 0
     _chain_visitors_total = 0
     stored_fixtures = []
 
@@ -743,6 +748,7 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
     outdoor_fixtures = []
     _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
     _sold_counts = {}
+    source_audio_flags = 0
     if not has_store_site() and bool(config["simulation"].get("source_full_people", false)):
         customers.reset()
     store_site_origin = origin
@@ -4752,6 +4758,8 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
         customers._id_prefix = str(block["customer_id_prefix"])
         config["customer"]["id_prefix"] = customers._id_prefix
     _source_runtime_to_restore = block.get("source_runtime", {}).duplicate(true)
+    # Old client saves did not keep flags; never reconstruct from event history.
+    source_audio_flags = int(_source_runtime_to_restore.get("audio_flags", 0)) & 0xffff
 
 
     if program_town != null:
@@ -4824,7 +4832,22 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
     _refresh_interactions()
 
 
+# Source main consumes only the selected store's flags. This read does not
+# advance any simulation clock/RNG, and disabled/unselected flags survive.
+func take_source_audio_requests(enabled: int, tones: Array) -> Array:
+    if program_town == null:
+        return []
+    var result: Dictionary = preload("res://scripts/domain/program_audio.gd").main_requests(
+        source_audio_flags, enabled, active_store == viewed_store,
+        month_count % 12 + 1, 0, tones)
+    source_audio_flags = int(result["flags"])
+    return result["requests"]
+
+
 func _record_event(event_type: String, details: Dictionary = {}) -> void:
+    if program_town != null and int(details.get("store_index", active_store)) == active_store:
+        var masks: Dictionary = preload("res://scripts/domain/program_audio.gd").EVENT_FLAGS
+        source_audio_flags = (source_audio_flags | int(masks.get(event_type, 0))) & 0xffff
     if _stores.size() > 1:
         details = details.duplicate()
         details["store_index"] = active_store
@@ -6891,10 +6914,11 @@ func _source_runtime_snapshot() -> Dictionary:
         for field in STAFF_RUNTIME_FIELDS:
             row[field] = person.get(field)
         employees.append(row)
-    return {"clock_epoch": 1, "floor_previous": int(config["store"].get("source_previous_cleanliness", 0)), "floor_clock": int(config["store"].get("source_floor_clock", -1)), "customers": people, "staff": employees, "next_customer": customers._next_sequence, "done_customers": customers.completed_count(), "active_customer_id": customers.active_customer_id, "queue": _checkout_queue.duplicate(), "daily_counts": _program_counts.duplicate(), "parking_used": _parking_used, "dirty": _dirty_cells.map( func(p): return [p.x, p.y]), "notices": _notice_counts.duplicate(), "sold": _sold_counts.duplicate(), "holiday": _program_holiday, "weather_value": _program_weather_value}
+    return {"audio_flags": source_audio_flags, "clock_epoch": 1, "floor_previous": int(config["store"].get("source_previous_cleanliness", 0)), "floor_clock": int(config["store"].get("source_floor_clock", -1)), "customers": people, "staff": employees, "next_customer": customers._next_sequence, "done_customers": customers.completed_count(), "active_customer_id": customers.active_customer_id, "queue": _checkout_queue.duplicate(), "daily_counts": _program_counts.duplicate(), "parking_used": _parking_used, "dirty": _dirty_cells.map( func(p): return [p.x, p.y]), "notices": _notice_counts.duplicate(), "sold": _sold_counts.duplicate(), "holiday": _program_holiday, "weather_value": _program_weather_value}
 
 
 func _restore_source_runtime(data: Dictionary) -> void:
+    source_audio_flags = int(data.get("audio_flags", 0)) & 0xffff
     # v0.6.0 stored deadlines one day before the zero-based game clock.
     var clock_offset := 1440 if int(data.get("clock_epoch", 0)) == 0 else 0
     config["store"]["source_previous_cleanliness"] = int(data.get("floor_previous", 0))

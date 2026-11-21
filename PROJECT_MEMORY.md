@@ -2642,3 +2642,6 @@ ce51a5a基点から、原作の50枠予約／消費／表示計画を移植し�
 
 
 **2026-11-21 / 0.8.10 (CSRM-002/004 v1, decision0242/0243)**: Muse2b3e990aのready指示に基づき、参照step例外時の所有状態/RNGの同一参照巻戻し、取消/退店の割当即時解放と古い精算拒否を実装。本体もnative退店状態5へ接続し会計目標を消去。Python793件成功（既存2失敗/想定1を解消）、関連Godot9本成功。広域headlessは旧町寸法と買収後調査の古い期待を根拠付き訂正し末尾passedへ到達したが、旧構成のsource_catalog欠落SCRIPT ERROR5回が残るため不合格。CSRM-002の残件をMuse確認へ戻す。CSRM-004はレビュー待ち。APK0.8.10/code90従来署名、実機未確認。既存未解決6件（U-1〜U-6）は維持。詳細docs/handoff/2026-11-21-runtime-consistency.md。
+
+
+**2026-11-21 / 0.8.11 (LEGACY-0244, decision0244)**: ユーザーの優先変更でMuse新規解析を保留し、過去解析の未反映分を確認。decision0239が残したSE OFF時のフラグ持越しを原主処理の既存読解に従い接続。発生時に店舗別u16へOR、原設定/選択一致時だけbit順消費、JSON/旧保存0/新店/リセットを実装。Python793成功、関連Godot10本成功。広域headlessは末尾passedでも既存source_catalog欠落SCRIPT ERROR5回のため不合格を維持。APK0.8.11/code91従来署名、実機実聴未確認。その他全フラグ生成元/全通知/原カード/全営業RNG/既存未解決6件（U-1〜U-6）は残る。詳細docs/handoff/2026-11-21-pending-audio.md。
