@@ -70,6 +70,7 @@ func check_prototype_recovery(s) -> void:
     var native_town = s.program_town
     s.program_town = null
     s._stamina_enabled = true
+    s._stamina_rng = RandomNumberGenerator.new()
     var raised: Dictionary = s._candidate_raises[p.candidate_id]
     s._candidate_raises.erase(p.candidate_id)
     p.stamina = 0
