@@ -4126,7 +4126,11 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
         body = simulation.split("func _rival_ai() -> Dictionary:")[0].split("# Task #106: rivals losing money")[-1]
         self.assertIn("REMAKE_BALANCED_DEFAULT", body)
-        self.assertRegex(simulation, r"_step_rivals_at_month_end\(\)\n    _grow_town_at_month_end\(\)\n    if program_town != null and month_count % 12 == 0:\n        _annual_review\(\)\n    _evaluate_terminal_state\(\)")
+        # Annual bookkeeping may queue its report separately from live scoring.
+        settlement = simulation.split("func _settle_month_end(", 1)[1].split("func _close_store_month(", 1)[0]
+        ordered_calls = ["_step_rivals_at_month_end()", "_grow_town_at_month_end()", "_annual_review(", "_evaluate_terminal_state()"]
+        positions = [settlement.index(call) for call in ordered_calls]
+        self.assertEqual(positions, sorted(positions))
         store_site = (GAME_ROOT / "scripts" / "domain" / "store_site.gd").read_text(encoding="utf-8")
         self.assertIn("func rival_pressure(", store_site)
         self.assertIn("func best_open_site(stores: Array, removed: Array = [], avoid: Array = []) -> Vector2i:", store_site)

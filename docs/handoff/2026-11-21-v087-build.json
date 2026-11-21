@@ -1,0 +1,29 @@
+{
+  "version": "0.8.7-annual-report",
+  "code": 87,
+  "date_jst": "2026-11-21",
+  "base_commit": "e2dc33c004fa10993f6be70556be1e11a8c919b8",
+  "package": "com.conveniremake.touchfix",
+  "engine": "4.6.3",
+  "apk_name": "Conveni-v0.8.7.apk",
+  "apk_bytes": 45069383,
+  "apk_sha256": "df8075d68ac77848f9557506c0cb6f61c92d44dbfbde4cdbd6824d1bba706bce",
+  "certificate_sha256": "4e1ea772ac6aea449573f8c151028082d011f82945170272b8dc61b43bec29a4",
+  "source_excerpts": 55,
+  "godot_related_pass": 54,
+  "python_total": 789,
+  "python_success": 786,
+  "python_existing_failures": 2,
+  "python_expected_failures": 1,
+  "android_device_verified": false,
+  "remaining": [
+    "Original full initial-year notification sequence and all-company staff/RNG order remain unverified",
+    "Previous annual revenue fields only; all five ledger columns and native memory-card format remain",
+    "Full headless legacy town dimensions failure reproduced; four previously baselined broader checks not rerun",
+    "Existing six unresolved research items remain"
+  ],
+  "compiled_scripts": {
+    "assets/scripts/vertical_slice_simulation.gdc": "51fd64b5a23a723e6b95a3260e08004a68662110d43d411ff283d3872d0c367c",
+    "assets/scripts/domain/program_annual.gdc": "3a327399c95d41692800150aa0c3039faeb50b9538ff14fd240a1f0c6533fe5a"
+  }
+}

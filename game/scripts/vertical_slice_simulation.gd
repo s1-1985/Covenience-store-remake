@@ -152,6 +152,8 @@ var popularity: int
 var price_change_pct: int
 var product_price_settings: Dictionary = {}
 var _annual_sales_yen := 0
+var _source_annual_sales_history: Array = []
+var _source_annual_rollover_year := -1
 var last_owner_review: Dictionary = {}
 var _source_runtime_to_restore: Dictionary = {}
 var town
@@ -217,7 +219,7 @@ const STORE_FIELDS := [
     "_sample_layout_catalog", "store_name", "_store_sales_yen",
     "_store_sales_at_month_start", "_store_sales_at_day_start", "stored_fixtures",
     "_program_counts", "_parking_used", "outdoor_fixtures", "_notice_counts", "_sold_counts",
-    "_store_visitor_heads", "_store_sales_last_month", "_annual_sales_yen", "_source_runtime_to_restore",
+    "_store_visitor_heads", "_store_sales_last_month", "_annual_sales_yen", "_source_annual_sales_history", "_source_runtime_to_restore",
 ]
 
 
@@ -573,6 +575,9 @@ func _drop_branches() -> void:
     _store_visitor_heads = 0
     _store_sales_last_month = 0
     _annual_sales_yen = 0
+    _source_annual_sales_history = []
+    _source_annual_rollover_year = -1
+    last_owner_review = {}
     _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
     _sold_counts = {}
     _chain_visitors_total = 0
@@ -721,6 +726,7 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
     _store_visitor_heads = 0
     _store_sales_last_month = 0
     _annual_sales_yen = 0
+    _source_annual_sales_history = []
     _catchment_weights = {}
     stored_fixtures = []
     _program_counts = {}
@@ -4393,6 +4399,7 @@ func save_state() -> Dictionary:
         "chain_visitors_total": _chain_visitors_total,
         "source_calendar": source_calendar.duplicate(true),
         "last_owner_review": last_owner_review.duplicate(true),
+        "source_annual_rollover_year": _source_annual_rollover_year,
         "economy": economy.snapshot(),
         "events": event_log.snapshot(),
     }
@@ -4465,6 +4472,7 @@ func _store_save_block() -> Dictionary:
             "day_start": _store_sales_at_day_start,
             "last_month": _store_sales_last_month,
             "annual_sales": _annual_sales_yen,
+            "source_annual_sales_history": _source_annual_sales_history.duplicate(),
             "visitor_heads": _store_visitor_heads,
         },
         "source_store_config": config["store"].duplicate(true),
@@ -4475,6 +4483,13 @@ func _store_save_block() -> Dictionary:
 
 
 func load_state(data: Dictionary) -> bool:
+    var rollover_year = data.get("source_annual_rollover_year",-1)
+    if (not rollover_year is int and not rollover_year is float) or float(rollover_year)!=floorf(float(rollover_year)) or rollover_year< -1:return false
+    var annual_blocks: Array = [data]
+    if data.get("branches",[]) is Array:annual_blocks.append_array(data.get("branches",[]))
+    for block in annual_blocks:
+        if block is Dictionary and block.get("store_sales",{}) is Dictionary:
+            if not preload("res://scripts/domain/program_annual.gd").valid_history(block.get("store_sales",{}).get("source_annual_sales_history",[])):return false
     if data.has("source_calendar") and not SourceCalendar.valid(data.source_calendar): return false
     var donation_month = data.get("source_donation_last_month",-1)
     if (not donation_month is int and not donation_month is float) or float(donation_month)!=floorf(float(donation_month)) or donation_month < -1: return false
@@ -4626,6 +4641,7 @@ func load_state(data: Dictionary) -> bool:
         _chain_visitors_total &= 0xffffffff
         _chain_visitor_milestone.events.clear()
     last_owner_review = data.get("last_owner_review", {}).duplicate(true)
+    _source_annual_rollover_year = int(data.get("source_annual_rollover_year",month_count/12))
     _restore_store_block(data, data["bought_buildings"])
 
     for block in data.get("branches", []):
@@ -4779,6 +4795,8 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
     _store_sales_at_day_start = int(sales["day_start"])
     _store_sales_last_month = int(sales.get("last_month", 0))
     _annual_sales_yen = int(sales.get("annual_sales", 0))
+    _source_annual_sales_history=[]
+    for value in sales.get("source_annual_sales_history",[]):_source_annual_sales_history.append(int(value))
     _store_visitor_heads = int(sales.get("visitor_heads", 0))
     _refresh_interactions()
 
@@ -4859,17 +4877,22 @@ func consume_source_notice() -> Dictionary:
     var entries: Array = []
     _for_each_store(func():
         if has_store_site():
-            entries.append({"annual_sales": _annual_sales_yen, "rating": internal_rating_value}))
-    # Annual ledgers have rolled over by display time; use the immutable review.
-    if not last_owner_review.is_empty():
-        var active_context: Dictionary = n.contexts.get(str(_next_notice_slot()), {})
-        if str(active_context.get("event_type", "")) == "owner_review":
-            for entry in entries:
-                entry["annual_sales"] = 0
-                entry["rating"] = int(last_owner_review.get("mean_rating", 0))
-            if not entries.is_empty():
-                entries[0]["annual_sales"] = int(last_owner_review.get("annual_sales", 0))
+            entries.append({"annual_sales":int(_source_annual_sales_history[0]) if not _source_annual_sales_history.is_empty() else 0,"rating":internal_rating_value}))
+    # Pre-0.8.7 saves cannot reconstruct per-store previous-year ledgers.
+    # Preserve only an already-queued old report's explicit aggregate; never
+    # manufacture historical store records from last_owner_review.
+    var context: Dictionary = n.contexts.get(str(_next_notice_slot()),{})
+    var legacy: Dictionary = context.get("details",{})
+    if str(context.get("event_type",""))=="owner_review" and legacy.has("annual_sales") and legacy.has("mean_rating"):
+        for entry in entries:
+            entry.annual_sales=0
+            entry.rating=int(legacy.mean_rating)
+        if not entries.is_empty():entries[0].annual_sales=int(legacy.annual_sales)
     var record: Dictionary = n.consume(month_count * 5760 + _days_completed_this_month * 1440 + minute_of_day, entries, town.population)
+    if not record.is_empty() and int(record.mode)==3:
+        var parts: Array = []
+        for i in 5:parts.append(int(n.word(0x800e3bc0+i*4)))
+        last_owner_review={"parts":parts,"total":int(n.word(0x800cd80c)),"annual_sales":n.signed32(n.word(0x800e3bb0)),"mean_rating":n.signed32(n.word(0x800e3bb8)),"year":month_count/12}
     # Original owner clear is generated by consuming the annual report,
     # after any earlier monthly/manager notices, not by booking the ledger.
     if not record.is_empty() and int(record["mode"]) == 3 and int(n.word(0x800cd80c)) == 100:
@@ -5318,12 +5341,6 @@ func _settle_month_end(prepared: Dictionary = {}) -> void:
             "town_population": town.population,
         }
     )
-    _record_event("month_end_settlement", {
-        "month_number": month_count + 1,
-        "four_day_net_result_yen": four_day_net_result_yen,
-        "month_result_yen": month_result_yen,
-        "settlement_id": record["settlement_id"],
-    })
     if prepared.is_empty(): _for_each_store(_close_store_month)
     _retired_month_sales = 0
     month_count += 1
@@ -5333,8 +5350,16 @@ func _settle_month_end(prepared: Dictionary = {}) -> void:
     _expense_index_at_month_start = economy.expense_records.size()
     _step_rivals_at_month_end()
     _grow_town_at_month_end()
-    if program_town != null and month_count % 12 == 0:
-        _annual_review()
+    var annual := program_town != null and month_count % 12 == 0
+    if annual:_annual_review(false)
+    _record_event("month_end_settlement", {
+        "month_number": month_count,
+        "four_day_net_result_yen": four_day_net_result_yen,
+        "month_result_yen": month_result_yen,
+        "settlement_id": record["settlement_id"],
+    })
+    if annual and not bool(config.simulation.get("rival_child",false)):
+        _record_event("owner_review",{"year":month_count/12})
     _evaluate_terminal_state()
 
 
@@ -5343,7 +5368,7 @@ func _close_store_month() -> void:
     profit_history.push_front(int(operating.month_result_yen) if operating.complete else -2147483648)
     profit_history.resize(mini(60,profit_history.size()))
     var monthly_sales_yen: int = (_store_sales_yen - _store_sales_at_month_start) * MONTH_MULTIPLIER
-    _annual_sales_yen += monthly_sales_yen
+    _annual_sales_yen = preload("res://scripts/domain/program_annual.gd").add_sales(_annual_sales_yen,monthly_sales_yen) if program_town!=null else _annual_sales_yen+monthly_sales_yen
     _evaluate_store_rating(monthly_sales_yen)
     last_survey = {"bought": survey_bought.duplicate(), "missing": survey_missing.duplicate(), "types": survey_types.duplicate()}
     survey_legacy_totals = false
@@ -6896,20 +6921,19 @@ func _restore_source_runtime(data: Dictionary) -> void:
     _program_weather_value = int(data.get("weather_value", 0))
 
 
-func _annual_review() -> void:
-    var entries: Array = []
-    _for_each_store( func():
+func _annual_review(reserve_notice := true) -> void:
+    var year: int = month_count/12
+    if _source_annual_rollover_year==year:return
+    _source_annual_rollover_year=year
+    _for_each_store(func():
         if has_store_site():
-            entries.append({"annual_sales": _annual_sales_yen, "rating": internal_rating_value}))
-    last_owner_review = preload("res://scripts/domain/program_progression.gd").owner_rating(entries, _chain_visitors_total, town.population)
-    last_owner_review["year"] = month_count / 12
-    _record_event("owner_review", last_owner_review.duplicate(true))
-    _for_each_store( func():
-        _annual_sales_yen = 0
+            _source_annual_sales_history=preload("res://scripts/domain/program_annual.gd").rollover(_annual_sales_yen,_source_annual_sales_history)
+            _annual_sales_yen=0
         for person in staff.all_staff():
-            var hourly: int = person.salary_yen_per_day_24h / 24
-            person.salary_yen_per_day_24h = (hourly * 103 / 100) * 24)
-
+            var hourly: int = person.salary_yen_per_day_24h/24
+            person.salary_yen_per_day_24h=(hourly*103/100)*24)
+    if reserve_notice and not bool(config.simulation.get("rival_child",false)):
+        _record_event("owner_review",{"year":year})
 
     for id in _staff_candidate_catalog:
         var figures := _candidate_figures(str(id))

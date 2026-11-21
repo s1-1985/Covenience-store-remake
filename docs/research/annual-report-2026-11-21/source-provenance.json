@@ -1,0 +1,25 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": [
+    {
+      "start": "0x80029c54",
+      "end_exclusive": "0x80029c74",
+      "sha256": "5d7a3fc97156015ae28982a55c0712e3cbdc9080d85ec60aa23f9bc3f1b0d974"
+    },
+    {
+      "start": "0x80029fc8",
+      "end_exclusive": "0x8002a0b0",
+      "sha256": "0e8bbc3476448a8de4d20fa35daf364c43a0111f457cbc14770eb48458fe9d87"
+    },
+    {
+      "start": "0x8003ceac",
+      "end_exclusive": "0x8003cf44",
+      "sha256": "b530b0ac84b3f639e72558739cb668afeac73b57179e5f26b3c72e065084c6b4"
+    },
+    {
+      "start": "0x8003f7fc",
+      "end_exclusive": "0x8003f968",
+      "sha256": "5085aa63f23279b172ab948584be10d61ef6193ba91fe188062d795832cc9cb1"
+    }
+  ]
+}
