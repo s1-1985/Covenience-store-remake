@@ -62,5 +62,7 @@
     "full_python_rerun": true,
     "full_headless_rerun": false,
     "apk_updated": true
-  }
+  },
+  "latest_runtime_checkpoint": "de25b168de01381988dee94521e93939f22e7190",
+  "latest_pr": 272
 }
