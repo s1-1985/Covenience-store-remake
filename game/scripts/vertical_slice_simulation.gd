@@ -839,7 +839,7 @@ func _admit_next_program_group() -> void:
 # turned away than (100 - 学歴) / 4 + 5, or (with a chance of 学歴 out of
 # 100) 4 dirty hours -- a manager with 学歴 70 or more gives the numbers.
 # Rarely (1 in 8192, then 学歴 out of 100), when the best seller since the
-# last such roll has sold 200 or more, a coin flip reports either it or the
+# last such roll has had 200 or more units picked, a coin flip reports either it or the
 # stocked item that sold least (if under 6). The numbers are in
 # ps1_program_tables.manager_reports. REMAKE_BALANCED_DEFAULT: an hour is dirty when the
 # floor has at least 30% of this project's dirt cap in walked-on squares
@@ -848,6 +848,8 @@ const DIRTY_HOUR_SHARE := 0.3
 
 
 func _step_manager_reports() -> void:
+    # Original owner bit 8000 returns before counters or RNG are touched.
+    if bool(config.simulation.get("rival_child", false)): return
     var rules: Dictionary = _program_demand.tables["manager_reports"]
     if minute_of_day % 60 == 0:
         if (minute_of_day / 60) % int(rules["count_reset_every_hours"]) == 0:
@@ -871,21 +873,13 @@ func _step_manager_reports() -> void:
     if _report_rng.randi_range(1, int(rules["sales_report_one_in"])) != 1:
         return
     if _report_rng.randi_range(1, 100) <= academic:
-        var best := ""
-        var worst := ""
-        for category in _stocked_categories():
-            var sold := int(_sold_counts.get(category, 0))
-            if best.is_empty() or sold > int(_sold_counts.get(best, 0)):
-                best = category
-            if worst.is_empty() or sold < int(_sold_counts.get(worst, 0)):
-                worst = category
-        for category in _sold_counts:
-            if int(_sold_counts[category]) > int(_sold_counts.get(best, 0)):
-                best = str(category)
-        if not best.is_empty() and int(_sold_counts.get(best, 0)) >= int(rules["selling_well_at_least"]):
+        var candidates: Dictionary = preload("res://scripts/domain/program_manager_reports.gd").candidates(_sold_counts, _stocked_categories(), config.source_catalog.product_ids)
+        var best: String = candidates.best
+        var worst: String = candidates.worst
+        if not best.is_empty() and (int(_sold_counts.get(best, 0)) & 0xffffffff) >= int(rules["selling_well_at_least"]):
             if _report_rng.randi_range(0, 1) == 0:
                 _record_event("sales_report", {"product": best, "selling_well": true})
-            elif not worst.is_empty() and int(_sold_counts.get(worst, 0)) < int(rules["selling_badly_under"]):
+            elif not worst.is_empty() and (int(_sold_counts.get(worst, 0)) & 0xffffffff) < int(rules["selling_badly_under"]):
                 _record_event("sales_report", {"product": worst, "selling_well": false})
     _sold_counts = {}
     _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
@@ -3935,9 +3929,7 @@ func _advance_customer(customer) -> void:
                                 survey_bought[bought_product.catalog_id] = (
                                     int(survey_bought.get(bought_product.catalog_id, 0)) + int(line["quantity"])
                                 )
-                            _sold_counts[bought_product.catalog_id] = (
-                                int(_sold_counts.get(bought_product.catalog_id, 0)) + int(line["quantity"])
-                            )
+                                preload("res://scripts/domain/program_survey.gd").add(_sold_counts,bought_product.catalog_id,int(line["quantity"]))
                 checkout_staff.state = "idle"
                 checkout_staff.checkouts_done += 1
                 _spend_stamina(checkout_staff)
@@ -6613,9 +6605,6 @@ func _settle_source_basket(customer) -> Dictionary:
     var record: Dictionary = economy.settle_basket(customer.customer_id,minute_of_day,customer.basket,key)
     customer.mark_settled(record,true)
     _store_sales_yen += int(record["total_yen"])
-    for line in customer.basket:
-        var product = inventory.get_product(str(line["product_id"]))
-        _sold_counts[product.catalog_id] = int(_sold_counts.get(product.catalog_id,0))+int(line["quantity"])
     customer.basket.clear()
     return record
 
@@ -7107,7 +7096,6 @@ func _settle_source_immediate(customer, line: Dictionary) -> void:
     var record: Dictionary = economy.settle_basket(customer.customer_id + ":direct:" + str(economy.sale_records.size()), minute_of_day, lines)
     _store_sales_yen += int(record["total_yen"])
     var product = inventory.get_product(str(line["product_id"]))
-    _sold_counts[product.catalog_id] = int(_sold_counts.get(product.catalog_id, 0)) + int(line["quantity"])
     _record_event("self_service_sale", {"customer_id": customer.customer_id, "product_id": product.product_id, "total_yen": record["total_yen"]})
 
 func _source_try_theft(customer, product_id: String) -> bool:
@@ -7135,6 +7123,9 @@ func _take_source_product(product_id: String, quantity: int) -> Dictionary:
 func _record_source_survey_pick(product_id: String, heads: int) -> void:
     var product = inventory.get_product(product_id)
     preload("res://scripts/domain/program_survey.gd").add(survey_bought,product.catalog_id,heads)
+    # Original 349D0..34A58 increments store+11A0 after normal acquisition,
+    # before payment. Theft uses another branch and does not enter here.
+    preload("res://scripts/domain/program_survey.gd").add(_sold_counts,product.catalog_id,heads)
 
 func _record_source_survey_missing(category: String, heads: int) -> void:
     # Failure to find a route is not itself a stockout: the original
