@@ -1,0 +1,21 @@
+{
+  "kind": "implementation of previously recovered evidence; no new disc/EXE analysis",
+  "archive_commit": "cc342cc2029264a1735694eeb5ee4140b250c4f4",
+  "base_code_commit": "9dfa80b98bf584b90d2a5a53b46ad67dc49838af",
+  "source_files": {
+    "20261113-staff-sound-data/README.md": "2c76956117c2a664a5b6e4ab4d196276e75450387b88fc9621d453afd9f2d395",
+    "20261113-staff-sound-data/android-staff-sound-bridge.json": "a27766407bb4ad91d55f7d4730050db47102999f35945dd9c50bd674be34c141",
+    "20261114-security-theft-data/README.md": "9ad92867514301bf83df5a0f4f67444a875a738beaf8b1d26415db76cd31cdf5",
+    "20261103-operating-continuation/source-reference/staff_loop_selected.py": "3d842f229c40ceb25c10e4ac64e56b35931ae58acf76cafbfecd4e01813c125b"
+  },
+  "source_masks": {
+    "shoplifting": 16,
+    "checkout_staff_started": 128,
+    "checkout_staff_finished": 256,
+    "checkout_completed": 512,
+    "self_service_sale": 1024,
+    "source_restock_completed": 2048,
+    "source_cleaning_completed": 2048,
+    "staff_exhausted": 4096
+  }
+}

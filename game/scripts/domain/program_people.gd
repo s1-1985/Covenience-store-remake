@@ -476,6 +476,8 @@ static func employee(s, p, slot: int) -> void:
     p.stamina = Rules.working_energy(p.stamina, s._program_rng)
     if p.stamina <= 0 and p.source_state != 3:
         p.source_goal = OFF
+        # Existing source staff-loop exhausted branch sets main bit12.
+        s._record_event("staff_exhausted", {"staff_id": p.staff_id})
     if p.source_state in [2, 4] and unattended_checkout(s) and try_checkout(s, p, true):
         return
     if p.source_goal.x < 0:
@@ -521,6 +523,8 @@ static func employee(s, p, slot: int) -> void:
             if int(rows[y][x]) % 5 == 0:
                 s._grow_staff(p, "clean")
                 p.source_goal = OFF
+                # Source cleaning and full refill share main bit11/VOS8.
+                s._record_event("source_cleaning_completed", {"staff_id": p.staff_id})
 
 static func operating_state(s) -> void:
     var state = int(s.config["store"].get("source_operating_state", 1))
