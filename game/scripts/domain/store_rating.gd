@@ -104,10 +104,13 @@ func evaluate_monthly_rating_change(
     service_value: float,
     security_value: float,
     cleaning_value: float,
-    monthly_sales_yen: int
+    monthly_sales_yen: int,
+    source_width := false
 ) -> Dictionary:
     assert(current_internal_value >= 0 and current_internal_value <= 100)
-    assert(monthly_sales_yen >= 0)
+    # Recovered monthly sales is signed32 and may wrap below zero.
+    # Keep the old prototype precondition for callers outside that path.
+    assert(monthly_sales_yen >= 0 or (source_width and monthly_sales_yen >= -2147483648 and monthly_sales_yen <= 2147483647))
     var current_stars = star_rank_for_internal_value(current_internal_value)
     var upgrade: Dictionary = UPGRADE_THRESHOLDS_BY_CURRENT_STARS[current_stars]
     var downgrade: Dictionary = DOWNGRADE_THRESHOLDS_BY_CURRENT_STARS[current_stars]

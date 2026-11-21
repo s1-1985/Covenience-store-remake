@@ -5351,7 +5351,7 @@ func month_operating_statement() -> Dictionary:
             one_off_yen += int(expense["amount_yen"])
         else:
             period[field] += int(expense["amount_yen"])
-    var statement := OperatingStatementScript.project(period)
+    var statement := OperatingStatementScript.project(period, program_town != null)
     statement["one_off_yen"] = one_off_yen
     return statement
 
@@ -5365,11 +5365,18 @@ func _settle_month_end(prepared: Dictionary = {}) -> void:
         _apply_source_donations()
     var capital_yen: int = _capital_spent_this_month_yen() if prepared.is_empty() else int(prepared.capital)
     var statement: Dictionary = month_operating_statement() if prepared.is_empty() else prepared.statement
+    if program_town != null:
+        # A pre-upgrade calendar continuation may retain a 64-bit projection.
+        # Reuse its explicit five columns; do not infer from cash or history.
+        var one_off: int = int(statement["one_off_yen"])
+        statement = OperatingStatementScript.project(statement["representative"], true)
+        statement["one_off_yen"] = one_off
     var month_sales_yen: int = int(statement["monthly"]["sales_yen"])
     var four_day_net_result_yen: int = int(statement["four_day_net_result_yen"])
     var month_result_yen: int = int(statement["month_result_yen"])
     var adjustment_yen: int = int(statement["adjustment_yen"])
     var cash_before_adjustment_yen: int = economy.cash_yen
+    var cash_after_adjustment_yen: int = OperatingStatementScript.close_cash(cash_before_adjustment_yen, adjustment_yen) if program_town != null else cash_before_adjustment_yen + adjustment_yen
     var record: Dictionary = economy.record_month_end_settlement(
         minute_of_day,
         adjustment_yen,
@@ -5382,11 +5389,12 @@ func _settle_month_end(prepared: Dictionary = {}) -> void:
             "one_off_yen": int(statement["one_off_yen"]),
             "operating_statement": statement,
             "cash_before_adjustment_yen": cash_before_adjustment_yen,
-            "cash_after_adjustment_yen": cash_before_adjustment_yen + adjustment_yen,
+            "cash_after_adjustment_yen": cash_after_adjustment_yen,
             "month_sales_yen": month_sales_yen,
             "town_population": town.population,
         }
     )
+    economy.cash_yen = cash_after_adjustment_yen
     if prepared.is_empty(): _for_each_store(_close_store_month)
     _retired_month_sales = 0
     month_count += 1
@@ -5414,8 +5422,12 @@ func _close_store_month() -> void:
     profit_history.push_front(int(operating.month_result_yen) if operating.complete else -2147483648)
     profit_history.resize(mini(60,profit_history.size()))
     var monthly_sales_yen: int = (_store_sales_yen - _store_sales_at_month_start) * MONTH_MULTIPLIER
+    if program_town != null:
+        monthly_sales_yen = OperatingStatementScript.signed32(monthly_sales_yen)
     _annual_sales_yen = preload("res://scripts/domain/program_annual.gd").add_sales(_annual_sales_yen,monthly_sales_yen) if program_town!=null else _annual_sales_yen+monthly_sales_yen
-    _evaluate_store_rating(monthly_sales_yen)
+    # CONFIRMED_BINARY: recovered.store_rating_core (800282FC..28A98)
+    # reads the unscaled within-month D48, before finance's x8 projection.
+    _evaluate_store_rating(OperatingStatementScript.signed32(_store_sales_yen - _store_sales_at_month_start) if program_town != null else monthly_sales_yen)
     last_survey = {"bought": survey_bought.duplicate(), "missing": survey_missing.duplicate(), "types": survey_types.duplicate()}
     survey_legacy_totals = false
     survey_bought.clear()
@@ -5520,7 +5532,8 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
         service_value,
         security_value,
         cleaning_value,
-        monthly_sales_yen
+        monthly_sales_yen,
+        program_town != null
     )
     internal_rating_value = int(evaluation["next_internal_value"])
     var previous_stars := star_rating
@@ -7319,7 +7332,7 @@ func store_operating_statement(index: int) -> Dictionary:
         elif int(expense.store_uid) == uid:
             var field: String = fields[str(expense.expense_type)]
             period[field] += int(expense.amount_yen)
-    var result := OperatingStatementScript.project(period)
+    var result := OperatingStatementScript.project(period, program_town != null)
     result["complete"] = complete
     return result
 

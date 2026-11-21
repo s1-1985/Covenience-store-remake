@@ -2645,3 +2645,6 @@ ce51a5a基点から、原作の50枠予約／消費／表示計画を移植し�
 
 
 **2026-11-21 / 0.8.11 (LEGACY-0244, decision0244)**: ユーザーの優先変更でMuse新規解析を保留し、過去解析の未反映分を確認。decision0239が残したSE OFF時のフラグ持越しを原主処理の既存読解に従い接続。発生時に店舗別u16へOR、原設定/選択一致時だけbit順消費、JSON/旧保存0/新店/リセットを実装。Python793成功、関連Godot10本成功。広域headlessは末尾passedでも既存source_catalog欠落SCRIPT ERROR5回のため不合格を維持。APK0.8.11/code91従来署名、実機実聴未確認。その他全フラグ生成元/全通知/原カード/全営業RNG/既存未解決6件（U-1〜U-6）は残る。詳細docs/handoff/2026-11-21-pending-audio.md。
+
+
+**2026-11-21 / 0.8.12 (LEGACY-0245, decision0245)**: 過去decision0206の未反映32bit計算を既存recovered.py/finance_close.pyから接続。native5会計欄・損益・月末8倍/追加7倍/最終現金・店舗損益履歴を原幅へ統一。旧中断statementは明示入力から再計算、過去確定履歴は非改変。既存store_rating_coreの倍率前D48も現行の8倍後入力から訂正。既存モデル24条件/本体5売上入力/JSON/年次/グラフ/負現金終了、関連Godot10本とPython793成功。広域headless既存source_catalog欠落5回は継続。APK0.8.12/code92従来署名、実機未確認。全5帳簿生成元/日中現金全経路/原カード/全営業RNG/既存未解決6件（U-1〜U-6）は残る。詳細docs/handoff/2026-11-21-finance-width.md。
