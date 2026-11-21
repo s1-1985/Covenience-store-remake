@@ -45,6 +45,7 @@ class CheckoutStationRuntime:
         self._waiting: list[str] = []
         self._active_by_staff: dict[str, str] = {}
         self._service_history: list[CheckoutServiceRecord] = []
+        self._cancelled_customer_ids: set[str] = set()
 
     @property
     def waiting_customer_ids(self) -> tuple[str, ...]:
@@ -64,8 +65,32 @@ class CheckoutStationRuntime:
     def customer_being_served_by(self, staff_id: str) -> Optional[str]:
         return self._active_by_staff.get(staff_id)
 
+    def _release_stale_services(self) -> None:
+        """Release active services whose customer is no longer waiting.
+
+        A customer can leave WAITING_CHECKOUT without finishing service
+        (e.g. force_eject). The staff assignment must not stay occupied in
+        that case (review-notes memo item 3 / CSRM-004).
+        """
+        for staff_id, customer_id in list(self._active_by_staff.items()):
+            session = self.customers.customer(customer_id)
+            if session.state is not CustomerState.WAITING_CHECKOUT:
+                del self._active_by_staff[staff_id]
+                self.staff.release_to_idle(staff_id)
+
     def refresh_waiting(self) -> tuple[str, ...]:
         """Enroll newly arrived customers and remove no-longer-waiting entries."""
+        self._release_stale_services()
+        # A cancellation only suppresses queueing while the session remains
+        # continuously in WAITING_CHECKOUT. Once the session transitions to
+        # another state, the cancellation is spent, so a later legitimate
+        # re-entry (via session state transitions) is not blocked
+        # (review-notes memo item 12 / CSRM-004).
+        self._cancelled_customer_ids = {
+            customer_id
+            for customer_id in self._cancelled_customer_ids
+            if self.customers.customer(customer_id).state is CustomerState.WAITING_CHECKOUT
+        }
         active_customers = set(self._active_by_staff.values())
         eligible: list[str] = []
         for session in self.customers.customers:
@@ -73,6 +98,7 @@ class CheckoutStationRuntime:
                 session.checkout_fixture_id == self.fixture_id
                 and session.state is CustomerState.WAITING_CHECKOUT
                 and session.id not in active_customers
+                and session.id not in self._cancelled_customer_ids
             ):
                 eligible.append(session.id)
 
@@ -132,7 +158,13 @@ class CheckoutStationRuntime:
         return record
 
     def cancel_customer(self, customer_id: str) -> bool:
-        """Detach an ejected/abandoned customer without guessing consequences."""
+        """Detach an ejected/abandoned customer without guessing consequences.
+
+        The cancellation is recorded against the session so that a later
+        `refresh_waiting()` does not silently re-enroll the customer while
+        their session is still WAITING_CHECKOUT (review-notes memo item 12
+        / CSRM-004). No penalty or other consequence is invented here.
+        """
         removed = False
         if customer_id in self._waiting:
             self._waiting.remove(customer_id)
@@ -145,5 +177,18 @@ class CheckoutStationRuntime:
         if serving_staff is not None:
             del self._active_by_staff[serving_staff]
             self.staff.release_to_idle(serving_staff)
+            removed = True
+
+        try:
+            session = self.customers.customer(customer_id)
+        except KeyError:
+            session = None
+        if (
+            session is not None
+            and session.checkout_fixture_id == self.fixture_id
+            and session.state is CustomerState.WAITING_CHECKOUT
+            and customer_id not in self._cancelled_customer_ids
+        ):
+            self._cancelled_customer_ids.add(customer_id)
             removed = True
         return removed
