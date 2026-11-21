@@ -154,6 +154,8 @@ var product_price_settings: Dictionary = {}
 var _annual_sales_yen := 0
 var _source_annual_sales_history: Array = []
 var _source_annual_rollover_year := -1
+var _source_annual_personnel_year := -1
+var _source_hourly_wages: Dictionary = {}
 var last_owner_review: Dictionary = {}
 var _source_runtime_to_restore: Dictionary = {}
 var town
@@ -577,6 +579,8 @@ func _drop_branches() -> void:
     _annual_sales_yen = 0
     _source_annual_sales_history = []
     _source_annual_rollover_year = -1
+    _source_annual_personnel_year = -1
+    _source_hourly_wages = {}
     last_owner_review = {}
     _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
     _sold_counts = {}
@@ -1980,6 +1984,8 @@ func _apply_hire(staff_id: String, candidate_id: String) -> bool:
                 hired.set(field,bool(retained[field]) if field == "exhausted" else int(retained[field]))
         _unassigned_staff.erase(candidate_id)
         _reset_transferred_source_staff(hired,active_store,staff_id)
+    if _source_hourly_wages.has(candidate_id):hired.salary_yen_per_day_24h=int(_source_hourly_wages[candidate_id])*24
+    hired.stamina_max=maxi(hired.stamina_max,int(_candidate_figures(candidate_id).get("stamina",0)))
     return true
 
 
@@ -4400,6 +4406,8 @@ func save_state() -> Dictionary:
         "source_calendar": source_calendar.duplicate(true),
         "last_owner_review": last_owner_review.duplicate(true),
         "source_annual_rollover_year": _source_annual_rollover_year,
+        "source_annual_personnel_year": _source_annual_personnel_year,
+        "source_hourly_wages": _source_hourly_wages.duplicate(),
         "economy": economy.snapshot(),
         "events": event_log.snapshot(),
     }
@@ -4483,6 +4491,12 @@ func _store_save_block() -> Dictionary:
 
 
 func load_state(data: Dictionary) -> bool:
+    var personnel_year = data.get("source_annual_personnel_year",-1)
+    if (not personnel_year is int and not personnel_year is float) or float(personnel_year)!=floorf(float(personnel_year)) or personnel_year< -1:return false
+    if not data.get("source_hourly_wages",{}) is Dictionary:return false
+    for id in data.get("source_hourly_wages",{}):
+        var value = data.source_hourly_wages[id]
+        if not _staff_candidate_catalog.has(str(id)) or (not value is int and not value is float) or float(value)!=floorf(float(value)) or value< -2147483648 or value>2147483647:return false
     var rollover_year = data.get("source_annual_rollover_year",-1)
     if (not rollover_year is int and not rollover_year is float) or float(rollover_year)!=floorf(float(rollover_year)) or rollover_year< -1:return false
     var annual_blocks: Array = [data]
@@ -4574,6 +4588,8 @@ func load_state(data: Dictionary) -> bool:
     _checkout_queue.clear()
     event_log.reset()
     _candidate_raises = (data.get("candidate_figure_raises", {}) as Dictionary).duplicate(true)
+    _source_hourly_wages={}
+    for id in data.get("source_hourly_wages",{}):_source_hourly_wages[str(id)]=int(data.source_hourly_wages[id])
     economy.restore_snapshot(data["economy"])
     _unassigned_staff = data.get("unassigned_staff",{}).duplicate(true)
     _retired_month_sales = int(data.get("retired_month_sales",0))
@@ -4642,6 +4658,7 @@ func load_state(data: Dictionary) -> bool:
         _chain_visitor_milestone.events.clear()
     last_owner_review = data.get("last_owner_review", {}).duplicate(true)
     _source_annual_rollover_year = int(data.get("source_annual_rollover_year",month_count/12))
+    _source_annual_personnel_year = int(data.get("source_annual_personnel_year",_source_annual_rollover_year))
     _restore_store_block(data, data["bought_buildings"])
 
     for block in data.get("branches", []):
@@ -4678,6 +4695,7 @@ func load_state(data: Dictionary) -> bool:
             var id := str(rival["id"])
             if data.get("program_rivals", {}).has(id):
                 _program_rival_simulation(rival).load_state(data["program_rivals"][id])
+                _program_rival_simulation(rival) # Rebind authoritative world traits/wages after child load.
         _program_rng.seed = int(data.get("program_rng", program_town.seed))
         _sync_program_town()
     _for_each_store( func():
@@ -5522,11 +5540,12 @@ func _manager_academic() -> int:
 func _candidate_figures(candidate_id: String) -> Dictionary:
     var base: Dictionary = _staff_candidate_catalog.get(candidate_id, {})
     var raises: Dictionary = _candidate_raises.get(candidate_id, {})
-    if raises.is_empty():
+    if raises.is_empty() and not _source_hourly_wages.has(candidate_id):
         return base
     var figures := base.duplicate()
     for key in raises:
         figures[key] = mini(127 if key == "age_years" else 100, int(base.get(key, 0)) + int(raises[key]))
+    if _source_hourly_wages.has(candidate_id):figures["salary_yen_per_day_24h"]=int(_source_hourly_wages[candidate_id])*24
     return figures
 
 
@@ -6494,7 +6513,8 @@ func program_fixture_kind(fixture: Dictionary) -> int:
 # inventory, employees and ledger. They never run an EXE or interpreter.
 func _program_rival_simulation(rival: Dictionary):
     var id := str(rival["id"])
-    if not _rival_simulations.has(id):
+    var created := not _rival_simulations.has(id)
+    if created:
         var child_config := config.duplicate(true)
         child_config["simulation"]["rival_child"] = true
         child_config["customer"]["id_prefix"] = str(config["customer"]["id_prefix"]) + "-" + id
@@ -6546,6 +6566,14 @@ func _program_rival_simulation(rival: Dictionary):
                 child.product_price_settings[str(_recovery["product_ids"][i])] = int(rival["price_settings"][i])
         _rival_simulations[id] = child
     var sim = _rival_simulations[id]
+    # Both companies address the same35 original person records. Runtime
+    # paths/skills stay per roster; only base figures/wages are shared here.
+    sim._candidate_raises=_candidate_raises
+    sim._source_hourly_wages=_source_hourly_wages
+    if created:
+        for person in sim.staff.all_staff():
+            if _source_hourly_wages.has(person.candidate_id):person.salary_yen_per_day_24h=int(_source_hourly_wages[person.candidate_id])*24
+            person.stamina_max=int(_candidate_figures(person.candidate_id).get("stamina",person.stamina_max))
     sim.program_town = program_town
     sim.store_site = store_site
     sim._program_rng = _program_rng
@@ -6578,6 +6606,7 @@ func _advance_program_rivals() -> void:
 
 func _program_rival_monthly() -> void:
     _advance_program_rivals()
+    if month_count>0 and month_count%12==0:_apply_source_annual_personnel(month_count/12)
     var result: Dictionary = ProgramRivalsScript.review(_rival_stores, player_store_count, month_count % 12 + 1)
     var closed := str(result["closed"])
     if not closed.is_empty():
@@ -6586,6 +6615,7 @@ func _program_rival_monthly() -> void:
         var sim = _program_rival_simulation(_rival_stores[index])
         var refund: int = store_site.start_land_price_yen(origin) + _program_premises_value(sim)
         _rival_cash_yen += refund
+        for person in sim.staff.all_staff():_retain_source_staff(person)
         _rival_stores.remove_at(index)
         _rival_simulations.erase(closed)
         for dy in 2:
@@ -6929,21 +6959,53 @@ func _annual_review(reserve_notice := true) -> void:
         if has_store_site():
             _source_annual_sales_history=preload("res://scripts/domain/program_annual.gd").rollover(_annual_sales_yen,_source_annual_sales_history)
             _annual_sales_yen=0
-        for person in staff.all_staff():
-            var hourly: int = person.salary_yen_per_day_24h/24
-            person.salary_yen_per_day_24h=(hourly*103/100)*24)
-    if reserve_notice and not bool(config.simulation.get("rival_child",false)):
-        _record_event("owner_review",{"year":year})
+    )
+    if not bool(config.simulation.get("rival_child",false)):
+        _apply_source_annual_personnel(year)
+        if reserve_notice:_record_event("owner_review",{"year":year})
 
-    for id in _staff_candidate_catalog:
-        var figures := _candidate_figures(str(id))
-        var age := mini(127, int(figures.get("age_years", 0)) + 1)
-        var raises: Dictionary = _candidate_raises.get(id, {})
-        raises["age_years"] = age - int(_staff_candidate_catalog[id].get("age_years", 0))
-        if age >= 127 or (age >= 80 and _program_rng.randi() % 5 == 0):
-            for field in ["stamina", "education", "agility", "sociability", "academic_background"]:
-                raises[field] = 100 - int(_staff_candidate_catalog[id].get(field, 0))
-        _candidate_raises[id] = raises
+
+func _apply_source_annual_personnel(year: int) -> void:
+    if program_town==null or bool(config.simulation.get("rival_child",false)) or year<1 or _source_annual_personnel_year==year:return
+    _source_annual_personnel_year=year
+    var rule = preload("res://scripts/domain/program_annual_personnel.gd")
+    var rosters: Array = []
+    var all_rosters: Array = []
+    _for_each_store(func():
+        all_rosters.append(staff)
+        if has_store_site():rosters.append(staff))
+    var children: Array = []
+    for rival in _rival_stores:
+        var child = _program_rival_simulation(rival)
+        rosters.append(child.staff)
+        all_rosters.append(child.staff)
+        children.append(child)
+    # Per-store pay precedes the single global age loop, as in29334.
+    for roster in rosters:
+        for person in roster.all_staff():
+            var hourly: int = rule.wage(int(person.salary_yen_per_day_24h)/24)
+            _source_hourly_wages[str(person.candidate_id)]=hourly
+            person.salary_yen_per_day_24h=hourly*24
+            if _unassigned_staff.has(str(person.candidate_id)):_unassigned_staff[str(person.candidate_id)].salary_yen_per_day_24h=person.salary_yen_per_day_24h
+    for candidate_id in config["source_scenario"]["staff_order"]:
+        var id := str(candidate_id)
+        var figures := _candidate_figures(id)
+        var result: Dictionary = rule.age_person(int(figures.get("age_years",0)),_program_rng)
+        var raises: Dictionary = _candidate_raises.get(id,{})
+        raises.age_years=int(result.age)-int(_staff_candidate_catalog[id].get("age_years",0))
+        if result.boosted:
+            for field in ["stamina","education","agility","sociability","academic_background"]:
+                raises[field]=100-int(_staff_candidate_catalog[id].get(field,0))
+        _candidate_raises[id]=raises
+    for roster in all_rosters:
+        for person in roster.all_staff():
+            person.stamina_max=int(_candidate_figures(person.candidate_id).get("stamina",person.stamina_max))
+    var pools: Array = [_unassigned_staff]
+    for child in children:pools.append(child._unassigned_staff)
+    for pool in pools:
+        for id in pool:
+            pool[id].stamina_max=int(_candidate_figures(str(id)).get("stamina",pool[id].get("stamina_max",0)))
+            if _source_hourly_wages.has(str(id)):pool[id].salary_yen_per_day_24h=int(_source_hourly_wages[str(id)])*24
 
 
 # 80031498: hourly percentage is sampled before at most one stain. Only

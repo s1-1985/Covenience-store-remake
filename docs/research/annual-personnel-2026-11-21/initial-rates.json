@@ -1,0 +1,137 @@
+{
+  "existing_extraction": "20261114-staff-roster-growth-data/staff-roster-data.json",
+  "existing_extraction_sha256": "6513b715dfa880ffe77ae6a98a5dc96342e3191d75604738a2cb1b4a1067e615",
+  "maps": [
+    {
+      "map": "TOWN0001",
+      "active_stores": [
+        {
+          "physical_slot": 1,
+          "flags": 32769,
+          "staff_ids": [
+            14,
+            24,
+            9
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 2,
+          "flags": 32770,
+          "staff_ids": [
+            6,
+            34,
+            18
+          ],
+          "annual_wage_rate": 3
+        }
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "active_stores": [
+        {
+          "physical_slot": 1,
+          "flags": 32769,
+          "staff_ids": [
+            14,
+            26,
+            10
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 2,
+          "flags": 32770,
+          "staff_ids": [
+            34,
+            5,
+            24
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 3,
+          "flags": 32771,
+          "staff_ids": [
+            9,
+            21,
+            7
+          ],
+          "annual_wage_rate": 3
+        }
+      ]
+    },
+    {
+      "map": "TOWN0003",
+      "active_stores": [
+        {
+          "physical_slot": 1,
+          "flags": 32769,
+          "staff_ids": [
+            34,
+            26,
+            9
+          ],
+          "annual_wage_rate": 3
+        }
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "active_stores": [
+        {
+          "physical_slot": 1,
+          "flags": 32769,
+          "staff_ids": [
+            4,
+            3,
+            10
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 2,
+          "flags": 32770,
+          "staff_ids": [
+            34,
+            7,
+            -1
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 3,
+          "flags": 32771,
+          "staff_ids": [
+            19,
+            14,
+            -1
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 4,
+          "flags": 32772,
+          "staff_ids": [
+            6,
+            16,
+            -1
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 5,
+          "flags": 32773,
+          "staff_ids": [
+            5,
+            21,
+            -1
+          ],
+          "annual_wage_rate": 3
+        }
+      ]
+    }
+  ],
+  "new_original_executions": 0
+}
