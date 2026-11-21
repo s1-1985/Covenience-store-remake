@@ -22,5 +22,16 @@
   "python_existing_failures": 2,
   "python_expected_failures": 1,
   "android_device_verified": false,
-  "library_file_id": "libfile_e0e0952727988191b8de522d04bbf71b"
+  "library_file_id": "libfile_e0e0952727988191b8de522d04bbf71b",
+  "source_code_commit": "de25b168de01381988dee94521e93939f22e7190",
+  "signature_v2_verified": true,
+  "signature_v3_verified": true,
+  "csrm001_related_pass": 8,
+  "unique_related_smoke_pass": 15,
+  "full_headless_pass": false,
+  "full_headless_failure": "town map must be legible and fit left of the side panel; headless_smoke.gd:2799",
+  "python_existing_failure_names": [
+    "GameVerticalSliceContractTests.test_slim_engine_template_keeps_what_the_game_uses",
+    "GameVerticalSliceContractTests.test_store_site_is_chosen_freely_with_a_land_price_per_site"
+  ]
 }

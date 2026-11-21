@@ -51,7 +51,7 @@
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
   "latest_build": "2026-11-21-v089-build.json",
-  "latest_handoff": "2026-11-21-operating-audio.md",
+  "latest_handoff": "2026-11-21-muse-implementation.md",
   "latest_validation": {
     "base_commit": "9dfa80b98bf584b90d2a5a53b46ad67dc49838af",
     "godot_version": "4.6.3",
@@ -60,9 +60,17 @@
     "python_existing_failures": 2,
     "python_expected_failures": 1,
     "full_python_rerun": true,
-    "full_headless_rerun": false,
-    "apk_updated": true
+    "full_headless_rerun": true,
+    "apk_updated": true,
+    "unique_related_godot_passed": 15,
+    "full_headless_pass": false
   },
   "latest_runtime_checkpoint": "de25b168de01381988dee94521e93939f22e7190",
-  "latest_pr": 272
+  "latest_pr": 272,
+  "muse_instructions": {
+    "source_commit": "030e468f1b21684d3304026c858e387e5f5d9b45",
+    "CSRM-001": "v1 recorded; successor-artifact deviation pending review",
+    "CSRM-003": "v1 applied; pending review",
+    "CSRM-002": "v1 ready; not started"
+  }
 }
