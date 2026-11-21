@@ -482,7 +482,7 @@ static func employee(s, p, slot: int) -> void:
         choose_work(s, p)
         return
     if p.position != p.source_goal:
-        move(s, p, int(s._staff_candidate_catalog.get(p.candidate_id, {}).get("agility", 0)), true)
+        move(s, p, int(s._candidate_figures(p.candidate_id).get("agility", 0)), true)
         return
     if p.source_direction != p.source_goal_direction:
         p.source_direction = p.source_goal_direction

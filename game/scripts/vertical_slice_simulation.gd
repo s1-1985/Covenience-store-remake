@@ -5536,7 +5536,8 @@ func _manager_academic() -> int:
     return int(_candidate_figures(manager.candidate_id).get("academic_background", 0))
 
 
-# A candidate's figures with what the magazines have added (never past 100).
+# Shared current base traits, including magazine awards and annual boosts.
+# Work skills remain on the person's runtime record.
 func _candidate_figures(candidate_id: String) -> Dictionary:
     var base: Dictionary = _staff_candidate_catalog.get(candidate_id, {})
     var raises: Dictionary = _candidate_raises.get(candidate_id, {})
@@ -5995,7 +5996,7 @@ func _recover_stamina(staff_member) -> void:
         if staff_member.exhausted and staff_member.stamina >= staff_member.stamina_max:
             staff_member.exhausted = false
         return
-    var agility := int(_staff_candidate_catalog.get(staff_member.candidate_id, {}).get("agility", 0))
+    var agility := int(_candidate_figures(staff_member.candidate_id).get("agility", 0))
     var gain := 0
     if program_town != null:
         var improved := false
