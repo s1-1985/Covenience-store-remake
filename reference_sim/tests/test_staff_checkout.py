@@ -170,6 +170,84 @@ class StaffAndCheckoutTests(unittest.TestCase):
         customers.force_eject("c1", reason="manual")
         self.assertEqual(checkout.refresh_waiting(), ())
 
+    def test_ejected_customer_in_service_releases_staff_assignment(self):
+        """メモ項目3: 接客中の客を eject したら接客割当が解放される。
+
+        docs/handoff/chatgpt-review-notes.md 項目3 / CSRM-004。
+        force_eject はセッション状態だけを変え、チェックアウト側の
+        _active_by_staff は残るため、店員が IDLE に戻らなかった。
+        """
+        customers = self.make_customer_system()
+        self.add_waiting_customer(customers, "c1", GridPoint(0, 0), GridPoint(0, 8))
+        roster = StoreStaffRoster()
+        roster.add_staff("s1")
+        checkout = CheckoutStationRuntime(
+            "checkout", customers, roster, simultaneous_staff_capacity=1
+        )
+        checkout.begin_service("s1", "c1")
+        self.assertEqual(checkout.customer_being_served_by("s1"), "c1")
+
+        customers.force_eject("c1", reason="manual")
+        checkout.refresh_waiting()
+
+        self.assertIsNone(checkout.customer_being_served_by("s1"))
+        self.assertEqual(checkout.active_services, ())
+        self.assertEqual(roster.staff_member("s1").task, StaffTask.IDLE)
+        self.assertEqual(checkout.waiting_customer_ids, ())
+
+    def test_cancelled_waiting_customer_does_not_rejoin_on_refresh(self):
+        """メモ項目12: cancel_customer の取り消しは refresh で復活しない。
+
+        docs/handoff/chatgpt-review-notes.md 項目12 / CSRM-004。
+        cancel は待ち列から外すだけでセッション状態を変えないため、
+        次の refresh_waiting() が WAITING_CHECKOUT の客を再登録していた。
+        """
+        customers = self.make_customer_system()
+        self.add_waiting_customer(customers, "c1", GridPoint(0, 0), GridPoint(0, 8))
+        roster = StoreStaffRoster()
+        roster.add_staff("s1")
+        checkout = CheckoutStationRuntime(
+            "checkout", customers, roster, simultaneous_staff_capacity=1
+        )
+        self.assertEqual(checkout.refresh_waiting(), ("c1",))
+
+        self.assertTrue(checkout.cancel_customer("c1"))
+
+        for _ in range(3):
+            self.assertEqual(checkout.refresh_waiting(), ())
+        with self.assertRaises(ValueError):
+            checkout.begin_service("s1", "c1")
+
+    def test_cancel_before_arrival_does_not_block_later_queueing(self):
+        """メモ項目12（過剰ブロック防止）: 到着前の cancel は後の入列を妨げない。
+
+        取り消しの永続化はセッション状態の遷移で判断する設計のため、
+        WAITING_CHECKOUT に達していない客への cancel は tombstone を
+        残してはならない。
+        """
+        customers = self.make_customer_system()
+        customers.add_customer(
+            "c1",
+            entry_point=GridPoint(0, 0),
+            exit_point=GridPoint(0, 8),
+            merchandise_fixture_ids=("shelf",),
+            checkout_fixture_id="checkout",
+        )
+        roster = StoreStaffRoster()
+        roster.add_staff("s1")
+        checkout = CheckoutStationRuntime(
+            "checkout", customers, roster, simultaneous_staff_capacity=1
+        )
+
+        self.assertFalse(checkout.cancel_customer("c1"))
+
+        self.advance_until(customers, "c1", CustomerState.AT_MERCHANDISE)
+        customers.record_merchandise_interaction(
+            "c1", flow=PurchaseFlow.CHECKOUT_REQUIRED
+        )
+        self.advance_until(customers, "c1", CustomerState.WAITING_CHECKOUT)
+        self.assertEqual(checkout.refresh_waiting(), ("c1",))
+
 
 if __name__ == "__main__":
     unittest.main()
