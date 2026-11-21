@@ -1,0 +1,295 @@
+{
+  "kind": "previously recovered Python model, not new original CPU execution",
+  "archive_commit": "a1f45981ffc1479e9a8e0b4ff429d4fc4cb85ea4",
+  "source_file": "ps1-analysis-checkpoints/analysis/20261103-operating-continuation/source-reference/operating_costs.py",
+  "source_sha256": "34b7ecc805c6cea6bd709dd9f690ca09da975564be433a73d924ff3d12fbcdb9",
+  "staff": [
+    {
+      "hours": 0,
+      "wages": [
+        500,
+        600,
+        700
+      ],
+      "per_staff": [
+        0,
+        0,
+        0
+      ],
+      "total": 0
+    },
+    {
+      "hours": 0,
+      "wages": [
+        2147483647,
+        1,
+        1
+      ],
+      "per_staff": [
+        0,
+        0,
+        0
+      ],
+      "total": 0
+    },
+    {
+      "hours": 0,
+      "wages": [
+        536870912,
+        536870912,
+        536870912
+      ],
+      "per_staff": [
+        0,
+        0,
+        0
+      ],
+      "total": 0
+    },
+    {
+      "hours": 0,
+      "wages": [
+        -2147483648,
+        -1,
+        100
+      ],
+      "per_staff": [
+        0,
+        0,
+        0
+      ],
+      "total": 0
+    },
+    {
+      "hours": 8,
+      "wages": [
+        500,
+        600,
+        700
+      ],
+      "per_staff": [
+        5200,
+        4800,
+        5600
+      ],
+      "total": 15600
+    },
+    {
+      "hours": 8,
+      "wages": [
+        2147483647,
+        1,
+        1
+      ],
+      "per_staff": [
+        -8,
+        8,
+        8
+      ],
+      "total": 8
+    },
+    {
+      "hours": 8,
+      "wages": [
+        536870912,
+        536870912,
+        536870912
+      ],
+      "per_staff": [
+        85899344,
+        0,
+        0
+      ],
+      "total": 85899344
+    },
+    {
+      "hours": 8,
+      "wages": [
+        -2147483648,
+        -1,
+        100
+      ],
+      "per_staff": [
+        0,
+        -8,
+        800
+      ],
+      "total": 792
+    },
+    {
+      "hours": 24,
+      "wages": [
+        500,
+        600,
+        700
+      ],
+      "per_staff": [
+        15600,
+        14400,
+        16800
+      ],
+      "total": 46800
+    },
+    {
+      "hours": 24,
+      "wages": [
+        2147483647,
+        1,
+        1
+      ],
+      "per_staff": [
+        -24,
+        24,
+        24
+      ],
+      "total": 24
+    },
+    {
+      "hours": 24,
+      "wages": [
+        536870912,
+        536870912,
+        536870912
+      ],
+      "per_staff": [
+        257698032,
+        0,
+        0
+      ],
+      "total": 257698032
+    },
+    {
+      "hours": 24,
+      "wages": [
+        -2147483648,
+        -1,
+        100
+      ],
+      "per_staff": [
+        0,
+        -24,
+        2400
+      ],
+      "total": 2376
+    }
+  ],
+  "equipment": [
+    {
+      "hours": 0,
+      "rates": [
+        100,
+        200
+      ],
+      "kinds": [
+        0,
+        1,
+        53
+      ],
+      "total": 0
+    },
+    {
+      "hours": 0,
+      "rates": [
+        2147483647,
+        1
+      ],
+      "kinds": [
+        0,
+        1,
+        53
+      ],
+      "total": 0
+    },
+    {
+      "hours": 0,
+      "rates": [
+        536870912,
+        536870912
+      ],
+      "kinds": [
+        0,
+        1,
+        53
+      ],
+      "total": 0
+    },
+    {
+      "hours": 8,
+      "rates": [
+        100,
+        200
+      ],
+      "kinds": [
+        0,
+        1,
+        53
+      ],
+      "total": 2400
+    },
+    {
+      "hours": 8,
+      "rates": [
+        2147483647,
+        1
+      ],
+      "kinds": [
+        0,
+        1,
+        53
+      ],
+      "total": 0
+    },
+    {
+      "hours": 8,
+      "rates": [
+        536870912,
+        536870912
+      ],
+      "kinds": [
+        0,
+        1,
+        53
+      ],
+      "total": 0
+    },
+    {
+      "hours": 24,
+      "rates": [
+        100,
+        200
+      ],
+      "kinds": [
+        0,
+        1,
+        53
+      ],
+      "total": 7200
+    },
+    {
+      "hours": 24,
+      "rates": [
+        2147483647,
+        1
+      ],
+      "kinds": [
+        0,
+        1,
+        53
+      ],
+      "total": 0
+    },
+    {
+      "hours": 24,
+      "rates": [
+        536870912,
+        536870912
+      ],
+      "kinds": [
+        0,
+        1,
+        53
+      ],
+      "total": 0
+    }
+  ]
+}
