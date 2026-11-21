@@ -2,7 +2,7 @@
 
 ユーザー指示に従いMuse新規解析を採用せず、decision0206が明記した未反映の32bit計算を実装。原復元モデルrecovered.py/finance_close.pyの既存読解から、5会計欄/損益/8倍と追加7倍/最終現金をnativeへ接続。旧月末中断保存は明示帳簿から再計算する。原store_rating_coreが示す倍率前売上も、8倍後を渡していた現行呼出しへ反映した。
 
-基点3269c731a4600dd5df3f1de5ac6bb41333bd567e、branch chatgpt/legacy-finance-width-20261121。PRは作成後追記。決定0245に根拠/ファイル/テスト/制約を記録。
+基点3269c731a4600dd5df3f1de5ac6bb41333bd567e、branch chatgpt/legacy-finance-width-20261121。PR #275 https://github.com/s1-1985/Covenience-store-remake/pull/275。決定0245に根拠/ファイル/テスト/制約を記録。
 
 既存モデル24条件、実本体の5売上入力とJSON/年次/グラフ/負現金終了を検証。関連Godot10本、Python793件成功。全体headlessは既存source_catalog欠落SCRIPT ERROR5回が残り不合格。APK0.8.12/code92従来署名、実機未確認。
 

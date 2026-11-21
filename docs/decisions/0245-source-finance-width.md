@@ -2,7 +2,7 @@
 
 ## 背景と根拠
 
-ユーザーの指示に従い自分の過去解析の未反映分を優先するLEGACY-0245。Muse新規解析は採用していない。基点3269c731a4600dd5df3f1de5ac6bb41333bd567e、main688876aと未マージPR270/272/273/274のHEADを確認。ブランチchatgpt/legacy-finance-width-20261121。PRは作成後追記。
+ユーザーの指示に従い自分の過去解析の未反映分を優先するLEGACY-0245。Muse新規解析は採用していない。基点3269c731a4600dd5df3f1de5ac6bb41333bd567e、main688876aと未マージPR270/272/273/274のHEADを確認。ブランチchatgpt/legacy-finance-width-20261121。PR #275 https://github.com/s1-1985/Covenience-store-remake/pull/275。
 
 既存decision0206-android-operating-ledger.mdは月末8倍/追加7倍を移植したが、原32bitオーバーフローを未反映と明記していた。現行OperatingStatementの加減算・倍率・現金更新も64bitのままだった。
 
