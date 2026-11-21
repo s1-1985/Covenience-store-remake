@@ -28,3 +28,4 @@
 - 基準コミット: `9dfa80b98bf584b90d2a5a53b46ad67dc49838af`
 - このブランチ `muse/analysis` は上記コミットから分岐した。
 - 初回棚卸し: `analysis/2026-11-21-initial-inventory.md`
+- 「既存未解決6件」の正本は `analysis/2026-11-21-unresolved-six.md` §9 の登録表（U-1〜U-6）。2026-11-21 にユーザーが登録表運用を承認済み。今後の文書では U-ID を併記する（実装側への申し送りは `ready/CSRM-003.md`）。
