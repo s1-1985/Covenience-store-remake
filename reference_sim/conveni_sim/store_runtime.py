@@ -82,7 +82,8 @@ class StoreRuntimeHarness:
             initial_cash_yen,
             bankruptcy_policy=bankruptcy_policy,
         )
-        self.purchases = StorePurchaseRuntime(self.inventory, self.cash)
+        self.purchases = StorePurchaseRuntime(self.inventory, self.cash,
+                                              settlement_allowed=self._customer_can_settle)
         self.cleaning = StoreCleaningRuntime(grid)
         self.customer_share = CustomerShareRuntime()
         self.operating_hours = operating_hours
@@ -93,6 +94,12 @@ class StoreRuntimeHarness:
     @property
     def checkout_fixture_ids(self) -> tuple[str, ...]:
         return tuple(self._checkouts)
+
+    def _customer_can_settle(self, customer_id: str) -> bool:
+        session = self.customers.customer(customer_id)
+        return not session.settlement_blocked and session.state not in (
+            CustomerState.EJECTING, CustomerState.EJECTED, CustomerState.CHECKOUT_CANCELLED,
+        )
 
     @property
     def store_open(self) -> Optional[bool]:
@@ -302,6 +309,9 @@ class StoreRuntimeHarness:
         customer_id = checkout.customer_being_served_by(staff_id)
         if customer_id is None:
             raise KeyError(f"staff member {staff_id!r} has no active checkout service")
+        if self.customers.customer(customer_id).state is not CustomerState.WAITING_CHECKOUT:
+            checkout.cancel_customer(customer_id)
+            raise ValueError("active checkout customer is no longer waiting")
         basket = self.purchases.basket(customer_id)
         if basket.settled:
             raise ValueError("customer basket is already settled")
@@ -342,6 +352,8 @@ class StoreRuntimeHarness:
         source_id: Optional[str] = None,
     ) -> SaleSettlement:
         session = self.customers.customer(customer_id)
+        if session.state in (CustomerState.EJECTING, CustomerState.EJECTED, CustomerState.CHECKOUT_CANCELLED):
+            raise ValueError("departing or cancelled customer cannot settle a basket")
         if session.requires_checkout and not session.completed_checkout:
             raise ValueError("customer basket requires staffed checkout before self-service settlement")
         return self.purchases.settle(customer_id, source_id=source_id)

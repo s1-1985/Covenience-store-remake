@@ -60,7 +60,14 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             self.assertIn(flag, script)
         preset = (GAME_ROOT / "export_presets.cfg").read_text(encoding="utf-8")
         self.assertIn('custom_template/release=""', preset)  # Current recovery builds use the official 4.3 template.
-        self.assertIn('custom_template/debug=""', preset)
+        # The production 4.6.3 recovery build now uses the project's slim
+        # template (decision0237/build record), resolved relative to game/.
+        debug_template = re.search(r'^custom_template/debug="([^"]+)"$', preset, re.M)
+        self.assertIsNotNone(debug_template)
+        self.assertEqual(
+            (GAME_ROOT / debug_template.group(1)).resolve(),
+            REPO_ROOT / "build" / "templates" / "android_release.apk",
+        )
         # Nothing the slim engine leaves out: no 3D nodes, navigation, RegEx,
         # networking, or audio/image/model files needing a removed importer.
         sources = [path for folder in ("scripts", "scenes", "themes") for path in (GAME_ROOT / folder).rglob("*.*")
@@ -3290,7 +3297,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn('"store_site_origin": [store_site_origin.x, store_site_origin.y],', simulation)
         self.assertIn("rate (REMAKE_BALANCED_DEFAULT, remake_land_value.ANNUAL_INFLATION_RATE)", simulation)
         main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
-        self.assertIn("if simulation == null or paused or selecting_site or", main)
+        self.assertIn("if simulation == null or paused or _app_suspended or selecting_site or", main)
         self.assertIn('title.text = tr("Choose where to build your store")', main)
         po = (GAME_ROOT / "locale" / "ja.po").read_text(encoding="utf-8")
         self.assertIn('msgstr "出店場所を選んで下さい"', po)

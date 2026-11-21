@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from random import Random
 from typing import Optional
 
 from .checkout_anger_timing import (
@@ -67,6 +68,52 @@ from .staff_work_timing import (
     StaffWorkTimingEvaluation,
 )
 from .store_runtime import StoreRuntimeHarness
+
+
+class _StepCheckpoint:
+    """Restore owned simulation objects in place, including retained aliases.
+
+    Policies are caller-owned callbacks: their external side effects are not a
+    transaction resource. Normal steps keep their original call/RNG order.
+    """
+
+    def __init__(self, root: object) -> None:
+        self._saved = []
+        self._seen: set[int] = set()
+        self._visit(root)
+
+    def _visit(self, value: object) -> None:
+        if id(value) in self._seen:
+            return
+        self._seen.add(id(value))
+        if isinstance(value, Random):
+            self._saved.append(("rng", value, value.getstate()))
+        elif isinstance(value, dict):
+            self._saved.append(("dict", value, value.copy()))
+            for item in tuple(value.keys()) + tuple(value.values()):
+                self._visit(item)
+        elif isinstance(value, (list, set)):
+            self._saved.append(("list" if isinstance(value, list) else "set", value, tuple(value)))
+            for item in value:
+                self._visit(item)
+        elif isinstance(value, tuple):
+            for item in value:
+                self._visit(item)
+        elif type(value).__module__.startswith("conveni_sim.") and hasattr(value, "__dict__"):
+            attributes = vars(value)
+            self._saved.append(("dict", attributes, attributes.copy()))
+            for item in tuple(attributes.values()):
+                self._visit(item)
+
+    def restore(self) -> None:
+        for kind, target, saved in reversed(self._saved):
+            if kind == "rng":
+                target.setstate(saved)
+            elif kind == "list":
+                target[:] = saved
+            else:
+                target.clear()
+                target.update(saved)
 
 
 @dataclass(frozen=True)
@@ -221,6 +268,14 @@ class StoreStepOrchestrator:
         return tuple(locked)
 
     def step(self, game_minutes: int) -> StoreStepResult:
+        checkpoint = _StepCheckpoint(self)
+        try:
+            return self._step(game_minutes)
+        except BaseException:
+            checkpoint.restore()
+            raise
+
+    def _step(self, game_minutes: int) -> StoreStepResult:
         """Advance one policy-driven store step.
 
         Existing rest states are evaluated immediately after the game clock

@@ -84,6 +84,49 @@ class StoreRuntimeIntegrationTests(unittest.TestCase):
 
         self.advance_until(runtime, "c1", CustomerState.EXITED)
 
+    def test_note3_ejection_blocks_stale_timed_and_direct_settlement(self):
+        from conveni_sim.checkout_service_timing import CheckoutServiceTimingCoordinator
+
+        runtime = StoreRuntimeHarness(self.make_grid(), initial_cash_yen=1000)
+        checkout = runtime.add_checkout("checkout", simultaneous_staff_capacity=1)
+        worker = runtime.staff.add_staff("s1")
+        runtime.inventory.add_slot("bread-slot", fixture_id="shelf", product_id="bread",
+                                   capacity_units=10, initial_units=5)
+        runtime.add_customer("c1", entry_point=GridPoint(0, 0), exit_point=GridPoint(0, 8),
+                             merchandise_fixture_ids=("shelf",), checkout_fixture_id="checkout")
+        self.advance_until(runtime, "c1", CustomerState.AT_MERCHANDISE)
+        runtime.customer_pick_and_continue("c1", "bread-slot", quantity=1, unit_sale_price_yen=120,
+                                          flow=PurchaseFlow.CHECKOUT_REQUIRED)
+        self.advance_until(runtime, "c1", CustomerState.WAITING_CHECKOUT)
+        started = runtime.begin_checkout_service("checkout", staff_id="s1", customer_id="c1")
+        timing = CheckoutServiceTimingCoordinator(runtime)
+        timing.register_started(started)
+        runtime.customers.force_eject("c1")
+        self.assertEqual(checkout.active_services, ())
+        self.assertEqual(worker.task, StaffTask.IDLE)
+
+        class Immediate:
+            def required_game_minutes(self, context):
+                return 0
+
+        with self.assertRaises(ValueError):
+            timing.evaluate_staff("s1", Immediate())
+        with self.assertRaises(KeyError):
+            runtime.finish_checkout_sale("checkout", staff_id="s1")
+        with self.assertRaises(ValueError):
+            runtime.settle_self_service("c1")
+        with self.assertRaises(ValueError):
+            runtime.purchases.settle("c1")
+        # An exit route becoming unreachable must not make the unpaid
+        # departing basket payable through the lower-level settlement bridge.
+        runtime.customers.customer("c1").state = CustomerState.UNREACHABLE
+        with self.assertRaises(ValueError):
+            runtime.purchases.settle("c1")
+        self.assertEqual(runtime.cash.known_cash_yen, 1000)
+        self.assertFalse(runtime.purchases.basket("c1").settled)
+        self.assertEqual(runtime.purchases.settlements, ())
+        self.assertEqual(runtime.inventory.slot("bread-slot").units, 4)
+
     def test_self_service_candidate_can_settle_without_checkout_runtime(self):
         runtime = StoreRuntimeHarness(self.make_grid(), initial_cash_yen=1_000)
         runtime.inventory.add_slot(

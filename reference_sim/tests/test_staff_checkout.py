@@ -170,6 +170,58 @@ class StaffAndCheckoutTests(unittest.TestCase):
         customers.force_eject("c1", reason="manual")
         self.assertEqual(checkout.refresh_waiting(), ())
 
+    def test_note3_eject_active_customer_releases_the_cashier_immediately(self):
+        customers = self.make_customer_system()
+        self.add_waiting_customer(customers, "c1", GridPoint(0, 0), GridPoint(0, 8))
+        roster = StoreStaffRoster()
+        worker = roster.add_staff("s1")
+        checkout = CheckoutStationRuntime("checkout", customers, roster, simultaneous_staff_capacity=1)
+        checkout.begin_service("s1", "c1")
+        customers.force_eject("c1", reason="manual")
+        self.assertEqual(checkout.active_services, ())
+        self.assertEqual(worker.task, StaffTask.IDLE)
+        self.assertEqual(worker.completed_count(StaffTask.CHECKOUT), 0)
+        for _ in range(3):
+            self.assertEqual(checkout.refresh_waiting(), ())
+        with self.assertRaises(KeyError):
+            checkout.finish_service("s1")
+        with self.assertRaises(ValueError):
+            customers.resume_checkout("c1")
+
+    def test_note12_cancelled_waiter_requires_explicit_session_reentry(self):
+        customers = self.make_customer_system()
+        self.add_waiting_customer(customers, "c1", GridPoint(0, 0), GridPoint(0, 8))
+        roster = StoreStaffRoster()
+        roster.add_staff("s1")
+        checkout = CheckoutStationRuntime("checkout", customers, roster, simultaneous_staff_capacity=1)
+        checkout.refresh_waiting()
+        self.assertTrue(checkout.cancel_customer("c1"))
+        self.assertFalse(checkout.cancel_customer("c1"))
+        self.assertEqual(customers.customer("c1").state, CustomerState.CHECKOUT_CANCELLED)
+        for _ in range(3):
+            customers.tick()
+            self.assertEqual(checkout.refresh_waiting(), ())
+        customers.resume_checkout("c1")
+        self.assertEqual(customers.customer("c1").state, CustomerState.APPROACHING_CHECKOUT)
+        self.advance_until(customers, "c1", CustomerState.WAITING_CHECKOUT)
+        self.assertEqual(checkout.refresh_waiting(), ("c1",))
+        checkout.begin_service("s1", "c1")
+        self.assertEqual(checkout.customer_being_served_by("s1"), "c1")
+
+    def test_note12_cancel_active_service_releases_without_completed_work(self):
+        customers = self.make_customer_system()
+        self.add_waiting_customer(customers, "c1", GridPoint(0, 0), GridPoint(0, 8))
+        roster = StoreStaffRoster()
+        worker = roster.add_staff("s1")
+        checkout = CheckoutStationRuntime("checkout", customers, roster, simultaneous_staff_capacity=1)
+        checkout.begin_service("s1", "c1")
+        self.assertTrue(checkout.cancel_customer("c1"))
+        self.assertEqual(worker.task, StaffTask.IDLE)
+        self.assertEqual(worker.completed_count(StaffTask.CHECKOUT), 0)
+        self.assertEqual(checkout.active_services, ())
+        self.assertEqual(checkout.service_history, ())
+        self.assertEqual(checkout.refresh_waiting(), ())
+
 
 if __name__ == "__main__":
     unittest.main()
