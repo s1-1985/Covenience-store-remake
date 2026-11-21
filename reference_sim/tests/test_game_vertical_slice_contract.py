@@ -1093,7 +1093,11 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
         # Wired into the monthly game loop, not just defined standalone.
         self.assertIn("func _evaluate_store_rating(monthly_sales_yen: int) -> void:", simulation)
-        self.assertIn("_evaluate_store_rating(monthly_sales_yen)", simulation)
+        # The recovered rating reads unscaled D48; x8 belongs to finance close.
+        self.assertIn(
+            "_evaluate_store_rating(OperatingStatementScript.signed32(_store_sales_yen - _store_sales_at_month_start) if program_town != null else monthly_sales_yen)",
+            simulation,
+        )
         self.assertIn('"internal_rating_value": internal_rating_value,', simulation)
         self.assertIn('"star_rating": star_rating,', simulation)
         # As of task #53, price_change_pct reflects the player's own
