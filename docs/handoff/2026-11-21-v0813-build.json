@@ -1,0 +1,30 @@
+{
+  "version": "0.8.13-daily-costs",
+  "code": 93,
+  "apk_bytes": 45077967,
+  "apk_sha256": "0f6b87ed4dcf247639f6dc252b319389e713da1768705beb36df7b589e0df32e",
+  "compiled_scripts_sha256": {
+    "domain/program_operating_costs": "bc8dbf6b80a38b07fbc28032b434952b808857daa84026db5148de910f5cbd40",
+    "vertical_slice_simulation": "def1899bce56638b54637b7a46dabcffa999d1d49b8a37bcec910bfcda9cb465"
+  },
+  "date": "2026-11-21",
+  "base_commit": "db9b596a1599f8e4b22fe6ac40c4f34c2ff2642b",
+  "branch": "chatgpt/legacy-daily-costs-20261121",
+  "filename": "Conveni-v0.8.13.apk",
+  "package": "com.conveniremake.touchfix",
+  "godot_version": "4.6.3",
+  "signature_v2": true,
+  "signature_v3": true,
+  "certificate_sha256": "4e1ea772ac6aea449573f8c151028082d011f82945170272b8dc61b43bec29a4",
+  "library_file_id": "libfile_f999fa481cec81919c9569475c51561f",
+  "python_passed": 793,
+  "related_godot_passed": 10,
+  "model_cases": 21,
+  "full_headless_pass": false,
+  "full_headless_existing_errors": 5,
+  "device_verified": false,
+  "apk_smoke_scripts_excluded": true,
+  "task_id": "LEGACY-0246",
+  "pr": 276,
+  "implementation_commit": "a3a8d2adbf3d7649b35f736116eeb915614c4e04"
+}

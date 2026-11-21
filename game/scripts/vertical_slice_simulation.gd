@@ -5246,14 +5246,14 @@ func _scale_yen_to_configured_business_hours(value_at_24h_basis: int) -> int:
 # entry every single day.
 func _apply_daily_fixture_maintenance() -> void:
     if program_town != null:
-        var total := 0
+        var kinds: Array = []
         for fixture in layout.fixtures + outdoor_fixtures:
-            var kind := program_fixture_kind(fixture)
-            if kind >= 0:
-                total += int(_recovery["fixture_records"][kind][2]) * (demand.opening_minutes_per_day / 60)
-        if total > 0:
+            kinds.append(program_fixture_kind(fixture))
+        var total: int = preload("res://scripts/domain/program_operating_costs.gd").maintenance(kinds, _recovery["fixture_records"], demand.opening_minutes_per_day / 60)
+        if total != 0:
             var expense: Dictionary = economy.record_explicit_expense("fixture_maintenance", minute_of_day, total)
             _record_event("fixture_maintenance_charged", {"total_maintenance_yen": total, "expense_id": expense["expense_id"]})
+        economy.cash_yen = OperatingStatementScript.signed32(economy.cash_yen)
         return
     var total_maintenance_yen := 0
     for fixture in layout.fixtures + outdoor_fixtures:
@@ -5295,15 +5295,14 @@ func _apply_daily_fixture_maintenance() -> void:
 func _apply_daily_staff_wages() -> void:
     if program_town != null:
         var total := 0
-        var roster: Array = staff.all_staff()
-        for index in roster.size():
-            var hourly: int = int(roster[index].salary_yen_per_day_24h) / 24
-            if roster[index].staff_id == "staff-1":
-                hourly = hourly * 130 / 100
-            total += hourly * (demand.opening_minutes_per_day / 60)
-        if total > 0:
+        for person in staff.all_staff():
+            var amount: int = preload("res://scripts/domain/program_operating_costs.gd").wage(
+                int(person.salary_yen_per_day_24h) / 24, person.staff_id == "staff-1", demand.opening_minutes_per_day / 60)
+            total = OperatingStatementScript.signed32(total + amount)
+        if total != 0:
             var expense: Dictionary = economy.record_explicit_expense("staff_wages", minute_of_day, total)
             _record_event("staff_wages_charged", {"total_wages_yen": total, "expense_id": expense["expense_id"]})
+        economy.cash_yen = OperatingStatementScript.signed32(economy.cash_yen)
         return
     var total_wages_yen := 0
     for staff_member in staff.all_staff():

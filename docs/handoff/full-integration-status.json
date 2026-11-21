@@ -1,7 +1,7 @@
 {
   "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
-  "branch": "chatgpt/legacy-finance-width-20261121",
-  "base": "3269c731a4600dd5df3f1de5ac6bb41333bd567e",
+  "branch": "chatgpt/legacy-daily-costs-20261121",
+  "base": "db9b596a1599f8e4b22fe6ac40c4f34c2ff2642b",
   "updated": "2026-11-21",
   "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
   "checkpoints": "関連する未反映境界をまとめて実装し、必要な検証を一括実施してGitHubへ保存する。APKはまとまった進捗と署名環境がそろった時点で作成し、コード更新とAPK収録を区別する。",
@@ -15,7 +15,7 @@
     {
       "id": "operations",
       "status": "partial",
-      "done": "0.6.9～0.8.5: 調査/グラフ/店舗売却/許可/改築/内装確定取消/個別価格/宣伝/寄付/暦演出/調査失効/人事保持/購入断念/事件/火災後処理/品切れ補充/店長報告/雑誌コンテストを順次接続。各handoff参照。0.8.6: ライバル宣伝の月初選択/会社支払/全店人気/通知/JSONを接続。0.8.7: 前年売上3履歴/年次繰越/表示時評価/クリアを接続。0.8.8: 年初人物と配属者昇給の重複を除去。0.8.12: native月末5欄/損益/現金の32bit化と倍率前売上の店舗評価入力を接続",
+      "done": "0.6.9～0.8.5: 調査/グラフ/店舗売却/許可/改築/内装確定取消/個別価格/宣伝/寄付/暦演出/調査失効/人事保持/購入断念/事件/火災後処理/品切れ補充/店長報告/雑誌コンテストを順次接続。各handoff参照。0.8.6: ライバル宣伝の月初選択/会社支払/全店人気/通知/JSONを接続。0.8.7: 前年売上3履歴/年次繰越/表示時評価/クリアを接続。0.8.8: 年初人物と配属者昇給の重複を除去。0.8.12: native月末5欄/損益/現金の32bit化と倍率前売上の店舗評価入力を接続。0.8.13: 日次人件費/設備維持費の32bit途中計算・負額計上・現金更新・kind53除外",
       "remaining": "全入力経路・原活動スロット履歴順・原通知全制御列等は未完。ライバル宣伝の選択/実施は接続済み、全営業RNG一致は未確認"
     },
     {
@@ -46,14 +46,14 @@
       "id": "android",
       "status": "milestone_built",
       "remaining": "Android実機インストール/タッチ/音量/性能、全反映後の最終版確認",
-      "done": "0.8.12-finance-width/code92、従来touchfix署名。月末32bit会計/評価入力修正を収録"
+      "done": "0.8.13-daily-costs/code93、従来touchfix署名。日次費用の原計算接続を収録"
     }
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
-  "latest_build": "2026-11-21-v0812-build.json",
-  "latest_handoff": "2026-11-21-finance-width.md",
+  "latest_build": "2026-11-21-v0813-build.json",
+  "latest_handoff": "2026-11-21-daily-costs.md",
   "latest_validation": {
-    "base_commit": "3269c731a4600dd5df3f1de5ac6bb41333bd567e",
+    "base_commit": "db9b596a1599f8e4b22fe6ac40c4f34c2ff2642b",
     "godot_version": "4.6.3",
     "focused_godot_passed": 10,
     "python_success": 793,
@@ -64,10 +64,10 @@
     "full_headless_pass": false,
     "full_headless_errors": 5,
     "apk_updated": true,
-    "model_cases": 24
+    "model_cases": 21
   },
-  "latest_runtime_checkpoint": "cb87272afcc40821b30bdef285fb51bcfac7b3b5",
-  "latest_pr": 275,
+  "latest_runtime_checkpoint": "a3a8d2adbf3d7649b35f736116eeb915614c4e04",
+  "latest_pr": 276,
   "muse_instructions": {
     "source_commit": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
     "CSRM-001": "v1 recorded; successor-artifact deviation pending review",

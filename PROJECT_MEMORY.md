@@ -2648,3 +2648,6 @@ ce51a5a基点から、原作の50枠予約／消費／表示計画を移植し�
 
 
 **2026-11-21 / 0.8.12 (LEGACY-0245, decision0245)**: 過去decision0206の未反映32bit計算を既存recovered.py/finance_close.pyから接続。native5会計欄・損益・月末8倍/追加7倍/最終現金・店舗損益履歴を原幅へ統一。旧中断statementは明示入力から再計算、過去確定履歴は非改変。既存store_rating_coreの倍率前D48も現行の8倍後入力から訂正。既存モデル24条件/本体5売上入力/JSON/年次/グラフ/負現金終了、関連Godot10本とPython793成功。広域headless既存source_catalog欠落5回は継続。APK0.8.12/code92従来署名、実機未確認。全5帳簿生成元/日中現金全経路/原カード/全営業RNG/既存未解決6件（U-1〜U-6）は残る。詳細docs/handoff/2026-11-21-finance-width.md。
+
+
+**2026-11-21 / 0.8.13 (LEGACY-0246, decision0246)**: 既存operating_costs.pyからnative日次費用の未反映差を修正。店長130倍の途中積→除算、時間積/合計/現金をsigned32、符号反転した費用を破棄せず計上、kind53以上は維持費表の参照前に除外。既存モデル21条件/native負額/月次/JSON/休業と関連Godot10本、Python793成功。全体headless既存source_catalog欠落SCRIPT ERROR5回は継続。APK0.8.13/code93従来署名、実機未確認。全日中取引/全帳簿生成元/原カード/全通知/全営業RNG/既存未解決6件（U-1〜U-6）は未完。詳細docs/handoff/2026-11-21-daily-costs.md。
