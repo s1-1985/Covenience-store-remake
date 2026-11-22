@@ -1758,3 +1758,143 @@ TIME_OF_DAY_BUCKETS_HOURS = {
     "late_night": (24, 3),
     "early_morning": (4, 6),
 }
+
+# ---------------------------------------------------------------------------
+# CSRM-006: reference-only records transcribed from the official
+# quick-reference guide (docs/research/quick-reference-guide-part2-2026-09-19.md
+# sections 3.9 and 5.4). None of the data in this section is wired into any
+# demand, station-placement, or scenario behaviour; it is recorded so the
+# transcription is not lost. Do not drive behaviour from it without a
+# separate, evidence-backed decision.
+# ---------------------------------------------------------------------------
+
+# DATA 4 visitor-count table, side (b): buildings that also receive visitors
+# from late night to early morning (book page 95). Columns are the six
+# TIME_OF_DAY_BUCKETS_HOURS buckets in order (morning, midday, evening,
+# night, late_night, early_morning), followed by the guide's qualitative
+# weekday / holiday frequency words.
+#
+# Confidence (per section 5.4 of the transcription): the printed row count
+# (21) matches the building count (21), so the order-based building pairing
+# is relatively trustworthy, but the pairing is still an ESTIMATE. The
+# four-digit station figures carry a digit-misread risk and are UNCERTAIN.
+# The evening cell of 住宅(小A) was itself transcribed as UNCERTAIN and is
+# recorded as None -- never invent a value for it. A higher-resolution
+# rescan is recommended before any strict per-building use.
+# Row: (building name as printed, (6 counts, None = unknown), weekday, holiday)
+DATA4_VISITOR_COUNTS_OVERNIGHT_BUILDINGS = (
+    ("消防署", (0, 5, 0, 0, 5, 0), "確実", "少ない"),
+    ("駅(小)", (560, 0, 2620, 1680, 0, 840), "確実", "やや少ない"),
+    ("駅(大)", (1120, 0, 1400, 2240, 560, 280), "確実", "少ない"),
+    ("大学", (23, 10, 22, 6, 0, 11), "確実", "半々"),
+    ("専門学校", (10, 30, 0, 0, 0, 9), "確実", "半々"),
+    ("会社(小A)", (6, 26, 4, 4, 2, 4), "確実", "やや少ない"),
+    ("会社(小B)", (6, 25, 7, 2, 7, 4), "確実", "やや少ない"),
+    ("会社(小C)", (26, 26, 2, 7, 4, 3), "確実", "やや少ない"),
+    ("会社(大A)", (5, 18, 4, 18, 0, 8), "確実", "やや少ない"),
+    ("会社(大B)", (6, 15, 2, 23, 3, 3), "確実", "やや少ない"),
+    ("住宅(小A)", (7, 10, None, 2, 0, 1), "まず確実", "まず確実"),
+    ("住宅(小B)", (6, 4, 3, 1, 0, 1), "まず確実", "確実"),
+    ("住宅(小C)", (8, 5, 5, 1, 0, 1), "まず確実", "確実"),
+    ("住宅(中B)", (5, 9, 2, 1, 0, 1), "ほぼ確実", "ほぼ確実"),
+    ("ファミリーレストランA", (0, 11, 19, 2, 0, 3), "ほぼ確実", "ほぼ確実"),
+    ("ファミリーレストランB", (0, 11, 23, 5, 3, 3), "ほぼ確実", "ほぼ確実"),
+    ("ラーメン屋", (0, 0, 3, 10, 12, 0), "確実", "やや少ない"),
+    ("飲み屋A", (0, 3, 8, 20, 0, 0), "確実", "少ない"),
+    ("飲み屋B", (0, 3, 4, 18, 0, 0), "確実", "少ない"),
+    ("飲み屋C", (0, 1, 2, 20, 12, 0), "確実", "やや少ない"),
+    ("本屋", (9, 8, 1, 6, 1, 0), "確実", "半々"),
+)
+
+# DATA 4 visitor-count table, side (a): buildings that receive visitors only
+# from morning to night (book page 93). LOW confidence: 31 buildings but only
+# 30 rows could be read stably, and the building pairing may be shifted from
+# row #7 onward. The rows are therefore recorded in printed order WITHOUT
+# any building pairing (row number only). Pairing is unresolved; a
+# higher-resolution rescan is required before per-building use.
+# Row: (printed row number, (6 counts), weekday, holiday)
+DATA4_VISITOR_COUNTS_DAYTIME_ROWS = (
+    (1, (0, 10, 0, 0, 0, 0), "確実", "少ない"),
+    (2, (3, 20, 7, 0, 0, 0), "確実", "少ない"),
+    (3, (6, 34, 6, 4, 0, 0), "確実", "少ない"),
+    (4, (22, 73, 15, 10, 0, 0), "確実", "少ない"),
+    (5, (0, 15, 15, 0, 0, 0), "だいたい", "確実"),
+    (6, (0, 35, 0, 0, 0, 0), "まず確実", "確実"),
+    (7, (10, 24, 6, 0, 0, 0), "まず確実", "確実"),
+    (8, (0, 0, 43, 23, 0, 0), "やや少ない", "まず確実"),
+    (9, (0, 0, 20, 15, 0, 0), "少ない", "確実"),
+    (10, (0, 0, 29, 41, 0, 0), "少ない", "確実"),
+    (11, (0, 2, 45, 7, 0, 0), "少な目", "確実"),
+    (12, (0, 6, 33, 7, 0, 0), "少ない", "確実"),
+    (13, (0, 17, 34, 0, 0, 0), "確実", "確実"),
+    (14, (14, 46, 3, 0, 0, 0), "確実", "ほぼ確実"),
+    (15, (1, 7, 7, 5, 0, 0), "ほぼ確実", "ほぼ確実"),
+    (16, (4, 5, 8, 3, 0, 0), "ほぼ確実", "ほぼ確実"),
+    (17, (1, 7, 7, 5, 0, 0), "ほぼ確実", "ほぼ確実"),
+    (18, (4, 0, 8, 23, 0, 0), "確実", "半々"),
+    (19, (0, 9, 16, 0, 0, 0), "ほぼ確実", "ほぼ確実"),
+    (20, (2, 39, 14, 0, 0, 0), "ほぼ確実", "ほぼ確実"),
+    (21, (1, 19, 9, 0, 0, 0), "ほぼ確実", "ほぼ確実"),
+    (22, (0, 16, 49, 0, 0, 0), "半々", "確実"),
+    (23, (0, 15, 8, 14, 0, 0), "半々", "ほぼ確実"),
+    (24, (2, 29, 0, 4, 0, 0), "半々", "確実"),
+    (25, (0, 0, 12, 13, 0, 0), "確実", "半々"),
+    (26, (0, 0, 10, 15, 0, 0), "確実", "半々"),
+    (27, (13, 10, 2, 0, 0, 0), "ほぼ確実", "ほぼ確実"),
+    (28, (0, 20, 5, 0, 0, 0), "少ない", "確実"),
+    (29, (10, 11, 4, 0, 0, 0), "まず確実", "確実"),
+    (30, (7, 26, 4, 0, 0, 0), "半々", "確実"),
+)
+
+# Station appearance / spacing rule (quick-reference guide, book page 81,
+# stated for the intermediate map): two railway lines, up to two stations
+# per line, and stations must be at least 40 areas apart. How this relates
+# to the separately observed PROVISIONAL trigger "a station appears on a
+# railway once town population exceeds 5,000" (see
+# docs/research/facility-induction-crosscheck-2026-09-05.md) -- combined
+# condition or alternative -- is UNCERTAIN; neither condition is wired into
+# any placement behaviour.
+STATION_SPACING_RULE = {
+    "railway_lines": EvidenceValue(2, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+    "max_stations_per_line": EvidenceValue(2, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+    "min_spacing_areas": EvidenceValue(40, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+}
+
+# Starting town population per scenario (quick-reference guide, book pages
+# 80-83). The advanced figure's last digit is UNCERTAIN in the source.
+SCENARIO_STARTING_POPULATIONS = {
+    "beginner": EvidenceValue(2_179, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+    "intermediate": EvidenceValue(1_880, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+    "advanced": EvidenceValue(
+        2_849,
+        EvidenceLevel.CONFIRMED_OFFICIAL,
+        QUICK_REFERENCE_SCENARIO_DATA,
+        "One digit of this figure is UNCERTAIN in the source transcription.",
+    ),
+    "supreme": EvidenceValue(1_416, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+}
+
+# Beginner scenario: the rival chain's starting values and the town's
+# security-facility counts, as printed in the beginner map's DATA block
+# (quick-reference guide, book pages 80-83). Both rival stores operate
+# AM7:00-PM11:00. No equivalent block is transcribed for the other
+# scenarios, so none is recorded for them.
+BEGINNER_RIVAL_START = {
+    "headquarters": {
+        "popularity": EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+        "security": EvidenceValue(89, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+        "cleaning": EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+        "service": EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+    },
+    "branch": {
+        "popularity": EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+        "security": EvidenceValue(58, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+        "cleaning": EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+        "service": EvidenceValue(31, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+        "buyout_price_yen": EvidenceValue(46_721_490, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+    },
+    "security_facilities": {
+        "police_box": EvidenceValue(2, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+        "fire_station": EvidenceValue(1, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+    },
+}
