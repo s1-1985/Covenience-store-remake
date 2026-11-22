@@ -1,5 +1,19 @@
 extends RefCounted
 
+# CONFIRMED_BINARY: recovered 20261113-staff-sound-data bridge and
+# main 80023A14..23BBC. The acquisition failure itself does not set bit4;
+# only the successful underfunded/theft acquisition does.
+const EVENT_FLAGS := {
+    "shoplifting": 0x0010,
+    "checkout_staff_started": 0x0080,
+    "checkout_staff_finished": 0x0100,
+    "checkout_completed": 0x0200,
+    "self_service_sale": 0x0400,
+    "source_restock_completed": 0x0800,
+    "source_cleaning_completed": 0x0800,
+    "staff_exhausted": 0x1000,
+}
+
 # CONFIRMED_BINARY: audio_dispatch.py 80064E4C, settings_menu.py,
 # save_load_control.settings 800625C4, main fragment 80023A14..23BBC.
 static func settings(bits: int) -> Dictionary:

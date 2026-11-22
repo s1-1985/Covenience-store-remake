@@ -4,6 +4,10 @@ extends RefCounted
 
 static func apply(config: Dictionary, index: int) -> void:
     config["sound"]["source_event_sounds"]["source_restock_completed"] = 24
+    config["sound"]["source_event_sounds"].merge({
+        "shoplifting": 21, "self_service_sale": 9,
+        "source_cleaning_completed": 24, "staff_exhausted": 25,
+    }, true)
     config["simulation"]["source_full_people"] = true
     var tables: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/ps1_integration.json"))
     config["source_catalog"] = {"product_ids": tables["product_ids"], "product_images": tables["product_images"]}

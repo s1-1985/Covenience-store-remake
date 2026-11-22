@@ -1,7 +1,7 @@
 {
   "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
-  "branch": "chatgpt/ps-ui-touch-audit-20261119",
-  "base": "8dadb65e92a507f95f6474f3deb42679fd6b843a",
+  "branch": "chatgpt/source-operating-audio-20261121",
+  "base": "9dfa80b98bf584b90d2a5a53b46ad67dc49838af",
   "updated": "2026-11-21",
   "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
   "checkpoints": "関連する未反映境界をまとめて実装し、必要な検証を一括実施してGitHubへ保存する。APKはまとまった進捗と署名環境がそろった時点で作成し、コード更新とAPK収録を区別する。",
@@ -39,28 +39,38 @@
       "id": "source_audio",
       "status": "partial",
       "next": "native_saves / operations の未反映境界を照合",
-      "remaining": "人物・営業の全フラグ生成元と既存合成SEの置換、SPUリバーブ等の音質差",
-      "done": "XA130、BGM7、SE16、VOS12の165資産と原設定3項目・通知音声待ち・終了音声/BGM接続。ミュート復帰とタイトル音声停止。18回帰はERROR/WARNINGなし。 0.5.1:会計SE10/レジ開始VOS22/終了VOS23を接続、非表示店舗音を抑止。"
+      "remaining": "その他の原フラグ生成元、原SE OFF時の持越し/全フラグ保存、描画更新単位と原割込み周期の差、SPU音質/実機実聴",
+      "done": "XA130、BGM7、SE16、VOS12の165資産と原設定3項目・通知音声待ち・終了音声/BGM接続。ミュート復帰とタイトル音声停止。18回帰はERROR/WARNINGなし。 0.5.1:会計SE10/レジ開始VOS22/終了VOS23を接続、非表示店舗音を抑止。 0.8.9: 即時決済9/万引き成功21/清掃24/体力切れ25、既知7bit順/集約。"
     },
     {
       "id": "android",
       "status": "milestone_built",
-      "remaining": "decision0238以降の変更を従来署名で再ビルド、Android実機インストール/タッチ/音量/性能、全反映後の最終版確認",
-      "done": "配布済み0.8.8-annual-personnel/code88、従来touchfix署名。decision0238のコード修正はまだAPK未収録"
+      "remaining": "Android実機インストール/タッチ/音量/性能、全反映後の最終版確認",
+      "done": "0.8.9-operating-audio/code89、従来touchfix署名。前回の機敏さ参照修正も収録"
     }
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
-  "latest_runtime_checkpoint": "a65af72a14578066a40448a84d4271846716aa29",
-  "latest_build": "2026-11-21-v088-build.json",
-  "latest_handoff": "2026-11-21-live-staff-traits.md",
+  "latest_build": "2026-11-21-v089-build.json",
+  "latest_handoff": "2026-11-21-muse-implementation.md",
   "latest_validation": {
-    "commit": "a65af72a14578066a40448a84d4271846716aa29",
-    "workflow_run": 44868102242,
-    "url": "https://github.com/s1-1985/Covenience-store-remake/actions/runs/44868102242",
+    "base_commit": "9dfa80b98bf584b90d2a5a53b46ad67dc49838af",
     "godot_version": "4.6.3",
-    "focused_godot_passed": 8,
-    "focused_python_passed": 21,
-    "full_suites_rerun": false,
-    "apk_updated": false
+    "focused_godot_passed": 10,
+    "python_success": 786,
+    "python_existing_failures": 2,
+    "python_expected_failures": 1,
+    "full_python_rerun": true,
+    "full_headless_rerun": true,
+    "apk_updated": true,
+    "unique_related_godot_passed": 15,
+    "full_headless_pass": false
+  },
+  "latest_runtime_checkpoint": "de25b168de01381988dee94521e93939f22e7190",
+  "latest_pr": 272,
+  "muse_instructions": {
+    "source_commit": "030e468f1b21684d3304026c858e387e5f5d9b45",
+    "CSRM-001": "v1 recorded; successor-artifact deviation pending review",
+    "CSRM-003": "v1 applied; pending review",
+    "CSRM-002": "v1 ready; not started"
   }
 }
