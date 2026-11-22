@@ -896,7 +896,13 @@ func _step_manager_reports() -> void:
     if _report_rng.randi_range(1, int(rules["sales_report_one_in"])) != 1:
         return
     if _report_rng.randi_range(1, 100) <= academic:
-        var candidates: Dictionary = preload("res://scripts/domain/program_manager_reports.gd").candidates(_sold_counts, _stocked_categories(), config.source_catalog.product_ids)
+# CSRM-007 / decision 0249: legacy configs without a source catalog
+# have no product order to rank. The real game config always has
+# one (merged into _recovery above); guard the access the same way.
+var product_ids: Array = []
+if config.has("source_catalog"):
+product_ids = config["source_catalog"].get("product_ids", [])
+        var candidates: Dictionary = preload("res://scripts/domain/program_manager_reports.gd").candidates(_sold_counts, _stocked_categories(), product_ids)
         var best: String = candidates.best
         var worst: String = candidates.worst
         if not best.is_empty() and (int(_sold_counts.get(best, 0)) & 0xffffffff) >= int(rules["selling_well_at_least"]):
