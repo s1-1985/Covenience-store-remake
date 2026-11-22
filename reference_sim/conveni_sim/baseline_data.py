@@ -597,6 +597,15 @@ SCENARIO_INITIAL_RIVAL_TOPOLOGY = (
     "ai-the-conbini-tyukyu.html (intermediate) and ai-the-conbini-jokyu.html (advanced)"
 )
 
+QUICK_REFERENCE_SCENARIO_DATA = (
+    "official quick-reference guide book, マップ攻略 section (book pages 80-83), "
+    "see docs/research/quick-reference-guide-part2-2026-09-19.md section 3.9"
+)
+QUICK_REFERENCE_DATA4 = (
+    "official quick-reference guide book, DATA 4 (book pages 93 and 95), "
+    "see docs/research/quick-reference-guide-part2-2026-09-19.md section 5.4"
+)
+
 SCENARIOS = (
     ScenarioDefinition(
         "beginner",
