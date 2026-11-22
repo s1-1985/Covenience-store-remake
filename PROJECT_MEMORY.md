@@ -2653,3 +2653,5 @@ ce51a5a基点から、原作の50枠予約／消費／表示計画を移植し�
 **2026-11-21 / 0.8.13 (LEGACY-0246, decision0246)**: 既存operating_costs.pyからnative日次費用の未反映差を修正。店長130倍の途中積→除算、時間積/合計/現金をsigned32、符号反転した費用を破棄せず計上、kind53以上は維持費表の参照前に除外。既存モデル21条件/native負額/月次/JSON/休業と関連Godot10本、Python793成功。全体headless既存source_catalog欠落SCRIPT ERROR5回は継続。APK0.8.13/code93従来署名、実機未確認。全日中取引/全帳簿生成元/原カード/全通知/全営業RNG/既存未解決6件（U-1〜U-6）は未完。詳細docs/handoff/2026-11-21-daily-costs.md。
 
 **2026-11-22 / decision0249（CSRM-007、Godot）**: `_step_manager_reports` の `config.source_catalog` 無防備アクセスを、同ファイルの既存前例と同じ has() ガードで是正した。全体 headless_smoke が SCRIPT ERROR 0件で passed へ到達し、CSRM-002 の残件は解消。実ゲーム構成での動作・乱数消費は不変。既存未解決6件（U-1〜U-6）は維持。詳細は docs/implementation/CSRM-007.md。
+
+**2026-11-23 / decision0247（reference_simのみ、APK未更新）**: CSRM-006 として §21.3 転記データを記録。DATA 4 来客数表（(b) 21行は推定対応＋駅数値 UNCERTAIN 注記、(a) 30行は建物対応なしの掲載順）、駅間隔ルール（2線×各2駅・40エリア以上、人口5000条件との関係は UNCERTAIN）、シナリオ開始データ（極上の追加＝クリア条件は不明として記録、開始人口4マップ分、初級ライバル初期値と交番2・消防署1）。いずれも参照専用で挙動へ未接続。Python 804件全成功（マージ済みラインへの積み直し時に再確認）。既存未解決6件（U-1〜U-6）は維持。詳細 docs/implementation/CSRM-006.md。
