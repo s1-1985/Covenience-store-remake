@@ -1,4 +1,4 @@
-# 0240 — §21.3 転記データの記録形式（CSRM-006）
+# 0247 — §21.3 転記データの記録形式（CSRM-006）
 
 ## 背景
 PROJECT_MEMORY §21.3 が「転記済み・コード未記録」とした項目のうち、具体的な転記値があり現行コードに記録が無い3件（DATA 4 来客数表、駅の出現・間隔ルール、シナリオ開始データの拡張）を `reference_sim` へ記録する（CSRM-006 版2）。記録形式の選択が本決定の対象である。着手前の候補ファイル走査（arrival_schedule.py、traffic.py、remake_demand_policy.py、inducement.py、scenario_initial_state.py、scenario_policies.py、scenario_initial_rival_topology.py）では3件とも既存記録は無かった。
