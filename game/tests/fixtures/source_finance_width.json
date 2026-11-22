@@ -1,0 +1,516 @@
+{
+  "kind": "existing recovered-model expectations; not new original CPU execution",
+  "source_file": "ps1-analysis-checkpoints/analysis/20261103-operating-continuation/source-reference/recovered.py",
+  "archive_commit": "a1f45981ffc1479e9a8e0b4ff429d4fc4cb85ea4",
+  "source_sha256": "278868373e593f676e00fead378468eebc396e9aee505fc344704e04890a8c02",
+  "original_ranges": [
+    "8001CCC0",
+    "80029918..80029D30"
+  ],
+  "rows": [
+    {
+      "representative": {
+        "maintenance_yen": 100,
+        "wages_yen": 200,
+        "promotion_yen": 300,
+        "goods_yen": 400,
+        "sales_yen": 2000
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 800,
+        "wages_yen": 1600,
+        "promotion_yen": 2400,
+        "goods_yen": 3200,
+        "sales_yen": 16000
+      },
+      "profit": 1000,
+      "monthly_profit": 8000,
+      "adjustment": 7000,
+      "cash_after": 200007000
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "cash_before": 2147483647,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": 0,
+      "monthly_profit": 0,
+      "adjustment": 0,
+      "cash_after": 2147483647
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 1
+      },
+      "cash_before": 2147483647,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 8
+      },
+      "profit": 1,
+      "monthly_profit": 8,
+      "adjustment": 7,
+      "cash_after": -2147483642
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": -1
+      },
+      "cash_before": -2147483648,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": -8
+      },
+      "profit": -1,
+      "monthly_profit": -8,
+      "adjustment": -7,
+      "cash_after": 2147483641
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 268435456
+      },
+      "cash_before": 1000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": -2147483648
+      },
+      "profit": 268435456,
+      "monthly_profit": -2147483648,
+      "adjustment": 1879048192,
+      "cash_after": 1879049192
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 400000000
+      },
+      "cash_before": 1000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": -1094967296
+      },
+      "profit": 400000000,
+      "monthly_profit": -1094967296,
+      "adjustment": -1494967296,
+      "cash_after": -1494966296
+    },
+    {
+      "representative": {
+        "maintenance_yen": 2147483647,
+        "wages_yen": 2147483647,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "cash_before": 0,
+      "monthly": {
+        "maintenance_yen": -8,
+        "wages_yen": -8,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": 2,
+      "monthly_profit": 16,
+      "adjustment": 14,
+      "cash_after": 14
+    },
+    {
+      "representative": {
+        "maintenance_yen": -2147483648,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 2147483647
+      },
+      "cash_before": -1,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": -8
+      },
+      "profit": -1,
+      "monthly_profit": -8,
+      "adjustment": -7,
+      "cash_after": -8
+    },
+    {
+      "representative": {
+        "maintenance_yen": 1,
+        "wages_yen": -1,
+        "promotion_yen": 2147483647,
+        "goods_yen": -2147483648,
+        "sales_yen": 2147483647
+      },
+      "cash_before": 2147483647,
+      "monthly": {
+        "maintenance_yen": 8,
+        "wages_yen": -8,
+        "promotion_yen": -8,
+        "goods_yen": 0,
+        "sales_yen": -8
+      },
+      "profit": -2147483648,
+      "monthly_profit": 0,
+      "adjustment": -2147483648,
+      "cash_after": -1
+    },
+    {
+      "representative": {
+        "maintenance_yen": 2147483647,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": -8,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -2147483647,
+      "monthly_profit": 8,
+      "adjustment": -2147483641,
+      "cash_after": -1947483641
+    },
+    {
+      "representative": {
+        "maintenance_yen": -2147483648,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -2147483648,
+      "monthly_profit": 0,
+      "adjustment": -2147483648,
+      "cash_after": -1947483648
+    },
+    {
+      "representative": {
+        "maintenance_yen": 536870912,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -536870912,
+      "monthly_profit": 0,
+      "adjustment": 536870912,
+      "cash_after": 736870912
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 2147483647,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": -8,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -2147483647,
+      "monthly_profit": 8,
+      "adjustment": -2147483641,
+      "cash_after": -1947483641
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": -2147483648,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -2147483648,
+      "monthly_profit": 0,
+      "adjustment": -2147483648,
+      "cash_after": -1947483648
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 536870912,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -536870912,
+      "monthly_profit": 0,
+      "adjustment": 536870912,
+      "cash_after": 736870912
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 2147483647,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": -8,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -2147483647,
+      "monthly_profit": 8,
+      "adjustment": -2147483641,
+      "cash_after": -1947483641
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": -2147483648,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -2147483648,
+      "monthly_profit": 0,
+      "adjustment": -2147483648,
+      "cash_after": -1947483648
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 536870912,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -536870912,
+      "monthly_profit": 0,
+      "adjustment": 536870912,
+      "cash_after": 736870912
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 2147483647,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": -8,
+        "sales_yen": 0
+      },
+      "profit": -2147483647,
+      "monthly_profit": 8,
+      "adjustment": -2147483641,
+      "cash_after": -1947483641
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": -2147483648,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -2147483648,
+      "monthly_profit": 0,
+      "adjustment": -2147483648,
+      "cash_after": -1947483648
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 536870912,
+        "sales_yen": 0
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -536870912,
+      "monthly_profit": 0,
+      "adjustment": 536870912,
+      "cash_after": 736870912
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 2147483647
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": -8
+      },
+      "profit": 2147483647,
+      "monthly_profit": -8,
+      "adjustment": 2147483641,
+      "cash_after": -1947483655
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": -2147483648
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": -2147483648,
+      "monthly_profit": 0,
+      "adjustment": -2147483648,
+      "cash_after": -1947483648
+    },
+    {
+      "representative": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 536870912
+      },
+      "cash_before": 200000000,
+      "monthly": {
+        "maintenance_yen": 0,
+        "wages_yen": 0,
+        "promotion_yen": 0,
+        "goods_yen": 0,
+        "sales_yen": 0
+      },
+      "profit": 536870912,
+      "monthly_profit": 0,
+      "adjustment": -536870912,
+      "cash_after": -336870912
+    }
+  ]
+}

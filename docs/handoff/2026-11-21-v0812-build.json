@@ -1,0 +1,31 @@
+{
+  "version": "0.8.12-finance-width",
+  "code": 92,
+  "apk_bytes": 45077772,
+  "apk_sha256": "796d0e4aba1d7574b70cb222f2d9588169f016e980e716ca075022541148c4a1",
+  "compiled_scripts_sha256": {
+    "domain/operating_statement": "01e09534f3cd03200bf0edc16b3013b07e1de86530e3402da2a2d89ca2cfc36e",
+    "domain/store_rating": "29664442114719a9a139d61e234f3ecd91ad0b41acb86855b538989d46ef737d",
+    "vertical_slice_simulation": "5b3ef131d12f795babab9b4549b953b08075760570034297b274a9137d352e0d"
+  },
+  "date": "2026-11-21",
+  "base_commit": "3269c731a4600dd5df3f1de5ac6bb41333bd567e",
+  "branch": "chatgpt/legacy-finance-width-20261121",
+  "filename": "Conveni-v0.8.12.apk",
+  "package": "com.conveniremake.touchfix",
+  "godot_version": "4.6.3",
+  "signature_v2": true,
+  "signature_v3": true,
+  "certificate_sha256": "4e1ea772ac6aea449573f8c151028082d011f82945170272b8dc61b43bec29a4",
+  "library_file_id": "libfile_bb6dd9e23350819195f407f68859b25b",
+  "python_passed": 793,
+  "related_godot_passed": 10,
+  "model_cases": 24,
+  "full_headless_pass": false,
+  "full_headless_existing_errors": 5,
+  "device_verified": false,
+  "task_id": "LEGACY-0245",
+  "apk_smoke_scripts_excluded": true,
+  "pr": 275,
+  "implementation_commit": "cb87272afcc40821b30bdef285fb51bcfac7b3b5"
+}
