@@ -658,6 +658,23 @@ SCENARIOS = (
             True, EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_INITIAL_RIVAL_TOPOLOGY
         ),
     ),
+    # CSRM-006: the quick-reference guide (book pages 80-83) lists a fourth,
+    # hidden scenario, 極上 (supreme). It is unlocked by clearing the other
+    # three scenarios (hidden-map notes, CONFIRMED_COMMUNITY). The guide
+    # prints its starting cash and population (see
+    # SCENARIO_STARTING_POPULATIONS below) but NO clear condition, so the
+    # objective is recorded as unknown -- never invent one.
+    ScenarioDefinition(
+        "supreme",
+        EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_SCENARIO_DATA),
+        EvidenceValue(
+            None,
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_SCENARIO_DATA,
+            "The source prints no clear condition for 極上 (book page 83); "
+            "recorded as unknown. Do not invent one.",
+        ),
+    ),
 )
 
 
