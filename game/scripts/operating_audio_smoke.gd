@@ -103,8 +103,9 @@ func run() -> void:
     game._play_event_sounds()
     assert(not sound._source_tracks[9].playing)
     sound.set_source_settings(0)
-    assert(hear().is_empty(), "Unmuting must not replay old events")
-    print("OPERATING_AUDIO_PASS eight producer mappings, original bit order/shared-bit coalescing, direct sale/theft/clean/exhaustion, hidden store, settings, no redraw replay")
+    assert(hear() == [9], "Source SE-on consumes the pending bit exactly once")
+    assert(hear().is_empty())
+    print("OPERATING_AUDIO_PASS eight producer mappings, original bit order/shared-bit coalescing, direct sale/theft/clean/exhaustion, hidden store, settings carryover, no redraw replay")
     game.free()
     await process_frame
     quit()

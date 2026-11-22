@@ -1608,7 +1608,6 @@ func _play_event_sounds() -> void:
         _heard_event_sequence = 0
     var to_play: Array[String] = []
     var source_to_play: Array[int] = []
-    var source_flags := 0
     var source_audio = preload("res://scripts/domain/program_audio.gd")
     var source_events: Dictionary = config["sound"].get("source_event_sounds", {})
     var index := records.size() - 1
@@ -1622,9 +1621,9 @@ func _play_event_sounds() -> void:
                 index -= 1
                 continue
             var identifier := int(source_events[event_type])
-            if source_audio.EVENT_FLAGS.has(event_type):
-                source_flags |= int(source_audio.EVENT_FLAGS[event_type])
-            elif not source_to_play.has(identifier):
+            # Flagged source events are captured at production time by the
+            # simulation, including SE-off and background-store periods.
+            if not source_audio.EVENT_FLAGS.has(event_type) and not source_to_play.has(identifier):
                 source_to_play.push_front(identifier)
         else:
             var sfx := str(event_sfx.get(event_type, ""))
@@ -1632,12 +1631,8 @@ func _play_event_sounds() -> void:
                 to_play.append(sfx)
         index -= 1
     _heard_event_sequence = newest
-    if source_flags:
-        # Same-bit events coalesce, then the source dispatcher scans bits
-        # ascending. Event chronology is not the original audio priority.
-        var requests: Dictionary = source_audio.main_requests(source_flags, 1, true,
-            simulation.month_count % 12 + 1, 0, SoundManager.source_catalog["event_tones"])
-        source_to_play.append_array(requests["requests"])
+    source_to_play.append_array(simulation.take_source_audio_requests(
+        int(SoundManager.source_settings()["se_enabled"]), SoundManager.source_catalog["event_tones"]))
     for identifier in source_to_play:
         SoundManager.play_source(identifier)
     for sfx in to_play:

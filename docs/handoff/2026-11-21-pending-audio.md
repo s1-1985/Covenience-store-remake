@@ -1,0 +1,16 @@
+# 0.8.11 — 過去解析の未反映分を実装
+
+ユーザーの優先変更に従い、Museの新規解析を待たず、自分の既存解析から未反映箇所を確認。decision0239/operating-audio引継ぎが明記した「SE OFF時の原音声フラグ持越し」が現行にも未反映だったため、LEGACY-0244として移植した。
+
+店舗別の発生時OR→原設定/選択ガード→bit昇順消費、店舗切替/JSON保存読込/旧保存0/リセットへ接続。OFF中に消失していた既知音声要求がON時に一度だけ再生される。追加の原解析・新しい仮仕様なし。
+
+ブランチchatgpt/legacy-audio-flags-20261121、基点6705aa9240c8d8f53fabe19de553b68ceb24e1b3。PR #274 https://github.com/s1-1985/Covenience-store-remake/pull/274。Python793成功、関連Godot10本成功。広域headless既存source_catalog欠落5回は継続し全体合格とはしない。APK0.8.11/code91従来署名、実機/実聴未確認。詳細decision0244とv0811-build.json。
+
+## 旧引継ぎの未反映表記の扱い
+
+- 2026-11-21-operating-audioのSE OFF持越し/店舗別JSONフラグ保持: 今回実装済み。次回同項目を未反映として繰り返さない。
+- 2026-11-20 company-donations末尾の来客記念/祭り: 後続calendar-events/annual-reportのコードで接続済み。古い未実装表記だけで再実装しない。
+- 2026-11-20 survey-boundaries末尾の月次グラフ: 後続graph-sale側でprofit_historyを接続済み。売上2点代用の旧記述を現況としない。
+- その他の残件は、原仕様が確定済みか未解明かを既存解析と実ファイルで確認してから選ぶ。全通知制御列・原カード形式等を「解析完了・移植だけ」と一括判定しない。未解決6件（U-1〜U-6）は維持。
+
+Muse側のready/レビューを変更していない。ユーザー指示により当面は自分の過去解析の未反映分を優先する。

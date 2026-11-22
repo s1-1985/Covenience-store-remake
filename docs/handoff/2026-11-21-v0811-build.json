@@ -1,0 +1,28 @@
+{
+  "version": "0.8.11-pending-audio",
+  "code": 91,
+  "apk_bytes": 45073676,
+  "apk_sha256": "bbaf36b3189d67ef89be0bf08f1c7b388358bc9b249591b74ed23b994a6883e1",
+  "compiled_scripts_sha256": {
+    "main": "5fca9b5cf6baf3169d3bf45bb683e8f57078f140bb7a9843caa8b2cb3348f6d0",
+    "vertical_slice_simulation": "91549562bf64fd845a733e03dd366c831f5f90db0815276481171155eb078c73"
+  },
+  "date": "2026-11-21",
+  "base_commit": "6705aa9240c8d8f53fabe19de553b68ceb24e1b3",
+  "branch": "chatgpt/legacy-audio-flags-20261121",
+  "filename": "Conveni-v0.8.11.apk",
+  "package": "com.conveniremake.touchfix",
+  "godot_version": "4.6.3",
+  "signature_verified": true,
+  "certificate_sha256": "4e1ea772ac6aea449573f8c151028082d011f82945170272b8dc61b43bec29a4",
+  "library_file_id": "libfile_31f4028119908191b931fd2a6eb8b2d7",
+  "python_passed": 793,
+  "related_godot_passed": 10,
+  "full_headless_pass": false,
+  "full_headless_existing_errors": 5,
+  "apk_smoke_scripts_excluded": true,
+  "device_verified": false,
+  "task_id": "LEGACY-0244",
+  "pr": 274,
+  "implementation_commit": "c40a088a3ab2c36a21801f0e7f05b2ad318541ef"
+}
