@@ -2655,3 +2655,5 @@ ce51a5a基点から、原作の50枠予約／消費／表示計画を移植し�
 **2026-11-22 / decision0249（CSRM-007、Godot）**: `_step_manager_reports` の `config.source_catalog` 無防備アクセスを、同ファイルの既存前例と同じ has() ガードで是正した。全体 headless_smoke が SCRIPT ERROR 0件で passed へ到達し、CSRM-002 の残件は解消。実ゲーム構成での動作・乱数消費は不変。既存未解決6件（U-1〜U-6）は維持。詳細は docs/implementation/CSRM-007.md。
 
 **2026-11-23 / decision0247（reference_simのみ、APK未更新）**: CSRM-006 として §21.3 転記データを記録。DATA 4 来客数表（(b) 21行は推定対応＋駅数値 UNCERTAIN 注記、(a) 30行は建物対応なしの掲載順）、駅間隔ルール（2線×各2駅・40エリア以上、人口5000条件との関係は UNCERTAIN）、シナリオ開始データ（極上の追加＝クリア条件は不明として記録、開始人口4マップ分、初級ライバル初期値と交番2・消防署1）。いずれも参照専用で挙動へ未接続。Python 804件全成功（マージ済みラインへの積み直し時に再確認）。既存未解決6件（U-1〜U-6）は維持。詳細 docs/implementation/CSRM-006.md。
+
+**2026-11-23 / decision0248（CSRM-005、Godot UI）**: 調査メニューのラベルを原作マニュアル p.10 の表記「店舗別収支グラフ」へ一致させた（ps1_ui.gd、1行）。phone 層は出荷フローで到達不可能なことを静的確認と `--android-preview` 起動実測の両面で確認し、コード変更なしで確定した。UI 関連 smoke は成功（ps1_menu_dispatch_smoke の既存失敗1件は無関係で、原因特定のうえ CSRM-008 として切り出し済み）。既存未解決6件（U-1〜U-6）は維持。詳細は docs/implementation/CSRM-005.md。
