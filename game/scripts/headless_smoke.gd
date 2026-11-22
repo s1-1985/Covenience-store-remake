@@ -2795,7 +2795,9 @@ func _initialize() -> void:
     var town_tile_pixels: float = economy_ui_scene.town_view.map_tile_pixels
     var town_shown: Vector2i = economy_ui_scene.town_view.view_tiles()
     var town_right_edge: float = economy_ui_scene.town_view.position.x + town_shown.x * town_tile_pixels
-    if town_tile_pixels < 16.0 or town_right_edge > (economy_ui_scene.get_node("UI/Panel") as Control).offset_left:
+    # ANDROID_PS_UI_HANDOFF keeps this prototype desktop view unchanged;
+    # it uses the 12px TownView baseline, not the PS phone's 24px tiles.
+    if town_tile_pixels != 12.0 or town_right_edge > (economy_ui_scene.get_node("UI/Panel") as Control).offset_left:
         _fail("the town map must be legible and fit left of the side panel")
         return
     # Task #93: the view scrolls in whole tiles and stops at the town's edge.
@@ -3598,13 +3600,19 @@ func _check_rival_buyout() -> bool:
     if simulation._rival_stores.size() != 1 or simulation.owned_branches.size() != 1 or simulation.rival_at(Vector2i(27, 9)) != "":
         _fail("the bought branch is no longer a rival")
         return false
+    # 2026-11-20-rival-inspection handoff: acquisition clears that rival's
+    # inspection key. Loading must retain the cleared state, not revive it.
+    if simulation.rival_investigated("rival-02"):
+        _fail("buying out a rival must clear its investigation key")
+        return false
     if simulation.demand.nearby_population < population_before:
         _fail("buying out a rival never loses the main store customers")
         return false
     var saved: Dictionary = simulation.save_state()
     var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
-    if not reloaded.load_state(saved) or reloaded.owned_branches.size() != 1 or reloaded._rival_stores.size() != 1 or not reloaded.rival_investigated("rival-02"):
-        _fail("load must keep the bought branch and the investigation")
+    var buyout_loaded: bool = reloaded.load_state(saved)
+    if not buyout_loaded or reloaded.owned_branches.size() != 1 or reloaded._rival_stores.size() != 1 or reloaded.rival_investigated("rival-02"):
+        _fail("load must keep the bought branch and cleared investigation: loaded=%s owned=%d rivals=%d investigated=%s" % [buyout_loaded, reloaded.owned_branches.size(), reloaded._rival_stores.size(), reloaded.rival_investigated("rival-02")])
         return false
     reloaded.reset()
     if reloaded._rival_stores.size() != 2 or not reloaded.owned_branches.is_empty():

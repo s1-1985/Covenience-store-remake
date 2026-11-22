@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional, Sequence
+from typing import Callable, Optional, Sequence
 
 from .store_grid import GridPoint
 from .traffic import AgentStatus, DynamicTrafficHarness, TrafficTickResult
@@ -14,6 +14,7 @@ class CustomerState(str, Enum):
     AT_MERCHANDISE = "at_merchandise"
     APPROACHING_CHECKOUT = "approaching_checkout"
     WAITING_CHECKOUT = "waiting_checkout"
+    CHECKOUT_CANCELLED = "checkout_cancelled"
     LEAVING = "leaving"
     EJECTING = "ejecting"
     EXITED = "exited"
@@ -42,6 +43,7 @@ class CustomerSession:
     interacted_fixture_ids: tuple[str, ...] = ()
     self_service_fixture_ids: tuple[str, ...] = ()
     ejection_reason: Optional[str] = None
+    settlement_blocked: bool = False
 
     @property
     def remaining_merchandise_fixture_ids(self) -> tuple[str, ...]:
@@ -65,6 +67,20 @@ class CustomerLifecycleHarness:
     def __init__(self, traffic: DynamicTrafficHarness) -> None:
         self.traffic = traffic
         self._customers: dict[str, CustomerSession] = {}
+        self._ejection_listeners: dict[str, Callable[[str], object]] = {}
+
+    def register_ejection_listener(self, key: str, listener: Callable[[str], object]) -> None:
+        """Wire composed runtimes without making this layer import checkout."""
+        self._ejection_listeners[key] = listener
+
+    def resume_checkout(self, customer_id: str) -> CustomerSession:
+        """Caller explicitly resumes a cancelled wait; no automatic requeue."""
+        session = self._customers[customer_id]
+        if session.state is not CustomerState.CHECKOUT_CANCELLED:
+            raise ValueError("only a cancelled checkout wait can be resumed")
+        session.settlement_blocked = False
+        self._route_to_next_step(session)
+        return session
 
     @property
     def customers(self) -> tuple[CustomerSession, ...]:
@@ -173,7 +189,7 @@ class CustomerLifecycleHarness:
 
     def complete_checkout(self, customer_id: str) -> CustomerSession:
         session = self._customers[customer_id]
-        if session.state is not CustomerState.WAITING_CHECKOUT:
+        if session.state is not CustomerState.WAITING_CHECKOUT or session.settlement_blocked:
             raise ValueError("customer is not waiting at checkout")
         session.completed_checkout = True
         self._route_to_next_step(session)
@@ -184,10 +200,13 @@ class CustomerLifecycleHarness:
         if session.state in (CustomerState.EXITED, CustomerState.EJECTED):
             raise ValueError("customer has already left")
         session.ejection_reason = reason
+        session.settlement_blocked = True
         session.state = CustomerState.EJECTING
         session.current_merchandise_fixture_id = None
         self.traffic.set_point_goal(session.id, session.exit_point)
         self._sync_unreachable(session)
+        for listener in tuple(self._ejection_listeners.values()):
+            listener(customer_id)
         return session
 
     def tick(self) -> CustomerTickResult:
