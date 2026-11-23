@@ -18,12 +18,23 @@ func _input(event: InputEvent) -> void:
     if not event is InputEventScreenTouch:
         return
     if event.pressed:
+        # CSRM-008 / decision 0250: the rail buttons are taller than their
+        # layout spacing (the two-line labels raise their minimum height to
+        # 114), so adjacent rects overlap. In an overlap strip, the button
+        # whose centre is nearest to the touch wins.
+        var best: Button = null
+        var best_distance := INF
         for child in get_children():
             if child is Button and child.get_global_rect().has_point(event.position):
-                _last_finger_ms = Time.get_ticks_msec()
-                _finger_buttons[event.index] = child
-                get_viewport().set_input_as_handled()
-                return
+                var distance: float = child.get_global_rect().get_center().distance_to(event.position)
+                if distance < best_distance:
+                    best_distance = distance
+                    best = child
+        if best != null:
+            _last_finger_ms = Time.get_ticks_msec()
+            _finger_buttons[event.index] = best
+            get_viewport().set_input_as_handled()
+            return
     elif _finger_buttons.has(event.index):
         _last_finger_ms = Time.get_ticks_msec()
         var button: Button = _finger_buttons[event.index]
@@ -65,8 +76,8 @@ func setup(owner_main, owner_ui) -> void:
             ui.toggle_window("stores"))
     _button("○\n決定", Vector2(1136, 310), _accept)
     _button("×\n戻る", Vector2(1136, 390), _cancel)
-    _button("SELECT\nシステム", Vector2(16, 620), func(): ui.toggle_window("system"))
-    pause_label = _button("START\n閉じる／停止", Vector2(1136, 620), func():
+    _button("SELECT\nシステム", Vector2(16, 606), func(): ui.toggle_window("system"))
+    pause_label = _button("START\n閉じる／停止", Vector2(1136, 606), func():
         if ui.has_method("handle_start"):
             ui.handle_start()
         elif ui.window.visible:
