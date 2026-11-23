@@ -720,7 +720,7 @@ func _draw_screen(_target: Node2D) -> void:
         "root": _list([["店舗", "enter"], ["不動産", "realestate"], ["販促", "promotion"], ["調査", "research"], ["システム", "system"]], Rect2(45,56,70,0))
         "realestate": _list([["新装開店", "new_store"], ["店舗売却", "sell_store"]], Rect2(45,56,74,0))
         "promotion": _list([["宣伝をする", "advertising"], ["誘致をする", "facilities"]], Rect2(45,56,86,0))
-        "research": _list([["店舗別詳細", "shop"], ["店舗別グラフ", "shop_graph"], ["全店収支グラフ", "results"], ["アンケート", "survey"]], Rect2(45,56,102,0))
+        "research": _list([["店舗別詳細", "shop"], ["店舗別収支グラフ", "shop_graph"], ["全店収支グラフ", "results"], ["アンケート", "survey"]], Rect2(45,56,102,0))
         "store": _store_panel()
         "interior":
             if floor_mode.is_empty():
