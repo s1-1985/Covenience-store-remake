@@ -2657,3 +2657,5 @@ ce51a5a基点から、原作の50枠予約／消費／表示計画を移植し�
 **2026-11-23 / decision0247（reference_simのみ、APK未更新）**: CSRM-006 として §21.3 転記データを記録。DATA 4 来客数表（(b) 21行は推定対応＋駅数値 UNCERTAIN 注記、(a) 30行は建物対応なしの掲載順）、駅間隔ルール（2線×各2駅・40エリア以上、人口5000条件との関係は UNCERTAIN）、シナリオ開始データ（極上の追加＝クリア条件は不明として記録、開始人口4マップ分、初級ライバル初期値と交番2・消防署1）。いずれも参照専用で挙動へ未接続。Python 804件全成功（マージ済みラインへの積み直し時に再確認）。既存未解決6件（U-1〜U-6）は維持。詳細 docs/implementation/CSRM-006.md。
 
 **2026-11-23 / decision0248（CSRM-005、Godot UI）**: 調査メニューのラベルを原作マニュアル p.10 の表記「店舗別収支グラフ」へ一致させた（ps1_ui.gd、1行）。phone 層は出荷フローで到達不可能なことを静的確認と `--android-preview` 起動実測の両面で確認し、コード変更なしで確定した。UI 関連 smoke は成功（ps1_menu_dispatch_smoke の既存失敗1件は無関係で、原因特定のうえ CSRM-008 として切り出し済み）。既存未解決6件（U-1〜U-6）は維持。詳細は docs/implementation/CSRM-005.md。
+
+**2026-11-23 / decision0250（CSRM-008、Godot）**: レールボタンの重なり配送を是正した。実効高さ114px（2行ラベルの最小サイズ由来）と80px間隔の重なり帯では、中心が最も近いボタンを選ぶよう touch_controls の手動配送を変更し、最下段ボタン（SELECT/START）を y=606 へ移して画面内に収めた。ps1_menu_dispatch_smoke が成功に転じ、関連 smoke と全体 headless（SCRIPT ERROR 0件）、Python 804件全成功を確認。既存未解決6件（U-1〜U-6）は維持。詳細は docs/implementation/CSRM-008.md。
