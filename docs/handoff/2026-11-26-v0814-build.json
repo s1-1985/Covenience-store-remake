@@ -26,5 +26,7 @@
   "device_verified": false,
   "apk_smoke_scripts_excluded": true,
   "task_id": "PLAY-0251",
-  "includes_unmerged_parent_pr": 284
+  "includes_unmerged_parent_pr": 284,
+  "pr": 285,
+  "implementation_commit": "5b28b6e8cd0bf6a6a5b1a8052103a8577609a9d5"
 }

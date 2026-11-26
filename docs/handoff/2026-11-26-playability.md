@@ -1,6 +1,6 @@
 # 0.8.14 — 通常操作を優先した修正
 
-最新共同ラインb75fef5までにPR276の自分の変更とCSRM-005/006/007が採用済み。未マージPR284のHEAD efa76ff09b88123e2c2e36f1fcdab599c2b11a84へカメラ修正を積む。branch chatgpt/playability-camera-20261126。PRは作成後追記。main/他ブランチへ変更せずマージ未実施。
+最新共同ラインb75fef5までにPR276の自分の変更とCSRM-005/006/007が採用済み。未マージPR284のHEAD efa76ff09b88123e2c2e36f1fcdab599c2b11a84へカメラ修正を積む。branch chatgpt/playability-camera-20261126。PR #285 https://github.com/s1-1985/Covenience-store-remake/pull/285。main/他ブランチへ変更せずマージ未実施。
 
 営業中の床更新で店内ズーム/移動位置が失われる症状を変更前に再現。設定辞書全体の店舗判別と旧phone配置による毎回のtransform上書きを修正した。指ピンチ/パンを維持し、店舗/寸法変更時だけfit/centerする。原ゲームルールは変更なし。
 
