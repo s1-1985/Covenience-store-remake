@@ -68,7 +68,7 @@
     "menu_context": "viewport native touch: old screen, same-name reopen, store switch and hours-choice change rejected; fresh input works",
     "renovation_navigation": "actual menu callbacks stop after refused close; editor context preserved; explicit finish restores normal navigation"
   },
-  "latest_runtime_checkpoint": "c948ad6a2fe798373d5a09fb785e9681f35c8b09",
+  "latest_runtime_checkpoint": "f7ffe03285a56eb622d565c91ec7d1d81ad382e5",
   "latest_pr": 286,
   "muse_instructions": {
     "source_commit": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
