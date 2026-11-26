@@ -1,7 +1,7 @@
 {
   "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
   "branch": "chatgpt/mobile-resume-20261126",
-  "base": "cbfb1f7ff28b0e2bd5b7cf45f17f741aa07bf0cc",
+  "base": "bc0a0f2740c16b25c008781edfd767b359516b4b",
   "updated": "2026-11-26",
   "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
   "checkpoints": "通常操作を妨げる問題を優先し、必要な回帰確認とGit保存をまとめて行う。ユーザーの2026-11-26指示により毎回APKを作成せず、まとまった変更または明示指示時にビルドする。",
@@ -51,11 +51,11 @@
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
   "latest_build": "2026-11-26-v0814-build.json",
-  "latest_handoff": "2026-11-26-menu-context.md",
+  "latest_handoff": "2026-11-26-renovation-navigation.md",
   "latest_validation": {
-    "base_commit": "cbfb1f7ff28b0e2bd5b7cf45f17f741aa07bf0cc",
+    "base_commit": "bc0a0f2740c16b25c008781edfd767b359516b4b",
     "godot_version": "4.6.3",
-    "focused_godot_passed": 13,
+    "focused_godot_passed": 10,
     "python_success": 804,
     "python_existing_failures": 0,
     "python_expected_failures": 0,
@@ -65,7 +65,8 @@
     "full_headless_errors": 0,
     "apk_updated": false,
     "save_io": "real JSON in unique test path; repeated UI results, rejected title/continue, valid continue and cleared save",
-    "menu_context": "viewport native touch: old screen, same-name reopen, store switch and hours-choice change rejected; fresh input works"
+    "menu_context": "viewport native touch: old screen, same-name reopen, store switch and hours-choice change rejected; fresh input works",
+    "renovation_navigation": "actual menu callbacks stop after refused close; editor context preserved; explicit finish restores normal navigation"
   },
   "latest_runtime_checkpoint": "c948ad6a2fe798373d5a09fb785e9681f35c8b09",
   "latest_pr": 286,
@@ -88,6 +89,7 @@
     "PLAY-0252: pause/focus independent state and cancel unfinished gestures; not in APK0.8.14",
     "PLAY-0253: reset old site/menu state after load and resume saved renovation; not in APK0.8.14",
     "PLAY-0254: repeated save/load result feedback and failed continue returns to title; not in APK0.8.14",
-    "PLAY-0255: invalidate old menu actions after screen/store/choice changes; not in APK0.8.14"
+    "PLAY-0255: invalidate old menu actions after screen/store/choice changes; not in APK0.8.14",
+    "PLAY-0256: stop navigation when renovation finish confirmation refuses to close; not in APK0.8.14"
   ]
 }

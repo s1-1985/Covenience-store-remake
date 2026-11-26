@@ -725,6 +725,7 @@ func _navigate(id: String) -> void:
     match id:
         "show_store", "show_town":
             close_window()
+            if not window_id.is_empty(): return
             building_card.hide()
             main.fixture_info_panel.hide()
             customer_card.hide()
@@ -734,6 +735,7 @@ func _navigate(id: String) -> void:
             main._refresh_ui()
         "enter":
             close_window()
+            if not window_id.is_empty(): return
             if main.town_view.visible:
                 main._on_show_town_map_pressed()
             open_window("store")
@@ -747,6 +749,7 @@ func _navigate(id: String) -> void:
             open_window("close_shop" if main.simulation.is_open_now() else "renovation")
         "new_store":
             close_window()
+            if not window_id.is_empty(): return
             main.start_new_store()
         "finish": close_window()
         "move", "swap", "sell":
@@ -1644,6 +1647,7 @@ func _store_overview() -> void:
         var sales: int = sim.store_field(index,"_store_sales_yen") - sim.store_field(index,"_store_sales_at_day_start")
         _option(Rect2(14,y,292,17),str(sim.store_field(index,"store_name")),func():
             close_window()
+            if not window_id.is_empty(): return
             main.select_store(index)
             main.town_view.hide()
             main.store_view.show()
