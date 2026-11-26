@@ -63,6 +63,12 @@ func zoom_at(factor: float, anchor: Vector2) -> void:
     view.scale = Vector2.ONE*clampf(view.scale.x*factor,fit*0.5,fit*5)
     view.global_position = anchor-local*view.scale
     _clamp()
+func cancel_pointer_input() -> void:
+    _points.clear()
+    _moved = false
+    _pinched = false
+    _last_finger_ms = Time.get_ticks_msec()
+
 func _input(event: InputEvent) -> void:
     if not main.store_view.visible or main.selecting_site or not ui.screen.is_empty() or ui.notice.visible:
         _points.clear()

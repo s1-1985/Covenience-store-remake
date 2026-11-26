@@ -2,6 +2,7 @@ extends Node
 
 
 var continue_from_save := false
+var continue_error := ""
 
 var scenario_index := 0
 var progress_flags := 0

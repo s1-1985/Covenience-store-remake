@@ -248,7 +248,7 @@ func open_window(id: String) -> void:
     if main.simulation != null and main.simulation.source_calendar_blocked(): return
     if not _ready_ui:
         return
-    _cancel_staff_drag()
+    invalidate_menu_actions()
     if id == "stock" or id == "town":
         screen = ""
         window.modulate.a = 1.0
@@ -316,7 +316,7 @@ func close_window() -> void:
                 break
         close_hours = ""
         _close_store_uid = -1
-    _cancel_staff_drag()
+    invalidate_menu_actions()
     screen = ""
     history.clear()
     _history_states.clear()
@@ -409,11 +409,13 @@ func handle_shoulder(direction: int) -> bool:
         if not main.site_buy_button.disabled: main._on_buy_site_pressed()
         return true
     if screen in ["fixtures", "candidates", "stock_prices", "facilities"]:
+        invalidate_menu_actions()
         page = maxi(0, page + direction)
         choice = 0
         surface.queue_redraw()
         return true
     if screen in ["hours", "shop", "shop_graph", "survey", "transfer", "renovation", "sell_store"]:
+        invalidate_menu_actions()
         if screen == "hours":
             choice = posmod(choice + direction, main.simulation.business_hours_presets().size())
         elif screen == "transfer":
@@ -431,6 +433,66 @@ func handle_shoulder(direction: int) -> bool:
         surface.queue_redraw()
         return true
     return false
+
+# Replace UI state after a successful load without committing old editing
+# cleanup (close_window restores the previous session's opening hours).
+func restore_loaded_game() -> void:
+    cancel_pointer_input()
+    close_hours = ""
+    _close_store_uid = -1
+    _close_target = "interior"
+    floor_mode = ""
+    for draft in [_dismiss_request, _sale_request, _renovation_request, _permit_request,
+            _price_before, _price_draft, _price_individual_before, _rival_request]:
+        draft.clear()
+    _permit_selected.clear()
+    _renovation_permits.clear()
+    screen = ""
+    window_id = ""
+    command_open = false
+    history.clear()
+    _history_states.clear()
+    _updaters.clear()
+    hits.clear()
+    _active_action = Callable()
+    main.store_view.editing = false
+    window.hide()
+    customer_card.hide()
+    building_card.hide()
+    notice.hide()
+    _source_notice_visible = false
+    _notice_source = null
+    _fallback_notice_queue.clear()
+    _heard_sequence = main._latest_event_sequence()
+    _calendar_key = ""
+    _calendar_notice_source = null
+    _resume_renovation_edit()
+    surface.queue_redraw()
+
+func invalidate_menu_actions() -> void:
+    # A repaint will bind actions for the new screen/store/choice. Keep
+    # claimed releases consumed so an old menu finger cannot tap the map.
+    _pending_taps.clear()
+    hits.clear()
+    _active_action = Callable()
+    _selected_rect = Rect2()
+    _cancel_staff_drag()
+    if is_instance_valid(surface):
+        surface.queue_redraw()
+
+func cancel_pointer_input() -> void:
+    # Cancel only unfinished gestures, retaining menu choices/drafts/view.
+    _pending_taps.clear()
+    _claimed_touches.clear()
+    _calendar_touches.clear()
+    _calendar_mouse_down = false
+    _native_pointer = -1
+    _cancel_staff_drag()
+    for controller in [touch_controls, store_camera]:
+        if is_instance_valid(controller):
+            controller.cancel_pointer_input()
+    if is_instance_valid(surface):
+        surface.queue_redraw()
 
 func _cancel_staff_drag() -> void:
     _staff_drag.clear()
@@ -659,9 +721,11 @@ func _list(items: Array, rect := Rect2(45, 56, 86, 0)) -> void:
         _option(Rect2(rect.position + Vector2(3, 3 + i * 20), Vector2(rect.size.x - 6, 20)), str(item[0]), func(): _navigate(id), i)
 
 func _navigate(id: String) -> void:
+    invalidate_menu_actions()
     match id:
         "show_store", "show_town":
             close_window()
+            if not window_id.is_empty(): return
             building_card.hide()
             main.fixture_info_panel.hide()
             customer_card.hide()
@@ -671,6 +735,7 @@ func _navigate(id: String) -> void:
             main._refresh_ui()
         "enter":
             close_window()
+            if not window_id.is_empty(): return
             if main.town_view.visible:
                 main._on_show_town_map_pressed()
             open_window("store")
@@ -684,6 +749,7 @@ func _navigate(id: String) -> void:
             open_window("close_shop" if main.simulation.is_open_now() else "renovation")
         "new_store":
             close_window()
+            if not window_id.is_empty(): return
             main.start_new_store()
         "finish": close_window()
         "move", "swap", "sell":
@@ -825,6 +891,7 @@ func _fixtures() -> void:
         var id := str(entries[i]["catalog_id"])
         var index := i
         _icon(Rect2(60+(i%5)*40,96+(i/5)*40,32,32),_atlas_icon("fixtures",int(fixture_info[id]["kind"])+1,Vector2i(32,32),8),func():
+            invalidate_menu_actions()
             choice = index
             floor_mode = "place"
             screen = "interior"
@@ -1467,10 +1534,12 @@ func _survey() -> void:
 func _system() -> void:
     var bits: int = SoundManager.source_settings_bits
     _paper(Rect2(60,70,198,102))
-    _option(Rect2(112,75,112,16),"データをセーブ",func(): main._on_save_pressed(),0)
+    _option(Rect2(112,75,112,16),"データをセーブ",func():
+        _last_message = ""
+        main._on_save_pressed(),0)
     _option(Rect2(112,91,112,16),"データをロード",func():
-        main._on_load_pressed()
-        close_window(),1)
+        _last_message = ""
+        main._on_load_pressed(),1)
     _ink(Vector2(65,107),"SE (効果音)")
     _option(Rect2(177,107,16,16),"ON",func(): SoundManager.set_source_settings(bits&~1),2)
     _ink(Vector2(193,107),"/")
@@ -1578,6 +1647,7 @@ func _store_overview() -> void:
         var sales: int = sim.store_field(index,"_store_sales_yen") - sim.store_field(index,"_store_sales_at_day_start")
         _option(Rect2(14,y,292,17),str(sim.store_field(index,"store_name")),func():
             close_window()
+            if not window_id.is_empty(): return
             main.select_store(index)
             main.town_view.hide()
             main.store_view.show()

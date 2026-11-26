@@ -35,17 +35,27 @@ func save_to_path(simulation, path: String = DEFAULT_SAVE_PATH) -> bool:
 
 
 func load_from_path(simulation, path: String = DEFAULT_SAVE_PATH) -> bool:
-    if not FileAccess.file_exists(path):
-        return false
-    var file := FileAccess.open(path, FileAccess.READ)
-    if file == null:
-        return false
-    var json_text := file.get_as_text()
-    file.close()
-    var parsed = JSON.parse_string(json_text)
-    if typeof(parsed) != TYPE_DICTIONARY:
+    var parsed := read_from_path(path)
+    if parsed.is_empty():
         return false
     return simulation.load_state(parsed)
+
+
+func read_from_path(path: String = DEFAULT_SAVE_PATH) -> Dictionary:
+    if not FileAccess.file_exists(path):
+        return {}
+    var file := FileAccess.open(path, FileAccess.READ)
+    if file == null:
+        return {}
+    var json_text := file.get_as_text()
+    var error := file.get_error()
+    file.close()
+    if error != OK:
+        return {}
+    var json := JSON.new()
+    if json.parse(json_text) != OK or not json.data is Dictionary:
+        return {}
+    return json.data
 
 
 func save_exists(path: String = DEFAULT_SAVE_PATH) -> bool:

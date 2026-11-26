@@ -1,10 +1,10 @@
 {
   "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
-  "branch": "chatgpt/playability-camera-20261126",
-  "base": "efa76ff09b88123e2c2e36f1fcdab599c2b11a84",
+  "branch": "chatgpt/mobile-resume-20261126",
+  "base": "bc0a0f2740c16b25c008781edfd767b359516b4b",
   "updated": "2026-11-26",
   "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
-  "checkpoints": "関連する未反映境界をまとめて実装し、必要な検証を一括実施してGitHubへ保存する。APKはまとまった進捗と署名環境がそろった時点で作成し、コード更新とAPK収録を区別する。",
+  "checkpoints": "通常操作を妨げる問題を優先し、必要な回帰確認とGit保存をまとめて行う。ユーザーの2026-11-26指示により毎回APKを作成せず、まとまった変更または明示指示時にビルドする。",
   "items": [
     {
       "id": "people",
@@ -51,11 +51,11 @@
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
   "latest_build": "2026-11-26-v0814-build.json",
-  "latest_handoff": "2026-11-26-playability.md",
+  "latest_handoff": "2026-11-26-renovation-navigation.md",
   "latest_validation": {
-    "base_commit": "efa76ff09b88123e2c2e36f1fcdab599c2b11a84",
+    "base_commit": "bc0a0f2740c16b25c008781edfd767b359516b4b",
     "godot_version": "4.6.3",
-    "focused_godot_passed": 9,
+    "focused_godot_passed": 10,
     "python_success": 804,
     "python_existing_failures": 0,
     "python_expected_failures": 0,
@@ -63,11 +63,13 @@
     "full_headless_rerun": true,
     "full_headless_pass": true,
     "full_headless_errors": 0,
-    "apk_updated": true,
-    "native_operating_ticks": 7200
+    "apk_updated": false,
+    "save_io": "real JSON in unique test path; repeated UI results, rejected title/continue, valid continue and cleared save",
+    "menu_context": "viewport native touch: old screen, same-name reopen, store switch and hours-choice change rejected; fresh input works",
+    "renovation_navigation": "actual menu callbacks stop after refused close; editor context preserved; explicit finish restores normal navigation"
   },
-  "latest_runtime_checkpoint": "5b28b6e8cd0bf6a6a5b1a8052103a8577609a9d5",
-  "latest_pr": 285,
+  "latest_runtime_checkpoint": "f7ffe03285a56eb622d565c91ec7d1d81ad382e5",
+  "latest_pr": 286,
   "muse_instructions": {
     "source_commit": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
     "CSRM-001": "v1 recorded; successor-artifact deviation pending review",
@@ -82,5 +84,12 @@
     "CSRM-006": "reference-only data adopted; Python804",
     "CSRM-007": "catalog guard adopted; included APK94",
     "CSRM-008": "parent PR284 not merged; rail fix included APK94"
-  }
+  },
+  "unbuilt_changes": [
+    "PLAY-0252: pause/focus independent state and cancel unfinished gestures; not in APK0.8.14",
+    "PLAY-0253: reset old site/menu state after load and resume saved renovation; not in APK0.8.14",
+    "PLAY-0254: repeated save/load result feedback and failed continue returns to title; not in APK0.8.14",
+    "PLAY-0255: invalidate old menu actions after screen/store/choice changes; not in APK0.8.14",
+    "PLAY-0256: stop navigation when renovation finish confirmation refuses to close; not in APK0.8.14"
+  ]
 }

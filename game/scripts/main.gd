@@ -42,6 +42,8 @@ var phone_ui = null
 var speed := 1
 var _clock_last_us: int = 0
 var _app_suspended := false
+var _application_paused := false
+var _application_focus_lost := false
 var _ui_elapsed := 0.0
 var _ticks_since_ui := false
 # Task #101: the rival store menu on the town map, like the original's
@@ -174,7 +176,8 @@ func _ready() -> void:
     # change when it is built, so the UI reads the simulation's own config.
     config = simulation.config
     tick_seconds = float(config["simulation"]["tick_seconds"])
-    _save_service = SaveGameServiceScript.new()
+    if _save_service == null:
+        _save_service = SaveGameServiceScript.new()
     # GameLaunchState is an autoload (project.godot [autoload]); it is only
     # ever set by main_menu.gd's Continue button, so this is a no-op (and
     # every field above stays exactly the fresh-game state) whenever this
@@ -182,8 +185,12 @@ func _ready() -> void:
     # instantiate-and-free check.
     if GameLaunchState.continue_from_save:
         GameLaunchState.continue_from_save = false
-        if _save_service.load_from_path(simulation):
-            SoundManager.set_source_settings(int(simulation.config.get("source_settings_bits", 0)))
+        if not _save_service.load_from_path(simulation):
+            GameLaunchState.continue_error = tr("No compatible save found")
+            set_process(false)
+            get_tree().call_deferred("change_scene_to_file", MAIN_MENU_SCENE_PATH)
+            return
+        SoundManager.set_source_settings(int(simulation.config.get("source_settings_bits", 0)))
     store_view.bind(config, simulation)
     town_view.bind(simulation)
     _fit_store_view()
@@ -301,12 +308,25 @@ func _advance_simulation(elapsed: float) -> void:
 
 
 func _notification(what: int) -> void:
-    if what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
-        _app_suspended = true
-        _clock_last_us = 0
-    elif what == NOTIFICATION_APPLICATION_RESUMED or what == NOTIFICATION_APPLICATION_FOCUS_IN:
-        _app_suspended = false
-        _clock_last_us = 0
+    # Pause/resume and focus notifications can interleave on a phone. One
+    # resume event must not clear a different outstanding suspension reason.
+    match what:
+        NOTIFICATION_APPLICATION_PAUSED:
+            _application_paused = true
+        NOTIFICATION_APPLICATION_RESUMED:
+            _application_paused = false
+        NOTIFICATION_APPLICATION_FOCUS_OUT:
+            _application_focus_lost = true
+        NOTIFICATION_APPLICATION_FOCUS_IN:
+            _application_focus_lost = false
+        _:
+            return
+    _app_suspended = _application_paused or _application_focus_lost
+    _clock_last_us = 0
+    if what in [NOTIFICATION_APPLICATION_PAUSED, NOTIFICATION_APPLICATION_FOCUS_OUT]:
+        for controller in [phone_ui, store_view, town_view]:
+            if is_instance_valid(controller) and controller.has_method("cancel_pointer_input"):
+                controller.cancel_pointer_input()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -978,6 +998,11 @@ func _on_load_pressed() -> void:
         _select_current_business_hours()
         _heard_event_sequence = _latest_event_sequence()
         _heard_clear = simulation.clear_condition_met
+        choosing_new_store = false
+        _clock_last_us = 0
+        _rival_id = ""
+        rival_panel.hide()
+        fixture_info_panel.hide()
         paused = false
         pause_button.text = tr("Pause")
         accumulator = 0.0
@@ -985,6 +1010,8 @@ func _on_load_pressed() -> void:
         _refresh_procure_fixture_option()
         _refresh_hire_candidate_option()
         _sync_site_selection()
+        if phone_ui != null and phone_ui.has_method("restore_loaded_game"):
+            phone_ui.restore_loaded_game()
     else:
         layout_edit_label.text = tr("No compatible save found")
     _refresh_ui()
@@ -1354,6 +1381,8 @@ func cancel_new_store() -> void:
 func select_store(index: int) -> void:
     if not simulation.select_store(index):
         return
+    if phone_ui != null and phone_ui.has_method("invalidate_menu_actions"):
+        phone_ui.invalidate_menu_actions()
     _rival_id = ""
     _store_layout_changed()
     town_view.center_on_store()
