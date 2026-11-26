@@ -432,6 +432,41 @@ func handle_shoulder(direction: int) -> bool:
         return true
     return false
 
+# Replace UI state after a successful load without committing old editing
+# cleanup (close_window restores the previous session's opening hours).
+func restore_loaded_game() -> void:
+    cancel_pointer_input()
+    close_hours = ""
+    _close_store_uid = -1
+    _close_target = "interior"
+    floor_mode = ""
+    for draft in [_dismiss_request, _sale_request, _renovation_request, _permit_request,
+            _price_before, _price_draft, _price_individual_before, _rival_request]:
+        draft.clear()
+    _permit_selected.clear()
+    _renovation_permits.clear()
+    screen = ""
+    window_id = ""
+    command_open = false
+    history.clear()
+    _history_states.clear()
+    _updaters.clear()
+    hits.clear()
+    _active_action = Callable()
+    main.store_view.editing = false
+    window.hide()
+    customer_card.hide()
+    building_card.hide()
+    notice.hide()
+    _source_notice_visible = false
+    _notice_source = null
+    _fallback_notice_queue.clear()
+    _heard_sequence = main._latest_event_sequence()
+    _calendar_key = ""
+    _calendar_notice_source = null
+    _resume_renovation_edit()
+    surface.queue_redraw()
+
 func cancel_pointer_input() -> void:
     # Cancel only unfinished gestures, retaining menu choices/drafts/view.
     _pending_taps.clear()
@@ -1482,9 +1517,7 @@ func _system() -> void:
     var bits: int = SoundManager.source_settings_bits
     _paper(Rect2(60,70,198,102))
     _option(Rect2(112,75,112,16),"データをセーブ",func(): main._on_save_pressed(),0)
-    _option(Rect2(112,91,112,16),"データをロード",func():
-        main._on_load_pressed()
-        close_window(),1)
+    _option(Rect2(112,91,112,16),"データをロード",func(): main._on_load_pressed(),1)
     _ink(Vector2(65,107),"SE (効果音)")
     _option(Rect2(177,107,16,16),"ON",func(): SoundManager.set_source_settings(bits&~1),2)
     _ink(Vector2(193,107),"/")

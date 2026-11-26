@@ -993,6 +993,11 @@ func _on_load_pressed() -> void:
         _select_current_business_hours()
         _heard_event_sequence = _latest_event_sequence()
         _heard_clear = simulation.clear_condition_met
+        choosing_new_store = false
+        _clock_last_us = 0
+        _rival_id = ""
+        rival_panel.hide()
+        fixture_info_panel.hide()
         paused = false
         pause_button.text = tr("Pause")
         accumulator = 0.0
@@ -1000,6 +1005,8 @@ func _on_load_pressed() -> void:
         _refresh_procure_fixture_option()
         _refresh_hire_candidate_option()
         _sync_site_selection()
+        if phone_ui != null and phone_ui.has_method("restore_loaded_game"):
+            phone_ui.restore_loaded_game()
     else:
         layout_edit_label.text = tr("No compatible save found")
     _refresh_ui()
