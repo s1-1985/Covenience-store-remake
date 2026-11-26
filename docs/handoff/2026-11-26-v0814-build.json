@@ -1,0 +1,30 @@
+{
+  "version": "0.8.14-playability",
+  "code": 94,
+  "apk_bytes": 45077967,
+  "apk_sha256": "48ae1384ee20fcbe5c83c21f4e3419dd5c636ef4afdc4206458e5cda3c0f561b",
+  "compiled_scripts_sha256": {
+    "store_camera": "acbd752a69e6b927b0eaa7cb301e06325b5319784edb1cf141e4cde13f8cc692",
+    "ps1_ui": "d38533909f26bf0c6b372e13e41476359f59f76087208dc0c5468c9d04793fd8",
+    "touch_controls": "605db5507d16b3965fc6f2d490c179e74b168763c9dc92c5459db22071f0dffd",
+    "vertical_slice_simulation": "b29e0d0b8c613e6e09bea4545f30e1f3c96ec9534623def00bdecb710ef9bc99"
+  },
+  "date": "2026-11-26",
+  "base_commit": "efa76ff09b88123e2c2e36f1fcdab599c2b11a84",
+  "branch": "chatgpt/playability-camera-20261126",
+  "filename": "Conveni-v0.8.14.apk",
+  "package": "com.conveniremake.touchfix",
+  "godot_version": "4.6.3",
+  "signature_v2": true,
+  "signature_v3": true,
+  "certificate_sha256": "4e1ea772ac6aea449573f8c151028082d011f82945170272b8dc61b43bec29a4",
+  "library_file_id": "libfile_3a8d8c2062088191aee5507db8f950a5",
+  "python_passed": 804,
+  "related_godot_passed": 9,
+  "full_headless_pass": true,
+  "full_headless_errors": 0,
+  "device_verified": false,
+  "apk_smoke_scripts_excluded": true,
+  "task_id": "PLAY-0251",
+  "includes_unmerged_parent_pr": 284
+}

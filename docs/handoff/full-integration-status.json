@@ -1,8 +1,8 @@
 {
   "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
-  "branch": "chatgpt/legacy-daily-costs-20261121",
-  "base": "db9b596a1599f8e4b22fe6ac40c4f34c2ff2642b",
-  "updated": "2026-11-21",
+  "branch": "chatgpt/playability-camera-20261126",
+  "base": "efa76ff09b88123e2c2e36f1fcdab599c2b11a84",
+  "updated": "2026-11-26",
   "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
   "checkpoints": "関連する未反映境界をまとめて実装し、必要な検証を一括実施してGitHubへ保存する。APKはまとまった進捗と署名環境がそろった時点で作成し、コード更新とAPK収録を区別する。",
   "items": [
@@ -46,34 +46,41 @@
       "id": "android",
       "status": "milestone_built",
       "remaining": "Android実機インストール/タッチ/音量/性能、全反映後の最終版確認",
-      "done": "0.8.13-daily-costs/code93、従来touchfix署名。日次費用の原計算接続を収録"
+      "done": "0.8.14-playability/code94、従来touchfix署名。カメラ保持・既存レール/ラベル/カタログ修正を収録"
     }
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
-  "latest_build": "2026-11-21-v0813-build.json",
-  "latest_handoff": "2026-11-21-daily-costs.md",
+  "latest_build": "2026-11-26-v0814-build.json",
+  "latest_handoff": "2026-11-26-playability.md",
   "latest_validation": {
-    "base_commit": "db9b596a1599f8e4b22fe6ac40c4f34c2ff2642b",
+    "base_commit": "efa76ff09b88123e2c2e36f1fcdab599c2b11a84",
     "godot_version": "4.6.3",
-    "focused_godot_passed": 10,
-    "python_success": 793,
+    "focused_godot_passed": 9,
+    "python_success": 804,
     "python_existing_failures": 0,
     "python_expected_failures": 0,
     "full_python_rerun": true,
     "full_headless_rerun": true,
-    "full_headless_pass": false,
-    "full_headless_errors": 5,
+    "full_headless_pass": true,
+    "full_headless_errors": 0,
     "apk_updated": true,
-    "model_cases": 21
+    "native_operating_ticks": 7200
   },
   "latest_runtime_checkpoint": "a3a8d2adbf3d7649b35f736116eeb915614c4e04",
-  "latest_pr": 276,
+  "latest_pr": null,
   "muse_instructions": {
     "source_commit": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
     "CSRM-001": "v1 recorded; successor-artifact deviation pending review",
     "CSRM-003": "v1 applied; pending review",
-    "CSRM-002": "v1 partial; source_catalog legacy configuration question pending",
+    "CSRM-002": "Residual catalog error resolved by adopted CSRM-007; full headless confirmed clean 2026-11-26",
     "CSRM-004": "v1 implemented; pending review"
   },
-  "implementation_priority": "ユーザー指示2026-11-21: Muse新規解析より、自分の過去解析の未反映分を優先"
+  "implementation_priority": "2026-11-26: 通常のスマホ操作を妨げる不具合→継続/保存→残る原作差。完成確認はRELEASE_ACCEPTANCEで管理",
+  "release_acceptance": "docs/RELEASE_ACCEPTANCE.md",
+  "adopted_collaboration_changes": {
+    "CSRM-005": "label fix adopted; included APK94",
+    "CSRM-006": "reference-only data adopted; Python804",
+    "CSRM-007": "catalog guard adopted; included APK94",
+    "CSRM-008": "parent PR284 not merged; rail fix included APK94"
+  }
 }
