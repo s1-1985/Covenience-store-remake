@@ -42,6 +42,8 @@ var phone_ui = null
 var speed := 1
 var _clock_last_us: int = 0
 var _app_suspended := false
+var _application_paused := false
+var _application_focus_lost := false
 var _ui_elapsed := 0.0
 var _ticks_since_ui := false
 # Task #101: the rival store menu on the town map, like the original's
@@ -301,12 +303,25 @@ func _advance_simulation(elapsed: float) -> void:
 
 
 func _notification(what: int) -> void:
-    if what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
-        _app_suspended = true
-        _clock_last_us = 0
-    elif what == NOTIFICATION_APPLICATION_RESUMED or what == NOTIFICATION_APPLICATION_FOCUS_IN:
-        _app_suspended = false
-        _clock_last_us = 0
+    # Pause/resume and focus notifications can interleave on a phone. One
+    # resume event must not clear a different outstanding suspension reason.
+    match what:
+        NOTIFICATION_APPLICATION_PAUSED:
+            _application_paused = true
+        NOTIFICATION_APPLICATION_RESUMED:
+            _application_paused = false
+        NOTIFICATION_APPLICATION_FOCUS_OUT:
+            _application_focus_lost = true
+        NOTIFICATION_APPLICATION_FOCUS_IN:
+            _application_focus_lost = false
+        _:
+            return
+    _app_suspended = _application_paused or _application_focus_lost
+    _clock_last_us = 0
+    if what in [NOTIFICATION_APPLICATION_PAUSED, NOTIFICATION_APPLICATION_FOCUS_OUT]:
+        for controller in [phone_ui, store_view, town_view]:
+            if is_instance_valid(controller) and controller.has_method("cancel_pointer_input"):
+                controller.cancel_pointer_input()
 
 
 func _unhandled_input(event: InputEvent) -> void:

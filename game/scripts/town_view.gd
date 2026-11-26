@@ -469,6 +469,14 @@ func touch_zoom(factor: float) -> void:
     queue_redraw()
 
 
+func cancel_pointer_input() -> void:
+    _touch_points.clear()
+    _pinching = false
+    _pinch_distance = 0.0
+    _drag_remainder = Vector2.ZERO
+    # A release from before suspension must not select a site/building.
+    _press_travel = TAP_SLOP_PIXELS + 1.0
+
 func _input(event: InputEvent) -> void:
     if not visible or simulation == null:
         return

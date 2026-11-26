@@ -8,6 +8,10 @@ var pause_label: Button
 var _finger_buttons: Dictionary = {}
 var _last_finger_ms := -1000
 
+func cancel_pointer_input() -> void:
+    _finger_buttons.clear()
+    _last_finger_ms = Time.get_ticks_msec()
+
 func _input(event: InputEvent) -> void:
     # BaseButton normally relies on emulated mouse input. Handle real finger
     # events too, before the painted modal can consume the rail gesture.

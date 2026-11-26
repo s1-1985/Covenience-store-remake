@@ -34,7 +34,7 @@ jobs:
           engine=Godot_v4.6.3-stable_linux.x86_64
           timeout 120s "$engine" --headless --editor --path game --quit 2>&1 | tee /tmp/import.log
           if grep -E 'SCRIPT ERROR:|Parse Error:|Compile Error:' /tmp/import.log; then exit 1; fi
-          for script in store_camera_persistence mobile_controls ps1_menu_dispatch ejection_consistency finance_width daily_costs pending_audio operating_audio live_staff_traits source_people staff_response source_geometry staff_lifecycle annual_personnel annual_personnel_ui town_press; do
+          for script in mobile_resume store_camera_persistence mobile_controls ps1_menu_dispatch ejection_consistency finance_width daily_costs pending_audio operating_audio live_staff_traits source_people staff_response source_geometry staff_lifecycle annual_personnel annual_personnel_ui town_press; do
             timeout 120s "$engine" --headless --path game --script "res://scripts/${script}_smoke.gd" -- --android-preview 2>&1 | tee "/tmp/${script}.log"
             if grep -E 'SCRIPT ERROR:|Assertion failed|Parse Error:|Compile Error:' "/tmp/${script}.log"; then exit 1; fi
             grep -E '_PASS' "/tmp/${script}.log"

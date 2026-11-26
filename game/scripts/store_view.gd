@@ -361,6 +361,10 @@ var _drag_cell := Vector2i.ZERO
 var _drag_start_cell := Vector2i.ZERO
 
 
+func cancel_pointer_input() -> void:
+    _drag_fixture = ""
+    queue_redraw()
+
 func _unhandled_input(event: InputEvent) -> void:
     # Task #72: while the town map (TownView) is shown in this store view's
     # place, this node is hidden but would otherwise still process taps

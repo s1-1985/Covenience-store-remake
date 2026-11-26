@@ -1,10 +1,10 @@
 {
   "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
-  "branch": "chatgpt/playability-camera-20261126",
-  "base": "efa76ff09b88123e2c2e36f1fcdab599c2b11a84",
+  "branch": "chatgpt/mobile-resume-20261126",
+  "base": "1257d3b299c0c1e536c3720b6f1e51442a03ae2e",
   "updated": "2026-11-26",
   "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
-  "checkpoints": "関連する未反映境界をまとめて実装し、必要な検証を一括実施してGitHubへ保存する。APKはまとまった進捗と署名環境がそろった時点で作成し、コード更新とAPK収録を区別する。",
+  "checkpoints": "通常操作を妨げる問題を優先し、必要な回帰確認とGit保存をまとめて行う。ユーザーの2026-11-26指示により毎回APKを作成せず、まとまった変更または明示指示時にビルドする。",
   "items": [
     {
       "id": "people",
@@ -51,11 +51,11 @@
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
   "latest_build": "2026-11-26-v0814-build.json",
-  "latest_handoff": "2026-11-26-playability.md",
+  "latest_handoff": "2026-11-26-mobile-resume.md",
   "latest_validation": {
-    "base_commit": "efa76ff09b88123e2c2e36f1fcdab599c2b11a84",
+    "base_commit": "1257d3b299c0c1e536c3720b6f1e51442a03ae2e",
     "godot_version": "4.6.3",
-    "focused_godot_passed": 9,
+    "focused_godot_passed": 10,
     "python_success": 804,
     "python_existing_failures": 0,
     "python_expected_failures": 0,
@@ -63,11 +63,11 @@
     "full_headless_rerun": true,
     "full_headless_pass": true,
     "full_headless_errors": 0,
-    "apk_updated": true,
-    "native_operating_ticks": 7200
+    "apk_updated": false,
+    "lifecycle_notifications": "automated replay, not physical Android OS validation"
   },
   "latest_runtime_checkpoint": "5b28b6e8cd0bf6a6a5b1a8052103a8577609a9d5",
-  "latest_pr": 285,
+  "latest_pr": null,
   "muse_instructions": {
     "source_commit": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
     "CSRM-001": "v1 recorded; successor-artifact deviation pending review",
@@ -82,5 +82,8 @@
     "CSRM-006": "reference-only data adopted; Python804",
     "CSRM-007": "catalog guard adopted; included APK94",
     "CSRM-008": "parent PR284 not merged; rail fix included APK94"
-  }
+  },
+  "unbuilt_changes": [
+    "PLAY-0252: pause/focus independent state and cancel unfinished gestures; not in APK0.8.14"
+  ]
 }

@@ -432,6 +432,20 @@ func handle_shoulder(direction: int) -> bool:
         return true
     return false
 
+func cancel_pointer_input() -> void:
+    # Cancel only unfinished gestures, retaining menu choices/drafts/view.
+    _pending_taps.clear()
+    _claimed_touches.clear()
+    _calendar_touches.clear()
+    _calendar_mouse_down = false
+    _native_pointer = -1
+    _cancel_staff_drag()
+    for controller in [touch_controls, store_camera]:
+        if is_instance_valid(controller):
+            controller.cancel_pointer_input()
+    if is_instance_valid(surface):
+        surface.queue_redraw()
+
 func _cancel_staff_drag() -> void:
     _staff_drag.clear()
     _staff_drag_moved = false
