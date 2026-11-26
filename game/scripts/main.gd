@@ -1381,6 +1381,8 @@ func cancel_new_store() -> void:
 func select_store(index: int) -> void:
     if not simulation.select_store(index):
         return
+    if phone_ui != null and phone_ui.has_method("invalidate_menu_actions"):
+        phone_ui.invalidate_menu_actions()
     _rival_id = ""
     _store_layout_changed()
     town_view.center_on_store()

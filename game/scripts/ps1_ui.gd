@@ -248,7 +248,7 @@ func open_window(id: String) -> void:
     if main.simulation != null and main.simulation.source_calendar_blocked(): return
     if not _ready_ui:
         return
-    _cancel_staff_drag()
+    invalidate_menu_actions()
     if id == "stock" or id == "town":
         screen = ""
         window.modulate.a = 1.0
@@ -316,7 +316,7 @@ func close_window() -> void:
                 break
         close_hours = ""
         _close_store_uid = -1
-    _cancel_staff_drag()
+    invalidate_menu_actions()
     screen = ""
     history.clear()
     _history_states.clear()
@@ -409,11 +409,13 @@ func handle_shoulder(direction: int) -> bool:
         if not main.site_buy_button.disabled: main._on_buy_site_pressed()
         return true
     if screen in ["fixtures", "candidates", "stock_prices", "facilities"]:
+        invalidate_menu_actions()
         page = maxi(0, page + direction)
         choice = 0
         surface.queue_redraw()
         return true
     if screen in ["hours", "shop", "shop_graph", "survey", "transfer", "renovation", "sell_store"]:
+        invalidate_menu_actions()
         if screen == "hours":
             choice = posmod(choice + direction, main.simulation.business_hours_presets().size())
         elif screen == "transfer":
@@ -466,6 +468,17 @@ func restore_loaded_game() -> void:
     _calendar_notice_source = null
     _resume_renovation_edit()
     surface.queue_redraw()
+
+func invalidate_menu_actions() -> void:
+    # A repaint will bind actions for the new screen/store/choice. Keep
+    # claimed releases consumed so an old menu finger cannot tap the map.
+    _pending_taps.clear()
+    hits.clear()
+    _active_action = Callable()
+    _selected_rect = Rect2()
+    _cancel_staff_drag()
+    if is_instance_valid(surface):
+        surface.queue_redraw()
 
 func cancel_pointer_input() -> void:
     # Cancel only unfinished gestures, retaining menu choices/drafts/view.
@@ -708,6 +721,7 @@ func _list(items: Array, rect := Rect2(45, 56, 86, 0)) -> void:
         _option(Rect2(rect.position + Vector2(3, 3 + i * 20), Vector2(rect.size.x - 6, 20)), str(item[0]), func(): _navigate(id), i)
 
 func _navigate(id: String) -> void:
+    invalidate_menu_actions()
     match id:
         "show_store", "show_town":
             close_window()
@@ -874,6 +888,7 @@ func _fixtures() -> void:
         var id := str(entries[i]["catalog_id"])
         var index := i
         _icon(Rect2(60+(i%5)*40,96+(i/5)*40,32,32),_atlas_icon("fixtures",int(fixture_info[id]["kind"])+1,Vector2i(32,32),8),func():
+            invalidate_menu_actions()
             choice = index
             floor_mode = "place"
             screen = "interior"
