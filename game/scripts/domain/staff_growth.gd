@@ -48,6 +48,15 @@ func apply_replenish_growth(staff_member) -> Array[Dictionary]:
     return results
 
 
+# Task #97: the guide's clean -> cleaning + security pair (book page 26),
+# now that a cleaning task exists. Same +1 magnitude as above.
+func apply_clean_growth(staff_member) -> Array[Dictionary]:
+    var results: Array[Dictionary] = []
+    _grow(staff_member, "cleaning_skill", results)
+    _grow(staff_member, "security_skill", results)
+    return results
+
+
 func _grow(staff_member, skill_field: String, results: Array[Dictionary]) -> void:
     var before: int
     var ceiling: int
@@ -85,3 +94,51 @@ func _grow(staff_member, skill_field: String, results: Array[Dictionary]) -> voi
         "security_skill":
             staff_member.security_skill = after
     results.append({"skill": skill_field, "before": before, "after": after})
+
+
+# --- Task #133: staff growth as the PS program does it (CONFIRMED_BINARY,
+# SLPS_007.82 0x8003AA58). A task gives each of its skills a chance of the
+# manager's 学歴 out of 100 to grow by 1: register duty レジ and 接客,
+# restocking 補充 and 警備 (and 清掃 while the store's 清掃 is under 100),
+# cleaning 清掃 and 警備. A skill never grows past the staff member's own
+# 教育 (レジ, 警備), 社交性 (接客, 清掃) or 機敏さ (補充); past its growth
+# ceiling it grows only 1 time in 16 (one roll per task). ---
+const PROGRAM_TASK_SKILLS := {
+    "checkout": ["register_skill", "service_skill"],
+    "restock": ["replenishment_skill", "security_skill"],
+    "clean": ["cleaning_skill", "security_skill"],
+}
+const DECLINE_SKILLS := ["register_skill", "replenishment_skill", "cleaning_skill", "security_skill"]
+
+
+func apply_program_growth(
+    staff_member, task: String, manager_academic: int, candidate: Dictionary, rules: Dictionary,
+    store_cleaning: float, rng: RandomNumberGenerator
+) -> Array[Dictionary]:
+    var results: Array[Dictionary] = []
+    var skills: Array = (PROGRAM_TASK_SKILLS[task] as Array).duplicate()
+    if task == "restock" and store_cleaning < float(rules["cleaning_while_restocking_below"]):
+        skills.append("cleaning_skill")
+    var over_ceiling := rng.randi_range(1, int(rules["over_ceiling_chance_one_in"])) == 1
+    var caps: Dictionary = rules["skill_caps"]
+    for skill in skills:
+        if rng.randi_range(1, 100) > manager_academic:
+            continue
+        var before := int(staff_member.get(skill))
+        if before >= int(candidate.get(str(caps[skill]), 0)):
+            continue
+        if before >= int(staff_member.get(skill + "_growth_ceiling")) and not over_ceiling:
+            continue
+        staff_member.set(skill, before + UNIT_GROWTH)
+        results.append({"skill": skill, "before": before, "after": before + UNIT_GROWTH})
+    return results
+
+
+# An angry customer (0x80035D58): 1 time in 3 every staff member loses a
+# point of レジ, 補充, 清掃 and 警備 (not below 1).
+func apply_program_decline(staff_member) -> void:
+    for skill in DECLINE_SKILLS:
+        var value := int(staff_member.get(skill))
+        if value >= 2:
+            staff_member.set(skill, value - 1)
+

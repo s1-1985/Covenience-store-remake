@@ -1,0 +1,1934 @@
+[
+  {
+    "id": 0,
+    "offset": "0x198",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x26",
+      "0x26",
+      "0xc",
+      "0x18",
+      "0x17",
+      "0x1f",
+      "0xe",
+      "0x17",
+      "0x12",
+      "0x26",
+      "0x1c",
+      "0x1d",
+      "0xa",
+      "0xf",
+      "0xf",
+      "0x40ff"
+    ],
+    "partial_ascii": "   CONVENI STAFF"
+  },
+  {
+    "id": 1,
+    "offset": "0x1ba",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x26",
+      "0x26",
+      "0x11",
+      "0x1e",
+      "0x16",
+      "0xa",
+      "0x17",
+      "0x26",
+      "0x1c",
+      "0x1d",
+      "0xa",
+      "0xf",
+      "0xf",
+      "0x40ff"
+    ],
+    "partial_ascii": "   HUMAN STAFF"
+  },
+  {
+    "id": 2,
+    "offset": "0x1d8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x19",
+      "0x1e",
+      "0xb",
+      "0x15",
+      "0x12",
+      "0xc",
+      "0x26",
+      "0x1b",
+      "0xe",
+      "0x15",
+      "0xa",
+      "0x1d",
+      "0x12",
+      "0x18",
+      "0x17",
+      "0x1c",
+      "0x40ff"
+    ],
+    "partial_ascii": "PUBLIC RELATIONS"
+  },
+  {
+    "id": 3,
+    "offset": "0x1fa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 4,
+    "offset": "0x1fe",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x14",
+      "0xa",
+      "0x23",
+      "0x1e",
+      "0x22",
+      "0x1e",
+      "0x14",
+      "0x12",
+      "0x26",
+      "0x14",
+      "0x1e",
+      "0x16",
+      "0xa",
+      "0x10",
+      "0xa",
+      "0x12",
+      "0x40ff"
+    ],
+    "partial_ascii": " KAZUYUKI KUMAGAI"
+  },
+  {
+    "id": 5,
+    "offset": "0x222",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 6,
+    "offset": "0x226",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 7,
+    "offset": "0x22a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xa",
+      "0x1c",
+      "0x1c",
+      "0x12",
+      "0x1c",
+      "0x1d",
+      "0xa",
+      "0x17",
+      "0x1d",
+      "0x26",
+      "0x19",
+      "0x1b",
+      "0x18",
+      "0xd",
+      "0x1e",
+      "0xc",
+      "0xe",
+      "0x1b",
+      "0x40ff"
+    ],
+    "partial_ascii": "ASSISTANT PRODUCER"
+  },
+  {
+    "id": 8,
+    "offset": "0x250",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 9,
+    "offset": "0x254",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x22",
+      "0x18",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x17",
+      "0x18",
+      "0x1b",
+      "0x12",
+      "0x26",
+      "0x1d",
+      "0xe",
+      "0x1b",
+      "0xa",
+      "0x1c",
+      "0xa",
+      "0x20",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " YOSHINORI TERASAWA"
+  },
+  {
+    "id": 10,
+    "offset": "0x27c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1d",
+      "0x1e",
+      "0x1d",
+      "0x18",
+      "0x16",
+      "0x1e",
+      "0x26",
+      "0x11",
+      "0x12",
+      "0x1b",
+      "0xa",
+      "0x16",
+      "0x12",
+      "0x17",
+      "0xe",
+      "0x40ff"
+    ],
+    "partial_ascii": " TUTOMU HIRAMINE"
+  },
+  {
+    "id": 11,
+    "offset": "0x29e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x19",
+      "0x1b",
+      "0x18",
+      "0xd",
+      "0x1e",
+      "0xc",
+      "0xe",
+      "0x1b",
+      "0x40ff"
+    ],
+    "partial_ascii": "PRODUCER"
+  },
+  {
+    "id": 12,
+    "offset": "0x2b0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 13,
+    "offset": "0x2b4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0xa",
+      "0x14",
+      "0x12",
+      "0x11",
+      "0x12",
+      "0x1b",
+      "0x18",
+      "0x26",
+      "0x17",
+      "0xa",
+      "0x10",
+      "0xa",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x16",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " AKIHIRO NAGASHIMA"
+  },
+  {
+    "id": 14,
+    "offset": "0x2da",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 15,
+    "offset": "0x2de",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 16,
+    "offset": "0x2e2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe",
+      "0x21",
+      "0xe",
+      "0xc",
+      "0x1d",
+      "0x12",
+      "0x1f",
+      "0xe",
+      "0x26",
+      "0x19",
+      "0x1b",
+      "0x18",
+      "0xd",
+      "0x1e",
+      "0xc",
+      "0xe",
+      "0x1b",
+      "0x40ff"
+    ],
+    "partial_ascii": "EXECTIVE PRODUCER"
+  },
+  {
+    "id": 17,
+    "offset": "0x306",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 18,
+    "offset": "0x30a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x14",
+      "0xa",
+      "0x23",
+      "0x1e",
+      "0x11",
+      "0x12",
+      "0x14",
+      "0x18",
+      "0x26",
+      "0x22",
+      "0xa",
+      "0x16",
+      "0xa",
+      "0xd",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " KAZUHIKO YAMADA"
+  },
+  {
+    "id": 19,
+    "offset": "0x32c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x26",
+      "0x26",
+      "0xa",
+      "0xc",
+      "0xc",
+      "0xe",
+      "0x1c",
+      "0x1c",
+      "0x26",
+      "0x1c",
+      "0x1d",
+      "0xa",
+      "0xf",
+      "0xf",
+      "0x40ff"
+    ],
+    "partial_ascii": "   ACCESS STAFF"
+  },
+  {
+    "id": 20,
+    "offset": "0x34c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1d",
+      "0xe",
+      "0xc",
+      "0x11",
+      "0x17",
+      "0x12",
+      "0xc",
+      "0xa",
+      "0x15",
+      "0x26",
+      "0x19",
+      "0x1b",
+      "0x18",
+      "0xd",
+      "0x1e",
+      "0xc",
+      "0xe",
+      "0x1b",
+      "0x40ff"
+    ],
+    "partial_ascii": "TECHNICAL PRODUCER"
+  },
+  {
+    "id": 21,
+    "offset": "0x372",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 22,
+    "offset": "0x376",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x19",
+      "0x18",
+      "0x17",
+      "0x26",
+      "0x1d",
+      "0xa",
+      "0x14",
+      "0xa",
+      "0x11",
+      "0xa",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x40ff"
+    ],
+    "partial_ascii": " PON TAKAHASHI"
+  },
+  {
+    "id": 23,
+    "offset": "0x394",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 24,
+    "offset": "0x398",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 25,
+    "offset": "0x39c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xd",
+      "0x12",
+      "0x1b",
+      "0xe",
+      "0xc",
+      "0x1d",
+      "0x18",
+      "0x1b",
+      "0x40ff"
+    ],
+    "partial_ascii": "DIRECTOR"
+  },
+  {
+    "id": 26,
+    "offset": "0x3ae",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 27,
+    "offset": "0x3b2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x14",
+      "0xe",
+      "0x17",
+      "0x13",
+      "0x12",
+      "0x26",
+      "0x16",
+      "0x18",
+      "0x1b",
+      "0x12",
+      "0x40ff"
+    ],
+    "partial_ascii": " KENJI MORI"
+  },
+  {
+    "id": 28,
+    "offset": "0x3ca",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x19",
+      "0x1b",
+      "0x18",
+      "0x10",
+      "0x1b",
+      "0xa",
+      "0x16",
+      "0x40ff"
+    ],
+    "partial_ascii": "PROGRAM"
+  },
+  {
+    "id": 29,
+    "offset": "0x3da",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 30,
+    "offset": "0x3de",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x17",
+      "0x18",
+      "0xb",
+      "0x1e",
+      "0x11",
+      "0x12",
+      "0x1b",
+      "0x18",
+      "0x26",
+      "0x1c",
+      "0xa",
+      "0x12",
+      "0x1d",
+      "0x18",
+      "0x40ff"
+    ],
+    "partial_ascii": " NOBUHIRO SAITO"
+  },
+  {
+    "id": 31,
+    "offset": "0x3fe",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x17",
+      "0x18",
+      "0xb",
+      "0x1e",
+      "0xa",
+      "0x14",
+      "0x12",
+      "0x26",
+      "0x14",
+      "0x12",
+      "0x16",
+      "0x1e",
+      "0x1b",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " NOBUAKI KIMURA"
+  },
+  {
+    "id": 32,
+    "offset": "0x41e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0xd",
+      "0x11",
+      "0xa",
+      "0x15",
+      "0x16",
+      "0xa",
+      "0x1c",
+      "0x40ff"
+    ],
+    "partial_ascii": " DHALMAS"
+  },
+  {
+    "id": 33,
+    "offset": "0x430",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x10",
+      "0x1b",
+      "0xa",
+      "0x19",
+      "0x11",
+      "0x12",
+      "0xc",
+      "0x40ff"
+    ],
+    "partial_ascii": "GRAPHIC"
+  },
+  {
+    "id": 34,
+    "offset": "0x440",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 35,
+    "offset": "0x444",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x17",
+      "0x18",
+      "0x16",
+      "0x25",
+      "0x40ff"
+    ],
+    "partial_ascii": " NOM{0025}"
+  },
+  {
+    "id": 36,
+    "offset": "0x450",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x22",
+      "0x1e",
+      "0x14",
+      "0x12",
+      "0x18",
+      "0x26",
+      "0x18",
+      "0x11",
+      "0x1d",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " YUKIO OHTA"
+  },
+  {
+    "id": 37,
+    "offset": "0x468",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x26",
+      "0x26",
+      "0x26",
+      "0xc",
+      "0x1e",
+      "0xb",
+      "0xe",
+      "0x26",
+      "0x1c",
+      "0x1d",
+      "0xa",
+      "0xf",
+      "0xf",
+      "0x40ff"
+    ],
+    "partial_ascii": "    CUBE STAFF"
+  },
+  {
+    "id": 38,
+    "offset": "0x486",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1c",
+      "0x18",
+      "0x1e",
+      "0x17",
+      "0xd",
+      "0x40ff"
+    ],
+    "partial_ascii": "SOUND"
+  },
+  {
+    "id": 39,
+    "offset": "0x492",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 40,
+    "offset": "0x496",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1d",
+      "0x18",
+      "0x16",
+      "0x18",
+      "0x11",
+      "0x12",
+      "0x1b",
+      "0x18",
+      "0x26",
+      "0xe",
+      "0x17",
+      "0xd",
+      "0x18",
+      "0x40ff"
+    ],
+    "partial_ascii": " TOMOHIRO ENDO"
+  },
+  {
+    "id": 41,
+    "offset": "0x4b4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x22",
+      "0x18",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0xa",
+      "0x14",
+      "0x12",
+      "0x26",
+      "0x14",
+      "0x1e",
+      "0xb",
+      "0x18",
+      "0xd",
+      "0xe",
+      "0x1b",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " YOSHIAKI KUBODERA"
+  },
+  {
+    "id": 42,
+    "offset": "0x4da",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x11",
+      "0x12",
+      "0x1b",
+      "0x18",
+      "0x18",
+      "0x26",
+      "0x1d",
+      "0xe",
+      "0x17",
+      "0x10",
+      "0xe",
+      "0x17",
+      "0x13",
+      "0x12",
+      "0x40ff"
+    ],
+    "partial_ascii": " HIROO TENGENJI"
+  },
+  {
+    "id": 43,
+    "offset": "0x4fa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1c",
+      "0x18",
+      "0x1e",
+      "0x17",
+      "0xd",
+      "0x40ff"
+    ],
+    "partial_ascii": "SOUND"
+  },
+  {
+    "id": 44,
+    "offset": "0x506",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 45,
+    "offset": "0x50a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x11",
+      "0x12",
+      "0x1b",
+      "0x18",
+      "0xa",
+      "0x14",
+      "0x12",
+      "0x26",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0xb",
+      "0xa",
+      "0x1d",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " HIROAKI SHIBATA"
+  },
+  {
+    "id": 46,
+    "offset": "0x52c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x11",
+      "0x12",
+      "0x1b",
+      "0x18",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x26",
+      "0x12",
+      "0x12",
+      "0x23",
+      "0xa",
+      "0x14",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " HIROSHI IIZAKA"
+  },
+  {
+    "id": 47,
+    "offset": "0x54c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x17",
+      "0x18",
+      "0xb",
+      "0x18",
+      "0x1b",
+      "0x1e",
+      "0x26",
+      "0x12",
+      "0x20",
+      "0xa",
+      "0x1d",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " NOBORU IWATA"
+  },
+  {
+    "id": 48,
+    "offset": "0x568",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1f",
+      "0x18",
+      "0x12",
+      "0xc",
+      "0xe",
+      "0x40ff"
+    ],
+    "partial_ascii": "VOICE"
+  },
+  {
+    "id": 49,
+    "offset": "0x574",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 50,
+    "offset": "0x578",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x23",
+      "0x1e",
+      "0x14",
+      "0xa",
+      "0x26",
+      "0x11",
+      "0x18",
+      "0x13",
+      "0x18",
+      "0x40ff"
+    ],
+    "partial_ascii": " SHIZUKA HOJO"
+  },
+  {
+    "id": 51,
+    "offset": "0x594",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1d",
+      "0x18",
+      "0x11",
+      "0x1b",
+      "0x1e",
+      "0x26",
+      "0x11",
+      "0xa",
+      "0x1c",
+      "0x1e",
+      "0x40ff"
+    ],
+    "partial_ascii": " TOHRU HASU"
+  },
+  {
+    "id": 52,
+    "offset": "0x5ac",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x16",
+      "0xa",
+      "0x1c",
+      "0x1d",
+      "0xe",
+      "0x1b",
+      "0x19",
+      "0x12",
+      "0xe",
+      "0xc",
+      "0xe",
+      "0x26",
+      "0x1c",
+      "0x1d",
+      "0xa",
+      "0xf",
+      "0xf",
+      "0x4002",
+      "0x26",
+      "0x26",
+      "0x18",
+      "0x1b",
+      "0x12",
+      "0x10",
+      "0x12",
+      "0x17",
+      "0xa",
+      "0x15",
+      "0x26",
+      "0x1f",
+      "0xe",
+      "0x1b",
+      "0x1c",
+      "0x12",
+      "0x18",
+      "0x17",
+      "0x40ff"
+    ],
+    "partial_ascii": "MASTERPIECE STAFF<CTRL:4002>  ORIGINAL VERSION"
+  },
+  {
+    "id": 53,
+    "offset": "0x5f6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xd",
+      "0x12",
+      "0x1b",
+      "0xe",
+      "0xc",
+      "0x1d",
+      "0x18",
+      "0x1b",
+      "0x40ff"
+    ],
+    "partial_ascii": "DIRECTOR"
+  },
+  {
+    "id": 54,
+    "offset": "0x608",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 55,
+    "offset": "0x60c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x22",
+      "0x1e",
+      "0x13",
+      "0x12",
+      "0x26",
+      "0x22",
+      "0x18",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x14",
+      "0xa",
+      "0x20",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " YUJI YOSHIKAWA"
+  },
+  {
+    "id": 56,
+    "offset": "0x62c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 57,
+    "offset": "0x630",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 58,
+    "offset": "0x634",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x19",
+      "0x1b",
+      "0x18",
+      "0x10",
+      "0x1b",
+      "0xa",
+      "0x16",
+      "0x40ff"
+    ],
+    "partial_ascii": "PROGRAM"
+  },
+  {
+    "id": 59,
+    "offset": "0x644",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 60,
+    "offset": "0x648",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1d",
+      "0xa",
+      "0x14",
+      "0xa",
+      "0x11",
+      "0x12",
+      "0x1d",
+      "0x18",
+      "0x26",
+      "0x22",
+      "0xa",
+      "0x16",
+      "0xa",
+      "0x16",
+      "0x18",
+      "0x1d",
+      "0x18",
+      "0x40ff"
+    ],
+    "partial_ascii": " TAKAHITO YAMAMOTO"
+  },
+  {
+    "id": 61,
+    "offset": "0x66e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x10",
+      "0x1b",
+      "0xa",
+      "0x19",
+      "0x11",
+      "0x12",
+      "0xc",
+      "0x40ff"
+    ],
+    "partial_ascii": "GRAPHIC"
+  },
+  {
+    "id": 62,
+    "offset": "0x67e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 63,
+    "offset": "0x682",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x16",
+      "0xa",
+      "0x1d",
+      "0x1e",
+      "0x16",
+      "0x12",
+      "0x26",
+      "0x12",
+      "0x1d",
+      "0x18",
+      "0x40ff"
+    ],
+    "partial_ascii": " MATUMI ITO"
+  },
+  {
+    "id": 64,
+    "offset": "0x69a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x16",
+      "0xa",
+      "0x16",
+      "0x12",
+      "0x26",
+      "0x16",
+      "0x12",
+      "0x23",
+      "0x18",
+      "0xb",
+      "0xe",
+      "0x40ff"
+    ],
+    "partial_ascii": " MAMI MIZOBE"
+  },
+  {
+    "id": 65,
+    "offset": "0x6b4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x17",
+      "0x26",
+      "0xa",
+      "0xb",
+      "0xe",
+      "0x40ff"
+    ],
+    "partial_ascii": " SHIN ABE"
+  },
+  {
+    "id": 66,
+    "offset": "0x6c8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x16",
+      "0x1e",
+      "0x1c",
+      "0x12",
+      "0xc",
+      "0x26",
+      "0x1c",
+      "0x18",
+      "0x1e",
+      "0x17",
+      "0xd",
+      "0x26",
+      "0xe",
+      "0xf",
+      "0xf",
+      "0xe",
+      "0xc",
+      "0x1d",
+      "0x40ff"
+    ],
+    "partial_ascii": "MUSIC SOUND EFFECT"
+  },
+  {
+    "id": 67,
+    "offset": "0x6ee",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 68,
+    "offset": "0x6f2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x16",
+      "0xa",
+      "0x14",
+      "0x18",
+      "0x1d",
+      "0x18",
+      "0x26",
+      "0x18",
+      "0x14",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " MAKOTO OKA"
+  },
+  {
+    "id": 69,
+    "offset": "0x70a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 70,
+    "offset": "0x70e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 71,
+    "offset": "0x712",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xd",
+      "0xa",
+      "0x1d",
+      "0xa",
+      "0x26",
+      "0xa",
+      "0x17",
+      "0xa",
+      "0x15",
+      "0x22",
+      "0x23",
+      "0xe",
+      "0x40ff"
+    ],
+    "partial_ascii": "DATA ANALYZE"
+  },
+  {
+    "id": 72,
+    "offset": "0x72c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 73,
+    "offset": "0x730",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1d",
+      "0xa",
+      "0x1d",
+      "0x1c",
+      "0x1e",
+      "0x1b",
+      "0x1e",
+      "0x26",
+      "0x14",
+      "0xa",
+      "0x17",
+      "0xa",
+      "0x23",
+      "0xa",
+      "0x20",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " TATSURU KANAZAWA"
+  },
+  {
+    "id": 74,
+    "offset": "0x754",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1c",
+      "0x19",
+      "0xe",
+      "0xc",
+      "0x12",
+      "0xa",
+      "0x15",
+      "0x26",
+      "0x1d",
+      "0x11",
+      "0xa",
+      "0x17",
+      "0x14",
+      "0x1c",
+      "0x40ff"
+    ],
+    "partial_ascii": "SPECIAL THANKS"
+  },
+  {
+    "id": 75,
+    "offset": "0x772",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 76,
+    "offset": "0x776",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1c",
+      "0xa",
+      "0x1d",
+      "0x18",
+      "0x1b",
+      "0x1e",
+      "0x26",
+      "0x18",
+      "0x14",
+      "0x1e",
+      "0x22",
+      "0xa",
+      "0x16",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " SATORU OKUYAMA"
+  },
+  {
+    "id": 77,
+    "offset": "0x796",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x16",
+      "0xa",
+      "0x1c",
+      "0xa",
+      "0x11",
+      "0xa",
+      "0x1b",
+      "0x1e",
+      "0x26",
+      "0x16",
+      "0xa",
+      "0x1c",
+      "0x1e",
+      "0xd",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " MASAHARU MASUDA"
+  },
+  {
+    "id": 78,
+    "offset": "0x7b8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x13",
+      "0x1e",
+      "0x17",
+      "0x14",
+      "0x18",
+      "0x26",
+      "0x14",
+      "0x18",
+      "0x23",
+      "0x1e",
+      "0x40ff"
+    ],
+    "partial_ascii": " JUNKO KOZU"
+  },
+  {
+    "id": 79,
+    "offset": "0x7d0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x16",
+      "0x12",
+      "0x1d",
+      "0x1c",
+      "0x1e",
+      "0x1b",
+      "0x1e",
+      "0x26",
+      "0xd",
+      "0x18",
+      "0x16",
+      "0x18",
+      "0x17",
+      "0x40ff"
+    ],
+    "partial_ascii": " MITSURU DOMON"
+  },
+  {
+    "id": 80,
+    "offset": "0x7ee",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1c",
+      "0x19",
+      "0xe",
+      "0xc",
+      "0x12",
+      "0xa",
+      "0x15",
+      "0x26",
+      "0x1d",
+      "0x11",
+      "0xa",
+      "0x17",
+      "0x14",
+      "0x1c",
+      "0x40ff"
+    ],
+    "partial_ascii": "SPECIAL THANKS"
+  },
+  {
+    "id": 81,
+    "offset": "0x80c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 82,
+    "offset": "0x810",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x14",
+      "0xa",
+      "0x23",
+      "0x1e",
+      "0x17",
+      "0xa",
+      "0x1b",
+      "0x12",
+      "0x26",
+      "0x12",
+      "0x16",
+      "0xa",
+      "0x12",
+      "0x40ff"
+    ],
+    "partial_ascii": " KAZUNARI IMAI"
+  },
+  {
+    "id": 83,
+    "offset": "0x82e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x11",
+      "0x12",
+      "0x1b",
+      "0x18",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x26",
+      "0x18",
+      "0x14",
+      "0xa",
+      "0xd",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " HIROSHI OKADA"
+  },
+  {
+    "id": 84,
+    "offset": "0x84c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x14",
+      "0xe",
+      "0x17",
+      "0x12",
+      "0xc",
+      "0x11",
+      "0x12",
+      "0x26",
+      "0x16",
+      "0xa",
+      "0x1d",
+      "0x1c",
+      "0x1e",
+      "0xd",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " KENICHI MATSUDA"
+  },
+  {
+    "id": 85,
+    "offset": "0x86e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1c",
+      "0xa",
+      "0x1d",
+      "0x18",
+      "0x1b",
+      "0x1e",
+      "0x26",
+      "0x18",
+      "0x14",
+      "0x1e",
+      "0x22",
+      "0xa",
+      "0x16",
+      "0xa",
+      "0x4002",
+      "0x26",
+      "0x26",
+      "0x26",
+      "0x26",
+      "0x18",
+      "0x1f",
+      "0xe",
+      "0x1b",
+      "0x26",
+      "0x20",
+      "0x18",
+      "0x1b",
+      "0x14",
+      "0x1c",
+      "0x40ff"
+    ],
+    "partial_ascii": " SATORU OKUYAMA<CTRL:4002>    OVER WORKS"
+  },
+  {
+    "id": 86,
+    "offset": "0x8ac",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1d",
+      "0xe",
+      "0x1c",
+      "0x1d",
+      "0x26",
+      "0x19",
+      "0x15",
+      "0xa",
+      "0x22",
+      "0xe",
+      "0x1b",
+      "0x40ff"
+    ],
+    "partial_ascii": "TEST PLAYER"
+  },
+  {
+    "id": 87,
+    "offset": "0x8c4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 88,
+    "offset": "0x8c8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1d",
+      "0xa",
+      "0x14",
+      "0xa",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x26",
+      "0x1d",
+      "0xa",
+      "0x14",
+      "0xe",
+      "0x23",
+      "0xa",
+      "0x20",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " TAKASHI TAKEZAWA"
+  },
+  {
+    "id": 89,
+    "offset": "0x8ec",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x16",
+      "0xa",
+      "0x1c",
+      "0xa",
+      "0x14",
+      "0x12",
+      "0x26",
+      "0x1c",
+      "0xa",
+      "0x12",
+      "0x1d",
+      "0x18",
+      "0x40ff"
+    ],
+    "partial_ascii": " MASAKI SAITO"
+  },
+  {
+    "id": 90,
+    "offset": "0x908",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x11",
+      "0x12",
+      "0x1b",
+      "0x18",
+      "0x11",
+      "0x12",
+      "0x1d",
+      "0x18",
+      "0x26",
+      "0x1d",
+      "0xa",
+      "0x1d",
+      "0xe",
+      "0x12",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x40ff"
+    ],
+    "partial_ascii": " HIROHITO TATEISHI"
+  },
+  {
+    "id": 91,
+    "offset": "0x92e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0xd",
+      "0xa",
+      "0x12",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x26",
+      "0x18",
+      "0x18",
+      "0x12",
+      "0x1c",
+      "0x11",
+      "0x12",
+      "0x40ff"
+    ],
+    "partial_ascii": " DAISHI OOISHI"
+  },
+  {
+    "id": 92,
+    "offset": "0x94c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x17",
+      "0x18",
+      "0x23",
+      "0x18",
+      "0x16",
+      "0x1e",
+      "0x26",
+      "0x1e",
+      "0xe",
+      "0x17",
+      "0x18",
+      "0x40ff"
+    ],
+    "partial_ascii": " NOZOMU UENO"
+  },
+  {
+    "id": 93,
+    "offset": "0x966",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1d",
+      "0xe",
+      "0x1c",
+      "0x1d",
+      "0x26",
+      "0x19",
+      "0x15",
+      "0xa",
+      "0x22",
+      "0xe",
+      "0x1b",
+      "0x40ff"
+    ],
+    "partial_ascii": "TEST PLAYER"
+  },
+  {
+    "id": 94,
+    "offset": "0x97e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": " "
+  },
+  {
+    "id": 95,
+    "offset": "0x982",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x10",
+      "0x18",
+      "0x1e",
+      "0x26",
+      "0x14",
+      "0x18",
+      "0x10",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": " GOU KOGA"
+  },
+  {
+    "id": 96,
+    "offset": "0x996",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1d",
+      "0x18",
+      "0x16",
+      "0x18",
+      "0x14",
+      "0xa",
+      "0x26",
+      "0x1c",
+      "0xa",
+      "0x10",
+      "0xa",
+      "0xe",
+      "0x40ff"
+    ],
+    "partial_ascii": " TOMOKA SAGAE"
+  },
+  {
+    "id": 97,
+    "offset": "0x9b2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x22",
+      "0x1e",
+      "0x1d",
+      "0xa",
+      "0x14",
+      "0xa",
+      "0x26",
+      "0x1c",
+      "0xa",
+      "0x14",
+      "0xa",
+      "0x12",
+      "0x40ff"
+    ],
+    "partial_ascii": " YUTAKA SAKAI"
+  },
+  {
+    "id": 98,
+    "offset": "0x9ce",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x1d",
+      "0x1c",
+      "0x1e",
+      "0x14",
+      "0xa",
+      "0x1c",
+      "0xa",
+      "0x26",
+      "0x16",
+      "0x18",
+      "0x1d",
+      "0xe",
+      "0x10",
+      "0x12",
+      "0x40ff"
+    ],
+    "partial_ascii": " TSUKASA MOTEGI"
+  },
+  {
+    "id": 99,
+    "offset": "0x9ee",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26",
+      "0x22",
+      "0x1e",
+      "0x12",
+      "0xc",
+      "0x11",
+      "0x12",
+      "0x26",
+      "0xf",
+      "0x1e",
+      "0x14",
+      "0x1e",
+      "0x16",
+      "0x18",
+      "0x1d",
+      "0x18",
+      "0x40ff"
+    ],
+    "partial_ascii": " YUICHI FUKUMOTO"
+  },
+  {
+    "id": 100,
+    "offset": "0xa10",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x24",
+      "0x26",
+      "0x1",
+      "0x9",
+      "0x9",
+      "0x6",
+      "0x26",
+      "0x16",
+      "0xa",
+      "0x1c",
+      "0x1d",
+      "0xe",
+      "0x1b",
+      "0x19",
+      "0x12",
+      "0xe",
+      "0xc",
+      "0xe",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0024} 1996 MASTERPIECE"
+  },
+  {
+    "id": 101,
+    "offset": "0xa36",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x24",
+      "0x26",
+      "0x1",
+      "0x9",
+      "0x9",
+      "0x7",
+      "0x26",
+      "0x11",
+      "0x1e",
+      "0x16",
+      "0xa",
+      "0x17",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0024} 1997 HUMAN"
+  }
+]

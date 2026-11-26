@@ -22,6 +22,14 @@ var restock_ticks_remaining := 0
 # member still counts as idle for restock assignment and for the
 # "no work in progress" checks that gate player edits.
 var rest_phase := ""
+# Task #99: stamina (体力). stamina_max is the candidate's printed 体力;
+# `exhausted` is set when stamina runs out and cleared once it is full again.
+var stamina := 0
+var stamina_max := 0
+var exhausted := false
+# Task #118: customers this staff member has rung up (for sharing out the
+# register).
+var checkouts_done := 0
 var service_skill: int
 var security_skill: int
 var cleaning_skill: int
@@ -183,6 +191,12 @@ func finish_restock() -> void:
 
 func home_position() -> Vector2i:
     return _start_position
+
+
+# Task #118: register duty moves between staff members, and with it the
+# post each one returns to (the register front for whoever has the duty).
+func set_home_position(cell: Vector2i) -> void:
+    _start_position = cell
 
 
 func move_along_route(next_state: String) -> bool:

@@ -17,7 +17,9 @@ class ServiceValueTests(unittest.TestCase):
     def test_averages_staff_and_adds_fixture_bonuses(self):
         # 社員3人のサービス値平均 + サービス設備の付加効果
         value = compute_service_value([60, 70, 80], [2, 4, 30])
-        self.assertEqual(value, 70 + 36)
+        # Task #128: capped at 100 (the program's 0x800221D0).
+        self.assertEqual(value, 100)
+        self.assertEqual(compute_service_value([20, 25, 30], [2, 4]), 25 + 6)
 
     def test_works_with_fewer_than_three_staff(self):
         value = compute_service_value([50], [])
@@ -34,19 +36,22 @@ class ServiceValueTests(unittest.TestCase):
 
 class SecurityValueTests(unittest.TestCase):
     def test_applies_the_size_tier_multiplier(self):
+        # Task #128: sum x 100 / 275 for a medium store (the program's divisor).
         value = compute_security_value([20, 20, 20], "medium")
-        self.assertAlmostEqual(value, 60 * 1.65)
+        self.assertEqual(value, 60 * 100 // 275)
 
     def test_adds_facility_bonus_when_supplied(self):
         coverage = SecurityFacilityCoverage(police_box_area_tiles=2, fire_station_area_tiles=1)
         value = compute_security_value([10], "small", coverage)
-        self.assertAlmostEqual(value, 10 * 1.5 + 20 + 5)
+        self.assertEqual(value, 10 * 100 // 250 + 20 + 5)
 
-    def test_facility_bonus_is_capped(self):
+    def test_facility_bonus_counts_every_square_and_the_value_is_capped(self):
+        # Task #128: the program counts squares (no per-type cap); the
+        # security value itself stops at 100.
         coverage = SecurityFacilityCoverage(police_box_area_tiles=10, fire_station_area_tiles=10)
-        self.assertEqual(coverage.police_box_bonus, 40)
-        self.assertEqual(coverage.fire_station_bonus, 30)
-        self.assertEqual(coverage.total_security_bonus, 70)
+        self.assertEqual(coverage.police_box_bonus, 100)
+        self.assertEqual(coverage.fire_station_bonus, 50)
+        self.assertEqual(compute_security_value([10], "small", coverage), 100)
 
     def test_no_coverage_constant_has_zero_bonus(self):
         self.assertEqual(NO_SECURITY_FACILITY_COVERAGE.total_security_bonus, 0)
@@ -62,8 +67,9 @@ class SecurityValueTests(unittest.TestCase):
 
 class CleaningValueTests(unittest.TestCase):
     def test_applies_the_size_tier_multiplier(self):
+        # Task #128: sum x 100 / 180 for a large store (the program's divisor).
         value = compute_cleaning_value([10, 20, 30], "large")
-        self.assertAlmostEqual(value, 60 * 1.8)
+        self.assertEqual(value, 60 * 100 // 180)
 
     def test_rejects_unknown_size_tier(self):
         with self.assertRaises(ValueError):

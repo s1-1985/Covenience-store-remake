@@ -1,0 +1,8372 @@
+[
+  {
+    "id": 0,
+    "offset": "0x7d8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x58",
+      "0x73",
+      "0x60",
+      "0x44",
+      "0x65",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0058}{0073}{0060}{0044}{0065}"
+  },
+  {
+    "id": 1,
+    "offset": "0x7e4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x50",
+      "0x79",
+      "0x45",
+      "0x44",
+      "0x65",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0050}{0079}{0045}{0044}{0065}"
+  },
+  {
+    "id": 2,
+    "offset": "0x7f0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x48",
+      "0x4f",
+      "0x65",
+      "0x7a",
+      "0x64",
+      "0x69",
+      "0x4a",
+      "0x40",
+      "0x7a",
+      "0x4a",
+      "0x8e",
+      "0x41",
+      "0x44",
+      "0x2d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0048}{004F}{0065}{007A}{0064}{0069}{004A}{0040}{007A}{004A}{008E}{0041}{0044}{002D}"
+  },
+  {
+    "id": 3,
+    "offset": "0x80e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x9a",
+      "0x9b",
+      "0xa1",
+      "0xaf",
+      "0x57",
+      "0x190",
+      "0x191",
+      "0x6b",
+      "0x43",
+      "0x108",
+      "0x5e",
+      "0x7a",
+      "0x4b",
+      "0x44",
+      "0x2d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{009A}{009B}{00A1}{00AF}{0057}{0190}{0191}{006B}{0043}{0108}{005E}{007A}{004B}{0044}{002D}"
+  },
+  {
+    "id": 4,
+    "offset": "0x82e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0xad",
+      "0xdb",
+      "0xd3",
+      "0x6b",
+      "0xe8",
+      "0xe9",
+      "0x4a",
+      "0x51",
+      "0x46",
+      "0x77",
+      "0x49",
+      "0x40",
+      "0x4002",
+      "0xe2",
+      "0xe3",
+      "0x2f",
+      "0x2f",
+      "0xea",
+      "0xeb",
+      "0x6b",
+      "0xec",
+      "0xed",
+      "0x4b",
+      "0x67",
+      "0x4002",
+      "0xe1",
+      "0xe3",
+      "0x2f",
+      "0x2f",
+      "0x1",
+      "0x0",
+      "0xee",
+      "0xef",
+      "0xf0",
+      "0xf1",
+      "0x4b",
+      "0x67",
+      "0x4002",
+      "0xe0",
+      "0xe3",
+      "0x2f",
+      "0x2f",
+      "0x93",
+      "0x2e",
+      "0xa3",
+      "0x2e",
+      "0xf2",
+      "0xf3",
+      "0x6b",
+      "0x28b",
+      "0x28b",
+      "0x28b",
+      "0x28b",
+      "0x28b",
+      "0x54",
+      "0x4b",
+      "0x67",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}{003D}{003D}{003D}{00AD}{00DB}{00D3}{006B}{00E8}{00E9}{004A}{0051}{0046}{0077}{0049}{0040}<CTRL:4002>{00E2}{00E3}{002F}{002F}{00EA}{00EB}{006B}{00EC}{00ED}{004B}{0067}<CTRL:4002>{00E1}{00E3}{002F}{002F}10{00EE}{00EF}{00F0}{00F1}{004B}{0067}<CTRL:4002>{00E0}{00E3}{002F}{002F}{0093}{002E}{00A3}{002E}{00F2}{00F3}{006B}{028B}{028B}{028B}{028B}{028B}{0054}{004B}{0067}"
+  },
+  {
+    "id": 5,
+    "offset": "0x8aa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0xad",
+      "0xdb",
+      "0xd3",
+      "0x6b",
+      "0xe8",
+      "0xe9",
+      "0x4a",
+      "0x51",
+      "0x46",
+      "0x77",
+      "0x49",
+      "0x40",
+      "0x4002",
+      "0xe2",
+      "0xe3",
+      "0x2f",
+      "0x2f",
+      "0xea",
+      "0xeb",
+      "0x6b",
+      "0xec",
+      "0xed",
+      "0x4b",
+      "0x67",
+      "0x4002",
+      "0xe1",
+      "0xe3",
+      "0x2f",
+      "0x2f",
+      "0x1",
+      "0x0",
+      "0xee",
+      "0xef",
+      "0xf0",
+      "0xf1",
+      "0x4b",
+      "0x67",
+      "0x4002",
+      "0xe0",
+      "0xe3",
+      "0x2f",
+      "0x2f",
+      "0x93",
+      "0x2e",
+      "0xa3",
+      "0x2e",
+      "0xf2",
+      "0xf3",
+      "0x6b",
+      "0x28b",
+      "0x28b",
+      "0x28b",
+      "0x28b",
+      "0x28b",
+      "0x54",
+      "0x4b",
+      "0x67",
+      "0x4002",
+      "0xdf",
+      "0xe0",
+      "0x2f",
+      "0x2f",
+      "0x93",
+      "0xb6",
+      "0xc3",
+      "0xa3",
+      "0xb7",
+      "0xad",
+      "0xdb",
+      "0xd3",
+      "0x7a",
+      "0x4b",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}{003D}{003D}{003D}{00AD}{00DB}{00D3}{006B}{00E8}{00E9}{004A}{0051}{0046}{0077}{0049}{0040}<CTRL:4002>{00E2}{00E3}{002F}{002F}{00EA}{00EB}{006B}{00EC}{00ED}{004B}{0067}<CTRL:4002>{00E1}{00E3}{002F}{002F}10{00EE}{00EF}{00F0}{00F1}{004B}{0067}<CTRL:4002>{00E0}{00E3}{002F}{002F}{0093}{002E}{00A3}{002E}{00F2}{00F3}{006B}{028B}{028B}{028B}{028B}{028B}{0054}{004B}{0067}<CTRL:4002>{00DF}{00E0}{002F}{002F}{0093}{00B6}{00C3}{00A3}{00B7}{00AD}{00DB}{00D3}{007A}{004B}"
+  },
+  {
+    "id": 6,
+    "offset": "0x944",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0xfd",
+      "0x6b",
+      "0xfe",
+      "0xff",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{00FD}{006B}{00FE}{00FF}{004A}{0051}{0156}{0049}{0040}"
+  },
+  {
+    "id": 7,
+    "offset": "0x95a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1",
+      "0x102",
+      "0x103",
+      "0x104",
+      "0x105",
+      "0x2f",
+      "0x2f",
+      "0x3d",
+      "0x3d",
+      "0xd0",
+      "0x9e",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "1{0102}{0103}{0104}{0105}{002F}{002F}{003D}{003D}{00D0}{009E}{00BC}"
+  },
+  {
+    "id": 8,
+    "offset": "0x974",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xfe",
+      "0xff",
+      "0x106",
+      "0x107",
+      "0x2f",
+      "0x2f",
+      "0x2f",
+      "0x1c",
+      "0x1d",
+      "0xa",
+      "0x1b",
+      "0x1d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00FE}{00FF}{0106}{0107}{002F}{002F}{002F}START"
+  },
+  {
+    "id": 9,
+    "offset": "0x98e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x58",
+      "0x40",
+      "0x3d",
+      "0x29",
+      "0x3d",
+      "0x40",
+      "0x40",
+      "0x42",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0058}{0040}{003D}{0029}{003D}{0040}{0040}{0042}"
+  },
+  {
+    "id": 10,
+    "offset": "0x9a0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x110",
+      "0xee",
+      "0x57",
+      "0x111",
+      "0x112",
+      "0x6b",
+      "0x113",
+      "0x114",
+      "0x4a",
+      "0x51",
+      "0x46",
+      "0x77",
+      "0x49",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0110}{00EE}{0057}{0111}{0112}{006B}{0113}{0114}{004A}{0051}{0046}{0077}{0049}{0040}"
+  },
+  {
+    "id": 11,
+    "offset": "0x9be",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x15",
+      "0x1",
+      "0x2f",
+      "0x2f",
+      "0x2f",
+      "0x99",
+      "0x90",
+      "0xc4",
+      "0x190",
+      "0x191",
+      "0x40ff"
+    ],
+    "partial_ascii": "L1{002F}{002F}{002F}{0099}{0090}{00C4}{0190}{0191}"
+  },
+  {
+    "id": 12,
+    "offset": "0x9d4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0x110",
+      "0xee",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}{0110}{00EE}"
+  },
+  {
+    "id": 13,
+    "offset": "0x9dc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x101",
+      "0xee",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>{0101}{00EE}"
+  },
+  {
+    "id": 14,
+    "offset": "0x9e4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x48",
+      "0x68",
+      "0x26a",
+      "0xe0",
+      "0x57",
+      "0xee",
+      "0xef",
+      "0x24b",
+      "0xfe",
+      "0x58",
+      "0x189",
+      "0x11a",
+      "0x22b",
+      "0x7a",
+      "0x4b",
+      "0x4002",
+      "0x7b",
+      "0x68",
+      "0x44",
+      "0x118",
+      "0x1bb",
+      "0x4a",
+      "0x51",
+      "0x44",
+      "0x65",
+      "0x4002",
+      "0x24b",
+      "0xfe",
+      "0x4a",
+      "0x51",
+      "0x46",
+      "0x77",
+      "0x49",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0048}{0068}{026A}{00E0}{0057}{00EE}{00EF}{024B}{00FE}{0058}{0189}{011A}{022B}{007A}{004B}<CTRL:4002>{007B}{0068}{0044}{0118}{01BB}{004A}{0051}{0044}{0065}<CTRL:4002>{024B}{00FE}{004A}{0051}{0046}{0077}{0049}{0040}"
+  },
+  {
+    "id": 15,
+    "offset": "0xa2a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x267",
+      "0x121",
+      "0x175",
+      "0x26b",
+      "0xe1",
+      "0x58",
+      "0x7a",
+      "0x45",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0267}{0121}{0175}{026B}{00E1}{0058}{007A}{0045}{005D}{004C}{006C}"
+  },
+  {
+    "id": 16,
+    "offset": "0xa42",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x117",
+      "0x118",
+      "0x119",
+      "0x11a",
+      "0x6b",
+      "0x11b",
+      "0x11c",
+      "0x4a",
+      "0x5d",
+      "0x4b",
+      "0x44",
+      "0x2d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0117}{0118}{0119}{011A}{006B}{011B}{011C}{004A}{005D}{004B}{0044}{002D}"
+  },
+  {
+    "id": 17,
+    "offset": "0xa5c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x48",
+      "0x48",
+      "0x7a",
+      "0x58",
+      "0x120",
+      "0x42",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0048}{0048}{007A}{0058}{0120}{0042}{005D}{004C}{006C}"
+  },
+  {
+    "id": 18,
+    "offset": "0xa70",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x10f",
+      "0x107",
+      "0x2f",
+      "0x2f",
+      "0x2f",
+      "0x18",
+      "0xd0",
+      "0x9e",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{010F}{0107}{002F}{002F}{002F}O{00D0}{009E}{00BC}"
+  },
+  {
+    "id": 19,
+    "offset": "0xa84",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1c",
+      "0xe",
+      "0x38",
+      "0x109",
+      "0x10a",
+      "0x10b",
+      "0x39",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x18",
+      "0x17",
+      "0x29",
+      "0x18",
+      "0xf",
+      "0xf",
+      "0x40ff"
+    ],
+    "partial_ascii": "SE{0038}{0109}{010A}{010B}{0039}{003D}{003D}{003D}{003D}{003D}ON{0029}OFF"
+  },
+  {
+    "id": 20,
+    "offset": "0xaaa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb",
+      "0x10",
+      "0x16",
+      "0x38",
+      "0x10b",
+      "0x1c1",
+      "0x39",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x1",
+      "0x29",
+      "0x2",
+      "0x29",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "BGM{0038}{010B}{01C1}{0039}{003D}{003D}{003D}{003D}{003D}1{0029}2{0029}3"
+  },
+  {
+    "id": 21,
+    "offset": "0xace",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe6",
+      "0x10c",
+      "0x10d",
+      "0x10e",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x4b",
+      "0x67",
+      "0x29",
+      "0x4a",
+      "0x53",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00E6}{010C}{010D}{010E}{003D}{003D}{003D}{003D}{003D}{003D}{003D}{004B}{0067}{0029}{004A}{0053}{0040}"
+  },
+  {
+    "id": 22,
+    "offset": "0xaf2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x10f",
+      "0x107",
+      "0x2f",
+      "0x2f",
+      "0x2f",
+      "0x1c",
+      "0x1d",
+      "0xa",
+      "0x1b",
+      "0x1d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{010F}{0107}{002F}{002F}{002F}START"
+  },
+  {
+    "id": 23,
+    "offset": "0xb08",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0xef",
+      "0x6b",
+      "0xe8",
+      "0x6c",
+      "0x7a",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{00EF}{006B}{00E8}{006C}{007A}{0156}{0049}{0040}"
+  },
+  {
+    "id": 24,
+    "offset": "0xb1c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4e",
+      "0x7c",
+      "0x48",
+      "0x40ff"
+    ],
+    "partial_ascii": "{004E}{007C}{0048}"
+  },
+  {
+    "id": 25,
+    "offset": "0xb24",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x11d",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{011D}{011E}"
+  },
+  {
+    "id": 26,
+    "offset": "0xb2a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x11f",
+      "0x24c",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{011F}{024C}{011E}"
+  },
+  {
+    "id": 27,
+    "offset": "0xb32",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x124",
+      "0x66",
+      "0x125",
+      "0x126",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0124}{0066}{0125}{0126}"
+  },
+  {
+    "id": 28,
+    "offset": "0xb3c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x1",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>1"
+  },
+  {
+    "id": 29,
+    "offset": "0xb42",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x127",
+      "0x128",
+      "0x6b",
+      "0x113",
+      "0x114",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0127}{0128}{006B}{0113}{0114}{004A}{0051}{0156}{0049}{0040}"
+  },
+  {
+    "id": 30,
+    "offset": "0xb58",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0x90",
+      "0x8f",
+      "0x91",
+      "0xa2",
+      "0x6b",
+      "0x129",
+      "0x5e",
+      "0x12a",
+      "0x5f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{0090}{008F}{0091}{00A2}{006B}{0129}{005E}{012A}{005F}"
+  },
+  {
+    "id": 31,
+    "offset": "0xb6e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26c",
+      "0x44",
+      "0x65",
+      "0x12b",
+      "0x12c",
+      "0x7a",
+      "0x12d",
+      "0x67",
+      "0x40ff"
+    ],
+    "partial_ascii": "{026C}{0044}{0065}{012B}{012C}{007A}{012D}{0067}"
+  },
+  {
+    "id": 32,
+    "offset": "0xb80",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x12e",
+      "0x6b",
+      "0x113",
+      "0x114",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{012E}{006B}{0113}{0114}{004A}{0051}{0156}{0049}{0040}"
+  },
+  {
+    "id": 33,
+    "offset": "0xb94",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x12f",
+      "0x130",
+      "0x42",
+      "0x131",
+      "0x6b",
+      "0x113",
+      "0x114",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{012F}{0130}{0042}{0131}{006B}{0113}{0114}{004A}{0051}{0156}{0049}{0040}"
+  },
+  {
+    "id": 34,
+    "offset": "0xbb0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0xc3",
+      "0x6b",
+      "0x113",
+      "0x114",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{00C3}{006B}{0113}{0114}{004A}{0051}{0156}{0049}{0040}"
+  },
+  {
+    "id": 35,
+    "offset": "0xbc6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xf1",
+      "0x132",
+      "0x6b",
+      "0x113",
+      "0x114",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00F1}{0132}{006B}{0113}{0114}{004A}{0051}{0156}{0049}{0040}"
+  },
+  {
+    "id": 36,
+    "offset": "0xbdc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x136",
+      "0x24c",
+      "0x6b",
+      "0xe8",
+      "0xe9",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0136}{024C}{006B}{00E8}{00E9}{004A}{0051}{0156}{0049}{0040}"
+  },
+  {
+    "id": 37,
+    "offset": "0xbf2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xfb",
+      "0xfc",
+      "0x3d",
+      "0x15",
+      "0x1",
+      "0x29",
+      "0x1b",
+      "0x1",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00FB}{00FC}{003D}L1{0029}R1"
+  },
+  {
+    "id": 38,
+    "offset": "0xc04",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x10f",
+      "0x107",
+      "0x3d",
+      "0x1c",
+      "0x1d",
+      "0xa",
+      "0x1b",
+      "0x1d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{010F}{0107}{003D}START"
+  },
+  {
+    "id": 39,
+    "offset": "0xc16",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x48",
+      "0x57",
+      "0xb8",
+      "0x90",
+      "0x8f",
+      "0x91",
+      "0xa2",
+      "0x6b",
+      "0x134",
+      "0x15e",
+      "0x4a",
+      "0x5d",
+      "0x4b",
+      "0x44",
+      "0x2d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0048}{0057}{00B8}{0090}{008F}{0091}{00A2}{006B}{0134}{015E}{004A}{005D}{004B}{0044}{002D}"
+  },
+  {
+    "id": 40,
+    "offset": "0xc36",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18c",
+      "0x256",
+      "0xff",
+      "0x40ff"
+    ],
+    "partial_ascii": "{018C}{0256}{00FF}"
+  },
+  {
+    "id": 41,
+    "offset": "0xc3e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x15f",
+      "0x160",
+      "0x161",
+      "0x162",
+      "0x6b",
+      "0x113",
+      "0x114",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{015F}{0160}{0161}{0162}{006B}{0113}{0114}{004A}{0051}{0156}{0049}{0040}"
+  },
+  {
+    "id": 42,
+    "offset": "0xc58",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x2",
+      "0x4",
+      "0x163",
+      "0x164",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}{003D}{003D}{003D}{003D}24{0163}{0164}"
+  },
+  {
+    "id": 43,
+    "offset": "0xc6c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0xa",
+      "0x16",
+      "0x1",
+      "0x0",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x2a",
+      "0x19",
+      "0x16",
+      "0x6",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}AM10{002B}00{002A}PM6{002B}00"
+  },
+  {
+    "id": 44,
+    "offset": "0xc8c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0xa",
+      "0x16",
+      "0x7",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x2a",
+      "0x19",
+      "0x16",
+      "0x1",
+      "0x1",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}AM7{002B}00{002A}PM11{002B}00"
+  },
+  {
+    "id": 45,
+    "offset": "0xcac",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0xa",
+      "0x16",
+      "0x1",
+      "0x0",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x2a",
+      "0xa",
+      "0x16",
+      "0x2",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}AM10{002B}00{002A}AM2{002B}00"
+  },
+  {
+    "id": 46,
+    "offset": "0xccc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0x19",
+      "0x16",
+      "0x0",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x2a",
+      "0xa",
+      "0x16",
+      "0x4",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}PM0{002B}00{002A}AM4{002B}00"
+  },
+  {
+    "id": 47,
+    "offset": "0xcea",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0x19",
+      "0x16",
+      "0x7",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x2a",
+      "0xa",
+      "0x16",
+      "0x1",
+      "0x1",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}PM7{002B}00{002A}AM11{002B}00"
+  },
+  {
+    "id": 48,
+    "offset": "0xd0a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x273",
+      "0x163",
+      "0x274",
+      "0x160",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}{003D}{003D}{003D}{0273}{0163}{0274}{0160}"
+  },
+  {
+    "id": 49,
+    "offset": "0xd1c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x15f",
+      "0x160",
+      "0x163",
+      "0x164",
+      "0x40ff"
+    ],
+    "partial_ascii": "{015F}{0160}{0163}{0164}"
+  },
+  {
+    "id": 50,
+    "offset": "0xd26",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x136",
+      "0x24c",
+      "0xf3",
+      "0x165",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0136}{024C}{00F3}{0165}"
+  },
+  {
+    "id": 51,
+    "offset": "0xd30",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x48",
+      "0x68",
+      "0x7a",
+      "0x64",
+      "0x69",
+      "0x4a",
+      "0x40",
+      "0x7a",
+      "0x4b",
+      "0x44",
+      "0x2d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0048}{0068}{007A}{0064}{0069}{004A}{0040}{007A}{004B}{0044}{002D}"
+  },
+  {
+    "id": 52,
+    "offset": "0xd48",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x12f",
+      "0x57",
+      "0x16a",
+      "0xf5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{012F}{0057}{016A}{00F5}"
+  },
+  {
+    "id": 53,
+    "offset": "0xd54",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x12f",
+      "0x57",
+      "0x1bf",
+      "0x13a",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{012F}{0057}{01BF}{013A}"
+  },
+  {
+    "id": 54,
+    "offset": "0xd60",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x57",
+      "0xee",
+      "0x12f",
+      "0x6b",
+      "0x16a",
+      "0xf5",
+      "0x4a",
+      "0x5d",
+      "0x4b",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0057}{00EE}{012F}{006B}{016A}{00F5}{004A}{005D}{004B}"
+  },
+  {
+    "id": 55,
+    "offset": "0xd74",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x95",
+      "0xdc",
+      "0xb5",
+      "0xfd",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0095}{00DC}{00B5}{00FD}"
+  },
+  {
+    "id": 56,
+    "offset": "0xd7e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x16c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{016C}"
+  },
+  {
+    "id": 57,
+    "offset": "0xd82",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x40ff"
+    ],
+    "partial_ascii": ""
+  },
+  {
+    "id": 58,
+    "offset": "0xd84",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x40ff"
+    ],
+    "partial_ascii": ""
+  },
+  {
+    "id": 59,
+    "offset": "0xd86",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x40ff"
+    ],
+    "partial_ascii": ""
+  },
+  {
+    "id": 60,
+    "offset": "0xd88",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4009",
+      "0x0",
+      "0xe4",
+      "0xe5",
+      "0x4009",
+      "0x1",
+      "0xe6",
+      "0x4009",
+      "0x2",
+      "0xe7",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4009>0{00E4}{00E5}<CTRL:4009>1{00E6}<CTRL:4009>2{00E7}"
+  },
+  {
+    "id": 61,
+    "offset": "0xd9e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4009",
+      "0x3",
+      "0x2b",
+      "0x4009",
+      "0x4",
+      "0x4004",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4009>3{002B}<CTRL:4009>4<CTRL:4004>0"
+  },
+  {
+    "id": 62,
+    "offset": "0xdae",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x30",
+      "0x247",
+      "0xf6",
+      "0x31",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0030}{0247}{00F6}{0031}"
+  },
+  {
+    "id": 63,
+    "offset": "0xdb8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x30",
+      "0xf6",
+      "0x68",
+      "0x31",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0030}{00F6}{0068}{0031}"
+  },
+  {
+    "id": 64,
+    "offset": "0xdc2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x30",
+      "0xf8",
+      "0x3d",
+      "0x31",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0030}{00F8}{003D}{0031}"
+  },
+  {
+    "id": 65,
+    "offset": "0xdcc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x30",
+      "0xf9",
+      "0x3d",
+      "0x31",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0030}{00F9}{003D}{0031}"
+  },
+  {
+    "id": 66,
+    "offset": "0xdd6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x30",
+      "0xfa",
+      "0xf9",
+      "0x31",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0030}{00FA}{00F9}{0031}"
+  },
+  {
+    "id": 67,
+    "offset": "0xde0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x30",
+      "0xf7",
+      "0x3d",
+      "0x31",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0030}{00F7}{003D}{0031}"
+  },
+  {
+    "id": 68,
+    "offset": "0xdea",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x30",
+      "0xfa",
+      "0xf7",
+      "0x31",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0030}{00FA}{00F7}{0031}"
+  },
+  {
+    "id": 69,
+    "offset": "0xdf4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x30",
+      "0x246",
+      "0xf7",
+      "0x31",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0030}{0246}{00F7}{0031}"
+  },
+  {
+    "id": 70,
+    "offset": "0xdfe",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x30",
+      "0x248",
+      "0x249",
+      "0x31",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0030}{0248}{0249}{0031}"
+  },
+  {
+    "id": 71,
+    "offset": "0xe08",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x4e",
+      "0x40",
+      "0x145",
+      "0x146",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{004E}{0040}{0145}{0146}"
+  },
+  {
+    "id": 72,
+    "offset": "0xe14",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x135",
+      "0x44",
+      "0x40",
+      "0x145",
+      "0x146",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0135}{0044}{0040}{0145}{0146}"
+  },
+  {
+    "id": 73,
+    "offset": "0xe20",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x11d",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{011D}{011E}"
+  },
+  {
+    "id": 74,
+    "offset": "0xe26",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x147",
+      "0x148",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0147}{0148}{011E}"
+  },
+  {
+    "id": 75,
+    "offset": "0xe2e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xd1",
+      "0xbc",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00D1}{00BC}{011E}"
+  },
+  {
+    "id": 76,
+    "offset": "0xe36",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x90",
+      "0xbc",
+      "0x9b",
+      "0x9e",
+      "0xbc",
+      "0xa2",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0090}{00BC}{009B}{009E}{00BC}{00A2}{011E}"
+  },
+  {
+    "id": 77,
+    "offset": "0xe46",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x150",
+      "0x151",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0150}{0151}{011E}"
+  },
+  {
+    "id": 78,
+    "offset": "0xe4e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x110",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0110}{011E}"
+  },
+  {
+    "id": 79,
+    "offset": "0xe54",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x9e",
+      "0xcc",
+      "0x98",
+      "0x40ff"
+    ],
+    "partial_ascii": "{009E}{00CC}{0098}"
+  },
+  {
+    "id": 80,
+    "offset": "0xe5c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x8f",
+      "0x90",
+      "0x9b",
+      "0x96",
+      "0xb6",
+      "0x2e",
+      "0xaf",
+      "0x40ff"
+    ],
+    "partial_ascii": "{008F}{0090}{009B}{0096}{00B6}{002E}{00AF}"
+  },
+  {
+    "id": 81,
+    "offset": "0xe6c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x102",
+      "0x152",
+      "0x153",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0102}{0152}{0153}"
+  },
+  {
+    "id": 82,
+    "offset": "0xe74",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x14d",
+      "0x14e",
+      "0x14f",
+      "0x24c",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{014D}{014E}{014F}{024C}{011E}"
+  },
+  {
+    "id": 83,
+    "offset": "0xe80",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x149",
+      "0x14a",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0149}{014A}{011E}"
+  },
+  {
+    "id": 84,
+    "offset": "0xe88",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x14c",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{014C}{011E}"
+  },
+  {
+    "id": 85,
+    "offset": "0xe8e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x14b",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{014B}{011E}"
+  },
+  {
+    "id": 86,
+    "offset": "0xe94",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0xa2",
+      "0xb7",
+      "0xa2",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{00A2}{00B7}{00A2}{011E}"
+  },
+  {
+    "id": 87,
+    "offset": "0xea0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x154",
+      "0x155",
+      "0x146",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0154}{0155}{0146}{011E}"
+  },
+  {
+    "id": 88,
+    "offset": "0xeaa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x139",
+      "0x15c",
+      "0x24c",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0139}{015C}{024C}{011E}"
+  },
+  {
+    "id": 89,
+    "offset": "0xeb6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x7a",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{007A}{006C}"
+  },
+  {
+    "id": 90,
+    "offset": "0xebe",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe7",
+      "0xf5",
+      "0x24c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00E7}{00F5}{024C}"
+  },
+  {
+    "id": 91,
+    "offset": "0xec6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x98",
+      "0xd2",
+      "0x2e",
+      "0xf5",
+      "0x15d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0098}{00D2}{002E}{00F5}{015D}"
+  },
+  {
+    "id": 92,
+    "offset": "0xed2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x158",
+      "0x24d",
+      "0x15a",
+      "0x11b",
+      "0x12a",
+      "0x15b",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0158}{024D}{015A}{011B}{012A}{015B}"
+  },
+  {
+    "id": 93,
+    "offset": "0xee0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x11f",
+      "0x24c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{011F}{024C}"
+  },
+  {
+    "id": 94,
+    "offset": "0xee6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x156",
+      "0x157",
+      "0x11e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0156}{0157}{011E}"
+  },
+  {
+    "id": 95,
+    "offset": "0xeee",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x90",
+      "0xcf",
+      "0xbc",
+      "0xa2",
+      "0x136",
+      "0x24c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0090}{00CF}{00BC}{00A2}{0136}{024C}"
+  },
+  {
+    "id": 96,
+    "offset": "0xefc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe1",
+      "0x24e",
+      "0x5d",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00E1}{024E}{005D}{006C}"
+  },
+  {
+    "id": 97,
+    "offset": "0xf06",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x144",
+      "0x121",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0144}{0121}"
+  },
+  {
+    "id": 98,
+    "offset": "0xf0c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x98",
+      "0xbc",
+      "0xcd",
+      "0xa4",
+      "0x38",
+      "0x12b",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0098}{00BC}{00CD}{00A4}{0038}{012B}{0039}"
+  },
+  {
+    "id": 99,
+    "offset": "0xf1c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x98",
+      "0xbc",
+      "0xcd",
+      "0xa4",
+      "0x38",
+      "0x26e",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0098}{00BC}{00CD}{00A4}{0038}{026E}{0039}"
+  },
+  {
+    "id": 100,
+    "offset": "0xf2c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x250",
+      "0x45",
+      "0x1af",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0250}{0045}{01AF}"
+  },
+  {
+    "id": 101,
+    "offset": "0xf34",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x224",
+      "0x225",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0224}{0225}"
+  },
+  {
+    "id": 102,
+    "offset": "0xf3a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x226",
+      "0x225",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0226}{0225}"
+  },
+  {
+    "id": 103,
+    "offset": "0xf40",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x175",
+      "0x1a6",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0175}{01A6}"
+  },
+  {
+    "id": 104,
+    "offset": "0xf46",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1a8",
+      "0x1a9",
+      "0x1aa",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01A8}{01A9}{01AA}"
+  },
+  {
+    "id": 105,
+    "offset": "0xf4e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x232",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0232}"
+  },
+  {
+    "id": 106,
+    "offset": "0xf52",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x21c",
+      "0x143",
+      "0x40ff"
+    ],
+    "partial_ascii": "{021C}{0143}"
+  },
+  {
+    "id": 107,
+    "offset": "0xf58",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x21c",
+      "0x182",
+      "0x40ff"
+    ],
+    "partial_ascii": "{021C}{0182}"
+  },
+  {
+    "id": 108,
+    "offset": "0xf5e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xea",
+      "0xeb",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EA}{00EB}"
+  },
+  {
+    "id": 109,
+    "offset": "0xf64",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b4",
+      "0x1b5",
+      "0x1ae",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B4}{01B5}{01AE}"
+  },
+  {
+    "id": 110,
+    "offset": "0xf6c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x116",
+      "0x16f",
+      "0x1b7",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0116}{016F}{01B7}"
+  },
+  {
+    "id": 111,
+    "offset": "0xf74",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe1",
+      "0x16f",
+      "0x1b7",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00E1}{016F}{01B7}"
+  },
+  {
+    "id": 112,
+    "offset": "0xf7c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b8",
+      "0x1b7",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B8}{01B7}"
+  },
+  {
+    "id": 113,
+    "offset": "0xf82",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xfa",
+      "0x16f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00FA}{016F}"
+  },
+  {
+    "id": 114,
+    "offset": "0xf88",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xf4",
+      "0x1b9",
+      "0x16f",
+      "0x1b7",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00F4}{01B9}{016F}{01B7}"
+  },
+  {
+    "id": 115,
+    "offset": "0xf92",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1ad",
+      "0x1ae",
+      "0x1af",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01AD}{01AE}{01AF}"
+  },
+  {
+    "id": 116,
+    "offset": "0xf9a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x140",
+      "0x1ab",
+      "0x1ac",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0140}{01AB}{01AC}"
+  },
+  {
+    "id": 117,
+    "offset": "0xfa2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x13a",
+      "0x13e",
+      "0x1ae",
+      "0x40ff"
+    ],
+    "partial_ascii": "{013A}{013E}{01AE}"
+  },
+  {
+    "id": 118,
+    "offset": "0xfaa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1ba",
+      "0x1ae",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01BA}{01AE}"
+  },
+  {
+    "id": 119,
+    "offset": "0xfb0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xc0",
+      "0x2e",
+      "0xaf",
+      "0x9c",
+      "0xbc",
+      "0x9e",
+      "0x2e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00C0}{002E}{00AF}{009C}{00BC}{009E}{002E}"
+  },
+  {
+    "id": 120,
+    "offset": "0xfc0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xd1",
+      "0x9f",
+      "0xbc",
+      "0x98",
+      "0x24f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00D1}{009F}{00BC}{0098}{024F}"
+  },
+  {
+    "id": 121,
+    "offset": "0xfcc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b1",
+      "0x174",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B1}{0174}"
+  },
+  {
+    "id": 122,
+    "offset": "0xfd2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b0",
+      "0x158",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B0}{0158}"
+  },
+  {
+    "id": 123,
+    "offset": "0xfd8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x251",
+      "0x252",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0251}{0252}"
+  },
+  {
+    "id": 124,
+    "offset": "0xfde",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x167",
+      "0x178",
+      "0x1ac",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0167}{0178}{01AC}"
+  },
+  {
+    "id": 125,
+    "offset": "0xfe6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b3",
+      "0x13a",
+      "0x143",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B3}{013A}{0143}"
+  },
+  {
+    "id": 126,
+    "offset": "0xfee",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xd3",
+      "0x2e",
+      "0xb7",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00D3}{002E}{00B7}"
+  },
+  {
+    "id": 127,
+    "offset": "0xff6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x90",
+      "0xcf",
+      "0xbc",
+      "0xa2",
+      "0x1b1",
+      "0x143",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0090}{00CF}{00BC}{00A2}{01B1}{0143}"
+  },
+  {
+    "id": 128,
+    "offset": "0x1004",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xaa",
+      "0xd6",
+      "0xae",
+      "0xb6",
+      "0x2e",
+      "0xb8",
+      "0x9b",
+      "0xa2",
+      "0xb5",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00AA}{00D6}{00AE}{00B6}{002E}{00B8}{009B}{00A2}{00B5}{00BC}"
+  },
+  {
+    "id": 129,
+    "offset": "0x101a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0x9b",
+      "0xa2",
+      "0xb5",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{009B}{00A2}{00B5}{00BC}"
+  },
+  {
+    "id": 130,
+    "offset": "0x1026",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xaa",
+      "0xd6",
+      "0x2e",
+      "0x9b",
+      "0xa2",
+      "0xaa",
+      "0x2e",
+      "0xcb",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00AA}{00D6}{002E}{009B}{00A2}{00AA}{002E}{00CB}"
+  },
+  {
+    "id": 131,
+    "offset": "0x1038",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb5",
+      "0x2e",
+      "0xb0",
+      "0xbc",
+      "0x24f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B5}{002E}{00B0}{00BC}{024F}"
+  },
+  {
+    "id": 132,
+    "offset": "0x1044",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4d",
+      "0x7c",
+      "0x24f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{004D}{007C}{024F}"
+  },
+  {
+    "id": 133,
+    "offset": "0x104c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x145",
+      "0x5e",
+      "0x24f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0145}{005E}{024F}"
+  },
+  {
+    "id": 134,
+    "offset": "0x1054",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x110",
+      "0x24f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0110}{024F}"
+  },
+  {
+    "id": 135,
+    "offset": "0x105a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x61",
+      "0x4f",
+      "0x8c",
+      "0x24f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{0061}{004F}{008C}{024F}"
+  },
+  {
+    "id": 136,
+    "offset": "0x1066",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1f8",
+      "0x24c",
+      "0xee",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01F8}{024C}{00EE}"
+  },
+  {
+    "id": 137,
+    "offset": "0x106e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x14d",
+      "0x14e",
+      "0x24f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{014D}{014E}{024F}"
+  },
+  {
+    "id": 138,
+    "offset": "0x1076",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x21c",
+      "0x143",
+      "0xf5",
+      "0x1af",
+      "0x40ff"
+    ],
+    "partial_ascii": "{021C}{0143}{00F5}{01AF}"
+  },
+  {
+    "id": 139,
+    "offset": "0x1080",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xec",
+      "0xed",
+      "0xf5",
+      "0x1af",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EC}{00ED}{00F5}{01AF}"
+  },
+  {
+    "id": 140,
+    "offset": "0x108a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{026F}"
+  },
+  {
+    "id": 141,
+    "offset": "0x108e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xad",
+      "0xbc",
+      "0x9a",
+      "0xde",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00AD}{00BC}{009A}{00DE}{00BC}"
+  },
+  {
+    "id": 142,
+    "offset": "0x109a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x125",
+      "0x121",
+      "0x6d",
+      "0x22f",
+      "0x4a",
+      "0x40",
+      "0x57",
+      "0x7a",
+      "0x27",
+      "0x23a",
+      "0xe6",
+      "0x58",
+      "0x4002",
+      "0x400a",
+      "0xf0",
+      "0xf1",
+      "0x5b",
+      "0x57",
+      "0x215",
+      "0x216",
+      "0x6b",
+      "0x4002",
+      "0x1a4",
+      "0x60",
+      "0x67",
+      "0x48",
+      "0x52",
+      "0x54",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0125}{0121}{006D}{022F}{004A}{0040}{0057}{007A}{0027}{023A}{00E6}{0058}<CTRL:4002><CTRL:400A>{00F0}{00F1}{005B}{0057}{0215}{0216}{006B}<CTRL:4002>{01A4}{0060}{0067}{0048}{0052}{0054}{004A}{005D}{004A}{004E}"
+  },
+  {
+    "id": 143,
+    "offset": "0x10dc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x215",
+      "0x216",
+      "0x57",
+      "0x217",
+      "0x218",
+      "0x3f",
+      "0x8b",
+      "0x51",
+      "0x4002",
+      "0x400a",
+      "0x6d",
+      "0xf0",
+      "0x4f",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0215}{0216}{0057}{0217}{0218}{003F}{008B}{0051}<CTRL:4002><CTRL:400A>{006D}{00F0}{004F}{005D}{004A}{004E}"
+  },
+  {
+    "id": 144,
+    "offset": "0x10fe",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x215",
+      "0x216",
+      "0x57",
+      "0x217",
+      "0x218",
+      "0x61",
+      "0x53",
+      "0x46",
+      "0x4002",
+      "0x400a",
+      "0x58",
+      "0xf0",
+      "0x4f",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x7a",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0215}{0216}{0057}{0217}{0218}{0061}{0053}{0046}<CTRL:4002><CTRL:400A>{0058}{00F0}{004F}{005D}{004C}{006C}{007A}{004A}{004E}"
+  },
+  {
+    "id": 145,
+    "offset": "0x1126",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xc7",
+      "0x90",
+      "0xb8",
+      "0x96",
+      "0xa2",
+      "0xb0",
+      "0x2e",
+      "0xb7",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00C7}{0090}{00B8}{0096}{00A2}{00B0}{002E}{00B7}"
+  },
+  {
+    "id": 146,
+    "offset": "0x1138",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18e",
+      "0x19f",
+      "0x1a0",
+      "0x10e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{018E}{019F}{01A0}{010E}"
+  },
+  {
+    "id": 147,
+    "offset": "0x1142",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1a1",
+      "0x1a2",
+      "0x1a3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01A1}{01A2}{01A3}"
+  },
+  {
+    "id": 148,
+    "offset": "0x114a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb5",
+      "0xc3",
+      "0x93",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B5}{00C3}{0093}"
+  },
+  {
+    "id": 149,
+    "offset": "0x1152",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1d",
+      "0x1f",
+      "0x40ff"
+    ],
+    "partial_ascii": "TV"
+  },
+  {
+    "id": 150,
+    "offset": "0x1158",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1f9",
+      "0xe1",
+      "0x116",
+      "0x1fa",
+      "0x195",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01F9}{00E1}{0116}{01FA}{0195}"
+  },
+  {
+    "id": 151,
+    "offset": "0x1164",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1fb",
+      "0x1db",
+      "0x1fc",
+      "0x1fd",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01FB}{01DB}{01FC}{01FD}"
+  },
+  {
+    "id": 152,
+    "offset": "0x116e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x116",
+      "0x1fe",
+      "0x1ff",
+      "0x18a",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0116}{01FE}{01FF}{018A}"
+  },
+  {
+    "id": 153,
+    "offset": "0x1178",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x202",
+      "0x1db",
+      "0x25b",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0202}{01DB}{025B}{0151}"
+  },
+  {
+    "id": 154,
+    "offset": "0x1182",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x19a",
+      "0x1db",
+      "0x208",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{019A}{01DB}{0208}{0151}"
+  },
+  {
+    "id": 155,
+    "offset": "0x118c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x236",
+      "0x237",
+      "0x1d8",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0236}{0237}{01D8}{0151}"
+  },
+  {
+    "id": 156,
+    "offset": "0x1196",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x207",
+      "0x1db",
+      "0x1cd",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0207}{01DB}{01CD}{0151}"
+  },
+  {
+    "id": 157,
+    "offset": "0x11a0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x209",
+      "0x20a",
+      "0x20b",
+      "0x20c",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0209}{020A}{020B}{020C}{0151}"
+  },
+  {
+    "id": 158,
+    "offset": "0x11ac",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1d3",
+      "0x20d",
+      "0x20e",
+      "0x20b",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01D3}{020D}{020E}{020B}{0151}"
+  },
+  {
+    "id": 159,
+    "offset": "0x11b8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1db",
+      "0xe1",
+      "0x238",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01DB}{00E1}{0238}{0151}"
+  },
+  {
+    "id": 160,
+    "offset": "0x11c2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x204",
+      "0x1dd",
+      "0x205",
+      "0x206",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0204}{01DD}{0205}{0206}"
+  },
+  {
+    "id": 161,
+    "offset": "0x11cc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x200",
+      "0xe1",
+      "0x201",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0200}{00E1}{0201}{0151}"
+  },
+  {
+    "id": 162,
+    "offset": "0x11d6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1cc",
+      "0x110",
+      "0x1cd",
+      "0x1ce",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01CC}{0110}{01CD}{01CE}"
+  },
+  {
+    "id": 163,
+    "offset": "0x11e0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1cc",
+      "0x156",
+      "0xfa",
+      "0x1d2",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01CC}{0156}{00FA}{01D2}"
+  },
+  {
+    "id": 164,
+    "offset": "0x11ea",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1d3",
+      "0x110",
+      "0x1d4",
+      "0x1d5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01D3}{0110}{01D4}{01D5}"
+  },
+  {
+    "id": 165,
+    "offset": "0x11f4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xf7",
+      "0xe1",
+      "0x1e2",
+      "0x185",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00F7}{00E1}{01E2}{0185}"
+  },
+  {
+    "id": 166,
+    "offset": "0x11fe",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1f5",
+      "0x110",
+      "0x1d4",
+      "0x1f6",
+      "0x1d5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01F5}{0110}{01D4}{01F6}{01D5}"
+  },
+  {
+    "id": 167,
+    "offset": "0x120a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1f1",
+      "0x1f2",
+      "0x1f3",
+      "0x1cd",
+      "0x1f4",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01F1}{01F2}{01F3}{01CD}{01F4}"
+  },
+  {
+    "id": 168,
+    "offset": "0x1216",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1d6",
+      "0x1cc",
+      "0xf9",
+      "0x1d7",
+      "0x1d0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01D6}{01CC}{00F9}{01D7}{01D0}"
+  },
+  {
+    "id": 169,
+    "offset": "0x1222",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1e9",
+      "0x1db",
+      "0xe4",
+      "0x1ea",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01E9}{01DB}{00E4}{01EA}"
+  },
+  {
+    "id": 170,
+    "offset": "0x122c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1f7",
+      "0x1db",
+      "0x1f8",
+      "0x10c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01F7}{01DB}{01F8}{010C}"
+  },
+  {
+    "id": 171,
+    "offset": "0x1236",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x239",
+      "0x186",
+      "0x18a",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0239}{0186}{018A}"
+  },
+  {
+    "id": 172,
+    "offset": "0x123e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x176",
+      "0x1dd",
+      "0x1de",
+      "0x1df",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0176}{01DD}{01DE}{01DF}"
+  },
+  {
+    "id": 173,
+    "offset": "0x1248",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x23a",
+      "0x149",
+      "0x23b",
+      "0x1d2",
+      "0x40ff"
+    ],
+    "partial_ascii": "{023A}{0149}{023B}{01D2}"
+  },
+  {
+    "id": 174,
+    "offset": "0x1252",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x23c",
+      "0x1cc",
+      "0x23d",
+      "0x1ce",
+      "0x40ff"
+    ],
+    "partial_ascii": "{023C}{01CC}{023D}{01CE}"
+  },
+  {
+    "id": 175,
+    "offset": "0x125c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1d8",
+      "0x110",
+      "0x1d9",
+      "0x1da",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01D8}{0110}{01D9}{01DA}"
+  },
+  {
+    "id": 176,
+    "offset": "0x1266",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x116",
+      "0x1db",
+      "0x23e",
+      "0x1a2",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0116}{01DB}{023E}{01A2}"
+  },
+  {
+    "id": 177,
+    "offset": "0x1270",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1e3",
+      "0xe0",
+      "0x1e4",
+      "0x1ce",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01E3}{00E0}{01E4}{01CE}"
+  },
+  {
+    "id": 178,
+    "offset": "0x127a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x121",
+      "0x1db",
+      "0x1e5",
+      "0x1df",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0121}{01DB}{01E5}{01DF}"
+  },
+  {
+    "id": 179,
+    "offset": "0x1284",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1e0",
+      "0x1e1",
+      "0x102",
+      "0x1ce",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01E0}{01E1}{0102}{01CE}"
+  },
+  {
+    "id": 180,
+    "offset": "0x128e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b8",
+      "0x240",
+      "0xfa",
+      "0x1d2",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B8}{0240}{00FA}{01D2}"
+  },
+  {
+    "id": 181,
+    "offset": "0x1298",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1ed",
+      "0x1ee",
+      "0x1ef",
+      "0x1ce",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01ED}{01EE}{01EF}{01CE}"
+  },
+  {
+    "id": 182,
+    "offset": "0x12a2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe1",
+      "0x1cc",
+      "0x1f0",
+      "0x10c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00E1}{01CC}{01F0}{010C}"
+  },
+  {
+    "id": 183,
+    "offset": "0x12ac",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1cf",
+      "0x143",
+      "0x1d0",
+      "0x1d1",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01CF}{0143}{01D0}{01D1}"
+  },
+  {
+    "id": 184,
+    "offset": "0x12b6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1e6",
+      "0x1db",
+      "0x1e7",
+      "0x1e8",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01E6}{01DB}{01E7}{01E8}"
+  },
+  {
+    "id": 185,
+    "offset": "0x12c0",
+    "terminator_at_record_end": false,
+    "codes": [
+      "0x91",
+      "0xb7",
+      "0xa2",
+      "0xb5",
+      "0x270",
+      "0x62"
+    ],
+    "partial_ascii": "{0091}{00B7}{00A2}{00B5}{0270}{0062}"
+  },
+  {
+    "id": 186,
+    "offset": "0x12cc",
+    "terminator_at_record_end": false,
+    "codes": [
+      "0x91",
+      "0xb7",
+      "0xa2",
+      "0xb5",
+      "0x271",
+      "0x62"
+    ],
+    "partial_ascii": "{0091}{00B7}{00A2}{00B5}{0271}{0062}"
+  },
+  {
+    "id": 187,
+    "offset": "0x12d8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1eb",
+      "0x151",
+      "0xfa",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01EB}{0151}{00FA}{01C5}"
+  },
+  {
+    "id": 188,
+    "offset": "0x12e2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xfa",
+      "0x16f",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00FA}{016F}{01C5}"
+  },
+  {
+    "id": 189,
+    "offset": "0x12ea",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b1",
+      "0x174",
+      "0x12f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B1}{0174}{012F}"
+  },
+  {
+    "id": 190,
+    "offset": "0x12f2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18",
+      "0x15",
+      "0x40ff"
+    ],
+    "partial_ascii": "OL"
+  },
+  {
+    "id": 191,
+    "offset": "0x12f8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x73",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{0073}{0049}{006C}"
+  },
+  {
+    "id": 192,
+    "offset": "0x1302",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe1",
+      "0x16f",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00E1}{016F}{01C5}"
+  },
+  {
+    "id": 193,
+    "offset": "0x130a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b8",
+      "0x1b7",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B8}{01B7}{01C5}"
+  },
+  {
+    "id": 194,
+    "offset": "0x1312",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1eb",
+      "0x151",
+      "0x1b8",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01EB}{0151}{01B8}{01C5}"
+  },
+  {
+    "id": 195,
+    "offset": "0x131c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x116",
+      "0x16f",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0116}{016F}{01C5}"
+  },
+  {
+    "id": 196,
+    "offset": "0x1324",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b4",
+      "0x1b5",
+      "0x1ae",
+      "0x253",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B4}{01B5}{01AE}{0253}"
+  },
+  {
+    "id": 197,
+    "offset": "0x132e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x73",
+      "0x40",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{0073}{0040}{0049}{006C}"
+  },
+  {
+    "id": 198,
+    "offset": "0x133a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x7c",
+      "0x3f",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{007C}{003F}{0049}{006C}"
+  },
+  {
+    "id": 199,
+    "offset": "0x1346",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x7c",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{007C}{0049}{006C}"
+  },
+  {
+    "id": 200,
+    "offset": "0x1350",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x151",
+      "0x230",
+      "0x231",
+      "0x68",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0151}{0230}{0231}{0068}"
+  },
+  {
+    "id": 201,
+    "offset": "0x135a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x142",
+      "0x233",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0142}{0233}{0151}"
+  },
+  {
+    "id": 202,
+    "offset": "0x1362",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x234",
+      "0x13c",
+      "0x235",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0234}{013C}{0235}"
+  },
+  {
+    "id": 203,
+    "offset": "0x136a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x7a",
+      "0x4002",
+      "0x19d",
+      "0x19e",
+      "0x22d",
+      "0x13a",
+      "0x6b",
+      "0x43",
+      "0x48",
+      "0x53",
+      "0x40",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{007A}<CTRL:4002>{019D}{019E}{022D}{013A}{006B}{0043}{0048}{0053}{0040}{005D}{004A}{004E}"
+  },
+  {
+    "id": 204,
+    "offset": "0x1388",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x125",
+      "0x121",
+      "0x6d",
+      "0x22f",
+      "0x4a",
+      "0x40",
+      "0x57",
+      "0x7a",
+      "0x4002",
+      "0x400a",
+      "0x57",
+      "0x19d",
+      "0x19e",
+      "0x22d",
+      "0x13a",
+      "0x6b",
+      "0x4002",
+      "0x1a4",
+      "0x60",
+      "0x67",
+      "0x48",
+      "0x52",
+      "0x54",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0125}{0121}{006D}{022F}{004A}{0040}{0057}{007A}<CTRL:4002><CTRL:400A>{0057}{019D}{019E}{022D}{013A}{006B}<CTRL:4002>{01A4}{0060}{0067}{0048}{0052}{0054}{004A}{005D}{004A}{004E}"
+  },
+  {
+    "id": 205,
+    "offset": "0x13c0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x400a",
+      "0x6d",
+      "0x4002",
+      "0x19d",
+      "0x19e",
+      "0x22d",
+      "0x13a",
+      "0x6b",
+      "0x43",
+      "0x48",
+      "0x53",
+      "0x8b",
+      "0x51",
+      "0x40",
+      "0x5d",
+      "0x4b",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:400A>{006D}<CTRL:4002>{019D}{019E}{022D}{013A}{006B}{0043}{0048}{0053}{008B}{0051}{0040}{005D}{004B}"
+  },
+  {
+    "id": 206,
+    "offset": "0x13e2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x125",
+      "0x121",
+      "0x54",
+      "0x25a",
+      "0x25b",
+      "0x6d",
+      "0x3f",
+      "0x67",
+      "0x57",
+      "0x7a",
+      "0x4002",
+      "0x400a",
+      "0x6b",
+      "0x4002",
+      "0x208",
+      "0x57",
+      "0x1c4",
+      "0x25c",
+      "0x57",
+      "0x4e",
+      "0x60",
+      "0x54",
+      "0x25d",
+      "0x25e",
+      "0x4a",
+      "0x5d",
+      "0x4b",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0125}{0121}{0054}{025A}{025B}{006D}{003F}{0067}{0057}{007A}<CTRL:4002><CTRL:400A>{006B}<CTRL:4002>{0208}{0057}{01C4}{025C}{0057}{004E}{0060}{0054}{025D}{025E}{004A}{005D}{004B}"
+  },
+  {
+    "id": 207,
+    "offset": "0x141a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x23a",
+      "0xe6",
+      "0x27",
+      "0x4004",
+      "0x1",
+      "0x12c",
+      "0x4002",
+      "0x19a",
+      "0x1c9",
+      "0x45",
+      "0x49",
+      "0x68",
+      "0x51",
+      "0x4a",
+      "0x5d",
+      "0x40",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{023A}{00E6}{0027}<CTRL:4004>1{012C}<CTRL:4002>{019A}{01C9}{0045}{0049}{0068}{0051}{004A}{005D}{0040}{005D}{004A}{004E}"
+  },
+  {
+    "id": 208,
+    "offset": "0x1442",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x57",
+      "0xb5",
+      "0xbc",
+      "0x96",
+      "0x6d",
+      "0x4002",
+      "0x400a",
+      "0x54",
+      "0x53",
+      "0x66",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{0057}{00B5}{00BC}{0096}{006D}<CTRL:4002><CTRL:400A>{0054}{0053}{0066}{005D}{004A}{004E}"
+  },
+  {
+    "id": 209,
+    "offset": "0x1460",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x57",
+      "0xb5",
+      "0xbc",
+      "0x96",
+      "0x6d",
+      "0x4002",
+      "0x400a",
+      "0x54",
+      "0x156",
+      "0x6d",
+      "0x66",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{0057}{00B5}{00BC}{0096}{006D}<CTRL:4002><CTRL:400A>{0054}{0156}{006D}{0066}{005D}{004A}{004E}"
+  },
+  {
+    "id": 210,
+    "offset": "0x1480",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x73",
+      "0x5d",
+      "0x40",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{0073}{005D}{0040}{004A}{005D}{004A}{004E}"
+  },
+  {
+    "id": 211,
+    "offset": "0x1492",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x245",
+      "0xe6",
+      "0x58",
+      "0x166",
+      "0xee",
+      "0x6d",
+      "0x272",
+      "0x103",
+      "0x54",
+      "0x53",
+      "0x66",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0245}{00E6}{0058}{0166}{00EE}{006D}{0272}{0103}{0054}{0053}{0066}{005D}{004A}{004E}"
+  },
+  {
+    "id": 212,
+    "offset": "0x14b0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x245",
+      "0xe4",
+      "0x58",
+      "0x166",
+      "0xee",
+      "0x6d",
+      "0x272",
+      "0x103",
+      "0x54",
+      "0x53",
+      "0x66",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0245}{00E4}{0058}{0166}{00EE}{006D}{0272}{0103}{0054}{0053}{0066}{005D}{004A}{004E}"
+  },
+  {
+    "id": 213,
+    "offset": "0x14ce",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x21d",
+      "0x126",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{021D}{0126}{004A}{005D}{004A}{004E}"
+  },
+  {
+    "id": 214,
+    "offset": "0x14dc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x400a",
+      "0x57",
+      "0xee",
+      "0x58",
+      "0x4002",
+      "0x4b",
+      "0x7f",
+      "0x51",
+      "0x21e",
+      "0x21f",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:400A>{0057}{00EE}{0058}<CTRL:4002>{004B}{007F}{0051}{021E}{021F}{004A}{005D}{004A}{004E}"
+  },
+  {
+    "id": 215,
+    "offset": "0x14fa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x400a",
+      "0x4002",
+      "0x6d",
+      "0x93",
+      "0x2e",
+      "0xd3",
+      "0xbc",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:400A><CTRL:4002>{006D}{0093}{002E}{00D3}{00BC}{004A}{005D}{004A}{004E}"
+  },
+  {
+    "id": 216,
+    "offset": "0x1512",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x232",
+      "0x6d",
+      "0xf0",
+      "0x4f",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0232}{006D}{00F0}{004F}{005D}{004A}{004E}"
+  },
+  {
+    "id": 217,
+    "offset": "0x1522",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x4e",
+      "0x40",
+      "0x61",
+      "0x57",
+      "0x6d",
+      "0x4002",
+      "0x118",
+      "0x68",
+      "0x67",
+      "0x219",
+      "0x21a",
+      "0x54",
+      "0x53",
+      "0x66",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{004E}{0040}{0061}{0057}{006D}<CTRL:4002>{0118}{0068}{0067}{0219}{021A}{0054}{0053}{0066}{005D}{004A}{004E}"
+  },
+  {
+    "id": 218,
+    "offset": "0x1548",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x135",
+      "0x44",
+      "0x40",
+      "0x61",
+      "0x57",
+      "0x6d",
+      "0x4002",
+      "0x118",
+      "0x68",
+      "0x67",
+      "0x219",
+      "0x21a",
+      "0x54",
+      "0x53",
+      "0x66",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0135}{0044}{0040}{0061}{0057}{006D}<CTRL:4002>{0118}{0068}{0067}{0219}{021A}{0054}{0053}{0066}{005D}{004A}{004E}"
+  },
+  {
+    "id": 219,
+    "offset": "0x156e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "1000"
+  },
+  {
+    "id": 220,
+    "offset": "0x1578",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x5",
+      "0x0",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "5000"
+  },
+  {
+    "id": 221,
+    "offset": "0x1582",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1",
+      "0x19a",
+      "0x40ff"
+    ],
+    "partial_ascii": "1{019A}"
+  },
+  {
+    "id": 222,
+    "offset": "0x1588",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x5",
+      "0x19a",
+      "0x40ff"
+    ],
+    "partial_ascii": "5{019A}"
+  },
+  {
+    "id": 223,
+    "offset": "0x158e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1",
+      "0x0",
+      "0x19a",
+      "0x40ff"
+    ],
+    "partial_ascii": "10{019A}"
+  },
+  {
+    "id": 224,
+    "offset": "0x1596",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1",
+      "0x0",
+      "0x0",
+      "0x19a",
+      "0x40ff"
+    ],
+    "partial_ascii": "100{019A}"
+  },
+  {
+    "id": 225,
+    "offset": "0x15a0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x185",
+      "0xe5",
+      "0x57",
+      "0x43",
+      "0x17e",
+      "0x49",
+      "0x6c",
+      "0x6d",
+      "0x4002",
+      "0x45",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0185}{00E5}{0057}{0043}{017E}{0049}{006C}{006D}<CTRL:4002>{0045}{005D}{004A}{004E}"
+  },
+  {
+    "id": 226,
+    "offset": "0x15bc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0xc3",
+      "0x57",
+      "0x1ca",
+      "0x1cb",
+      "0x6d",
+      "0x220",
+      "0x1a8",
+      "0x49",
+      "0x68",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{00C3}{0057}{01CA}{01CB}{006D}{0220}{01A8}{0049}{0068}{005D}{004C}{006C}"
+  },
+  {
+    "id": 227,
+    "offset": "0x15d8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0xc3",
+      "0x6d",
+      "0x1ca",
+      "0x1cb",
+      "0x4a",
+      "0x51",
+      "0x4002",
+      "0x4004",
+      "0x1",
+      "0x185",
+      "0x57",
+      "0x43",
+      "0x17e",
+      "0x49",
+      "0x6c",
+      "0x54",
+      "0x4002",
+      "0x222",
+      "0x65",
+      "0x68",
+      "0x51",
+      "0x4a",
+      "0x5d",
+      "0x40",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{00C3}{006D}{01CA}{01CB}{004A}{0051}<CTRL:4002><CTRL:4004>1{0185}{0057}{0043}{017E}{0049}{006C}{0054}<CTRL:4002>{0222}{0065}{0068}{0051}{004A}{005D}{0040}{005D}{004A}{004E}"
+  },
+  {
+    "id": 228,
+    "offset": "0x1612",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x136",
+      "0x24c",
+      "0x57",
+      "0x179",
+      "0x17a",
+      "0x6d",
+      "0x164",
+      "0x54",
+      "0x195",
+      "0x40",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0136}{024C}{0057}{0179}{017A}{006D}{0164}{0054}{0195}{0040}{005D}{004C}{006C}"
+  },
+  {
+    "id": 229,
+    "offset": "0x162e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x136",
+      "0x24c",
+      "0x6d",
+      "0x24c",
+      "0x265",
+      "0x68",
+      "0x54",
+      "0x53",
+      "0x66",
+      "0x4002",
+      "0x4004",
+      "0x1",
+      "0x185",
+      "0x57",
+      "0x43",
+      "0x17e",
+      "0x49",
+      "0x6c",
+      "0x6d",
+      "0x4002",
+      "0x184",
+      "0x42",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x7a",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0136}{024C}{006D}{024C}{0265}{0068}{0054}{0053}{0066}<CTRL:4002><CTRL:4004>1{0185}{0057}{0043}{017E}{0049}{006C}{006D}<CTRL:4002>{0184}{0042}{005D}{004C}{006C}{007A}{004A}{004E}"
+  },
+  {
+    "id": 230,
+    "offset": "0x1668",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x142",
+      "0x6b",
+      "0x141",
+      "0x142",
+      "0x7a",
+      "0x45",
+      "0x53",
+      "0x40",
+      "0x4002",
+      "0x43",
+      "0x17e",
+      "0x49",
+      "0x6c",
+      "0x6d",
+      "0x40",
+      "0x5d",
+      "0x4b",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0142}{006B}{0141}{0142}{007A}{0045}{0053}{0040}<CTRL:4002>{0043}{017E}{0049}{006C}{006D}{0040}{005D}{004B}"
+  },
+  {
+    "id": 231,
+    "offset": "0x168c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x141",
+      "0x142",
+      "0x9b",
+      "0xd4",
+      "0x2e",
+      "0x9b",
+      "0x6d",
+      "0x1bd",
+      "0x46",
+      "0x51",
+      "0x4002",
+      "0x40ff",
+      "0x4004",
+      "0x1",
+      "0x185",
+      "0x57",
+      "0x43",
+      "0x17e",
+      "0x49",
+      "0x6c",
+      "0x6d",
+      "0x4002",
+      "0xfe",
+      "0x68",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x7a",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0141}{0142}{009B}{00D4}{002E}{009B}{006D}{01BD}{0046}{0051}<CTRL:4002>"
+  },
+  {
+    "id": 232,
+    "offset": "0x16ca",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x213",
+      "0x17c",
+      "0x6d",
+      "0x1a2",
+      "0x45",
+      "0x228",
+      "0x45",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0213}{017C}{006D}{01A2}{0045}{0228}{0045}{005D}{004C}{006C}"
+  },
+  {
+    "id": 233,
+    "offset": "0x16e0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x266",
+      "0x264",
+      "0x27",
+      "0x400a",
+      "0x6d",
+      "0x4002",
+      "0x52",
+      "0x8b",
+      "0x51",
+      "0x61",
+      "0x64",
+      "0x46",
+      "0x118",
+      "0x68",
+      "0x51",
+      "0x40",
+      "0x5d",
+      "0x4b",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0266}{0264}{0027}<CTRL:400A>{006D}<CTRL:4002>{0052}{008B}{0051}{0061}{0064}{0046}{0118}{0068}{0051}{0040}{005D}{004B}"
+  },
+  {
+    "id": 234,
+    "offset": "0x1706",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x266",
+      "0x264",
+      "0x27",
+      "0x400a",
+      "0x6d",
+      "0x4002",
+      "0x3f",
+      "0x5d",
+      "0x66",
+      "0x118",
+      "0x68",
+      "0x51",
+      "0x40",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0266}{0264}{0027}<CTRL:400A>{006D}<CTRL:4002>{003F}{005D}{0066}{0118}{0068}{0051}{0040}{005D}{004C}{006C}"
+  },
+  {
+    "id": 235,
+    "offset": "0x1728",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x400a",
+      "0x49",
+      "0x6c",
+      "0x6d",
+      "0x4002",
+      "0x4004",
+      "0x1",
+      "0x57",
+      "0x267",
+      "0x121",
+      "0x1e",
+      "0x19",
+      "0x6b",
+      "0x229",
+      "0x22a",
+      "0x4a",
+      "0x51",
+      "0x45",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:400A>{0049}{006C}{006D}<CTRL:4002><CTRL:4004>1{0057}{0267}{0121}UP{006B}{0229}{022A}{004A}{0051}{0045}{005D}{004A}{004E}"
+  },
+  {
+    "id": 236,
+    "offset": "0x1754",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x38",
+      "0x22b",
+      "0xff",
+      "0x22c",
+      "0xf3",
+      "0x2b",
+      "0x400a",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0038}{022B}{00FF}{022C}{00F3}{002B}<CTRL:400A>{0039}"
+  },
+  {
+    "id": 237,
+    "offset": "0x1766",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1c6",
+      "0x1c7",
+      "0x54",
+      "0xfe",
+      "0x65",
+      "0x68",
+      "0x51",
+      "0x4002",
+      "0x4004",
+      "0x1",
+      "0x6b",
+      "0x4002",
+      "0x1c7",
+      "0x65",
+      "0x68",
+      "0x51",
+      "0x4a",
+      "0x5d",
+      "0x40",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01C6}{01C7}{0054}{00FE}{0065}{0068}{0051}<CTRL:4002><CTRL:4004>1{006B}<CTRL:4002>{01C7}{0065}{0068}{0051}{004A}{005D}{0040}{005D}{004A}{004E}"
+  },
+  {
+    "id": 238,
+    "offset": "0x1794",
+    "terminator_at_record_end": false,
+    "codes": [
+      "0x1c2",
+      "0x1c3",
+      "0x6d",
+      "0x1c4",
+      "0x1c5",
+      "0x4a",
+      "0x51",
+      "0x4002",
+      "0xee",
+      "0x127",
+      "0x6d",
+      "0x268",
+      "0x47",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x4002",
+      "0x38",
+      "0x269",
+      "0x25f",
+      "0x122",
+      "0x2b",
+      "0x4004",
+      "0x1",
+      "0x39"
+    ],
+    "partial_ascii": "{01C2}{01C3}{006D}{01C4}{01C5}{004A}{0051}<CTRL:4002>{00EE}{0127}{006D}{0268}{0047}{005D}{004A}{004E}<CTRL:4002>{0038}{0269}{025F}{0122}{002B}<CTRL:4004>1{0039}"
+  },
+  {
+    "id": 239,
+    "offset": "0x17c6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x208",
+      "0x7a",
+      "0x98",
+      "0xbc",
+      "0xcd",
+      "0xa4",
+      "0x2f",
+      "0x98",
+      "0xbc",
+      "0xa1",
+      "0x9b",
+      "0xa2",
+      "0x6d",
+      "0x1a2",
+      "0x6a",
+      "0x68",
+      "0x4002",
+      "0x400a",
+      "0x6d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0208}{007A}{0098}{00BC}{00CD}{00A4}{002F}{0098}{00BC}{00A1}{009B}{00A2}{006D}{01A2}{006A}{0068}<CTRL:4002><CTRL:400A>{006D}"
+  },
+  {
+    "id": 240,
+    "offset": "0x17ee",
+    "terminator_at_record_end": false,
+    "codes": [
+      "0xe8",
+      "0x7c",
+      "0x68",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x38",
+      "0x210",
+      "0x121",
+      "0x2b",
+      "0x400a",
+      "0x22e",
+      "0x39"
+    ],
+    "partial_ascii": "{00E8}{007C}{0068}{005D}{004A}{004E}{0038}{0210}{0121}{002B}<CTRL:400A>{022E}{0039}"
+  },
+  {
+    "id": 241,
+    "offset": "0x1808",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1cb",
+      "0x211",
+      "0x30",
+      "0x185",
+      "0x14e",
+      "0x57",
+      "0x3f",
+      "0x67",
+      "0x43",
+      "0xee",
+      "0x31",
+      "0x7a",
+      "0x4002",
+      "0x400a",
+      "0x6d",
+      "0x4002",
+      "0x260",
+      "0x66",
+      "0xe0",
+      "0x70",
+      "0x65",
+      "0x68",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x38",
+      "0xee",
+      "0x176",
+      "0x57",
+      "0x22b",
+      "0xff",
+      "0x1e",
+      "0x19",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01CB}{0211}{0030}{0185}{014E}{0057}{003F}{0067}{0043}{00EE}{0031}{007A}<CTRL:4002><CTRL:400A>{006D}<CTRL:4002>{0260}{0066}{00E0}{0070}{0065}{0068}{005D}{004A}{004E}{0038}{00EE}{0176}{0057}{022B}{00FF}UP{0039}"
+  },
+  {
+    "id": 242,
+    "offset": "0x184e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1cb",
+      "0x211",
+      "0x30",
+      "0x213",
+      "0x214",
+      "0x53",
+      "0x43",
+      "0xee",
+      "0x31",
+      "0x7a",
+      "0x4002",
+      "0x400a",
+      "0x6d",
+      "0x4002",
+      "0x260",
+      "0x66",
+      "0xe0",
+      "0x70",
+      "0x65",
+      "0x68",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x38",
+      "0xee",
+      "0x176",
+      "0x57",
+      "0x22b",
+      "0xff",
+      "0x1e",
+      "0x19",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01CB}{0211}{0030}{0213}{0214}{0053}{0043}{00EE}{0031}{007A}<CTRL:4002><CTRL:400A>{006D}<CTRL:4002>{0260}{0066}{00E0}{0070}{0065}{0068}{005D}{004A}{004E}{0038}{00EE}{0176}{0057}{022B}{00FF}UP{0039}"
+  },
+  {
+    "id": 243,
+    "offset": "0x1890",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1cb",
+      "0x211",
+      "0x30",
+      "0x99",
+      "0x2e",
+      "0xcd",
+      "0x9b",
+      "0x57",
+      "0x212",
+      "0x40",
+      "0x43",
+      "0xee",
+      "0x31",
+      "0x7a",
+      "0x4002",
+      "0x400a",
+      "0x6d",
+      "0x4002",
+      "0x260",
+      "0x66",
+      "0xe0",
+      "0x70",
+      "0x65",
+      "0x68",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x38",
+      "0xee",
+      "0x176",
+      "0x57",
+      "0x22b",
+      "0xff",
+      "0x1e",
+      "0x19",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01CB}{0211}{0030}{0099}{002E}{00CD}{009B}{0057}{0212}{0040}{0043}{00EE}{0031}{007A}<CTRL:4002><CTRL:400A>{006D}<CTRL:4002>{0260}{0066}{00E0}{0070}{0065}{0068}{005D}{004A}{004E}{0038}{00EE}{0176}{0057}{022B}{00FF}UP{0039}"
+  },
+  {
+    "id": 244,
+    "offset": "0x18da",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1cb",
+      "0x211",
+      "0x30",
+      "0x263",
+      "0x40",
+      "0x43",
+      "0xee",
+      "0x31",
+      "0x7a",
+      "0x4002",
+      "0x400a",
+      "0x6d",
+      "0x4002",
+      "0x260",
+      "0x66",
+      "0xe0",
+      "0x70",
+      "0x65",
+      "0x68",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x38",
+      "0xee",
+      "0x176",
+      "0x57",
+      "0x22b",
+      "0xff",
+      "0x1e",
+      "0x19",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01CB}{0211}{0030}{0263}{0040}{0043}{00EE}{0031}{007A}<CTRL:4002><CTRL:400A>{006D}<CTRL:4002>{0260}{0066}{00E0}{0070}{0065}{0068}{005D}{004A}{004E}{0038}{00EE}{0176}{0057}{022B}{00FF}UP{0039}"
+  },
+  {
+    "id": 245,
+    "offset": "0x191a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x6d",
+      "0x400a",
+      "0xee",
+      "0x54",
+      "0x53",
+      "0x66",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{006D}<CTRL:400A>{00EE}{0054}{0053}{0066}{005D}{004A}{004E}"
+  },
+  {
+    "id": 246,
+    "offset": "0x1930",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x20d",
+      "0x21c",
+      "0x143",
+      "0x40ff"
+    ],
+    "partial_ascii": "{020D}{021C}{0143}"
+  },
+  {
+    "id": 247,
+    "offset": "0x1938",
+    "terminator_at_record_end": false,
+    "codes": [
+      "0x208",
+      "0x21c",
+      "0x143"
+    ],
+    "partial_ascii": "{0208}{021C}{0143}"
+  },
+  {
+    "id": 248,
+    "offset": "0x193e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x209",
+      "0x21c",
+      "0x182",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0209}{021C}{0182}"
+  },
+  {
+    "id": 249,
+    "offset": "0x1946",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x21b",
+      "0x21c",
+      "0x182",
+      "0x40ff"
+    ],
+    "partial_ascii": "{021B}{021C}{0182}"
+  },
+  {
+    "id": 250,
+    "offset": "0x194e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xea",
+      "0xeb",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EA}{00EB}"
+  },
+  {
+    "id": 251,
+    "offset": "0x1954",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x61",
+      "0x8b",
+      "0x52",
+      "0x136",
+      "0x24c",
+      "0x57",
+      "0x261",
+      "0x262",
+      "0x6b",
+      "0x263",
+      "0x46",
+      "0x4b",
+      "0x67",
+      "0x52",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0061}{008B}{0052}{0136}{024C}{0057}{0261}{0262}{006B}{0263}{0046}{004B}{0067}{0052}"
+  },
+  {
+    "id": 252,
+    "offset": "0x1972",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x61",
+      "0x8b",
+      "0x52",
+      "0x99",
+      "0x2e",
+      "0xcd",
+      "0x9b",
+      "0x6b",
+      "0x212",
+      "0x46",
+      "0x4b",
+      "0x67",
+      "0x52",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0061}{008B}{0052}{0099}{002E}{00CD}{009B}{006B}{0212}{0046}{004B}{0067}{0052}"
+  },
+  {
+    "id": 253,
+    "offset": "0x198e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x61",
+      "0x8b",
+      "0x52",
+      "0x9c",
+      "0x95",
+      "0xdd",
+      "0xb6",
+      "0xa1",
+      "0xd7",
+      "0x6b",
+      "0x212",
+      "0x46",
+      "0x4b",
+      "0x67",
+      "0x52",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0061}{008B}{0052}{009C}{0095}{00DD}{00B6}{00A1}{00D7}{006B}{0212}{0046}{004B}{0067}{0052}"
+  },
+  {
+    "id": 254,
+    "offset": "0x19ae",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x61",
+      "0x8b",
+      "0x52",
+      "0xee",
+      "0x127",
+      "0x6b",
+      "0x213",
+      "0x214",
+      "0x54",
+      "0x4b",
+      "0x67",
+      "0x52",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0061}{008B}{0052}{00EE}{0127}{006B}{0213}{0214}{0054}{004B}{0067}{0052}"
+  },
+  {
+    "id": 255,
+    "offset": "0x19c8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x61",
+      "0x8b",
+      "0x52",
+      "0x118",
+      "0x66",
+      "0xe0",
+      "0x70",
+      "0x6b",
+      "0x23e",
+      "0x7c",
+      "0x4b",
+      "0x52",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0061}{008B}{0052}{0118}{0066}{00E0}{0070}{006B}{023E}{007C}{004B}{0052}"
+  },
+  {
+    "id": 256,
+    "offset": "0x19e2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x400a",
+      "0x53",
+      "0x7b",
+      "0x6b",
+      "0x112",
+      "0x40",
+      "0x51",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:400A>{0053}{007B}{006B}{0112}{0040}{0051}"
+  },
+  {
+    "id": 257,
+    "offset": "0x19f2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x400a",
+      "0x53",
+      "0x7b",
+      "0x6b",
+      "0x264",
+      "0x46",
+      "0x54",
+      "0xec",
+      "0xed",
+      "0x4a",
+      "0x51",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:400A>{0053}{007B}{006B}{0264}{0046}{0054}{00EC}{00ED}{004A}{0051}"
+  },
+  {
+    "id": 258,
+    "offset": "0x1a0a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb5",
+      "0xbc",
+      "0x96",
+      "0x6d",
+      "0xe0",
+      "0x6d",
+      "0x67",
+      "0x7a",
+      "0x4a",
+      "0x8e",
+      "0x41",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B5}{00BC}{0096}{006D}{00E0}{006D}{0067}{007A}{004A}{008E}{0041}"
+  },
+  {
+    "id": 259,
+    "offset": "0x1a22",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x53",
+      "0x40",
+      "0x4d",
+      "0x41",
+      "0x6b",
+      "0x45",
+      "0x60",
+      "0x51",
+      "0x46",
+      "0x77",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0053}{0040}{004D}{0041}{006B}{0045}{0060}{0051}{0046}{0077}"
+  },
+  {
+    "id": 260,
+    "offset": "0x1a38",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xca",
+      "0x2e",
+      "0x9e",
+      "0x1",
+      "0x3d",
+      "0x99",
+      "0xbc",
+      "0xd3",
+      "0xb7",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00CA}{002E}{009E}1{003D}{0099}{00BC}{00D3}{00B7}"
+  },
+  {
+    "id": 261,
+    "offset": "0x1a4c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xca",
+      "0x2e",
+      "0x9e",
+      "0x2",
+      "0x3d",
+      "0x4a",
+      "0x6c",
+      "0x45",
+      "0x49",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00CA}{002E}{009E}2{003D}{004A}{006C}{0045}{0049}"
+  },
+  {
+    "id": 262,
+    "offset": "0x1a60",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xca",
+      "0x2e",
+      "0x9e",
+      "0x3",
+      "0x3d",
+      "0x4a",
+      "0x6c",
+      "0x45",
+      "0x49",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00CA}{002E}{009E}3{003D}{004A}{006C}{0045}{0049}"
+  },
+  {
+    "id": 263,
+    "offset": "0x1a74",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x63",
+      "0x44",
+      "0x6b",
+      "0x45",
+      "0x60",
+      "0x51",
+      "0x46",
+      "0x77",
+      "0x49",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0063}{0044}{006B}{0045}{0060}{0051}{0046}{0077}{0049}"
+  },
+  {
+    "id": 264,
+    "offset": "0x1a88",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x2",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>2"
+  },
+  {
+    "id": 265,
+    "offset": "0x1a8e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x51",
+      "0x6c",
+      "0x40",
+      "0x6c",
+      "0x57",
+      "0x59",
+      "0x44",
+      "0x42",
+      "0x4a",
+      "0x50",
+      "0x6b",
+      "0x45",
+      "0x60",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0051}{006C}{0040}{006C}{0057}{0059}{0044}{0042}{004A}{0050}{006B}{0045}{0060}"
+  },
+  {
+    "id": 266,
+    "offset": "0x1aaa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x2",
+      "0x29",
+      "0x50",
+      "0x40ff",
+      "0xb8",
+      "0xc3",
+      "0x6b",
+      "0x45",
+      "0x60",
+      "0x4c",
+      "0x46",
+      "0x77",
+      "0x49",
+      "0x40",
+      "0x40ff",
+      "0x4c",
+      "0x50",
+      "0x7d",
+      "0x6b",
+      "0x45",
+      "0x60",
+      "0x4c",
+      "0x46",
+      "0x77",
+      "0x49",
+      "0x40",
+      "0x40ff",
+      "0x4a",
+      "0x8d",
+      "0x41",
+      "0x57",
+      "0x40ff",
+      "0x4a",
+      "0x8e",
+      "0x41",
+      "0x59",
+      "0x6c",
+      "0x6b",
+      "0x4c",
+      "0x6c",
+      "0x4e",
+      "0x46",
+      "0x40ff",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>2{0029}{0050}"
+  },
+  {
+    "id": 267,
+    "offset": "0x1b04",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x37",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0037}"
+  },
+  {
+    "id": 268,
+    "offset": "0x1b08",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x36",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0036}"
+  },
+  {
+    "id": 269,
+    "offset": "0x1b0c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x35",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0035}"
+  },
+  {
+    "id": 270,
+    "offset": "0x1b10",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x34",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0034}"
+  },
+  {
+    "id": 271,
+    "offset": "0x1b14",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x400a",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:400A>"
+  },
+  {
+    "id": 272,
+    "offset": "0x1b18",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>0"
+  },
+  {
+    "id": 273,
+    "offset": "0x1b1e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x1",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>1"
+  },
+  {
+    "id": 274,
+    "offset": "0x1b24",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x2",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>2"
+  },
+  {
+    "id": 275,
+    "offset": "0x1b2a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>3"
+  },
+  {
+    "id": 276,
+    "offset": "0x1b30",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x4",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>4"
+  },
+  {
+    "id": 277,
+    "offset": "0x1b36",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x5",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>5"
+  },
+  {
+    "id": 278,
+    "offset": "0x1b3c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x6",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>6"
+  },
+  {
+    "id": 279,
+    "offset": "0x1b42",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x7",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>7"
+  },
+  {
+    "id": 280,
+    "offset": "0x1b48",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x12b",
+      "0x12d",
+      "0xca",
+      "0x2e",
+      "0x9e",
+      "0x6b",
+      "0x129",
+      "0x5e",
+      "0x12a",
+      "0x5f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{012B}{012D}{00CA}{002E}{009E}{006B}{0129}{005E}{012A}{005F}"
+  },
+  {
+    "id": 281,
+    "offset": "0x1b5e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x48",
+      "0x57",
+      "0x223",
+      "0x1af",
+      "0x58",
+      "0x24b",
+      "0xfe",
+      "0x7a",
+      "0x45",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0048}{0057}{0223}{01AF}{0058}{024B}{00FE}{007A}{0045}{005D}{004C}{006C}"
+  },
+  {
+    "id": 282,
+    "offset": "0x1b78",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x223",
+      "0x1af",
+      "0xf3",
+      "0x165",
+      "0x3d",
+      "0x3d",
+      "0x4004",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0223}{01AF}{00F3}{0165}{003D}{003D}<CTRL:4004>0"
+  },
+  {
+    "id": 283,
+    "offset": "0x1b8a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xf0",
+      "0x13e",
+      "0xf3",
+      "0x165",
+      "0x3d",
+      "0x3d",
+      "0x4004",
+      "0x1",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00F0}{013E}{00F3}{0165}{003D}{003D}<CTRL:4004>1"
+  },
+  {
+    "id": 284,
+    "offset": "0x1b9c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xf0",
+      "0x13e",
+      "0xfd",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00F0}{013E}{00FD}"
+  },
+  {
+    "id": 285,
+    "offset": "0x1ba4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x184",
+      "0x40",
+      "0x13e",
+      "0x185",
+      "0x186",
+      "0x4003",
+      "0x5",
+      "0x185",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0184}{0040}{013E}{0185}{0186}<CTRL:4003>5{0185}"
+  },
+  {
+    "id": 286,
+    "offset": "0x1bb6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x167",
+      "0xff",
+      "0x4003",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0167}{00FF}<CTRL:4003>3"
+  },
+  {
+    "id": 287,
+    "offset": "0x1bc0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x177",
+      "0x178",
+      "0x4003",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0177}{0178}<CTRL:4003>3"
+  },
+  {
+    "id": 288,
+    "offset": "0x1bca",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0xc3",
+      "0x4003",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{00C3}<CTRL:4003>3"
+  },
+  {
+    "id": 289,
+    "offset": "0x1bd4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x179",
+      "0x17a",
+      "0x4003",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0179}{017A}<CTRL:4003>3"
+  },
+  {
+    "id": 290,
+    "offset": "0x1bde",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x17b",
+      "0x132",
+      "0x4003",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{017B}{0132}<CTRL:4003>3"
+  },
+  {
+    "id": 291,
+    "offset": "0x1be8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x213",
+      "0x17c",
+      "0x4003",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0213}{017C}<CTRL:4003>3"
+  },
+  {
+    "id": 292,
+    "offset": "0x1bf2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x17d",
+      "0x17e",
+      "0x4003",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{017D}{017E}<CTRL:4003>3"
+  },
+  {
+    "id": 293,
+    "offset": "0x1bfc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x167",
+      "0xff",
+      "0x4002",
+      "0x177",
+      "0x178",
+      "0x4002",
+      "0xb8",
+      "0xc3",
+      "0x4002",
+      "0x179",
+      "0x17a",
+      "0x4002",
+      "0x17b",
+      "0x132",
+      "0x4002",
+      "0x213",
+      "0x17c",
+      "0x4002",
+      "0x17d",
+      "0x17e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0167}{00FF}<CTRL:4002>{0177}{0178}<CTRL:4002>{00B8}{00C3}<CTRL:4002>{0179}{017A}<CTRL:4002>{017B}{0132}<CTRL:4002>{0213}{017C}<CTRL:4002>{017D}{017E}"
+  },
+  {
+    "id": 294,
+    "offset": "0x1c26",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x3",
+      "0x16c",
+      "0x3d",
+      "0x3d",
+      "0x1ea",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>3{016C}{003D}{003D}{01EA}"
+  },
+  {
+    "id": 295,
+    "offset": "0x1c34",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x3",
+      "0x16c",
+      "0x3d",
+      "0x3d",
+      "0x1eb",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>3{016C}{003D}{003D}{01EB}"
+  },
+  {
+    "id": 296,
+    "offset": "0x1c42",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x0",
+      "0x29",
+      "0xe7",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>0{0029}{00E7}"
+  },
+  {
+    "id": 297,
+    "offset": "0x1c4c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb5",
+      "0x90",
+      "0xcc",
+      "0xb7",
+      "0xee",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x4003",
+      "0x2",
+      "0x101",
+      "0xee",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B5}{0090}{00CC}{00B7}{00EE}{003D}{003D}{003D}{003D}{003D}{003D}{003D}{003D}<CTRL:4003>2{0101}{00EE}"
+  },
+  {
+    "id": 298,
+    "offset": "0x1c70",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x187",
+      "0x188",
+      "0x189",
+      "0x18a",
+      "0x7a",
+      "0x4b",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0187}{0188}{0189}{018A}{007A}{004B}"
+  },
+  {
+    "id": 299,
+    "offset": "0x1c7e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x154",
+      "0x18b",
+      "0x4b",
+      "0x67",
+      "0x3d",
+      "0x180",
+      "0xf5",
+      "0x3d",
+      "0x4004",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0154}{018B}{004B}{0067}{003D}{0180}{00F5}{003D}<CTRL:4004>0"
+  },
+  {
+    "id": 300,
+    "offset": "0x1c94",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x184",
+      "0x18c",
+      "0x4b",
+      "0x67",
+      "0x3d",
+      "0x180",
+      "0xf5",
+      "0x3d",
+      "0x4004",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0184}{018C}{004B}{0067}{003D}{0180}{00F5}{003D}<CTRL:4004>0"
+  },
+  {
+    "id": 301,
+    "offset": "0x1caa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x192",
+      "0x61",
+      "0x4a",
+      "0x53",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0192}{0061}{004A}{0053}{0040}"
+  },
+  {
+    "id": 302,
+    "offset": "0x1cb6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18d",
+      "0xe6",
+      "0x118",
+      "0x66",
+      "0xe0",
+      "0x70",
+      "0x4002",
+      "0x3d",
+      "0x4004",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{018D}{00E6}{0118}{0066}{00E0}{0070}<CTRL:4002>{003D}<CTRL:4004>0"
+  },
+  {
+    "id": 303,
+    "offset": "0x1ccc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0x2",
+      "0x4",
+      "0x163",
+      "0x164",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}24{0163}{0164}"
+  },
+  {
+    "id": 304,
+    "offset": "0x1cd8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xa",
+      "0x16",
+      "0x1",
+      "0x0",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x2a",
+      "0x4002",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x19",
+      "0x16",
+      "0x6",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "AM10{002B}00{002A}<CTRL:4002>{003D}{003D}{003D}{003D}{003D}PM6{002B}00"
+  },
+  {
+    "id": 305,
+    "offset": "0x1d02",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xa",
+      "0x16",
+      "0x7",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x2a",
+      "0x4002",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x19",
+      "0x16",
+      "0x1",
+      "0x1",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "AM7{002B}00{002A}<CTRL:4002>{003D}{003D}{003D}{003D}PM11{002B}00"
+  },
+  {
+    "id": 306,
+    "offset": "0x1d2a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xa",
+      "0x16",
+      "0x1",
+      "0x0",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x2a",
+      "0x4002",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0xa",
+      "0x16",
+      "0x2",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "AM10{002B}00{002A}<CTRL:4002>{003D}{003D}{003D}{003D}{003D}AM2{002B}00"
+  },
+  {
+    "id": 307,
+    "offset": "0x1d54",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x19",
+      "0x16",
+      "0x0",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x2a",
+      "0x4002",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0xa",
+      "0x16",
+      "0x4",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "PM0{002B}00{002A}<CTRL:4002>{003D}{003D}{003D}{003D}{003D}AM4{002B}00"
+  },
+  {
+    "id": 308,
+    "offset": "0x1d7c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x19",
+      "0x16",
+      "0x7",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x2a",
+      "0x4002",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0x3d",
+      "0xa",
+      "0x16",
+      "0x1",
+      "0x1",
+      "0x2b",
+      "0x0",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "PM7{002B}00{002A}<CTRL:4002>{003D}{003D}{003D}{003D}AM11{002B}00"
+  },
+  {
+    "id": 309,
+    "offset": "0x1da4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x3d",
+      "0x273",
+      "0x163",
+      "0x274",
+      "0x160",
+      "0x40ff"
+    ],
+    "partial_ascii": "{003D}{0273}{0163}{0274}{0160}"
+  },
+  {
+    "id": 310,
+    "offset": "0x1db0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xf2",
+      "0xf3",
+      "0x3d",
+      "0x400c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00F2}{00F3}{003D}<CTRL:400C>"
+  },
+  {
+    "id": 311,
+    "offset": "0x1dba",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x185",
+      "0x14e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0185}{014E}"
+  },
+  {
+    "id": 312,
+    "offset": "0x1dc0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x213",
+      "0x17c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0213}{017C}"
+  },
+  {
+    "id": 313,
+    "offset": "0x1dc6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x17b",
+      "0x132",
+      "0x40ff"
+    ],
+    "partial_ascii": "{017B}{0132}"
+  },
+  {
+    "id": 314,
+    "offset": "0x1dcc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x99",
+      "0x2e",
+      "0xcd",
+      "0x9b",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0099}{002E}{00CD}{009B}"
+  },
+  {
+    "id": 315,
+    "offset": "0x1dd6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1eb",
+      "0x151",
+      "0xfa",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01EB}{0151}{00FA}{01C5}"
+  },
+  {
+    "id": 316,
+    "offset": "0x1de0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1eb",
+      "0x151",
+      "0xfa",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01EB}{0151}{00FA}{01C5}"
+  },
+  {
+    "id": 317,
+    "offset": "0x1dea",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1eb",
+      "0x151",
+      "0xfa",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01EB}{0151}{00FA}{01C5}"
+  },
+  {
+    "id": 318,
+    "offset": "0x1df4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xfa",
+      "0x16f",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00FA}{016F}{01C5}"
+  },
+  {
+    "id": 319,
+    "offset": "0x1dfc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xfa",
+      "0x16f",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00FA}{016F}{01C5}"
+  },
+  {
+    "id": 320,
+    "offset": "0x1e04",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xfa",
+      "0x16f",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00FA}{016F}{01C5}"
+  },
+  {
+    "id": 321,
+    "offset": "0x1e0c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x99",
+      "0xb5",
+      "0xb6",
+      "0x2e",
+      "0xad",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0099}{00B5}{00B6}{002E}{00AD}{00BC}"
+  },
+  {
+    "id": 322,
+    "offset": "0x1e1a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x99",
+      "0xb5",
+      "0xb6",
+      "0x2e",
+      "0xad",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0099}{00B5}{00B6}{002E}{00AD}{00BC}"
+  },
+  {
+    "id": 323,
+    "offset": "0x1e28",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x99",
+      "0xb5",
+      "0xb6",
+      "0x2e",
+      "0xad",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0099}{00B5}{00B6}{002E}{00AD}{00BC}"
+  },
+  {
+    "id": 324,
+    "offset": "0x1e36",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x99",
+      "0xb5",
+      "0xb6",
+      "0x2e",
+      "0xad",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0099}{00B5}{00B6}{002E}{00AD}{00BC}"
+  },
+  {
+    "id": 325,
+    "offset": "0x1e44",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18",
+      "0x15",
+      "0x40ff"
+    ],
+    "partial_ascii": "OL"
+  },
+  {
+    "id": 326,
+    "offset": "0x1e4a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18",
+      "0x15",
+      "0x40ff"
+    ],
+    "partial_ascii": "OL"
+  },
+  {
+    "id": 327,
+    "offset": "0x1e50",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18",
+      "0x15",
+      "0x40ff"
+    ],
+    "partial_ascii": "OL"
+  },
+  {
+    "id": 328,
+    "offset": "0x1e56",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18",
+      "0x15",
+      "0x40ff"
+    ],
+    "partial_ascii": "OL"
+  },
+  {
+    "id": 329,
+    "offset": "0x1e5c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x58",
+      "0x70",
+      "0x4e",
+      "0x43",
+      "0x73",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0058}{0070}{004E}{0043}{0073}{0049}{006C}"
+  },
+  {
+    "id": 330,
+    "offset": "0x1e6c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x73",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{0073}{0049}{006C}"
+  },
+  {
+    "id": 331,
+    "offset": "0x1e76",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1ea",
+      "0x151",
+      "0xe1",
+      "0x16f",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01EA}{0151}{00E1}{016F}{01C5}"
+  },
+  {
+    "id": 332,
+    "offset": "0x1e82",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b8",
+      "0x1b7",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B8}{01B7}{01C5}"
+  },
+  {
+    "id": 333,
+    "offset": "0x1e8a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1eb",
+      "0x151",
+      "0xe1",
+      "0x16f",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01EB}{0151}{00E1}{016F}{01C5}"
+  },
+  {
+    "id": 334,
+    "offset": "0x1e96",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1eb",
+      "0x151",
+      "0x1b8",
+      "0x1c5",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01EB}{0151}{01B8}{01C5}"
+  },
+  {
+    "id": 335,
+    "offset": "0x1ea0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x116",
+      "0x16f",
+      "0x1c5",
+      "0x2f",
+      "0x1ea",
+      "0x57",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0116}{016F}{01C5}{002F}{01EA}{0057}{0151}"
+  },
+  {
+    "id": 336,
+    "offset": "0x1eb0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x116",
+      "0x16f",
+      "0x1c5",
+      "0x2f",
+      "0x1eb",
+      "0x57",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0116}{016F}{01C5}{002F}{01EB}{0057}{0151}"
+  },
+  {
+    "id": 337,
+    "offset": "0x1ec0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b4",
+      "0x1b5",
+      "0x1ae",
+      "0x253",
+      "0x2f",
+      "0x1ea",
+      "0x57",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B4}{01B5}{01AE}{0253}{002F}{01EA}{0057}{0151}"
+  },
+  {
+    "id": 338,
+    "offset": "0x1ed2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1b4",
+      "0x1b5",
+      "0x1ae",
+      "0x253",
+      "0x2f",
+      "0x1eb",
+      "0x57",
+      "0x151",
+      "0x40ff"
+    ],
+    "partial_ascii": "{01B4}{01B5}{01AE}{0253}{002F}{01EB}{0057}{0151}"
+  },
+  {
+    "id": 339,
+    "offset": "0x1ee4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x73",
+      "0x40",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{0073}{0040}{0049}{006C}"
+  },
+  {
+    "id": 340,
+    "offset": "0x1ef0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x73",
+      "0x40",
+      "0x49",
+      "0x6c",
+      "0x38",
+      "0x235",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{0073}{0040}{0049}{006C}{0038}{0235}{0039}"
+  },
+  {
+    "id": 341,
+    "offset": "0x1f02",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x7c",
+      "0x3f",
+      "0x49",
+      "0x6c",
+      "0x38",
+      "0x157",
+      "0x13e",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{007C}{003F}{0049}{006C}{0038}{0157}{013E}{0039}"
+  },
+  {
+    "id": 342,
+    "offset": "0x1f16",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x94",
+      "0x2e",
+      "0xa2",
+      "0x43",
+      "0x7c",
+      "0x3f",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0094}{002E}{00A2}{0043}{007C}{003F}{0049}{006C}"
+  },
+  {
+    "id": 343,
+    "offset": "0x1f28",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x7c",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{007C}{0049}{006C}"
+  },
+  {
+    "id": 344,
+    "offset": "0x1f32",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x92",
+      "0xd3",
+      "0xb9",
+      "0xbc",
+      "0x43",
+      "0x7c",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0092}{00D3}{00B9}{00BC}{0043}{007C}{0049}{006C}"
+  },
+  {
+    "id": 345,
+    "offset": "0x1f44",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x7c",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{007C}{0049}{006C}"
+  },
+  {
+    "id": 346,
+    "offset": "0x1f4e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x94",
+      "0x2e",
+      "0xb7",
+      "0x57",
+      "0x43",
+      "0x7c",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0094}{002E}{00B7}{0057}{0043}{007C}{0049}{006C}"
+  },
+  {
+    "id": 347,
+    "offset": "0x1f60",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x151",
+      "0x230",
+      "0x231",
+      "0x68",
+      "0x57",
+      "0x1ea",
+      "0x173",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0151}{0230}{0231}{0068}{0057}{01EA}{0173}"
+  },
+  {
+    "id": 348,
+    "offset": "0x1f70",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x151",
+      "0x77",
+      "0x45",
+      "0x57",
+      "0x43",
+      "0x7c",
+      "0x49",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0151}{0077}{0045}{0057}{0043}{007C}{0049}{006C}"
+  },
+  {
+    "id": 349,
+    "offset": "0x1f82",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x151",
+      "0x230",
+      "0x231",
+      "0x68",
+      "0x57",
+      "0x1eb",
+      "0x173",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0151}{0230}{0231}{0068}{0057}{01EB}{0173}"
+  },
+  {
+    "id": 350,
+    "offset": "0x1f92",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xcf",
+      "0xcd",
+      "0x2e",
+      "0x94",
+      "0x2e",
+      "0x57",
+      "0x1eb",
+      "0x173",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00CF}{00CD}{002E}{0094}{002E}{0057}{01EB}{0173}"
+  },
+  {
+    "id": 351,
+    "offset": "0x1fa4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x142",
+      "0x233",
+      "0x151",
+      "0x57",
+      "0x1ea",
+      "0x173",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0142}{0233}{0151}{0057}{01EA}{0173}"
+  },
+  {
+    "id": 352,
+    "offset": "0x1fb2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x234",
+      "0x13c",
+      "0x235",
+      "0x57",
+      "0x1ea",
+      "0x173",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0234}{013C}{0235}{0057}{01EA}{0173}"
+  },
+  {
+    "id": 353,
+    "offset": "0x1fc0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x12f",
+      "0x2f",
+      "0x1ea",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{012F}{002F}{01EA}"
+  },
+  {
+    "id": 354,
+    "offset": "0x1fca",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x12f",
+      "0x2f",
+      "0x1ea",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{012F}{002F}{01EA}"
+  },
+  {
+    "id": 355,
+    "offset": "0x1fd4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x12f",
+      "0x2f",
+      "0x1eb",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{012F}{002F}{01EB}"
+  },
+  {
+    "id": 356,
+    "offset": "0x1fde",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x12f",
+      "0x2f",
+      "0x1eb",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{012F}{002F}{01EB}"
+  },
+  {
+    "id": 357,
+    "offset": "0x1fe8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x176",
+      "0x2f",
+      "0x1ea",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{0176}{002F}{01EA}"
+  },
+  {
+    "id": 358,
+    "offset": "0x1ff2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0x176",
+      "0x2f",
+      "0x1eb",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{0176}{002F}{01EB}"
+  },
+  {
+    "id": 359,
+    "offset": "0x1ffc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x184",
+      "0x40",
+      "0x54",
+      "0x45",
+      "0x4e",
+      "0x24c",
+      "0x13e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0184}{0040}{0054}{0045}{004E}{024C}{013E}"
+  },
+  {
+    "id": 360,
+    "offset": "0x200c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x182",
+      "0x183",
+      "0x121",
+      "0x3d",
+      "0x4004",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0182}{0183}{0121}{003D}<CTRL:4004>0"
+  },
+  {
+    "id": 361,
+    "offset": "0x201a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4b",
+      "0x7a",
+      "0x54",
+      "0x24b",
+      "0xfe",
+      "0x4a",
+      "0x4e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{004B}{007A}{0054}{024B}{00FE}{004A}{004E}"
+  },
+  {
+    "id": 362,
+    "offset": "0x202a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb5",
+      "0x90",
+      "0xcc",
+      "0xb7",
+      "0x136",
+      "0xee",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B5}{0090}{00CC}{00B7}{0136}{00EE}"
+  },
+  {
+    "id": 363,
+    "offset": "0x2038",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb5",
+      "0x90",
+      "0xcc",
+      "0xb7",
+      "0x136",
+      "0xee",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B5}{0090}{00CC}{00B7}{0136}{00EE}"
+  },
+  {
+    "id": 364,
+    "offset": "0x2046",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb5",
+      "0x90",
+      "0xcc",
+      "0xb7",
+      "0x136",
+      "0xee",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B5}{0090}{00CC}{00B7}{0136}{00EE}"
+  },
+  {
+    "id": 365,
+    "offset": "0x2054",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb5",
+      "0x90",
+      "0xcc",
+      "0xb7",
+      "0x136",
+      "0xee",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B5}{0090}{00CC}{00B7}{0136}{00EE}"
+  },
+  {
+    "id": 366,
+    "offset": "0x2062",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x2",
+      "0x101",
+      "0xee",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>2{0101}{00EE}"
+  },
+  {
+    "id": 367,
+    "offset": "0x206c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x1",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>1"
+  },
+  {
+    "id": 368,
+    "offset": "0x2072",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x2",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>2"
+  },
+  {
+    "id": 369,
+    "offset": "0x2078",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>3"
+  },
+  {
+    "id": 370,
+    "offset": "0x207e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x4",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>4"
+  },
+  {
+    "id": 371,
+    "offset": "0x2084",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x5",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>5"
+  },
+  {
+    "id": 372,
+    "offset": "0x208a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x6",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>6"
+  },
+  {
+    "id": 373,
+    "offset": "0x2090",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x7",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>7"
+  },
+  {
+    "id": 374,
+    "offset": "0x2096",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x8",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>8"
+  },
+  {
+    "id": 375,
+    "offset": "0x209c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x9",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>9"
+  },
+  {
+    "id": 376,
+    "offset": "0x20a2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0xa",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>A"
+  },
+  {
+    "id": 377,
+    "offset": "0x20a8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0xb",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>B"
+  },
+  {
+    "id": 378,
+    "offset": "0x20ae",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0xc",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>C"
+  },
+  {
+    "id": 379,
+    "offset": "0x20b4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0xd",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>D"
+  },
+  {
+    "id": 380,
+    "offset": "0x20ba",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0xe",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>E"
+  },
+  {
+    "id": 381,
+    "offset": "0x20c0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0xf",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>F"
+  },
+  {
+    "id": 382,
+    "offset": "0x20c6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x185",
+      "0x14e",
+      "0x29",
+      "0x213",
+      "0x17c",
+      "0x29",
+      "0x17b",
+      "0x132",
+      "0x29",
+      "0x99",
+      "0x2e",
+      "0xcd",
+      "0x9b",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0185}{014E}{0029}{0213}{017C}{0029}{017B}{0132}{0029}{0099}{002E}{00CD}{009B}"
+  },
+  {
+    "id": 383,
+    "offset": "0x20e2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x32",
+      "0x44",
+      "0x53",
+      "0x3d",
+      "0x94",
+      "0xa3",
+      "0x3d",
+      "0x100",
+      "0x101",
+      "0x33",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0032}{0044}{0053}{003D}{0094}{00A3}{003D}{0100}{0101}{0033}"
+  },
+  {
+    "id": 384,
+    "offset": "0x20f8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4006",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4006>"
+  },
+  {
+    "id": 385,
+    "offset": "0x20fc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x127",
+      "0x3d",
+      "0x128",
+      "0x4002",
+      "0x161",
+      "0x3d",
+      "0x162",
+      "0x4002",
+      "0xee",
+      "0x3d",
+      "0x12f",
+      "0x4002",
+      "0x27a",
+      "0x3d",
+      "0x27b",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0127}{003D}{0128}<CTRL:4002>{0161}{003D}{0162}<CTRL:4002>{00EE}{003D}{012F}<CTRL:4002>{027A}{003D}{027B}"
+  },
+  {
+    "id": 386,
+    "offset": "0x211c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x273",
+      "0x163",
+      "0x274",
+      "0x160",
+      "0x4a",
+      "0x5d",
+      "0x4b",
+      "0x44",
+      "0x2d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0273}{0163}{0274}{0160}{004A}{005D}{004B}{0044}{002D}"
+  },
+  {
+    "id": 387,
+    "offset": "0x2130",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x257",
+      "0x135",
+      "0x258",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0257}{0135}{0258}"
+  },
+  {
+    "id": 388,
+    "offset": "0x2138",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x257",
+      "0x135",
+      "0x258",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0257}{0135}{0258}"
+  },
+  {
+    "id": 389,
+    "offset": "0x2140",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x257",
+      "0x135",
+      "0x258",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0257}{0135}{0258}"
+  },
+  {
+    "id": 390,
+    "offset": "0x2148",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x257",
+      "0x135",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0257}{0135}{00BA}{00C1}{00BC}"
+  },
+  {
+    "id": 391,
+    "offset": "0x2154",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x257",
+      "0x135",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0257}{0135}{00BA}{00C1}{00BC}"
+  },
+  {
+    "id": 392,
+    "offset": "0x2160",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x257",
+      "0x135",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0257}{0135}{00BA}{00C1}{00BC}"
+  },
+  {
+    "id": 393,
+    "offset": "0x216c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x257",
+      "0x135",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0257}{0135}{00BA}{00C1}{00BC}"
+  },
+  {
+    "id": 394,
+    "offset": "0x2178",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x138",
+      "0x258",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0138}{0258}"
+  },
+  {
+    "id": 395,
+    "offset": "0x2180",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x138",
+      "0x258",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0138}{0258}"
+  },
+  {
+    "id": 396,
+    "offset": "0x2188",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x138",
+      "0x258",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0138}{0258}"
+  },
+  {
+    "id": 397,
+    "offset": "0x2190",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x138",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0138}{00BA}{00C1}{00BC}"
+  },
+  {
+    "id": 398,
+    "offset": "0x219c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x138",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0138}{00BA}{00C1}{00BC}"
+  },
+  {
+    "id": 399,
+    "offset": "0x21a8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x138",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0138}{00BA}{00C1}{00BC}"
+  },
+  {
+    "id": 400,
+    "offset": "0x21b4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x138",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0138}{00BA}{00C1}{00BC}"
+  },
+  {
+    "id": 401,
+    "offset": "0x21c0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x139",
+      "0x258",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0139}{0258}"
+  },
+  {
+    "id": 402,
+    "offset": "0x21c8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x139",
+      "0x258",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0139}{0258}"
+  },
+  {
+    "id": 403,
+    "offset": "0x21d0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x139",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0139}{00BA}{00C1}{00BC}"
+  },
+  {
+    "id": 404,
+    "offset": "0x21dc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x139",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0139}{00BA}{00C1}{00BC}"
+  },
+  {
+    "id": 405,
+    "offset": "0x21e8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x139",
+      "0x258",
+      "0x2f",
+      "0x259",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0139}{0258}{002F}{0259}"
+  },
+  {
+    "id": 406,
+    "offset": "0x21f4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x139",
+      "0x258",
+      "0x2f",
+      "0x259",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0139}{0258}{002F}{0259}"
+  },
+  {
+    "id": 407,
+    "offset": "0x2200",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x139",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x2f",
+      "0x259",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0139}{00BA}{00C1}{00BC}{002F}{0259}"
+  },
+  {
+    "id": 408,
+    "offset": "0x2210",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x137",
+      "0x139",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x2f",
+      "0x259",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0137}{0139}{00BA}{00C1}{00BC}{002F}{0259}"
+  },
+  {
+    "id": 409,
+    "offset": "0x2220",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x135",
+      "0x44",
+      "0x40",
+      "0x145",
+      "0x5e",
+      "0x13e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0135}{0044}{0040}{0145}{005E}{013E}"
+  },
+  {
+    "id": 410,
+    "offset": "0x222e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x43",
+      "0x7a",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0043}{007A}{006C}"
+  },
+  {
+    "id": 411,
+    "offset": "0x2236",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe1",
+      "0x24e",
+      "0x5d",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00E1}{024E}{005D}{006C}"
+  },
+  {
+    "id": 412,
+    "offset": "0x2240",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x90",
+      "0xcf",
+      "0xbc",
+      "0xa2",
+      "0x97",
+      "0x2e",
+      "0x9b",
+      "0x258",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0090}{00CF}{00BC}{00A2}{0097}{002E}{009B}{0258}"
+  },
+  {
+    "id": 413,
+    "offset": "0x2252",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x90",
+      "0xcf",
+      "0xbc",
+      "0xa2",
+      "0x97",
+      "0x2e",
+      "0x9b",
+      "0xba",
+      "0xc1",
+      "0xbc",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0090}{00CF}{00BC}{00A2}{0097}{002E}{009B}{00BA}{00C1}{00BC}"
+  },
+  {
+    "id": 414,
+    "offset": "0x2268",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4e",
+      "0x7c",
+      "0x48",
+      "0x12b",
+      "0x117",
+      "0x40ff"
+    ],
+    "partial_ascii": "{004E}{007C}{0048}{012B}{0117}"
+  },
+  {
+    "id": 415,
+    "offset": "0x2274",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4e",
+      "0x7c",
+      "0x48",
+      "0x12b",
+      "0x117",
+      "0x40ff"
+    ],
+    "partial_ascii": "{004E}{007C}{0048}{012B}{0117}"
+  },
+  {
+    "id": 416,
+    "offset": "0x2280",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x145",
+      "0x146",
+      "0x12b",
+      "0x117",
+      "0x2f",
+      "0x137",
+      "0x138",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0145}{0146}{012B}{0117}{002F}{0137}{0138}"
+  },
+  {
+    "id": 417,
+    "offset": "0x2290",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x145",
+      "0x146",
+      "0x12b",
+      "0x117",
+      "0x2f",
+      "0x137",
+      "0x138",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0145}{0146}{012B}{0117}{002F}{0137}{0138}"
+  },
+  {
+    "id": 418,
+    "offset": "0x22a0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x145",
+      "0x146",
+      "0x12b",
+      "0x117",
+      "0x2f",
+      "0x135",
+      "0x137",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0145}{0146}{012B}{0117}{002F}{0135}{0137}"
+  },
+  {
+    "id": 419,
+    "offset": "0x22b0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x145",
+      "0x146",
+      "0x12b",
+      "0x117",
+      "0x2f",
+      "0x135",
+      "0x137",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0145}{0146}{012B}{0117}{002F}{0135}{0137}"
+  },
+  {
+    "id": 420,
+    "offset": "0x22c0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x98",
+      "0xd2",
+      "0x2e",
+      "0x133",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0098}{00D2}{002E}{0133}"
+  },
+  {
+    "id": 421,
+    "offset": "0x22ca",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x98",
+      "0xd2",
+      "0x2e",
+      "0x133",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0098}{00D2}{002E}{0133}"
+  },
+  {
+    "id": 422,
+    "offset": "0x22d4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x98",
+      "0xd2",
+      "0x2e",
+      "0x133",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0098}{00D2}{002E}{0133}"
+  },
+  {
+    "id": 423,
+    "offset": "0x22de",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x98",
+      "0xd2",
+      "0x2e",
+      "0x133",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0098}{00D2}{002E}{0133}"
+  },
+  {
+    "id": 424,
+    "offset": "0x22e8",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0xc3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{00C3}"
+  },
+  {
+    "id": 425,
+    "offset": "0x22ee",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0xc3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{00C3}"
+  },
+  {
+    "id": 426,
+    "offset": "0x22f4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0xc3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{00C3}"
+  },
+  {
+    "id": 427,
+    "offset": "0x22fa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0xc3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{00C3}"
+  },
+  {
+    "id": 428,
+    "offset": "0x2300",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0xc3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{00C3}"
+  },
+  {
+    "id": 429,
+    "offset": "0x2306",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb8",
+      "0xc3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B8}{00C3}"
+  },
+  {
+    "id": 430,
+    "offset": "0x230c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x95",
+      "0xdc",
+      "0xdb",
+      "0x9a",
+      "0xdd",
+      "0xca",
+      "0xd7",
+      "0x9b",
+      "0xd4",
+      "0xbc",
+      "0x99",
+      "0x2e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0095}{00DC}{00DB}{009A}{00DD}{00CA}{00D7}{009B}{00D4}{00BC}{0099}{002E}"
+  },
+  {
+    "id": 431,
+    "offset": "0x2326",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x95",
+      "0xdc",
+      "0xdb",
+      "0x9a",
+      "0xdd",
+      "0xca",
+      "0xd7",
+      "0x9b",
+      "0xd4",
+      "0xbc",
+      "0x99",
+      "0x2e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0095}{00DC}{00DB}{009A}{00DD}{00CA}{00D7}{009B}{00D4}{00BC}{0099}{002E}"
+  },
+  {
+    "id": 432,
+    "offset": "0x2340",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x13b",
+      "0x13c",
+      "0x13d",
+      "0x13e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{013B}{013C}{013D}{013E}"
+  },
+  {
+    "id": 433,
+    "offset": "0x234a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xcf",
+      "0xbc",
+      "0x9f",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00CF}{00BC}{009F}"
+  },
+  {
+    "id": 434,
+    "offset": "0x2352",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x13f",
+      "0x140",
+      "0x40ff"
+    ],
+    "partial_ascii": "{013F}{0140}"
+  },
+  {
+    "id": 435,
+    "offset": "0x2358",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x130",
+      "0x42",
+      "0x131",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0130}{0042}{0131}"
+  },
+  {
+    "id": 436,
+    "offset": "0x2360",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x130",
+      "0x42",
+      "0x131",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0130}{0042}{0131}"
+  },
+  {
+    "id": 437,
+    "offset": "0x2368",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x141",
+      "0x142",
+      "0x143",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0141}{0142}{0143}"
+  },
+  {
+    "id": 438,
+    "offset": "0x2370",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x2",
+      "0x277",
+      "0xf0",
+      "0x141",
+      "0x142",
+      "0x143",
+      "0x40ff"
+    ],
+    "partial_ascii": "2{0277}{00F0}{0141}{0142}{0143}"
+  },
+  {
+    "id": 439,
+    "offset": "0x237e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x9e",
+      "0xba",
+      "0x2e",
+      "0x141",
+      "0x142",
+      "0x143",
+      "0x40ff"
+    ],
+    "partial_ascii": "{009E}{00BA}{002E}{0141}{0142}{0143}"
+  },
+  {
+    "id": 440,
+    "offset": "0x238c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x190",
+      "0x3d",
+      "0x191",
+      "0x3d",
+      "0x29",
+      "0x3d",
+      "0x179",
+      "0x3d",
+      "0x17a",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0190}{003D}{0191}{003D}{0029}{003D}{0179}{003D}{017A}"
+  },
+  {
+    "id": 441,
+    "offset": "0x23a0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xca",
+      "0x2e",
+      "0x9e",
+      "0x6b",
+      "0x9c",
+      "0x2e",
+      "0xce",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00CA}{002E}{009E}{006B}{009C}{002E}{00CE}"
+  },
+  {
+    "id": 442,
+    "offset": "0x23b0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xca",
+      "0x2e",
+      "0x9e",
+      "0x6b",
+      "0xb9",
+      "0x2e",
+      "0xcb",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00CA}{002E}{009E}{006B}{00B9}{002E}{00CB}"
+  },
+  {
+    "id": 443,
+    "offset": "0x23c0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xca",
+      "0x2e",
+      "0x9e",
+      "0x6d",
+      "0x1fc",
+      "0x66",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00CA}{002E}{009E}{006D}{01FC}{0066}{005D}{004C}{006C}"
+  },
+  {
+    "id": 444,
+    "offset": "0x23d4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe2",
+      "0xe3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00E2}{00E3}"
+  },
+  {
+    "id": 445,
+    "offset": "0x23da",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe1",
+      "0xe3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00E1}{00E3}"
+  },
+  {
+    "id": 446,
+    "offset": "0x23e0",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe0",
+      "0xe3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00E0}{00E3}"
+  },
+  {
+    "id": 447,
+    "offset": "0x23e6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xdf",
+      "0xe0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00DF}{00E0}"
+  },
+  {
+    "id": 448,
+    "offset": "0x23ec",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x2",
+      "0xe4",
+      "0xe5",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>2{00E4}{00E5}"
+  },
+  {
+    "id": 449,
+    "offset": "0x23f6",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x2",
+      "0xe6",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>2{00E6}"
+  },
+  {
+    "id": 450,
+    "offset": "0x23fe",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x2",
+      "0xe7",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>2{00E7}"
+  },
+  {
+    "id": 451,
+    "offset": "0x2406",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1c",
+      "0xe",
+      "0x38",
+      "0x109",
+      "0x10a",
+      "0x10b",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "SE{0038}{0109}{010A}{010B}{0039}"
+  },
+  {
+    "id": 452,
+    "offset": "0x2416",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18",
+      "0x17",
+      "0x29",
+      "0x18",
+      "0xf",
+      "0xf",
+      "0x40ff"
+    ],
+    "partial_ascii": "ON{0029}OFF"
+  },
+  {
+    "id": 453,
+    "offset": "0x2424",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb",
+      "0x10",
+      "0x16",
+      "0x38",
+      "0x10b",
+      "0x1c1",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "BGM{0038}{010B}{01C1}{0039}"
+  },
+  {
+    "id": 454,
+    "offset": "0x2434",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x1",
+      "0x29",
+      "0x2",
+      "0x29",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "1{0029}2{0029}3"
+  },
+  {
+    "id": 455,
+    "offset": "0x2440",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xe6",
+      "0x10c",
+      "0x10d",
+      "0x10e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00E6}{010C}{010D}{010E}"
+  },
+  {
+    "id": 456,
+    "offset": "0x244a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4b",
+      "0x67",
+      "0x29",
+      "0x4a",
+      "0x53",
+      "0x40",
+      "0x40ff"
+    ],
+    "partial_ascii": "{004B}{0067}{0029}{004A}{0053}{0040}"
+  },
+  {
+    "id": 457,
+    "offset": "0x2458",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4a",
+      "0x5d",
+      "0x4b",
+      "0x44",
+      "0x2d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{004A}{005D}{004B}{0044}{002D}"
+  },
+  {
+    "id": 458,
+    "offset": "0x2464",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4002",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4002>"
+  },
+  {
+    "id": 459,
+    "offset": "0x2468",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x184",
+      "0x8b",
+      "0x4e",
+      "0x136",
+      "0x24c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0184}{008B}{004E}{0136}{024C}"
+  },
+  {
+    "id": 460,
+    "offset": "0x2474",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x181",
+      "0x4a",
+      "0x44",
+      "0x8b",
+      "0x4e",
+      "0x13e",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0181}{004A}{0044}{008B}{004E}{013E}"
+  },
+  {
+    "id": 461,
+    "offset": "0x2482",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x196",
+      "0x17e",
+      "0x197",
+      "0x198",
+      "0x199",
+      "0x3d",
+      "0x4003",
+      "0x3",
+      "0x25",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0196}{017E}{0197}{0198}{0199}{003D}<CTRL:4003>3{0025}"
+  },
+  {
+    "id": 462,
+    "offset": "0x2496",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x194",
+      "0x195",
+      "0xf2",
+      "0xf3",
+      "0x3d",
+      "0x400c",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0194}{0195}{00F2}{00F3}{003D}<CTRL:400C>"
+  },
+  {
+    "id": 463,
+    "offset": "0x24a4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x0",
+      "0x19a",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>0{019A}"
+  },
+  {
+    "id": 464,
+    "offset": "0x24ac",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x1",
+      "0x19a",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>1{019A}"
+  },
+  {
+    "id": 465,
+    "offset": "0x24b4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4004",
+      "0x2",
+      "0x19a",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4004>2{019A}"
+  },
+  {
+    "id": 466,
+    "offset": "0x24bc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x208",
+      "0x185",
+      "0x186",
+      "0x4003",
+      "0x7",
+      "0x185",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0208}{0185}{0186}<CTRL:4003>7{0185}"
+  },
+  {
+    "id": 467,
+    "offset": "0x24ca",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x7a",
+      "0x1c6",
+      "0x1c7",
+      "0x6d",
+      "0x1c4",
+      "0x1c5",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x28",
+      "0x40ff"
+    ],
+    "partial_ascii": "{007A}{01C6}{01C7}{006D}{01C4}{01C5}{004A}{005D}{004A}{004E}{0028}"
+  },
+  {
+    "id": 468,
+    "offset": "0x24e2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x7a",
+      "0x1c2",
+      "0x1c3",
+      "0x6d",
+      "0x1c4",
+      "0x1c5",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x28",
+      "0x40ff"
+    ],
+    "partial_ascii": "{007A}{01C2}{01C3}{006D}{01C4}{01C5}{004A}{005D}{004A}{004E}{0028}"
+  },
+  {
+    "id": 469,
+    "offset": "0x24fa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x269",
+      "0x25f",
+      "0x194",
+      "0x122",
+      "0x3d",
+      "0x4004",
+      "0x0",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0269}{025F}{0194}{0122}{003D}<CTRL:4004>0"
+  },
+  {
+    "id": 470,
+    "offset": "0x250a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x23a",
+      "0xe7",
+      "0x58",
+      "0x1dc",
+      "0x54",
+      "0x43",
+      "0x1b6",
+      "0x66",
+      "0x6d",
+      "0x3f",
+      "0x66",
+      "0x5d",
+      "0x4b",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{023A}{00E7}{0058}{01DC}{0054}{0043}{01B6}{0066}{006D}{003F}{0066}{005D}{004B} "
+  },
+  {
+    "id": 471,
+    "offset": "0x2528",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x4003",
+      "0x5",
+      "0x19a",
+      "0x185",
+      "0xe5",
+      "0x57",
+      "0x299",
+      "0x17e",
+      "0x6b",
+      "0x45",
+      "0x56",
+      "0x6c",
+      "0x4a",
+      "0x51",
+      "0x27",
+      "0x4002",
+      "0x8f",
+      "0x90",
+      "0xcb",
+      "0xb7",
+      "0x6b",
+      "0x26c",
+      "0xe7",
+      "0x93",
+      "0x2e",
+      "0xa3",
+      "0x2e",
+      "0x54",
+      "0x64",
+      "0x7d",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "<CTRL:4003>5{019A}{0185}{00E5}{0057}{0299}{017E}{006B}{0045}{0056}{006C}{004A}{0051}{0027}<CTRL:4002>{008F}{0090}{00CB}{00B7}{006B}{026C}{00E7}{0093}{002E}{00A3}{002E}{0054}{0064}{007D}{005D}{004A}{004E} "
+  },
+  {
+    "id": 472,
+    "offset": "0x256e",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xea",
+      "0xeb",
+      "0x6d",
+      "0x62",
+      "0x8b",
+      "0x51",
+      "0x45",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x28",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EA}{00EB}{006D}{0062}{008B}{0051}{0045}{005D}{004A}{004E}{0028}"
+  },
+  {
+    "id": 473,
+    "offset": "0x2586",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xee",
+      "0xef",
+      "0x6d",
+      "0x1",
+      "0x0",
+      "0xee",
+      "0xef",
+      "0x54",
+      "0x53",
+      "0x66",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x28",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00EE}{00EF}{006D}10{00EE}{00EF}{0054}{0053}{0066}{005D}{004A}{004E}{0028}"
+  },
+  {
+    "id": 474,
+    "offset": "0x25a4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xf2",
+      "0xf3",
+      "0x6d",
+      "0x28b",
+      "0x28b",
+      "0x28b",
+      "0x28b",
+      "0x28b",
+      "0x54",
+      "0x53",
+      "0x66",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x28",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00F2}{00F3}{006D}{028B}{028B}{028B}{028B}{028B}{0054}{0053}{0066}{005D}{004A}{004E}{0028}"
+  },
+  {
+    "id": 475,
+    "offset": "0x25c4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x21d",
+      "0x126",
+      "0x4a",
+      "0x51",
+      "0x4a",
+      "0x5d",
+      "0x40",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{021D}{0126}{004A}{0051}{004A}{005D}{0040}{005D}{004A}{004E} "
+  },
+  {
+    "id": 476,
+    "offset": "0x25dc",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb5",
+      "0x90",
+      "0xcc",
+      "0xb7",
+      "0xee",
+      "0x6d",
+      "0x166",
+      "0xee",
+      "0xef",
+      "0x21e",
+      "0x21f",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B5}{0090}{00CC}{00B7}{00EE}{006D}{0166}{00EE}{00EF}{021E}{021F}{004A}{005D}{004A}{004E} "
+  },
+  {
+    "id": 477,
+    "offset": "0x25fe",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb0",
+      "0xb1",
+      "0xb6",
+      "0x2e",
+      "0x94",
+      "0x2e",
+      "0xcb",
+      "0x6d",
+      "0x1fc",
+      "0x66",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x26",
+      "0x4002",
+      "0x9b",
+      "0xb9",
+      "0xdb",
+      "0xa2",
+      "0x1",
+      "0x54",
+      "0xb0",
+      "0xb1",
+      "0xb6",
+      "0x2e",
+      "0x94",
+      "0x2e",
+      "0xcb",
+      "0x6b",
+      "0x4002",
+      "0x49",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B0}{00B1}{00B6}{002E}{0094}{002E}{00CB}{006D}{01FC}{0066}{005D}{004C}{006C} <CTRL:4002>{009B}{00B9}{00DB}{00A2}1{0054}{00B0}{00B1}{00B6}{002E}{0094}{002E}{00CB}{006B}<CTRL:4002>{0049}{004A}{0051}{0156}{0049}{0040} "
+  },
+  {
+    "id": 478,
+    "offset": "0x264a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xaa",
+      "0xda",
+      "0x2e",
+      "0xad",
+      "0xdb",
+      "0xa2",
+      "0x49",
+      "0x68",
+      "0x51",
+      "0x40",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x26",
+      "0x4002",
+      "0xaa",
+      "0xda",
+      "0x2e",
+      "0xad",
+      "0xdb",
+      "0xa2",
+      "0x4a",
+      "0x5d",
+      "0x4b",
+      "0x44",
+      "0x2d",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00AA}{00DA}{002E}{00AD}{00DB}{00A2}{0049}{0068}{0051}{0040}{005D}{004C}{006C} <CTRL:4002>{00AA}{00DA}{002E}{00AD}{00DB}{00A2}{004A}{005D}{004B}{0044}{002D}"
+  },
+  {
+    "id": 479,
+    "offset": "0x2680",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb0",
+      "0xb1",
+      "0xb6",
+      "0x2e",
+      "0x94",
+      "0x2e",
+      "0xcb",
+      "0x6d",
+      "0x48",
+      "0x6a",
+      "0x68",
+      "0x51",
+      "0x40",
+      "0x5d",
+      "0x4b",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B0}{00B1}{00B6}{002E}{0094}{002E}{00CB}{006D}{0048}{006A}{0068}{0051}{0040}{005D}{004B} "
+  },
+  {
+    "id": 480,
+    "offset": "0x26a2",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x250",
+      "0x45",
+      "0xce",
+      "0xb9",
+      "0xdb",
+      "0x96",
+      "0x57",
+      "0x189",
+      "0x123",
+      "0x7a",
+      "0x4b",
+      "0x26",
+      "0x4002",
+      "0x48",
+      "0x57",
+      "0xc0",
+      "0x29a",
+      "0xaf",
+      "0x58",
+      "0xb0",
+      "0xb1",
+      "0xb6",
+      "0x2e",
+      "0x94",
+      "0x2e",
+      "0xcb",
+      "0x54",
+      "0x4002",
+      "0x1",
+      "0x4",
+      "0x57",
+      "0x250",
+      "0x45",
+      "0xce",
+      "0xb9",
+      "0xdb",
+      "0x96",
+      "0x6d",
+      "0x40",
+      "0x66",
+      "0x5d",
+      "0x4b",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{0250}{0045}{00CE}{00B9}{00DB}{0096}{0057}{0189}{0123}{007A}{004B} <CTRL:4002>{0048}{0057}{00C0}{029A}{00AF}{0058}{00B0}{00B1}{00B6}{002E}{0094}{002E}{00CB}{0054}<CTRL:4002>14{0057}{0250}{0045}{00CE}{00B9}{00DB}{0096}{006D}{0040}{0066}{005D}{004B} "
+  },
+  {
+    "id": 481,
+    "offset": "0x26fa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xc0",
+      "0x2e",
+      "0xaf",
+      "0x57",
+      "0xca",
+      "0x2e",
+      "0x9e",
+      "0x6d",
+      "0x1fc",
+      "0x66",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00C0}{002E}{00AF}{0057}{00CA}{002E}{009E}{006D}{01FC}{0066}{005D}{004C}{006C} "
+  },
+  {
+    "id": 482,
+    "offset": "0x2718",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb0",
+      "0xb1",
+      "0xb6",
+      "0x2e",
+      "0x94",
+      "0x2e",
+      "0xcb",
+      "0x6b",
+      "0x55",
+      "0x44",
+      "0x53",
+      "0x40",
+      "0x7a",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B0}{00B1}{00B6}{002E}{0094}{002E}{00CB}{006B}{0055}{0044}{0053}{0040}{007A}{0156}{0049}{0040} "
+  },
+  {
+    "id": 483,
+    "offset": "0x273c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x9c",
+      "0x2e",
+      "0xce",
+      "0xe1",
+      "0x7a",
+      "0x4b",
+      "0x26",
+      "0x4002",
+      "0xb0",
+      "0xb1",
+      "0xb6",
+      "0x29a",
+      "0x94",
+      "0x29a",
+      "0xcb",
+      "0x6b",
+      "0x55",
+      "0x44",
+      "0x74",
+      "0x54",
+      "0x4002",
+      "0x4a",
+      "0x7c",
+      "0x65",
+      "0x46",
+      "0x43",
+      "0x5d",
+      "0x4f",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x26",
+      "0x38",
+      "0x9",
+      "0x0",
+      "0x29d",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "{009C}{002E}{00CE}{00E1}{007A}{004B} <CTRL:4002>{00B0}{00B1}{00B6}{029A}{0094}{029A}{00CB}{006B}{0055}{0044}{0074}{0054}<CTRL:4002>{004A}{007C}{0065}{0046}{0043}{005D}{004F}{0156}{0049}{0040} {0038}90{029D}{0039}"
+  },
+  {
+    "id": 484,
+    "offset": "0x2788",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb9",
+      "0x2e",
+      "0xcb",
+      "0xe1",
+      "0x7a",
+      "0x4b",
+      "0x26",
+      "0x4002",
+      "0xb0",
+      "0xb1",
+      "0xb6",
+      "0x29a",
+      "0x94",
+      "0x29a",
+      "0xcb",
+      "0x6b",
+      "0x55",
+      "0x44",
+      "0x74",
+      "0x54",
+      "0x4002",
+      "0x4a",
+      "0x7c",
+      "0x65",
+      "0x46",
+      "0x43",
+      "0x5d",
+      "0x4f",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x26",
+      "0x38",
+      "0x7",
+      "0x0",
+      "0x29d",
+      "0x39",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B9}{002E}{00CB}{00E1}{007A}{004B} <CTRL:4002>{00B0}{00B1}{00B6}{029A}{0094}{029A}{00CB}{006B}{0055}{0044}{0074}{0054}<CTRL:4002>{004A}{007C}{0065}{0046}{0043}{005D}{004F}{0156}{0049}{0040} {0038}70{029D}{0039}"
+  },
+  {
+    "id": 485,
+    "offset": "0x27d4",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xaa",
+      "0xda",
+      "0x2e",
+      "0xad",
+      "0xdb",
+      "0xa2",
+      "0xe1",
+      "0x7a",
+      "0x4b",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00AA}{00DA}{002E}{00AD}{00DB}{00A2}{00E1}{007A}{004B} "
+  },
+  {
+    "id": 486,
+    "offset": "0x27ea",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb0",
+      "0xb1",
+      "0xb6",
+      "0x2e",
+      "0x94",
+      "0x2e",
+      "0xcb",
+      "0x54",
+      "0x8f",
+      "0x96",
+      "0x9c",
+      "0x9b",
+      "0xe1",
+      "0x7a",
+      "0x4b",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B0}{00B1}{00B6}{002E}{0094}{002E}{00CB}{0054}{008F}{0096}{009C}{009B}{00E1}{007A}{004B} "
+  },
+  {
+    "id": 487,
+    "offset": "0x280c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x9c",
+      "0x29a",
+      "0xce",
+      "0x6d",
+      "0x10f",
+      "0x107",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x26",
+      "0x4002",
+      "0x4002",
+      "0x21",
+      "0xd0",
+      "0x9e",
+      "0xbc",
+      "0x6b",
+      "0x43",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{009C}{029A}{00CE}{006D}{010F}{0107}{004A}{005D}{004A}{004E} <CTRL:4002><CTRL:4002>X{00D0}{009E}{00BC}{006B}{0043}{004A}{0051}{0156}{0049}{0040} "
+  },
+  {
+    "id": 488,
+    "offset": "0x2840",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xaa",
+      "0xda",
+      "0x29a",
+      "0xad",
+      "0xdb",
+      "0xa2",
+      "0x6d",
+      "0x10f",
+      "0x107",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x26",
+      "0x4002",
+      "0x4002",
+      "0x21",
+      "0xd0",
+      "0x9e",
+      "0xbc",
+      "0x6b",
+      "0x43",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00AA}{00DA}{029A}{00AD}{00DB}{00A2}{006D}{010F}{0107}{004A}{005D}{004A}{004E} <CTRL:4002><CTRL:4002>X{00D0}{009E}{00BC}{006B}{0043}{004A}{0051}{0156}{0049}{0040} "
+  },
+  {
+    "id": 489,
+    "offset": "0x287a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb9",
+      "0x29a",
+      "0xcb",
+      "0x6d",
+      "0x10f",
+      "0x107",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x26",
+      "0x4002",
+      "0x4002",
+      "0x21",
+      "0xd0",
+      "0x9e",
+      "0xbc",
+      "0x6b",
+      "0x43",
+      "0x4a",
+      "0x51",
+      "0x156",
+      "0x49",
+      "0x40",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B9}{029A}{00CB}{006D}{010F}{0107}{004A}{005D}{004A}{004E} <CTRL:4002><CTRL:4002>X{00D0}{009E}{00BC}{006B}{0043}{004A}{0051}{0156}{0049}{0040} "
+  },
+  {
+    "id": 490,
+    "offset": "0x28ae",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x9c",
+      "0x29a",
+      "0xce",
+      "0x54",
+      "0x4a",
+      "0x8b",
+      "0x81",
+      "0x40",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{009C}{029A}{00CE}{0054}{004A}{008B}{0081}{0040}{004A}{005D}{004A}{004E} "
+  },
+  {
+    "id": 491,
+    "offset": "0x28ca",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xaa",
+      "0xda",
+      "0x29a",
+      "0xad",
+      "0xdb",
+      "0xa2",
+      "0x7a",
+      "0x45",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x7a",
+      "0x4a",
+      "0x4e",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00AA}{00DA}{029A}{00AD}{00DB}{00A2}{007A}{0045}{005D}{004C}{006C}{007A}{004A}{004E} "
+  },
+  {
+    "id": 492,
+    "offset": "0x28ea",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb9",
+      "0x29a",
+      "0xcb",
+      "0x54",
+      "0x4a",
+      "0x8b",
+      "0x81",
+      "0x40",
+      "0x4a",
+      "0x5d",
+      "0x4a",
+      "0x4e",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B9}{029A}{00CB}{0054}{004A}{008B}{0081}{0040}{004A}{005D}{004A}{004E} "
+  },
+  {
+    "id": 493,
+    "offset": "0x2906",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18",
+      "0x3d",
+      "0x14",
+      "0x29",
+      "0x50",
+      "0x5d",
+      "0x5e",
+      "0x77",
+      "0x4b",
+      "0x40ff"
+    ],
+    "partial_ascii": "O{003D}K{0029}{0050}{005D}{005E}{0077}{004B}"
+  },
+  {
+    "id": 494,
+    "offset": "0x291a",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18",
+      "0x3d",
+      "0x3d",
+      "0x14",
+      "0x3d",
+      "0x29",
+      "0x3d",
+      "0x179",
+      "0x3d",
+      "0x17a",
+      "0x40ff"
+    ],
+    "partial_ascii": "O{003D}{003D}K{003D}{0029}{003D}{0179}{003D}{017A}"
+  },
+  {
+    "id": 495,
+    "offset": "0x2930",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18c",
+      "0x256",
+      "0x292",
+      "0x4003",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{018C}{0256}{0292}<CTRL:4003>3"
+  },
+  {
+    "id": 496,
+    "offset": "0x293c",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18c",
+      "0x256",
+      "0xff",
+      "0x4003",
+      "0x3",
+      "0x40ff"
+    ],
+    "partial_ascii": "{018C}{0256}{00FF}<CTRL:4003>3"
+  },
+  {
+    "id": 497,
+    "offset": "0x2948",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x26e",
+      "0x57",
+      "0x110",
+      "0xee",
+      "0x58",
+      "0x27",
+      "0x184",
+      "0x18c",
+      "0x7a",
+      "0x45",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{026E}{0057}{0110}{00EE}{0058}{0027}{0184}{018C}{007A}{0045}{005D}{004C}{006C} "
+  },
+  {
+    "id": 498,
+    "offset": "0x2966",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x9c",
+      "0x29a",
+      "0xce",
+      "0xca",
+      "0x29a",
+      "0x9e",
+      "0x6d",
+      "0x48",
+      "0x6a",
+      "0x68",
+      "0x51",
+      "0x40",
+      "0x5d",
+      "0x4b",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{009C}{029A}{00CE}{00CA}{029A}{009E}{006D}{0048}{006A}{0068}{0051}{0040}{005D}{004B} "
+  },
+  {
+    "id": 499,
+    "offset": "0x2986",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18c",
+      "0x285",
+      "0xff",
+      "0x3d",
+      "0x3d",
+      "0x4003",
+      "0x4",
+      "0x248",
+      "0x40ff"
+    ],
+    "partial_ascii": "{018C}{0285}{00FF}{003D}{003D}<CTRL:4003>4{0248}"
+  },
+  {
+    "id": 500,
+    "offset": "0x2998",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0x18c",
+      "0x285",
+      "0x292",
+      "0x3d",
+      "0x3d",
+      "0x4003",
+      "0x4",
+      "0x248",
+      "0x40ff"
+    ],
+    "partial_ascii": "{018C}{0285}{0292}{003D}{003D}<CTRL:4003>4{0248}"
+  },
+  {
+    "id": 501,
+    "offset": "0x29aa",
+    "terminator_at_record_end": true,
+    "codes": [
+      "0xb0",
+      "0xb1",
+      "0xb6",
+      "0x29a",
+      "0x94",
+      "0x29a",
+      "0xcb",
+      "0x6d",
+      "0x27",
+      "0x4002",
+      "0xaa",
+      "0xda",
+      "0x2e",
+      "0xad",
+      "0xdb",
+      "0xa2",
+      "0x49",
+      "0x68",
+      "0x51",
+      "0x40",
+      "0x5d",
+      "0x4c",
+      "0x6c",
+      "0x26",
+      "0x40ff"
+    ],
+    "partial_ascii": "{00B0}{00B1}{00B6}{029A}{0094}{029A}{00CB}{006D}{0027}<CTRL:4002>{00AA}{00DA}{002E}{00AD}{00DB}{00A2}{0049}{0068}{0051}{0040}{005D}{004C}{006C} "
+  }
+]

@@ -1,0 +1,487 @@
+[
+  {
+    "offset": "0x88e",
+    "ram": "0x8001008e",
+    "path": "\\MAINMENU.;1"
+  },
+  {
+    "offset": "0x8f4",
+    "ram": "0x800100f4",
+    "path": "\\SE\\CON_SE.VH;1"
+  },
+  {
+    "offset": "0x904",
+    "ram": "0x80010104",
+    "path": "\\SE\\CON_KOE.VH;1"
+  },
+  {
+    "offset": "0x918",
+    "ram": "0x80010118",
+    "path": "\\BGM\\BGM07.VH;1"
+  },
+  {
+    "offset": "0x928",
+    "ram": "0x80010128",
+    "path": "\\BGM\\BGM06.VH;1"
+  },
+  {
+    "offset": "0x938",
+    "ram": "0x80010138",
+    "path": "\\BGM\\BGM05.VH;1"
+  },
+  {
+    "offset": "0x948",
+    "ram": "0x80010148",
+    "path": "\\BGM\\BGM04.VH;1"
+  },
+  {
+    "offset": "0x958",
+    "ram": "0x80010158",
+    "path": "\\BGM\\BGM03.VH;1"
+  },
+  {
+    "offset": "0x968",
+    "ram": "0x80010168",
+    "path": "\\BGM\\BGM02.VH;1"
+  },
+  {
+    "offset": "0x978",
+    "ram": "0x80010178",
+    "path": "\\BGM\\BGM01.VH;1"
+  },
+  {
+    "offset": "0x988",
+    "ram": "0x80010188",
+    "path": "\\SE\\CON_SE.VB;1"
+  },
+  {
+    "offset": "0x998",
+    "ram": "0x80010198",
+    "path": "\\SE\\CON_KOE.VB;1"
+  },
+  {
+    "offset": "0x9ac",
+    "ram": "0x800101ac",
+    "path": "\\BGM\\BGM07.VB;1"
+  },
+  {
+    "offset": "0x9bc",
+    "ram": "0x800101bc",
+    "path": "\\BGM\\BGM06.VB;1"
+  },
+  {
+    "offset": "0x9cc",
+    "ram": "0x800101cc",
+    "path": "\\BGM\\BGM05.VB;1"
+  },
+  {
+    "offset": "0x9dc",
+    "ram": "0x800101dc",
+    "path": "\\BGM\\BGM04.VB;1"
+  },
+  {
+    "offset": "0x9ec",
+    "ram": "0x800101ec",
+    "path": "\\BGM\\BGM03.VB;1"
+  },
+  {
+    "offset": "0x9fc",
+    "ram": "0x800101fc",
+    "path": "\\BGM\\BGM02.VB;1"
+  },
+  {
+    "offset": "0xa0c",
+    "ram": "0x8001020c",
+    "path": "\\BGM\\BGM01.VB;1"
+  },
+  {
+    "offset": "0xa1c",
+    "ram": "0x8001021c",
+    "path": "\\SE\\SE.SEP;1"
+  },
+  {
+    "offset": "0xa2c",
+    "ram": "0x8001022c",
+    "path": "\\SE\\VOS.SEP;1"
+  },
+  {
+    "offset": "0xa3c",
+    "ram": "0x8001023c",
+    "path": "\\BGM\\BGM07.SEQ;1"
+  },
+  {
+    "offset": "0xa50",
+    "ram": "0x80010250",
+    "path": "\\BGM\\BGM06.SEQ;1"
+  },
+  {
+    "offset": "0xa64",
+    "ram": "0x80010264",
+    "path": "\\BGM\\BGM05.SEQ;1"
+  },
+  {
+    "offset": "0xa78",
+    "ram": "0x80010278",
+    "path": "\\BGM\\BGM04.SEQ;1"
+  },
+  {
+    "offset": "0xa8c",
+    "ram": "0x8001028c",
+    "path": "\\BGM\\BGM03.SEQ;1"
+  },
+  {
+    "offset": "0xaa0",
+    "ram": "0x800102a0",
+    "path": "\\BGM\\BGM02.SEQ;1"
+  },
+  {
+    "offset": "0xab4",
+    "ram": "0x800102b4",
+    "path": "\\BGM\\BGM01.SEQ;1"
+  },
+  {
+    "offset": "0xac8",
+    "ram": "0x800102c8",
+    "path": "\\TIM0\\CASE_T01.TIM;1"
+  },
+  {
+    "offset": "0xae0",
+    "ram": "0x800102e0",
+    "path": "\\TIM0\\SYOP_S03.TIM;1"
+  },
+  {
+    "offset": "0xaf8",
+    "ram": "0x800102f8",
+    "path": "\\TIM1\\HULOGO1.TIM;1"
+  },
+  {
+    "offset": "0xb0c",
+    "ram": "0x8001030c",
+    "path": "\\TIM1\\HULOGO0.TIM;1"
+  },
+  {
+    "offset": "0xb20",
+    "ram": "0x80010320",
+    "path": "\\TIM0\\TOWN_YU1.TIM;1"
+  },
+  {
+    "offset": "0xb38",
+    "ram": "0x80010338",
+    "path": "\\TIM1\\ENDMOJI.TIM;1"
+  },
+  {
+    "offset": "0xb4c",
+    "ram": "0x8001034c",
+    "path": "\\TIM1\\ENDSH01.TIM;1"
+  },
+  {
+    "offset": "0xb60",
+    "ram": "0x80010360",
+    "path": "\\TIM1\\ENDSH00.TIM;1"
+  },
+  {
+    "offset": "0xb74",
+    "ram": "0x80010374",
+    "path": "\\TIM1\\MISE006.TIM;1"
+  },
+  {
+    "offset": "0xb88",
+    "ram": "0x80010388",
+    "path": "\\TIM1\\MISE005.TIM;1"
+  },
+  {
+    "offset": "0xb9c",
+    "ram": "0x8001039c",
+    "path": "\\TIM1\\MISE003.TIM;1"
+  },
+  {
+    "offset": "0xbb0",
+    "ram": "0x800103b0",
+    "path": "\\TIM1\\MISE002.TIM;1"
+  },
+  {
+    "offset": "0xbc4",
+    "ram": "0x800103c4",
+    "path": "\\TIM1\\MISE001.TIM;1"
+  },
+  {
+    "offset": "0xbd8",
+    "ram": "0x800103d8",
+    "path": "\\TIM1\\MISE000.TIM;1"
+  },
+  {
+    "offset": "0xbec",
+    "ram": "0x800103ec",
+    "path": "\\TIM1\\TOTYO001.TIM;1"
+  },
+  {
+    "offset": "0xc04",
+    "ram": "0x80010404",
+    "path": "\\TIM0\\IOLE.TIM;1"
+  },
+  {
+    "offset": "0xc18",
+    "ram": "0x80010418",
+    "path": "\\TIM0\\BUILDIN1.TIM;1"
+  },
+  {
+    "offset": "0xc30",
+    "ram": "0x80010430",
+    "path": "\\TIM0\\PS_CM1.TIM;1"
+  },
+  {
+    "offset": "0xc44",
+    "ram": "0x80010444",
+    "path": "\\TIM0\\KAO02.TIM;1"
+  },
+  {
+    "offset": "0xc58",
+    "ram": "0x80010458",
+    "path": "\\TIM0\\KAO01.TIM;1"
+  },
+  {
+    "offset": "0xc6c",
+    "ram": "0x8001046c",
+    "path": "\\TIM0\\PSMOJI1.TIM;1"
+  },
+  {
+    "offset": "0xc80",
+    "ram": "0x80010480",
+    "path": "\\TIM0\\PSMOJI0.TIM;1"
+  },
+  {
+    "offset": "0xc94",
+    "ram": "0x80010494",
+    "path": "\\TIM0\\TITL1.TIM;1"
+  },
+  {
+    "offset": "0xca8",
+    "ram": "0x800104a8",
+    "path": "\\TIM0\\TITL0.TIM;1"
+  },
+  {
+    "offset": "0xcbc",
+    "ram": "0x800104bc",
+    "path": "\\TIM0\\MAN0.TIM;1"
+  },
+  {
+    "offset": "0xcd0",
+    "ram": "0x800104d0",
+    "path": "\\TIM0\\KYOU.TIM;1"
+  },
+  {
+    "offset": "0xce4",
+    "ram": "0x800104e4",
+    "path": "\\TIM0\\CASE_T00.TIM;1"
+  },
+  {
+    "offset": "0xcfc",
+    "ram": "0x800104fc",
+    "path": "\\TIM0\\SHOPTYP1.TIM;1"
+  },
+  {
+    "offset": "0xd14",
+    "ram": "0x80010514",
+    "path": "\\TIM0\\SYOP_S02.TIM;1"
+  },
+  {
+    "offset": "0xd2c",
+    "ram": "0x8001052c",
+    "path": "\\TIM0\\SYOP_S01.TIM;1"
+  },
+  {
+    "offset": "0xd44",
+    "ram": "0x80010544",
+    "path": "\\TIM0\\SYOP_S00.TIM;1"
+  },
+  {
+    "offset": "0xd5c",
+    "ram": "0x8001055c",
+    "path": "\\TIM0\\SHOP_T01.TIM;1"
+  },
+  {
+    "offset": "0xd74",
+    "ram": "0x80010574",
+    "path": "\\TIM0\\SHOP_T00.TIM;1"
+  },
+  {
+    "offset": "0xd8c",
+    "ram": "0x8001058c",
+    "path": "\\TIM0\\TOWN_PR1.TIM;1"
+  },
+  {
+    "offset": "0xda4",
+    "ram": "0x800105a4",
+    "path": "\\DAT\\KABEE.CEL;1"
+  },
+  {
+    "offset": "0xdb8",
+    "ram": "0x800105b8",
+    "path": "\\DAT\\TOWN_PR1.CEL;1"
+  },
+  {
+    "offset": "0xdcc",
+    "ram": "0x800105cc",
+    "path": "\\DAT\\STAFF.OBJ;1"
+  },
+  {
+    "offset": "0xde0",
+    "ram": "0x800105e0",
+    "path": "\\DAT\\MSG00.OBJ;1"
+  },
+  {
+    "offset": "0xdf4",
+    "ram": "0x800105f4",
+    "path": "\\DAT\\KABEE.BGD;1"
+  },
+  {
+    "offset": "0xe08",
+    "ram": "0x80010608",
+    "path": "\\DAT\\TOWNPS.BIN;1"
+  },
+  {
+    "offset": "0xe1c",
+    "ram": "0x8001061c",
+    "path": "\\DAT\\TOWN0003.BIN;1"
+  },
+  {
+    "offset": "0xe30",
+    "ram": "0x80010630",
+    "path": "\\DAT\\TOWN0002.BIN;1"
+  },
+  {
+    "offset": "0xe44",
+    "ram": "0x80010644",
+    "path": "\\DAT\\TOWN0001.BIN;1"
+  },
+  {
+    "offset": "0xe58",
+    "ram": "0x80010658",
+    "path": "\\DAT2\\SHOP0592.BIN;1"
+  },
+  {
+    "offset": "0xe70",
+    "ram": "0x80010670",
+    "path": "\\DAT2\\SHOP0591.BIN;1"
+  },
+  {
+    "offset": "0xe88",
+    "ram": "0x80010688",
+    "path": "\\DAT2\\SHOP0590.BIN;1"
+  },
+  {
+    "offset": "0xea0",
+    "ram": "0x800106a0",
+    "path": "\\DAT1\\SHOP0502.BIN;1"
+  },
+  {
+    "offset": "0xeb8",
+    "ram": "0x800106b8",
+    "path": "\\DAT2\\SHOP0492.BIN;1"
+  },
+  {
+    "offset": "0xed0",
+    "ram": "0x800106d0",
+    "path": "\\DAT2\\SHOP0491.BIN;1"
+  },
+  {
+    "offset": "0xee8",
+    "ram": "0x800106e8",
+    "path": "\\DAT2\\SHOP0490.BIN;1"
+  },
+  {
+    "offset": "0xf00",
+    "ram": "0x80010700",
+    "path": "\\DAT1\\SHOP0402.BIN;1"
+  },
+  {
+    "offset": "0xf18",
+    "ram": "0x80010718",
+    "path": "\\DAT2\\SHOP0392.BIN;1"
+  },
+  {
+    "offset": "0xf30",
+    "ram": "0x80010730",
+    "path": "\\DAT2\\SHOP0391.BIN;1"
+  },
+  {
+    "offset": "0xf48",
+    "ram": "0x80010748",
+    "path": "\\DAT2\\SHOP0390.BIN;1"
+  },
+  {
+    "offset": "0xf60",
+    "ram": "0x80010760",
+    "path": "\\DAT1\\SHOP0302.BIN;1"
+  },
+  {
+    "offset": "0xf78",
+    "ram": "0x80010778",
+    "path": "\\DAT2\\SHOP0292.BIN;1"
+  },
+  {
+    "offset": "0xf90",
+    "ram": "0x80010790",
+    "path": "\\DAT2\\SHOP0291.BIN;1"
+  },
+  {
+    "offset": "0xfa8",
+    "ram": "0x800107a8",
+    "path": "\\DAT2\\SHOP0290.BIN;1"
+  },
+  {
+    "offset": "0xfc0",
+    "ram": "0x800107c0",
+    "path": "\\DAT1\\SHOP0202.BIN;1"
+  },
+  {
+    "offset": "0xfd8",
+    "ram": "0x800107d8",
+    "path": "\\DAT2\\SHOP0192.BIN;1"
+  },
+  {
+    "offset": "0xff0",
+    "ram": "0x800107f0",
+    "path": "\\DAT2\\SHOP0191.BIN;1"
+  },
+  {
+    "offset": "0x1008",
+    "ram": "0x80010808",
+    "path": "\\DAT2\\SHOP0190.BIN;1"
+  },
+  {
+    "offset": "0x1020",
+    "ram": "0x80010820",
+    "path": "\\DAT1\\SHOP0102.BIN;1"
+  },
+  {
+    "offset": "0x1038",
+    "ram": "0x80010838",
+    "path": "\\DAT2\\SHOP0092.BIN;1"
+  },
+  {
+    "offset": "0x1050",
+    "ram": "0x80010850",
+    "path": "\\DAT2\\SHOP0091.BIN;1"
+  },
+  {
+    "offset": "0x1068",
+    "ram": "0x80010868",
+    "path": "\\DAT2\\SHOP0090.BIN;1"
+  },
+  {
+    "offset": "0x1080",
+    "ram": "0x80010880",
+    "path": "\\DAT1\\SHOP0002.BIN;1"
+  },
+  {
+    "offset": "0x1388",
+    "ram": "0x80010b88",
+    "path": "\\SOUND.XA;1"
+  },
+  {
+    "offset": "0x14f4",
+    "ram": "0x80010cf4",
+    "path": "\\MPLOGO.STR;1"
+  }
+]

@@ -5,6 +5,7 @@ const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
 const TownStateScript := preload("res://scripts/domain/town_state.gd")
 const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.gd")
 const StoreRatingScript := preload("res://scripts/domain/store_rating.gd")
+const ProgramDemandScript := preload("res://scripts/domain/program_demand.gd")
 const StoreValueScript := preload("res://scripts/domain/store_value.gd")
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor_milestone.gd")
@@ -184,7 +185,11 @@ func _initialize() -> void:
 
     # Task #89: the store every new game starts in -- the guide's p.48
     # store (12x8 tiles, 34 stocked shelves) -- run for a full business day.
-    var guide_config: Dictionary = GuideStartingStoreScript.apply(config)
+    # Task #104: new games now open in a small store (checked below); the
+    # p.48 store stays in the data, checked here without the store types.
+    var p48_source: Dictionary = config.duplicate(true)
+    p48_source.erase("guide_store_types")
+    var guide_config: Dictionary = GuideStartingStoreScript.apply(p48_source)
     if guide_config["store"]["width_tiles"] != 12 or guide_config["store"]["height_tiles"] != 8:
         _fail("the guide starting store must use the confirmed 12x8 large floor")
         return
@@ -855,8 +860,26 @@ func _initialize() -> void:
     if not sell_simulation.try_procure_product("bread", "sell-product-1", "sell-shelf-1"):
         _fail("sell test: setup product procurement failed")
         return
-    if sell_simulation.try_sell_fixture("sell-shelf-1"):
-        _fail("selling a fixture that still holds procured stock must be rejected")
+    # Task #117: a shelf holding goods is sold with them; the goods go back
+    # at purchase cost (REMAKE_BALANCED_DEFAULT, _withdraw_product()).
+    var held_product = sell_simulation.inventory.get_product("sell-product-1")
+    var expected_goods_refund: int = held_product.stock_units * held_product.restock_unit_cost_yen
+    var cash_before_stocked_sale: int = int(sell_simulation.economy.cash_yen)
+    if not sell_simulation.try_sell_fixture("sell-shelf-1"):
+        _fail("a shelf still holding goods must be sold with them (task #117)")
+        return
+    var medium_shelf_refund := 0
+    for entry in config["fixture_catalog"]:
+        if str(entry["catalog_id"]) == "medium_ambient_shelf":
+            medium_shelf_refund = int(entry["purchase_price_yen"]) * sell_simulation.FIXTURE_SELL_REFUND_PERCENT / 100
+    if sell_simulation.economy.cash_yen != cash_before_stocked_sale + medium_shelf_refund + expected_goods_refund:
+        _fail("selling a stocked shelf must refund half the shelf and the goods at cost")
+        return
+    if sell_simulation.inventory.products.has("sell-product-1") or sell_simulation.event_log.count_type("product_returned") != 1:
+        _fail("the sold shelf's goods must leave the inventory and be recorded as returned")
+        return
+    if sell_simulation.event_log.count_type("fixture_sold") != 1:
+        _fail("the stocked sale must record its fixture_sold event")
         return
     if not sell_simulation.try_purchase_fixture(
         "potted_plant", "sell-amenity-1", Vector2i(6, 10), Vector2i(6, 9)
@@ -881,8 +904,8 @@ func _initialize() -> void:
     if sell_simulation.layout.fixtures_by_id.has("sell-amenity-1"):
         _fail("a sold fixture must actually be removed from the layout")
         return
-    if sell_simulation.event_log.count_type("fixture_sold") != 1:
-        _fail("a completed fixture sale must record exactly one fixture_sold event")
+    if sell_simulation.event_log.count_type("fixture_sold") != 2:
+        _fail("each completed fixture sale must record exactly one fixture_sold event")
         return
 
     # Task #78: try_swap_fixtures() -- CONFIRMED_OFFICIAL that "入れ替え"
@@ -1438,12 +1461,15 @@ func _initialize() -> void:
 
     var promotion_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
     steps += _run_visit(promotion_simulation)
-    if promotion_simulation.popularity != 0:
-        _fail("a freshly reset simulation must start with zero popularity")
+    # Task #129: a new store opens at 人気 20 (CONFIRMED_BINARY).
+    if promotion_simulation.popularity != 20:
+        _fail("a freshly reset simulation must start with the new store's popularity")
         return
     if promotion_simulation.try_purchase_promotion("unknown_promotion"):
         _fail("an unknown promotion id must be rejected")
         return
+    # Task #129: an advert runs only with five times its cost in hand.
+    promotion_simulation.economy.cash_yen = 20_000_000
     var cash_before_scheduling: int = int(promotion_simulation.economy.cash_yen)
     if not promotion_simulation.try_purchase_promotion("direct_mail"):
         _fail("scheduling a promotion before its trigger moment this month must be accepted")
@@ -1460,13 +1486,15 @@ func _initialize() -> void:
 
     var day_count_before_promotion_wait: int = promotion_simulation.day_count
     var promotion_ticks := 0
-    while promotion_simulation.popularity == 0 and promotion_ticks < 5000:
+    var popularity_before_promotion: int = promotion_simulation.popularity
+    while promotion_simulation.event_log.count_type("promotion_fired") == 0 and promotion_ticks < 5000:
+        popularity_before_promotion = promotion_simulation.popularity
         promotion_simulation.tick_idle_for_demand()
         promotion_ticks += 1
     if promotion_ticks >= 5000:
         _fail("the scheduled direct_mail promotion did not fire within 5000 ticks")
         return
-    if promotion_simulation.popularity != 12:
+    if promotion_simulation.popularity != popularity_before_promotion + 12:
         _fail("a fired promotion must apply exactly its configured popularity_gain")
         return
     # Task #47/#50: reaching the promotion's trigger_day crosses at least
@@ -1570,8 +1598,9 @@ func _initialize() -> void:
     if int(upgrade_and_downgrade_evaluation["downgrade_points"]) != -2:
         _fail("downgrade points must equal -1 per failed downgrade criterion")
         return
-    if int(upgrade_and_downgrade_evaluation["next_internal_value"]) != 3:
-        _fail("next_internal_value must equal current + downgrade_points + UPGRADE_POINTS, clamped 0..100")
+    # Task #129: 0 + 5 - 2 = 3, raised to the program's floor of 5.
+    if int(upgrade_and_downgrade_evaluation["next_internal_value"]) != 5:
+        _fail("next_internal_value must equal current + downgrade_points + UPGRADE_POINTS, clamped 5..100")
         return
     var zero_star_row_evaluation: Dictionary = store_rating.evaluate_monthly_rating_change(
         10, -1, 50.0, 70.0, 80.0, 3000000
@@ -1581,17 +1610,24 @@ func _initialize() -> void:
         return
 
     var store_value = StoreValueScript.new()
+    # Task #128: the PS program's formulas (CONFIRMED_BINARY).
     var service_value_check: float = store_value.compute_service_value([10, 30], [2, 4])
     if abs(service_value_check - 26.0) > 0.0000001:
         _fail("compute_service_value must equal the staff average plus the summed fixture bonuses")
         return
+    if store_value.compute_service_value([90, 90], [30, 30]) != 100.0:
+        _fail("サービス is capped at 100")
+        return
     var security_value_check: float = store_value.compute_security_value([10, 20], "small")
-    if abs(security_value_check - 45.0) > 0.0000001:
-        _fail("compute_security_value must equal the summed staff skill times the size-tier multiplier")
+    if abs(security_value_check - 12.0) > 0.0000001:
+        _fail("警備 = the summed staff skill x 100 / 250 for a small store: %s" % security_value_check)
+        return
+    if store_value.compute_security_value([10, 20], "small", 40) != 52.0 or store_value.compute_security_value([90, 90, 90], "large", 80) != 100.0:
+        _fail("警備 adds the security facilities' squares and is capped at 100")
         return
     var cleaning_value_check: float = store_value.compute_cleaning_value([5, 15], "large")
-    if abs(cleaning_value_check - 36.0) > 0.0000001:
-        _fail("compute_cleaning_value must equal the summed staff skill times the size-tier multiplier")
+    if abs(cleaning_value_check - 11.0) > 0.0000001:
+        _fail("清掃 = the summed staff skill x 100 / 180 for a large store: %s" % cleaning_value_check)
         return
 
     var checkout_timing = CheckoutTimingScript.new()
@@ -1804,8 +1840,9 @@ func _initialize() -> void:
         "rng_seed": 13,
     }
     var rating_simulation = VerticalSliceSimulationScript.new(rating_config)
-    if rating_simulation.internal_rating_value != 0 or rating_simulation.star_rating != 0:
-        _fail("a freshly reset simulation must start at internal_rating_value 0 / star_rating 0")
+    # Task #129: a new store starts at 評価 10 (CONFIRMED_BINARY), still ★0.
+    if rating_simulation.internal_rating_value != 10 or rating_simulation.star_rating != 0:
+        _fail("a freshly reset simulation must start at internal_rating_value 10 / star_rating 0")
         return
     steps += _run_visit(rating_simulation)
     var single_sale_revenue_yen: int = rating_simulation.economy.recorded_revenue_yen()
@@ -1838,27 +1875,30 @@ func _initialize() -> void:
     # by the time this month-end rating fires -- service_value is therefore
     # read from the staff roster's own current (post-growth) state rather
     # than the pre-task-#48 hardcoded 17.0 average.
-    var expected_service_value: float = 0.0
     var rating_staff: Array = rating_simulation.staff.all_staff()
+    var service_total := 0
     for rating_staff_member in rating_staff:
-        expected_service_value += float(rating_staff_member.service_skill)
-    expected_service_value /= rating_staff.size()
+        service_total += int(rating_staff_member.service_skill)
+    # Task #128: integer average, as the program's 0x800221D0 does.
+    var expected_service_value: float = float(service_total / rating_staff.size())
     if abs(float(rating_event_details["service_value"]) - expected_service_value) > 0.0000001:
         _fail("service_value must equal the average staff service_skill plus any fixture service bonuses")
         return
-    # Task #91: summed over the whole roster (3 since the manager slot was
-    # added) times the small store's 1.5 size-tier multiplier, instead of a
-    # literal worked out for the old 2-person roster.
-    var expected_security_value := 0.0
-    var expected_cleaning_value := 0.0
+    # Task #128: summed over the whole roster x 100 / 250 (警備) and / 150
+    # (清掃) for a small store, plus the 交番/消防署 squares nearby for 警備
+    # (the program's 0x800224E0 / 0x8002287C).
+    var security_total := 0
+    var cleaning_total := 0
     for rating_staff_member in rating_staff:
-        expected_security_value += float(rating_staff_member.security_skill) * 1.5
-        expected_cleaning_value += float(rating_staff_member.cleaning_skill) * 1.5
+        security_total += int(rating_staff_member.security_skill)
+        cleaning_total += int(rating_staff_member.cleaning_skill)
+    var expected_security_value := float(mini(100, security_total * 100 / 250 + rating_simulation._security_facility_bonus()))
+    var expected_cleaning_value := float(mini(100, cleaning_total * 100 / 150))
     if abs(float(rating_event_details["security_value"]) - expected_security_value) > 0.0000001:
-        _fail("security_value must equal total staff security_skill times the store's size-tier multiplier")
+        _fail("security_value must equal total staff security_skill x 100 / the store's size-tier divisor")
         return
     if abs(float(rating_event_details["cleaning_value"]) - expected_cleaning_value) > 0.0000001:
-        _fail("cleaning_value must equal total staff cleaning_skill times the store's size-tier multiplier")
+        _fail("cleaning_value must equal total staff cleaning_skill x 100 / the store's size-tier divisor")
         return
     # popularity=0, cleaning/security as computed above, 2 distinct stocked
     # products (assortment_score=10.0), opening_minutes_per_day=960
@@ -1867,14 +1907,19 @@ func _initialize() -> void:
     # CustomerShare class store_rating actually calls, rather than a
     # hand-derived literal that would go stale the moment checkout growth
     # changes service_value.
+    # Task #129: 人気 as it stood at the evaluation (it moves every day).
     var expected_customer_share_percent: int = customer_share.compute_customer_share_percent(
-        0, expected_service_value, expected_cleaning_value, expected_security_value, 2, 960
+        int(rating_event_details["popularity"]), expected_service_value, expected_cleaning_value, expected_security_value, 2, 960
     )
     if int(rating_event_details["customer_share_percent"]) != expected_customer_share_percent:
         _fail("customer_share_percent must be recomputed from CustomerShare.compute_customer_share_percent()")
         return
-    if abs(rating_simulation.demand.customer_share_percent - float(expected_customer_share_percent)) > 0.0000001:
-        _fail("demand.customer_share_percent must be overwritten by the monthly store rating evaluation")
+    # ... and again after the day's change in 人気 at the same 0:00.
+    var share_after_day: int = customer_share.compute_customer_share_percent(
+        rating_simulation.popularity, expected_service_value, expected_cleaning_value, expected_security_value, 2, 960
+    )
+    if abs(rating_simulation.demand.customer_share_percent - float(share_after_day)) > 0.0000001:
+        _fail("demand.customer_share_percent must be overwritten by the month's evaluation and the day's 人気")
         return
     if rating_simulation.star_rating != store_rating.star_rank_for_internal_value(
         rating_simulation.internal_rating_value
@@ -1969,7 +2014,8 @@ func _initialize() -> void:
     if save_setup_ticks >= 20000:
         _fail("advancing the save/load test's setup simulation took too long")
         return
-    if save_simulation.month_count != 1 or save_simulation.popularity != 12:
+    # Task #129: 人気 also moves every day, so the advert is checked by its event.
+    if save_simulation.month_count != 1 or save_simulation.event_log.count_type("promotion_fired") != 1:
         _fail("the save/load test's setup simulation must have settled one month and fired its promotion")
         return
 
@@ -2216,14 +2262,14 @@ func _initialize() -> void:
 
     var milestone_simulation = VerticalSliceSimulationScript.new(chain_config)
     steps += _run_visit(milestone_simulation)
-    if milestone_simulation.popularity != 0:
-        _fail("a freshly reset simulation must start with zero popularity (chain milestone test)")
+    if milestone_simulation.popularity != 20:
+        _fail("a freshly reset simulation must start with the new store's popularity (chain milestone test)")
         return
     milestone_simulation._chain_visitor_milestone.observe_total_visitors(
         10000, milestone_simulation.day_count + 1, milestone_simulation.minute_of_day / 60
     )
     var milestone_ticks := 0
-    while milestone_simulation.popularity == 0 and milestone_ticks < 20000:
+    while milestone_simulation.event_log.count_type("chain_visitor_milestone_fired") == 0 and milestone_ticks < 20000:
         milestone_simulation.tick_idle_for_demand()
         milestone_ticks += 1
     if milestone_ticks >= 20000:
@@ -2555,36 +2601,31 @@ func _initialize() -> void:
     # always-available generic picker any more (see docs/decisions/0149-*.md
     # for the CONFIRMED_COMMUNITY owner testimony this responds to).
     economy_ui_scene.store_view.selected_fixture_id = "shelf-1"
-    var bread_product_above_threshold = economy_ui_scene.simulation.inventory.get_product("prototype-bread")
-    if bread_product_above_threshold.stock_units <= economy_ui_scene.simulation._restock_trigger_stock_units_at_or_below:
-        _fail("economy UI restock precondition: prototype-bread must start above the restock threshold")
-        return
+    var bread_product_full = economy_ui_scene.simulation.inventory.get_product("prototype-bread")
+    bread_product_full.stock_units = bread_product_full.initial_stock_units
     if economy_ui_scene._selected_fixture_restock_target() != null:
-        _fail("economy UI: restock target must stay null while the selected fixture's stock is not low")
+        _fail("economy UI: a full shelf has nothing to restock")
         return
     var cash_before_gated_restock_attempt: int = economy_ui_scene.simulation.economy.cash_yen
     economy_ui_scene._on_restock_pressed()
     if economy_ui_scene.simulation.economy.cash_yen != cash_before_gated_restock_attempt:
-        _fail("economy UI: pressing Restock while ungated (no low-stock target) must not charge cash")
+        _fail("economy UI: pressing Restock on a full shelf must not charge cash")
         return
-
-    economy_ui_scene.simulation.inventory.get_product("prototype-bread").stock_units = (
-        economy_ui_scene.simulation._restock_trigger_stock_units_at_or_below
-    )
+    # Task #97: as soon as the shelf is short (「中身が減っていると」), even
+    # by a few units and with customers in the store, it can be filled.
+    bread_product_full.stock_units = bread_product_full.initial_stock_units - 3
     var restock_target = economy_ui_scene._selected_fixture_restock_target()
     if restock_target == null or restock_target.product_id != "prototype-bread":
-        _fail("economy UI: restock target must resolve to the selected fixture's low-stock product")
+        _fail("economy UI: restock target must resolve to the selected fixture's short product")
         return
-    var stock_before_restock: int = economy_ui_scene.simulation.inventory.get_product("prototype-bread").stock_units
     var cash_before_explicit_restock: int = economy_ui_scene.simulation.economy.cash_yen
     economy_ui_scene._on_restock_pressed()
     var bread_product = economy_ui_scene.simulation.inventory.get_product("prototype-bread")
-    if bread_product.stock_units != stock_before_restock + bread_product.initial_stock_units:
-        _fail("economy UI: Restock must add exactly initial_stock_units of the selected product")
+    if bread_product.stock_units != bread_product.initial_stock_units:
+        _fail("economy UI: Restock must fill the shelf back to full, not beyond")
         return
-    var expected_explicit_restock_cost: int = bread_product.initial_stock_units * bread_product.restock_unit_cost_yen
-    if economy_ui_scene.simulation.economy.cash_yen != cash_before_explicit_restock - expected_explicit_restock_cost:
-        _fail("economy UI: Restock must charge quantity * restock_unit_cost_yen")
+    if economy_ui_scene.simulation.economy.cash_yen != cash_before_explicit_restock - 3 * bread_product.restock_unit_cost_yen:
+        _fail("economy UI: Restock must charge the missing units * restock_unit_cost_yen")
         return
     # Clear the selection this restock test made -- later checks in this same
     # scenario (e.g. the sell button below) assume nothing is selected by
@@ -2788,8 +2829,13 @@ func _initialize() -> void:
         _fail("the sell button must enable once a fixture is selected")
         return
     economy_ui_scene._on_sell_fixture_pressed()
-    if not economy_ui_scene.simulation.layout.fixtures_by_id.has("fixture-purchase-2"):
-        _fail("selling a fixture that still holds procured stock must be rejected, not silently removed")
+    # Task #117: sold together with its goods, and the notice says so by
+    # name (it used to show the raw id once the fixture was gone).
+    if economy_ui_scene.simulation.layout.fixtures_by_id.has("fixture-purchase-2"):
+        _fail("a fixture holding goods must be sold with them through the UI button too")
+        return
+    if "fixture-purchase-2" in economy_ui_scene.layout_edit_label.text:
+        _fail("the sale notice must name the sold fixture, not show its id")
         return
     economy_ui_scene.store_view.selected_fixture_id = "fixture-purchase-1"
     var cash_before_ui_sell: int = int(economy_ui_scene.simulation.economy.cash_yen)
@@ -3103,6 +3149,54 @@ func _initialize() -> void:
         return
     if not _check_sound(config):
         return
+    if not _check_staff_work(config):
+        return
+    if not _check_rivals():
+        return
+    if not _check_stamina():
+        return
+    if not _check_rival_buyout():
+        return
+    if not _check_program_demand():
+        return
+    if not _check_business_hours():
+        return
+    if not _check_store_types():
+        return
+    if not _check_rival_withdrawal():
+        return
+    if not _check_saved_staff_and_survey():
+        return
+    if not _check_town_store_limit():
+        return
+    if not _check_edits_while_open():
+        return
+    if not _check_inducement():
+        return
+    if not _check_shelves_stay_filled():
+        return
+    if not _check_town_growth():
+        return
+    if not _check_actions_while_open(config):
+        return
+    if not _check_shelf_goods_change():
+        return
+    if not _check_checkout_rotation():
+        return
+    if not _check_wagon_sides():
+        return
+    if not _check_customer_types():
+        return
+    if not _check_branch_stores():
+        return
+    if not _check_customer_roster_stays_small():
+        return
+    if not _check_store_standing():
+        return
+    if not _check_layout_editing():
+        return
+    if not _check_renovation():
+        return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
@@ -3291,3 +3385,1576 @@ func _check_sound(config: Dictionary) -> bool:
         return false
     return true
 
+# Task #97: staff clean and refill shelves as they go down; the shelf
+# picture shows 0-9 items per tile; people slide between squares.
+func _check_staff_work(config: Dictionary) -> bool:
+    var work: Dictionary = config["guide_starting_store"]["staff_work"]
+    if "REMAKE_BALANCED_DEFAULT" not in str(work["evidence_note"]):
+        _fail("the staff work rules must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var store_view_script = load("res://scripts/store_view.gd")
+    for case in [[40, 40, 1, 9], [35, 40, 1, 8], [1, 40, 1, 1], [0, 40, 1, 0], [40, 40, 2, 18], [20, 40, 2, 9]]:
+        if store_view_script.visible_item_count(case[0], case[1], case[2]) != case[3]:
+            _fail("shelf picture item count for %s must be %d" % [case, case[3]])
+            return false
+    # A fresh copy: earlier checks change the shared config (e.g. restock).
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    var bread = simulation.inventory.get_product("product-bread-1")
+    if simulation.restock_trigger_units(bread) != 35:
+        _fail("a 40-unit shelf is refilled once it is at or below 8/9 full (35)")
+        return false
+    # Take items off one shelf: a staff member goes to refill it.
+    bread.stock_units = 35
+    var restocked := false
+    var cleaned := false
+    for tick in 1200:
+        simulation.tick()
+        if simulation.event_log.count_type("inventory_restock") > 0:
+            restocked = true
+        if simulation.event_log.count_type("staff_cleaned") > 0:
+            cleaned = true
+        if restocked and cleaned:
+            break
+    if not restocked:
+        _fail("staff must refill a shelf that has gone down to its trigger level")
+        return false
+    if not cleaned:
+        _fail("staff must clean where customers have walked")
+        return false
+    var checkout_id: String = simulation.staff.checkout_staff_id
+    for event in simulation.event_log.records:
+        if str(event["event_type"]) == "staff_cleaned" and str(event["details"]["staff_id"]) == checkout_id:
+            _fail("the register clerk stays at the register instead of cleaning")
+            return false
+    # The prototype scenarios keep their old rules.
+    var prototype = VerticalSliceSimulationScript.new(fresh)
+    if prototype.restock_trigger_units(prototype.inventory.get_product("prototype-bread")) != int(fresh["simulation"]["restock_trigger_stock_units_at_or_below"]):
+        _fail("the prototype store keeps its fixed restock trigger")
+        return false
+    # Smooth movement: halfway through a tick a mover is halfway between squares.
+    var view = store_view_script.new()
+    view.tick_serial = 1
+    view.tick_progress = 1.0
+    view._moving_center("x", Vector2i(2, 2))
+    view.tick_serial = 2
+    view.tick_progress = 0.5
+    var halfway: Array = view._moving_center("x", Vector2i(3, 2))
+    var expected_halfway: Vector2 = (view._cell_center(Vector2i(2, 2)) + view._cell_center(Vector2i(3, 2))) / 2.0
+    if not (halfway[0] as Vector2).is_equal_approx(expected_halfway) or str(halfway[1]) != "B":
+        _fail("a mover must be drawn halfway between squares halfway through a tick, on its second walk frame")
+        return false
+    view.tick_serial = 3
+    view.tick_progress = 0.2
+    var standing: Array = view._moving_center("x", Vector2i(3, 2))
+    if not (standing[0] as Vector2).is_equal_approx(view._cell_center(Vector2i(3, 2))):
+        _fail("a mover that did not move this tick stands still")
+        return false
+    view.free()
+    return true
+
+# Task #98: the rival's 本店 and 2号店 on the town map, sharing customers
+# where their catchments overlap the player's store.
+func _check_rivals() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var guide_rivals: Array = fresh["guide_town_map"]["rival_stores"]
+    if guide_rivals.size() != 2 or "REMAKE_BALANCED_DEFAULT" not in str(fresh["guide_town_map"]["evidence_note"]):
+        _fail("the beginner map has the rival 本店 and 2号店, placed by a tagged REMAKE rule")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if simulation._rival_stores.size() != 2 or simulation.town.store_count_including_rivals != 3:
+        _fail("a new game must start with both rival stores in town")
+        return false
+    var hq: Vector2i = simulation._rival_stores[0]["position"]
+    var near: Dictionary = simulation.store_site_quote(hq + Vector2i(3, 1))
+    if bool(near["buildable"]):
+        _fail("no store may be built within 5 squares of a rival")
+        return false
+    # A site sharing its catchment with the rival draws fewer people than it
+    # would alone; a site far from both keeps them all.
+    var shared_site := hq + Vector2i(6, 0)
+    var alone: int = simulation.store_site.nearby_population(shared_site, 2000, [], [])
+    var shared: int = int(simulation.store_site_quote(shared_site)["nearby_population"])
+    if not bool(simulation.store_site_quote(shared_site)["buildable"]) or shared >= alone:
+        _fail("a rival nearby must take part of a site's customers (%d vs %d alone)" % [shared, alone])
+        return false
+    simulation.economy.cash_yen = 200_000_000
+    if not simulation.try_buy_store_site(Vector2i(13, 21)):
+        _fail("the vacant site (13, 21) must be buyable in the real game")
+        return false
+    if simulation.demand.rival_store_count != 0:
+        _fail("with rivals on the map, competition is the shared catchment, not the flat dilution too")
+        return false
+    return true
+
+# Task #99: stamina -- work uses it up, at 0 the staff member rests in the
+# break room until full, then goes back to work.
+func _check_stamina() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    if not bool(fresh["guide_starting_store"]["staff_work"]["stamina_enabled"]):
+        _fail("the real game must use stamina")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    var cleaner = simulation.staff.members["staff-3"]
+    var expected_max: int = int(simulation._staff_candidate_catalog[cleaner.candidate_id]["stamina"])
+    if cleaner.stamina_max != expected_max or cleaner.stamina != expected_max:
+        _fail("a staff member starts with their printed 体力")
+        return false
+    # Open hours, with a shopper inside (task #105: nobody is in the store
+    # at the 00:00 start any more).
+    simulation.minute_of_day = 8 * 60
+    simulation.start_next_customer()
+    cleaner.stamina = 1
+    var exhausted_at := -1
+    var rested_at := -1
+    var back_to_work := false
+    for tick in 3000:
+        simulation.tick()
+        if exhausted_at < 0 and cleaner.exhausted:
+            exhausted_at = tick
+        if exhausted_at >= 0 and rested_at < 0:
+            if cleaner.state != "idle":
+                _fail("an exhausted staff member takes no new task")
+                return false
+            if not cleaner.exhausted:
+                rested_at = tick
+                if cleaner.stamina != cleaner.stamina_max:
+                    _fail("rest lasts until 体力 is full")
+                    return false
+        if rested_at >= 0 and cleaner.state in ["to_clean", "cleaning", "to_restock", "restocking"]:
+            back_to_work = true
+            break
+    if exhausted_at < 0 or simulation.event_log.count_type("staff_exhausted") < 1:
+        _fail("a finished task at 1 体力 must exhaust the staff member")
+        return false
+    if rested_at < 0 or not back_to_work:
+        _fail("an exhausted staff member rests in the break room, recovers and goes back to work")
+        return false
+    # The prototype scenarios never tire.
+    var prototype = VerticalSliceSimulationScript.new(fresh)
+    prototype.staff.members["staff-2"].stamina = 1
+    prototype._spend_stamina(prototype.staff.members["staff-2"])
+    if prototype.staff.members["staff-2"].exhausted:
+        _fail("stamina is off in the prototype scenarios")
+        return false
+    return true
+
+
+# Task #100: economy actions that touch no fixture work while customers
+# are in the store; layout edits still wait for them to leave.
+func _check_actions_while_open(config: Dictionary) -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(fresh)
+    simulation.economy.cash_yen = 500_000_000
+    if simulation.customers.all_settled():
+        _fail("a new simulation starts with a customer in the store")
+        return false
+    if not simulation.try_purchase_permit("tobacco"):
+        _fail("a permit can be bought while customers are in the store")
+        return false
+    if not simulation.try_purchase_promotion("direct_mail"):
+        _fail("advertising can be bought while customers are in the store")
+        return false
+    if not simulation.try_set_price_policy(-10):
+        _fail("the price policy can change while customers are in the store")
+        return false
+    if not simulation.try_expand_chain():
+        _fail("the chain can expand while customers are in the store")
+        return false
+    var shelf_id := str(fresh["fixtures"][0]["id"])
+    if simulation.try_relocate_fixture(shelf_id, Vector2i(0, 12)):
+        _fail("moving a fixture still waits for customers to leave")
+        return false
+    return true
+
+# Task #101: investigating and buying out the rival's branch.
+func _check_rival_buyout() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.economy.cash_yen = 200_000_000
+    simulation.try_buy_store_site(Vector2i(13, 21))
+    if simulation.rival_is_buyable("rival-hq") or simulation.try_buy_out_rival("rival-hq"):
+        _fail("the rival 本店 cannot be bought")
+        return false
+    if simulation.rival_buyout_price_yen("rival-02") != 46_721_490:
+        _fail("the 2号店 costs the guide's 46,721,490 at the start")
+        return false
+    var cash_before: int = simulation.economy.cash_yen
+    if not simulation.try_investigate_rival("rival-02") or simulation.economy.cash_yen != cash_before - 600_000:
+        _fail("investigating a rival costs 600,000")
+        return false
+    if simulation.try_investigate_rival("rival-02"):
+        _fail("a rival is investigated once")
+        return false
+    var population_before: int = simulation.demand.nearby_population
+    cash_before = simulation.economy.cash_yen
+    if not simulation.try_buy_out_rival("rival-02"):
+        _fail("the 2号店 can be bought with enough cash")
+        return false
+    if simulation.economy.cash_yen != cash_before - 46_721_490 or simulation.player_store_count != 2:
+        _fail("buying out pays the price and adds a store to the chain")
+        return false
+    if simulation._rival_stores.size() != 1 or simulation.owned_branches.size() != 1 or simulation.rival_at(Vector2i(27, 9)) != "":
+        _fail("the bought branch is no longer a rival")
+        return false
+    if simulation.demand.nearby_population < population_before:
+        _fail("buying out a rival never loses the main store customers")
+        return false
+    var saved: Dictionary = simulation.save_state()
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(saved) or reloaded.owned_branches.size() != 1 or reloaded._rival_stores.size() != 1 or not reloaded.rival_investigated("rival-02"):
+        _fail("load must keep the bought branch and the investigation")
+        return false
+    reloaded.reset()
+    if reloaded._rival_stores.size() != 2 or not reloaded.owned_branches.is_empty():
+        _fail("a new game starts with both rivals again")
+        return false
+    return true
+
+# Task #130: the PS program's customers (CONFIRMED_BINARY, ProgramDemand):
+# the town's squares send their visit rows to one store a day; groups of up
+# to 5 come in every 2 minutes (1 in 4) at their rows' hours.
+func _check_program_demand() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var tables: Dictionary = fresh["ps1_program_tables"]
+    for tag in ["Task #130, CONFIRMED_BINARY", "REMAKE_BALANCED_DEFAULT"]:
+        if tag not in str(tables["evidence_note"]):
+            _fail("the program's customer tables must stay tagged %s" % tag)
+            return false
+    if (tables["visit_rows"] as Array).size() != 144 or int(tables["max_customer_groups"]["small"]) != 10 or int(tables["max_customer_groups"]["large"]) != 20:
+        _fail("144 visit rows; at most 10 groups in a small store, 20 in a large one")
+        return false
+    var demand = ProgramDemandScript.new(tables)
+    var rng := RandomNumberGenerator.new()
+    rng.seed = 5
+    var cloudy: int = demand.weather_value(2, rng)
+    if demand.weather_value(0, rng) != 0 or cloudy < 20 or cloudy > 39:
+        _fail("快晴 is weather value 0, the third category 20-39")
+        return false
+    if not demand.is_holiday(0, 1) or demand.is_holiday(0, 2) or not demand.is_holiday(4, 2) or not demand.is_holiday(7, 4):
+        _fail("1月1日, 5月2日 and every 4th day are holidays; 1月2日 is not")
+        return false
+    var winter_stay := 0
+    for draw in 200:
+        if demand.out_of_season("cold_drink", 0, rng):
+            winter_stay += 1
+        if demand.out_of_season("cold_drink", 6, rng) or demand.out_of_season("bento", 0, rng):
+            _fail("summer goods sell in July; bento has no season")
+            return false
+    if winter_stay < 160 or winter_stay > 195:
+        _fail("9 in 10 customers for cold drinks stay home in January: %d/200" % winter_stay)
+        return false
+    var row := {
+        "primary": "bread", "arrival": "徒歩", "start_hour": 8, "price_sensitivity": 50,
+        "distance_sensitivity": 80, "service_sensitivity": 20,
+    }
+    var all_day: Array = []
+    for hour in 24:
+        all_day.append(true)
+    var near := {"site": Rect2i(10, 10, 2, 2), "popularity": 80, "open_hours": all_day, "parking": 0, "stock": {"bread": 3}, "price_percent": 100, "service": 30}
+    var far: Dictionary = near.duplicate(true)
+    far["site"] = Rect2i(40, 10, 2, 2)
+    var cheap: Dictionary = near.duplicate(true)
+    cheap["site"] = Rect2i(14, 10, 2, 2)
+    cheap["price_percent"] = 80
+    var stores: Array = [near, far, cheap]
+    demand.relative_values(stores)
+    if int(near["price_value"]) != 0 or int(cheap["price_value"]) != 100 or int(near["service_value"]) != 100:
+        _fail("値段の値 is 100 for the cheapest store, 0 for the dearest; equal service is 100")
+        return false
+    # From (9,10): near is 1 square away, cheap 5, far 31 (beyond a walk).
+    if demand.choose_store(row, Vector2i(9, 10), stores, rng) != 2:
+        _fail("the best 値段 x 価格重視度 + 近さ x 距離重視度 + サービス x サービス重視度 wins")
+        return false
+    near["stock"] = {}
+    cheap["stock"] = {}
+    if demand.choose_store(row, Vector2i(9, 10), stores, rng) != -1:
+        _fail("a walker does not go 31 squares, nor to a store without their goods")
+        return false
+    row["arrival"] = "自動車"
+    far["stock"] = {"bread": 1}
+    if demand.choose_store(row, Vector2i(9, 10), stores, rng) != -1:
+        _fail("a car customer needs a car park")
+        return false
+    # Task #133: staff growth as the program does it (0x8003AA58).
+    var growth = StaffGrowthScript.new()
+    var rules: Dictionary = tables["staff_growth"]
+    var learner = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh)).staff.all_staff()[1]
+    var candidate := {"education": learner.register_skill + 1, "sociability": 100, "agility": 100}
+    learner.register_skill_growth_ceiling = 100
+    var grown: int = learner.register_skill
+    for attempt in 5:
+        growth.apply_program_growth(learner, "checkout", 100, candidate, rules, 100.0, rng)
+    if learner.register_skill != grown + 1:
+        _fail("レジ grows with a 学歴 100 manager but never past the staff member's own 教育: %d" % learner.register_skill)
+        return false
+    var service_before: int = learner.service_skill
+    for attempt in 5:
+        growth.apply_program_growth(learner, "checkout", 0, candidate, rules, 100.0, rng)
+    if learner.service_skill != service_before:
+        _fail("a manager with 学歴 0 never makes the staff grow")
+        return false
+    learner.service_skill_growth_ceiling = learner.service_skill
+    var past_ceiling := 0
+    for attempt in 320:
+        var before_try: int = learner.service_skill
+        growth.apply_program_growth(learner, "checkout", 100, candidate, rules, 100.0, rng)
+        if learner.service_skill > before_try:
+            past_ceiling += 1
+        learner.service_skill = before_try
+    if past_ceiling < 8 or past_ceiling > 36:
+        _fail("past its growth ceiling a skill grows 1 time in 16: %d/320" % past_ceiling)
+        return false
+    growth.apply_program_decline(learner)
+    if learner.register_skill != grown:
+        _fail("an angry customer can cost the staff a point")
+        return false
+    var real = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    var manager_figures: Dictionary = tables["staff_candidates"][str(real.staff.members[str(real.config["staff"]["manager_staff_id"])].candidate_id)]
+    if real._manager_academic() != int(manager_figures["academic_background"]) or not real._staff_candidate_catalog.values()[0].has("education"):
+        _fail("the real game's staff carry the program's figures, 学歴 and 教育 included")
+        return false
+    # Task #131: extras -- in season always, out of season 1 in 10, else
+    # skipped at or under 集中力.
+    var extra_kept := 0
+    for draw in 200:
+        if not demand.wants_extra("cold_drink", 6, 100, rng) or demand.wants_extra("bento", 0, 100, rng):
+            _fail("a summer extra is always bought in July; 集中力 100 skips any other extra")
+            return false
+        if demand.wants_extra("bento", 0, 0, rng):
+            extra_kept += 1
+    if extra_kept != 200:
+        _fail("集中力 0 never skips an extra")
+        return false
+    # With a car park, a car customer may come.
+    near["stock"] = {"bread": 3}
+    near["parking"] = 2
+    if demand.choose_store(row, Vector2i(9, 10), stores, rng) != 0:
+        _fail("a car customer comes to a store with a car park")
+        return false
+    var counts := {3: 7}
+    var start_hour := int(demand.rows[3]["start_hour"])
+    var first: Array = demand.next_group(counts, start_hour, false, rng)
+    var second: Array = demand.next_group(counts, start_hour, false, rng)
+    if first != [3, 5] or second != [3, 2] or not demand.next_group(counts, start_hour, false, rng).is_empty():
+        _fail("7 heads come as a group of 5 and a group of 2")
+        return false
+    if not demand.next_group({3: 1}, (start_hour + 12) % 24, false, rng).is_empty():
+        _fail("on a weekday a row only comes in its own hour")
+        return false
+    # The real game.
+    var simulation = _real_game_simulation()
+    if simulation.program_town_heads <= 0 or simulation.program_customers_today() <= 0:
+        _fail("the town's squares send customers to the new store")
+        return false
+    if not is_equal_approx(simulation.demand.customer_share_percent, 100.0 * simulation.program_customers_today() / simulation.program_town_heads):
+        _fail("顧客独占率 is today's customers over the town's")
+        return false
+    var most_inside := 0
+    for minute in 1440:
+        simulation.tick()
+        most_inside = maxi(most_inside, simulation.customers.active_customers().size())
+    if most_inside > 10:
+        _fail("at most 10 groups inside a small store")
+        return false
+    var grouped := false
+    for customer in simulation.customers.all_customers():
+        if customer.group_size < 1 or customer.group_size > 5 or customer.visit.is_empty():
+            _fail("every customer is a group of 1-5 from a visit row")
+            return false
+        grouped = grouped or customer.group_size > 1
+    for record in simulation.economy.sale_records:
+        for line in record["lines"]:
+            if int(line["quantity"]) > 5:
+                _fail("a group buys at most one of an item each")
+                return false
+    if simulation.event_log.count_type("customer_entered") == 0:
+        _fail("customers come in on the first day")
+        return false
+    # Task #131/#132: car parks go on the outdoor lot above the entrance wall
+    # (CONFIRMED_BINARY, SHOP0302.BIN: 3 rows of outside ground) and count
+    # their spaces.
+    simulation.economy.cash_yen = 50_000_000
+    var lot: Rect2i = simulation.outdoor_lot_rect()
+    if lot.size.y != 6 or lot.size.x != simulation.layout.width_subcells or lot.end.y != 0:
+        _fail("the outdoor lot is 3 tiles deep, as wide as the store, in front of the entrance wall")
+        return false
+    if simulation.try_purchase_fixture_at("parking_ground", "parking-indoor", Vector2i(0, 0)):
+        _fail("a car park does not go inside the store")
+        return false
+    var spaces_before: int = simulation._parking_capacity()
+    if not simulation.try_place_outdoor_fixture("parking_ground", "parking-test-1", lot.position):
+        _fail("a 駐車場 can be bought onto the lot")
+        return false
+    if simulation._parking_capacity() != spaces_before + 2:
+        _fail("a bought 駐車場 adds its 2 spaces to the store's car park")
+        return false
+    if simulation.try_place_outdoor_fixture("parking_ground", "parking-test-2", lot.position) or simulation.try_place_outdoor_fixture("parking_tower", "parking-test-3", Vector2i(lot.end.x - 2, lot.position.y)):
+        _fail("car parks do not overlap or stick out of the lot")
+        return false
+    if not simulation.try_move_outdoor_fixture("parking-test-1", lot.position + Vector2i(2, 0)) or simulation.outdoor_fixture_at(lot.position + Vector2i(2, 0)) != "parking-test-1":
+        _fail("a car park moves about the lot")
+        return false
+    var lot_reload = _real_game_simulation()
+    if not lot_reload.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))) or lot_reload._parking_capacity() != spaces_before + 2:
+        _fail("the lot's car parks survive a save and load")
+        return false
+    if not simulation.try_sell_fixture("parking-test-1") or simulation._parking_capacity() != spaces_before:
+        _fail("a car park on the lot can be sold")
+        return false
+    # Task #134: the manager's reports (CONFIRMED_BINARY, 0x8003B570).
+    var reporter = _real_game_simulation()
+    var manager_candidate := str(reporter.staff.members[str(reporter.config["staff"]["manager_staff_id"])].candidate_id)
+    reporter._staff_candidate_catalog[manager_candidate]["academic_background"] = 80
+    reporter.minute_of_day = 10 * 60 + 2
+    reporter._notice_counts = {"angry": 5, "sold_out": 10, "cars": 10, "dirty": 0}
+    var reports_before: int = reporter.event_log.count_type("manager_report")
+    reporter._step_manager_reports()
+    if reporter.event_log.count_type("manager_report") != reports_before:
+        _fail("with 学歴 80 the manager waits for more than 5 angry and 10 missed customers")
+        return false
+    reporter._notice_counts["angry"] = 6
+    reporter._notice_counts["cars"] = 16
+    reporter._step_manager_reports()
+    var report_text := ""
+    for event in reporter.event_log.records:
+        if str(event["event_type"]) == "manager_report":
+            report_text = str(event["details"]["text"])
+    if report_text != "レジが混雑して\n6人のお客さんに\n怒られてしまいました\n駐車スペースが無くて\n16人のお客さんが\n入れませんでした" or int(reporter._notice_counts["angry"]) != 0:
+        _fail("a manager with 学歴 70 or more gives the numbers, then starts counting again: %s" % report_text)
+        return false
+    reporter._staff_candidate_catalog[manager_candidate]["academic_background"] = 20
+    reporter._notice_counts["sold_out"] = 26
+    reporter._step_manager_reports()
+    report_text = str(reporter.event_log.records[reporter.event_log.records.size() - 1]["details"].get("text", ""))
+    if report_text != "商品の補充が間に合いません":
+        _fail("a manager under 学歴 70 says it plainly: %s" % report_text)
+        return false
+    reporter.minute_of_day = 12 * 60
+    reporter._notice_counts["angry"] = 9
+    reporter._step_manager_reports()
+    if int(reporter._notice_counts["angry"]) != 0:
+        _fail("the counts start again every 4 hours")
+        return false
+    reporter._staff_candidate_catalog[manager_candidate]["academic_background"] = 100
+    reporter.minute_of_day = 13 * 60
+    reporter._notice_counts["dirty"] = 3
+    for cell in 8:
+        reporter._dirty_cells.append(Vector2i(cell, 1))
+    reporter._step_manager_reports()
+    report_text = str(reporter.event_log.records[reporter.event_log.records.size() - 1]["details"].get("text", ""))
+    if report_text != "清掃が行き届きません":
+        _fail("4 dirty hours make a manager with 学歴 100 say so: %s" % report_text)
+        return false
+    if VerticalSliceSimulationScript.DIRTY_HOUR_SHARE != 0.3:
+        _fail("REMAKE_BALANCED_DEFAULT: a dirty hour is 30% of the dirt cap")
+        return false
+    # Task #134: the town's press (CONFIRMED_BINARY, 0x8003CEAC).
+    var press = _real_game_simulation()
+    if press._run_town_press("popular"):
+        _fail("no contest or magazine feature with fewer than 5 stores in the town")
+        return false
+    while press._rival_stores.size() < 4:
+        var copied: Dictionary = press._rival_stores[0].duplicate(true)
+        copied["id"] = "press-test-%d" % press._rival_stores.size()
+        press._rival_stores.append(copied)
+    if press._run_town_press("cheap"):
+        _fail("nobody is featured as cheap while every store sells at the list price")
+        return false
+    press.price_change_pct = -10
+    var press_manager := str(press.staff.members[str(press.config["staff"]["manager_staff_id"])].candidate_id)
+    var academic_before: int = press._manager_academic()
+    var stamina_before: int = int(press._candidate_figures(press_manager)["stamina"])
+    if not press._run_town_press("cheap") or press._manager_academic() != mini(100, academic_before + 2) or int(press._candidate_figures(press_manager)["stamina"]) != mini(100, stamina_before + 2):
+        _fail("the cheapest store is featured and its manager's 学歴 and 体力 rise by 2")
+        return false
+    var press_reload = _real_game_simulation()
+    if not press_reload.load_state(JSON.parse_string(JSON.stringify(press.save_state()))) or press_reload._manager_academic() != press._manager_academic():
+        _fail("what the magazines added to the manager survives a save and load")
+        return false
+    if press._press_rival_value("contest", press._rival_stores[0]) != StoreRatingScript.NEW_STORE_RATING or press._press_rival_value("clean", press._rival_stores[0]) != 30:
+        _fail("REMAKE_BALANCED_DEFAULT: a rival's 評価 stays at the new-store figure; its 清掃 is the guide's")
+        return false
+    press.internal_rating_value = StoreRatingScript.NEW_STORE_RATING + 5
+    var cash_before: int = press.economy.cash_yen
+    if not press._run_town_press("contest") or press.economy.cash_yen != cash_before + 50_000_000:
+        _fail("the contest winner gets 1000万円 per store in the town (5 stores: 5000万円)")
+        return false
+    for raise_step in 60:
+        press._raise_manager(["academic_background"], 2)
+    if press._manager_academic() != 100:
+        _fail("a magazine never takes a figure past 100")
+        return false
+    # Task #135: robbery and fire (CONFIRMED_BINARY, 0x8003BF28).
+    var incident = _real_game_simulation()
+    incident.minute_of_day = 10 * 60
+    for wait in 600:
+        if not incident.customers.active_customers().is_empty():
+            break
+        incident.tick()
+    if incident.customers.active_customers().is_empty():
+        _fail("customers come in before the incident checks")
+        return false
+    var rough: Dictionary = incident.customers.active_customers()[0].visit.duplicate()
+    rough["manners"] = 30
+    incident.customers.active_customers()[0].visit = rough
+    incident.popularity = 100
+    incident._store_visitor_heads = 2000
+    incident._store_sales_last_month = 1_000_000
+    incident._store_sales_yen = incident._store_sales_at_day_start + 100_000
+    if incident._store_assets_yen() < 100_000 or not incident.incident_possible():
+        _fail("a popular, busy, well-selling store with a rough customer inside can be robbed or burn")
+        return false
+    incident.popularity = int(incident._store_values()["security"])
+    if incident.incident_possible():
+        _fail("no robbery or fire while 人気 is not above 警備")
+        return false
+    incident.popularity = 100
+    incident._store_visitor_heads = 1999
+    if incident.incident_possible():
+        _fail("no robbery or fire before 2000 people have come in")
+        return false
+    incident._store_visitor_heads = 2000
+    var incident_catalog_names: Array = incident.store_site.catalog.values().map(func(entry): return str(entry.get("name", "")))
+    if not incident_catalog_names.has("交番") or not incident_catalog_names.has("消防署"):
+        _fail("the town has the 交番 and 消防署 that keep robbery and fire away")
+        return false
+    var robbed_cash: int = incident.economy.cash_yen
+    incident._run_robbery()
+    if incident.economy.cash_yen != robbed_cash - 800_000 or incident._store_sales_yen != incident._store_sales_at_day_start:
+        _fail("a robbery takes today's takings x 8 and wipes today's takings")
+        return false
+    incident._store_sales_yen = incident._store_sales_at_day_start + 100_000
+    incident.economy.cash_yen = 50_000_000
+    incident.try_place_outdoor_fixture("parking_ground", "parking-fire", incident.outdoor_lot_rect().position)
+    var fire_cash: int = incident.economy.cash_yen
+    incident._run_fire()
+    for fixture in incident.layout.fixtures:
+        if str(fixture["id"]) != str(incident.config["simulation"]["checkout_fixture_id"]) and str(fixture.get("kind", "")) != "break_room":
+            _fail("a fire burns every fixture but the register and the break room")
+            return false
+    if not incident.outdoor_fixtures.is_empty() or not incident.customers.active_customers().is_empty() or incident.popularity != 5 or incident.economy.cash_yen != fire_cash:
+        _fail("a fire burns the car parks, sends the customers out and sets 人気 to 5; no money changes hands")
+        return false
+    for staff_member in incident.staff.all_staff():
+        if staff_member.stamina != 0:
+            _fail("a fire drops every staff member's 体力 to 0")
+            return false
+    if incident._dirty_cells.size() != incident.MAX_DIRTY_CELLS:
+        _fail("REMAKE_BALANCED_DEFAULT: a fire leaves the dirt at its cap")
+        return false
+    if not incident.inventory.product_order.is_empty():
+        _fail("the burned shelves' goods are gone")
+        return false
+    var prototype = VerticalSliceSimulationScript.new(fresh)
+    if prototype._program_demand != null:
+        _fail("the prototype scenarios keep their plain arrival rate")
+        return false
+    return grouped or simulation.event_log.count_type("customer_entered") < 5
+
+# Task #103: business hours -- customers only while open, costs scale with
+# the hours, 臨時休業 costs nothing.
+func _check_business_hours() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if simulation.minute_of_day != 0 or simulation.business_hours_id != "7_23":
+        _fail("a new game starts at 00:00, open AM7:00~PM11:00")
+        return false
+    # Task #105: nobody is inside the closed store at the start, and the
+    # HUD, save and load cope with that.
+    if not simulation.customers.customers.is_empty() or str(simulation.snapshot()["customer_phase"]) != "none":
+        _fail("nobody is inside a closed store at the 00:00 start")
+        return false
+    var empty_reload = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not empty_reload.load_state(simulation.save_state()) or not empty_reload.customers.customers.is_empty():
+        _fail("a save of the empty closed store must load empty")
+        return false
+    var expected_minutes := {"10_18": 480, "7_23": 960, "10_2": 960, "12_4": 960, "19_11": 960, "24h": 1440, "closed": 0}
+    for preset in simulation.business_hours_presets():
+        if VerticalSliceSimulationScript.open_minutes(preset) != int(expected_minutes[str(preset["id"])]):
+            _fail("wrong open minutes for %s" % preset["id"])
+            return false
+    if simulation.is_open_now():
+        _fail("the store is closed at 00:00 on AM7:00~PM11:00")
+        return false
+    var entered_before: int = simulation.event_log.count_type("customer_entered")
+    for tick in 400:
+        simulation.tick()
+    if simulation.event_log.count_type("customer_entered") != entered_before:
+        _fail("no customer comes in while the store is closed")
+        return false
+    simulation.minute_of_day = 8 * 60
+    if not simulation.is_open_now():
+        _fail("the store is open at 8:00")
+        return false
+    simulation.try_set_business_hours("10_2")
+    simulation.minute_of_day = 60
+    if not simulation.is_open_now() or simulation.demand.opening_minutes_per_day != 960:
+        _fail("AM10:00~AM2:00 is open at 1:00 for 16 hours a day")
+        return false
+    if not simulation.try_set_business_hours("closed") or simulation.is_open_now():
+        _fail("臨時休業 closes the store")
+        return false
+    if simulation._scale_yen_to_configured_business_hours(10000) != 0 or simulation.demand.expected_arrivals_per_minute() != 0.0:
+        _fail("a closed day has no hour-based costs and no arrivals")
+        return false
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(simulation.save_state()) or reloaded.business_hours_id != "closed":
+        _fail("load must keep the business hours")
+        return false
+    var prototype = VerticalSliceSimulationScript.new(fresh)
+    prototype.minute_of_day = 2 * 60
+    if not prototype.is_open_now():
+        _fail("the prototype scenarios stay open all day")
+        return false
+    return true
+
+
+# Task #104: 「店舗を選んで下さい」 -- six stores, only the two small ones
+# buildable at the start, the construction price paid on top of the land,
+# and each small store's furnished opening layout working for a whole day.
+func _check_store_types() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    if "REMAKE_BALANCED_DEFAULT" not in str(fresh["guide_store_types"]["evidence_note"]):
+        _fail("the small opening layouts must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var applied: Dictionary = GuideStartingStoreScript.apply(fresh)
+    if Vector2i(int(applied["store"]["width_tiles"]), int(applied["store"]["height_tiles"])) != Vector2i(5, 8):
+        _fail("a new game opens in the 5x8 small store until one is built")
+        return false
+    var expected := {
+        "small_top": [6_000_000, true, [0, 0]], "small_bottom": [6_000_000, true, [0, 1]],
+        "medium_top": [12_000_000, false, [1, 0]], "medium_bottom": [12_000_000, false, [1, 1]],
+        "large_top": [18_000_000, false, [2, 0]], "large_bottom": [18_000_000, false, [2, 1]],
+    }
+    var simulation = VerticalSliceSimulationScript.new(applied)
+    if simulation.store_types().size() != 6:
+        _fail("the store selection has six stores")
+        return false
+    for entry in simulation.store_types():
+        var want: Array = expected[str(entry["id"])]
+        if (
+            simulation.store_type_price_yen(str(entry["id"])) != int(want[0])
+            or simulation.store_type_is_selectable(str(entry["id"])) != bool(want[1])
+            or Vector2i(int(entry["grid_cell"][0]), int(entry["grid_cell"][1])) != Vector2i(want[2][0], want[2][1])
+        ):
+            _fail("wrong price, lock or place for store %s" % entry["id"])
+            return false
+    if simulation.try_buy_store_site(Vector2i(13, 21), "medium_top"):
+        _fail("a medium store cannot be built at the start")
+        return false
+    var cash_before: int = simulation.economy.cash_yen
+    if not simulation.try_buy_store_site(Vector2i(13, 21), "small_bottom"):
+        _fail("the 8x5 small store must be buildable")
+        return false
+    if simulation.economy.cash_yen != cash_before - 21_000_000 - 6_000_000:
+        _fail("building pays the land and the store's 6,000,000 yen")
+        return false
+    if (
+        simulation.store_type_id != "small_bottom"
+        or simulation.layout.width_subcells != 16 or simulation.layout.height_subcells != 10
+        or simulation.event_log.count_type("store_built") != 1
+    ):
+        _fail("the 8x5 store must stand on the site")
+        return false
+    if simulation.inventory.product_order.size() != 14 or not simulation._all_staff_are_walkable():
+        _fail("the small store opens with 14 stocked shelves and its staff inside")
+        return false
+    for product_id in simulation.inventory.product_order:
+        var product = simulation.inventory.get_product(product_id)
+        if product.stock_units <= 0:
+            _fail("every opening shelf starts stocked")
+            return false
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(simulation.save_state()):
+        _fail("a save of the 8x5 store must load into a new game")
+        return false
+    if reloaded.store_type_id != "small_bottom" or reloaded.layout.width_subcells != 16:
+        _fail("load must rebuild the saved store type")
+        return false
+    # A whole day in each small store: customers keep coming, shop at the
+    # same time and buy across the shelves.
+    for type_id in ["small_top", "small_bottom"]:
+        var day = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+        if not day.try_buy_store_site(Vector2i(13, 21), type_id):
+            _fail("%s must be buildable" % type_id)
+            return false
+        var most_inside := 0
+        for minute in 24 * 60:
+            day.tick()
+            most_inside = maxi(most_inside, day.customers.active_customers().size())
+        var sold: Dictionary = {}
+        for sale in day.economy.sale_records:
+            for line in sale["lines"]:
+                sold[str(line["product_id"])] = true
+        # Task #130: the program's first-day customers (a new store, 人気
+        # 20) come for their rows' goods, so fewer kinds sell than before.
+        if day.is_game_over or most_inside < 2 or int(day.snapshot()["completed_visits"]) < 10 or sold.size() < 5:
+            _fail("%s must run a normal first day: inside %d, visits %d, products %d" % [
+                type_id, most_inside, int(day.snapshot()["completed_visits"]), sold.size(),
+            ])
+            return false
+        # The first month end multiplies the four days' running result by
+        # 8, but not the land and the store, which were paid once.
+        if type_id == "small_top":
+            while day.month_count == 0:
+                day.tick()
+            var settlement: Dictionary = day.economy.month_end_records[0]["details"]
+            if int(settlement["capital_yen"]) != 27_000_000 or day.is_game_over:
+                _fail("the month end must leave the land and store out of the x8: %s" % settlement)
+                return false
+    return true
+
+
+# Task #106: a rival that the player's stores keep undercutting loses
+# month after month, withdraws after six, and opens again elsewhere; the
+# 本店 holds on while the rival still has a branch. Pressures and sites are
+# the ones tools/guide_store_site.py gives (the contract test runs that side).
+func _check_rival_withdrawal() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    if "REMAKE_BALANCED_DEFAULT" not in str(fresh["guide_town_map"]["rival_ai"]["evidence_note"]):
+        _fail("the rival withdrawal shape must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not simulation.try_buy_store_site(Vector2i(32, 9), "small_top"):
+        _fail("the site next to the rival 2号店 must be buildable")
+        return false
+    var pressure: float = simulation.store_site.rival_pressure(Vector2i(27, 9), [Vector2i(32, 9)], -20, 20)
+    if absf(pressure - 15.0 / 17.0) > 1e-6:
+        _fail("rival pressure at 20%% off must be 15/17: %f" % pressure)
+        return false
+    # List prices: the 2号店 does fine.
+    for month in 7:
+        simulation._step_rivals_at_month_end()
+    if simulation.rival_at(Vector2i(27, 9)) != "rival-02" or simulation.rival_deficit_months("rival-02") != 0:
+        _fail("a rival nobody undercuts keeps trading")
+        return false
+    # 5% off is not enough (the long-play records), 20% off is.
+    simulation.try_set_price_policy(-5)
+    simulation._step_rivals_at_month_end()
+    if simulation.rival_deficit_months("rival-02") != 0:
+        _fail("5%% off next door must not put the 2号店 in the red")
+        return false
+    simulation.try_set_price_policy(-20)
+    for month in 5:
+        simulation._step_rivals_at_month_end()
+    if simulation.rival_deficit_months("rival-02") != 5 or simulation.rival_at(Vector2i(27, 9)) != "rival-02":
+        _fail("five losing months do not make a rival withdraw yet")
+        return false
+    if simulation.rival_deficit_months("rival-hq") != 0:
+        _fail("the far-away 本店 does not feel the price cut")
+        return false
+    simulation._step_rivals_at_month_end()
+    if simulation.rival_at(Vector2i(27, 9)) != "" or simulation.event_log.count_type("rival_withdrew") != 1:
+        _fail("after six losing months in a row the 2号店 withdraws")
+        return false
+    # It opens again at the next month end, somewhere else; a save in
+    # between keeps it waiting.
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(simulation.save_state()) or reloaded._rivals_to_reopen.size() != 1 or reloaded.rival_at(Vector2i(27, 9)) != "":
+        _fail("a save must keep the withdrawn branch waiting to reopen")
+        return false
+    reloaded._step_rivals_at_month_end()
+    if reloaded.rival_at(Vector2i(13, 9)) != "rival-02" or reloaded.event_log.count_type("rival_opened") != 1:
+        _fail("the withdrawn branch must reopen on the best other site (13, 9): %s" % [reloaded._rival_stores])
+        return false
+    if reloaded.rival_deficit_months("rival-02") != 0:
+        _fail("a store that just opened has not lost a month yet")
+        return false
+    # The 本店 holds on while a branch is left, and does not come back.
+    var head = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    head.try_buy_store_site(Vector2i(8, 4), "small_top")
+    head.try_set_price_policy(-20)
+    for month in 6:
+        head._step_rivals_at_month_end()
+    if head.rival_at(Vector2i(8, 10)) != "rival-hq" or head.rival_deficit_months("rival-hq") != 6:
+        _fail("the 本店 must hold on while the rival has a branch")
+        return false
+    head.economy.cash_yen = 200_000_000
+    head.try_buy_out_rival("rival-02")
+    head._step_rivals_at_month_end()
+    head._step_rivals_at_month_end()
+    if head.rival_at(Vector2i(8, 10)) != "" or not head._rival_stores.is_empty() or not head._rivals_to_reopen.is_empty():
+        _fail("with no branch left the losing 本店 withdraws for good")
+        return false
+    return true
+
+
+# Task #107: a save keeps each staff member's grown skills and 体力 and the
+# month's survey (through a real JSON round trip, like the save file).
+func _check_saved_staff_and_survey() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    var clerk = simulation.staff.members["staff-2"]
+    clerk.register_skill += 7
+    clerk.cleaning_skill += 3
+    clerk.stamina = 2
+    clerk.exhausted = true
+    simulation.survey_bought = {"bread": 4}
+    simulation.survey_missing = {"tobacco": 9}
+    simulation.last_survey = {"bought": {"snacks": 2}, "missing": {"alcohol": 5}}
+    var text := JSON.stringify(simulation.save_state())
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(JSON.parse_string(text)):
+        _fail("the save must load")
+        return false
+    var back = reloaded.staff.members["staff-2"]
+    if (
+        back.register_skill != clerk.register_skill or back.cleaning_skill != clerk.cleaning_skill
+        or back.stamina != 2 or not back.exhausted
+    ):
+        _fail("load must keep the staff's grown skills and 体力")
+        return false
+    if (
+        int(reloaded.survey_bought["bread"]) != 4 or int(reloaded.survey_missing["tobacco"]) != 9
+        or int(reloaded.last_survey["missing"]["alcohol"]) != 5
+    ):
+        _fail("load must keep this month's and last month's survey")
+        return false
+    return true
+
+
+# Task #108: at most 10 stores in town, rivals included (quick reference).
+func _check_town_store_limit() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    simulation.economy.cash_yen = 2_000_000_000
+    while simulation.try_expand_chain():
+        pass
+    if simulation.player_store_count != 8 or simulation.town_store_count() != 10 or not simulation.town_is_full():
+        _fail("with the two rivals the player can have 8 stores: %d" % simulation.player_store_count)
+        return false
+    # Buying a rival out keeps the count; a withdrawn branch cannot reopen
+    # while the town is full.
+    simulation.try_buy_out_rival("rival-02")
+    if simulation.town_store_count() != 10 or simulation.try_expand_chain():
+        _fail("a bought branch keeps the town at 10 stores")
+        return false
+    return true
+
+
+# Task #109: in the real game the layout can be changed, and staff hired,
+# with customers inside; everyone re-routes, nobody is ever left standing
+# inside a fixture, and the store keeps trading afterwards.
+func _check_edits_while_open() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    if "REMAKE_BALANCED_DEFAULT" not in str(fresh["guide_starting_store"]["staff_work"]["evidence_note"]):
+        _fail("editing while open must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    simulation.economy.cash_yen = 500_000_000
+    simulation.minute_of_day = 9 * 60
+    var walker = null
+    for minute in 600:
+        simulation.tick()
+        for customer in simulation.customers.active_customers():
+            if customer.phase == "to_shelf" and customer.route.size() > 2:
+                walker = customer
+        if walker != null and simulation.customers.active_customers().size() >= 2:
+            break
+    if walker == null:
+        _fail("customers must be walking to shelves after opening")
+        return false
+    var product = simulation.inventory.get_product(walker.current_product_id())
+    var moved := false
+    for y in range(0, simulation.layout.height_subcells, 2):
+        for x in range(0, simulation.layout.width_subcells, 2):
+            if simulation.try_relocate_fixture(product.fixture_id, Vector2i(x, y)):
+                moved = true
+                break
+            if not _everyone_on_the_floor(simulation):
+                _fail("a refused move must leave everyone where they were")
+                return false
+        if moved:
+            break
+    if not moved:
+        _fail("a shelf must be movable while customers are inside")
+        return false
+    var goal: Vector2i = simulation._product_interaction(product.product_id)
+    if walker.phase != "to_shelf" or walker.route.is_empty() or walker.route[walker.route.size() - 1] != goal:
+        _fail("a customer heading for a moved shelf must walk to its new front")
+        return false
+    # Moving a fixture onto someone is refused.
+    var someone: Vector2i = simulation.customers.active_customers()[0].position
+    var other_shelf := ""
+    for fixture in simulation.layout.fixtures:
+        if str(fixture["kind"]) == "shelf" and str(fixture["id"]) != product.fixture_id:
+            other_shelf = str(fixture["id"])
+    for offset in [Vector2i(0, 0), Vector2i(-1, 0), Vector2i(0, -1), Vector2i(-1, -1)]:
+        simulation.try_relocate_fixture(other_shelf, someone + offset)
+        if not _everyone_on_the_floor(simulation):
+            _fail("a fixture may never be put down on a customer or staff member")
+            return false
+    var free_candidate := ""
+    var employed: Array = simulation.staff.all_staff().map(func(member): return member.candidate_id)
+    for entry in fresh["staff_candidates"]:
+        if not employed.has(str(entry["candidate_id"])):
+            free_candidate = str(entry["candidate_id"])
+            break
+    if simulation.customers.all_settled() or not simulation.try_hire_candidate("staff-2", free_candidate):
+        _fail("staff can be hired while customers are inside")
+        return false
+    var visits_before: int = int(simulation.snapshot()["completed_visits"])
+    for minute in 600:
+        simulation.tick()
+        if not _everyone_on_the_floor(simulation):
+            _fail("after the edits everyone must keep walking on the floor")
+            return false
+    if int(simulation.snapshot()["completed_visits"]) <= visits_before:
+        _fail("the store must keep trading after the edits")
+        return false
+    return true
+
+
+func _everyone_on_the_floor(simulation) -> bool:
+    for customer in simulation.customers.active_customers():
+        if not simulation.layout.is_walkable(customer.position):
+            return false
+    for member in simulation.staff.all_staff():
+        if not simulation.layout.is_walkable(member.position):
+            return false
+    return true
+
+
+# Task #111: 販促 → 誘致. Prices are the ones tools/guide_store_site.py
+# inducement_place_price() gives (the contract test runs that side).
+func _check_inducement() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    if "REMAKE_BALANCED_DEFAULT" not in str(fresh["guide_town_map"]["inducement"]["evidence_note"]):
+        _fail("the 誘致 place price must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    if simulation.inducement_facilities().size() != 18:
+        _fail("the guide lists 18 facilities that can be induced")
+        return false
+    var quote: Dictionary = simulation.inducement_quote("police_box", Vector2i(16, 21))
+    if not bool(quote["placeable"]) or int(quote["aid_yen"]) != 400_000 or int(quote["place_yen"]) != 2_100_000:
+        _fail("a 交番 next to the store costs 400,000 aid + 2,100,000 for the place: %s" % quote)
+        return false
+    if str(simulation.inducement_quote("police_box", Vector2i(13, 21))["reason"]) != "store_in_the_way":
+        _fail("a facility cannot be put on a store")
+        return false
+    if bool(simulation.inducement_quote("police_box", Vector2i(10, 18))["placeable"]):
+        _fail("a facility cannot be put on a road")
+        return false
+    var cash_before: int = simulation.economy.cash_yen
+    if not simulation.try_induce("police_box", Vector2i(16, 21)) or simulation.economy.cash_yen != cash_before - 2_500_000:
+        _fail("inducing pays the aid and the place price")
+        return false
+    var wait: int = int(simulation.pending_inducement["ready_day"]) - simulation.day_count
+    if wait < 4 or wait > 7:
+        _fail("a facility takes 1ヶ月(+0〜3日) = 4-7 days: %d" % wait)
+        return false
+    if str(simulation.inducement_quote("pool", Vector2i(16, 24))["reason"]) != "one_at_a_time":
+        _fail("only one facility can be under 誘致 at a time")
+        return false
+    if simulation.inducement_security_bonus() != 0.0:
+        _fail("a facility under construction adds no セキュリティ yet")
+        return false
+    var buildings_before: int = simulation.store_site.buildings.size()
+    var population_before: int = simulation.demand.nearby_population
+    for day in 8:
+        simulation._handle_day_boundary()
+    if not simulation.pending_inducement.is_empty() or simulation.induced_facilities.size() != 1:
+        _fail("the 交番 must be finished within 7 days")
+        return false
+    if simulation.store_site.buildings.size() != buildings_before + 1 or simulation.demand.nearby_population <= population_before:
+        _fail("the finished 交番 is a building that brings customers")
+        return false
+    if simulation.inducement_security_bonus() != 40.0:
+        _fail("a 交番 inside the store's 16x16 area adds 40 セキュリティ: %s" % simulation.inducement_security_bonus())
+        return false
+    # A pool on a house takes the house in.
+    if not simulation.try_induce("pool", Vector2i(16, 24)):
+        _fail("a pool can be induced once the 交番 is finished")
+        return false
+    for day in 8:
+        simulation._handle_day_boundary()
+    if not simulation.bought_buildings().has(113):
+        _fail("a facility takes in the building standing on its squares")
+        return false
+    simulation.try_induce("park", Vector2i(13, 24))
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))):
+        _fail("a save with induced facilities must load")
+        return false
+    if (
+        reloaded.induced_facilities.size() != 2 or reloaded.store_site.buildings.size() != simulation.store_site.buildings.size()
+        or reloaded.inducement_security_bonus() != 40.0 or str(reloaded.pending_inducement.get("facility_id", "")) != "park"
+        or not reloaded.bought_buildings().has(113)
+    ):
+        _fail("load must rebuild the induced facilities and the one under construction")
+        return false
+    return true
+
+
+# Task #113 fix: over several business days the staff keep the shelves
+# filled (two cleaners once blocked each other for good and nobody refilled
+# anything, so the shelves emptied within two months).
+func _check_shelves_stay_filled() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    var full: int = simulation.inventory.total_stock_units()
+    for day in 6:
+        var refills_before: int = simulation.event_log.count_type("restock_started")
+        for minute in 1440:
+            simulation.tick()
+        if simulation.event_log.count_type("restock_started") <= refills_before:
+            _fail("staff must go on refilling shelves every day (day %d)" % day)
+            return false
+    if simulation.inventory.total_stock_units() < full * 3 / 4:
+        _fail("after six days the shelves must still be mostly full: %d of %d" % [simulation.inventory.total_stock_units(), full])
+        return false
+    return true
+
+
+# Task #114: the town grows from the beginner map's 2,179 people; at 5,000
+# the 市役所 and 駅, at 8,000 the 区役所 and at 20,000 the 都庁 go up, and
+# the 都庁 clears the beginner map. Sites are the ones
+# tools/guide_store_site.py best_town_building_site() gives.
+func _check_town_growth() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var growth: Dictionary = fresh["guide_town_map"]["town_growth"]
+    if "REMAKE_BALANCED_DEFAULT" not in str(growth["evidence_note"]):
+        _fail("the town growth shape must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    if simulation.town.population != 2179:
+        _fail("the beginner map starts with 2,179 people")
+        return false
+    var customers_before: int = simulation.demand.nearby_population
+    simulation._grow_town_at_month_end()
+    if simulation.town.population != 2179 + int(round(2179 * float(growth["monthly_growth_rate"]))):
+        _fail("the town grows by the monthly rate: %d" % simulation.town.population)
+        return false
+    if simulation.demand.nearby_population <= customers_before:
+        _fail("a bigger town brings the store more customers")
+        return false
+    # 96 months of growth reach 20,000 (the guide's 8 years).
+    var months := 1
+    while not simulation.town_milestone_built("metropolitan_office") and months < 200:
+        simulation._grow_town_at_month_end()
+        months += 1
+    if months < 90 or months > 100:
+        _fail("the 都庁 must go up after about 8 years: %d months" % months)
+        return false
+    var expected := {"city_office": Vector2i(19, 16), "station": Vector2i(19, 13), "ward_office": Vector2i(6, 15), "metropolitan_office": Vector2i(17, 27)}
+    for built in simulation.town_milestones:
+        if expected[str(built["id"])] != built["origin"]:
+            _fail("%s must go up at %s, not %s" % [built["id"], expected[str(built["id"])], built["origin"]])
+            return false
+    if simulation.town_milestones.size() != 4:
+        _fail("市役所, 駅, 区役所 and 都庁 all go up")
+        return false
+    simulation._evaluate_terminal_state()
+    if not simulation.clear_condition_met:
+        _fail("the 都庁 clears the beginner map")
+        return false
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))):
+        _fail("a save of the grown town must load")
+        return false
+    if reloaded.town.population != simulation.town.population or reloaded.town_milestones.size() != 4 or reloaded.store_site.buildings.size() != simulation.store_site.buildings.size():
+        _fail("load must restore the town's population and buildings")
+        return false
+    return true
+
+
+func _real_game_simulation():
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    return simulation
+
+
+# Task #117: a stocked shelf is sold with its goods, and a shelf can be given
+# another product; the goods go back at cost (REMAKE_BALANCED_DEFAULT).
+func _check_shelf_goods_change() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var rules: Dictionary = fresh["guide_starting_store"]["store_rules"]
+    if "REMAKE_BALANCED_DEFAULT" not in str(rules["evidence_note"]) or "Task #117" not in str(rules["evidence_note"]):
+        _fail("the goods-return rule must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var simulation = _real_game_simulation()
+    for minute in 600:
+        simulation.tick()
+    # Task #130: groups come now and then; wait for one.
+    var waited := 0
+    while simulation.customers.all_settled() and waited < 1440:
+        simulation.tick()
+        waited += 1
+    if simulation.customers.all_settled():
+        _fail("the goods test wants customers in the store")
+        return false
+    var product_id: String = simulation.inventory.product_order[0]
+    var product = simulation.inventory.get_product(product_id)
+    var fixture_id: String = product.fixture_id
+    var fixture_entry: Dictionary = simulation._fixture_catalog[str(simulation.layout.fixtures_by_id[fixture_id]["catalog_id"])]
+    var other := ""
+    for category in fixture_entry["compatible_product_categories"]:
+        var entry: Dictionary = simulation._product_catalog[str(category)]
+        if str(category) != product.catalog_id and str(entry.get("required_permit_id", "")).is_empty():
+            other = str(category)
+            break
+    var units: int = mini(int(simulation._product_catalog[other]["initial_stock_units"]), int(fixture_entry["capacity"]))
+    var expected: int = int(simulation.economy.cash_yen) + product.stock_units * product.restock_unit_cost_yen - units * int(simulation._product_catalog[other]["restock_unit_cost_yen"])
+    if simulation.try_change_product(product.catalog_id, "changed-1", fixture_id):
+        _fail("giving a shelf the product it already has must be refused")
+        return false
+    if not simulation.try_change_product(other, "changed-1", fixture_id):
+        _fail("a stocked shelf must take another product (task #117)")
+        return false
+    if simulation.inventory.products.has(product_id) or simulation.inventory.product_on_fixture(fixture_id) != "changed-1":
+        _fail("the new product must replace the old one on the shelf")
+        return false
+    if simulation.economy.cash_yen != expected:
+        _fail("the old goods come back at cost and the new ones are paid: %d, not %d" % [simulation.economy.cash_yen, expected])
+        return false
+    var second: String = simulation.inventory.product_order[0]
+    if not simulation.try_sell_fixture(simulation.inventory.get_product(second).fixture_id):
+        _fail("a stocked shelf must be sold with its goods while customers shop")
+        return false
+    for minute in 900:
+        simulation.tick()
+    if not ("product_procurement" in simulation.CAPITAL_EXPENSE_TYPES and "product_returned" in simulation.CAPITAL_EXPENSE_TYPES):
+        _fail("goods bought for a new shelf or sent back are one-off, out of the month's x8")
+        return false
+    return true
+
+
+# Task #118: register duty moves between the staff (REMAKE_BALANCED_DEFAULT
+# rule on the CONFIRMED_COMMUNITY FAQ that whoever reaches the register
+# takes it).
+func _check_checkout_rotation() -> bool:
+    var simulation = _real_game_simulation()
+    for minute in 1440 * 2:
+        simulation.tick()
+    if simulation.event_log.count_type("checkout_handover") == 0:
+        _fail("register duty must pass between staff members over two days")
+        return false
+    for member in simulation.staff.all_staff():
+        if member.checkouts_done == 0:
+            _fail("every staff member must take a turn at the register: %s" % member.display_name)
+            return false
+    var register_post := Vector2i(-1, -1)
+    for member_config in simulation.config["staff"]["members"]:
+        if str(member_config["id"]) == str(simulation.config["staff"]["checkout_staff_id"]):
+            register_post = Vector2i(int(member_config["start_subcell"][0]), int(member_config["start_subcell"][1]))
+    if simulation.staff.checkout_staff().home_position() != register_post:
+        _fail("whoever has register duty takes the register's post")
+        return false
+    var copy = _real_game_simulation()
+    if not copy.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))):
+        _fail("the rotation test's save must load")
+        return false
+    if copy.staff.checkout_staff_id != simulation.staff.checkout_staff_id:
+        _fail("a load must keep who is on the register")
+        return false
+    return true
+
+
+# Task #119: goods are taken from a shelf's front only but from any free
+# side of a wagon; wagons draw more attention (REMAKE_BALANCED_DEFAULT on
+# CONFIRMED capacities and the CONFIRMED_COMMUNITY 2x2 wagon attention).
+func _check_wagon_sides() -> bool:
+    var simulation = _real_game_simulation()
+    if simulation.fixture_attention(simulation.inventory.get_product(simulation.inventory.product_order[0]).fixture_id) != 1.0:
+        _fail("a shelf's attention is 1.0")
+        return false
+    var attention: Dictionary = simulation.config["simulation"]["fixture_attention"]
+    if float(attention["small_ambient_wagon"]) != 1.5 or float(attention["large_ambient_wagon_2"]) != 2.0:
+        _fail("wagons draw 1.5, the 2x2 wagons 2.0")
+        return false
+    simulation.economy.cash_yen += 1_000_000
+    var placed := ""
+    for y in range(2, simulation.layout.height_subcells - 4):
+        for x in range(1, simulation.layout.width_subcells - 3):
+            if placed.is_empty() and simulation.try_purchase_fixture("small_ambient_wagon", "wagon-test", Vector2i(x, y), Vector2i(x, y + 2)):
+                placed = "wagon-test"
+    if placed.is_empty():
+        _fail("a small wagon must fit somewhere in the small store")
+        return false
+    if simulation.layout.access_cells("wagon-test").size() < 2:
+        _fail("a wagon must be reachable from more than one side")
+        return false
+    var shelf: String = simulation.inventory.get_product(simulation.inventory.product_order[0]).fixture_id
+    if simulation.layout.access_cells(shelf).size() != 1:
+        _fail("a shelf is reached from its front only")
+        return false
+    if not simulation.try_procure_product("snacks", "wagon-goods", "wagon-test"):
+        _fail("the wagon must take goods")
+        return false
+    var sides: Array = simulation.layout.access_cells("wagon-test")
+    var front: Vector2i = sides[0]
+    var used_other_side := false
+    for start in [Vector2i(0, 0), Vector2i(simulation.layout.width_subcells - 1, simulation.layout.height_subcells - 1)]:
+        if not simulation.layout.is_walkable(start):
+            continue
+        var route: Array = simulation._route_to_product(start, "wagon-goods")
+        if not route.is_empty() and route[route.size() - 1] != front and sides.has(route[route.size() - 1]):
+            used_other_side = true
+    if not used_other_side:
+        _fail("someone coming from elsewhere must use the wagon's nearest side")
+        return false
+    return true
+
+
+# Task #120: the guide's 21 customer types and 143 visit rows
+# (CONFIRMED_OFFICIAL) drive who comes, what for, their 所持金, ついで買い,
+# price sensitivity, speed and patience (REMAKE_BALANCED_DEFAULT shapes).
+func _check_customer_types() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var block: Dictionary = fresh["guide_customer_types"]
+    for tag in ["CONFIRMED_OFFICIAL", "REMAKE_BALANCED_DEFAULT"]:
+        if tag not in str(block["evidence_note"]):
+            _fail("the customer types must stay tagged %s" % tag)
+            return false
+    if (block["types"] as Array).size() != 21 or (block["visits"] as Array).size() != 143:
+        _fail("21 customer types and 143 visit rows")
+        return false
+    for row in block["visits"]:
+        if ["oden", "chinese_steamed_bun", "hot_drink", "frozen_food", "seasoning"].has(str(row["primary"])) or (row["extras"] as Array).has("bento"):
+            _fail("the guide never has oden etc. as a purpose, nor bento as an extra")
+            return false
+    var simulation = _real_game_simulation()
+    for minute in 900:
+        simulation.tick()
+    var typed := 0
+    for customer in simulation.customers.all_customers():
+        if not customer.type_id.is_empty():
+            typed += 1
+            if simulation.customer_type_sprite(customer) != str(simulation._customer_types[customer.type_id]["sprite"]):
+                _fail("a customer is drawn as their type")
+                return false
+    if typed == 0:
+        _fail("customers in the real game are the guide's types")
+        return false
+    if simulation.survey_types.is_empty():
+        _fail("the month's visitors are counted by type for 店舗成績")
+        return false
+    var customer = simulation.customers.all_customers()[-1]
+    var product_id: String = simulation.inventory.product_order[0]
+    var saved_visit: Dictionary = customer.visit
+    customer.visit = saved_visit.duplicate()
+    customer.budget_left = 0
+    if simulation._reason_to_skip(customer, product_id) != "budget":
+        _fail("所持金 is a hard limit")
+        return false
+    customer.budget_left = 100000
+    customer.visit["price_sensitivity"] = 100
+    simulation.price_change_pct = 50
+    if simulation._reason_to_skip(customer, product_id) != "price":
+        _fail("a fully price-sensitive customer puts goods back after a 50% raise")
+        return false
+    simulation.price_change_pct = 0
+    customer.visit["stamina"] = 10
+    if not is_equal_approx(simulation._patience(customer), 0.25):
+        _fail("ス 10 (the guide's おじいさん) is the least patient")
+        return false
+    customer.visit = saved_visit
+    for minute in 1440:
+        simulation.tick()
+    if simulation.event_log.count_type("customer_add_on") == 0:
+        _fail("customers must buy extras on the way (ついで買い)")
+        return false
+    return true
+
+
+# Task #123: a bought rival branch, and a store opened on chosen land, are
+# the player's own stores to look at and run; they share the town's
+# customers with 本店 and are saved.
+func _check_branch_stores() -> bool:
+    var simulation = _real_game_simulation()
+    for minute in 300:
+        simulation.tick()
+    var main_name: String = simulation.staff.checkout_staff().display_name
+    if not simulation.try_buy_out_rival("rival-02"):
+        _fail("rival-02 must be buyable")
+        return false
+    if simulation.store_count() != 2 or simulation.active_store != 0 or simulation.store_name != "本店":
+        _fail("buying a rival adds a second store and keeps showing 本店")
+        return false
+    if not simulation._competitor_positions().has(simulation.store_field(1, "store_site_origin")):
+        _fail("本店 shares its customers with the player's other stores")
+        return false
+    simulation.select_store(1)
+    if simulation.store_name != "2号店" or simulation.store_site_origin != Vector2i(simulation.owned_branches[0]["position"]):
+        _fail("selecting store 1 shows the 2号店 on the bought site")
+        return false
+    for member in simulation.staff.all_staff():
+        if member.display_name == main_name:
+            _fail("the 2号店 has its own staff, nobody from 本店")
+            return false
+    var main_candidate: String = simulation.store_field(0, "staff").all_staff()[0].candidate_id
+    if simulation.try_hire_candidate(simulation.staff.all_staff()[0].staff_id, main_candidate):
+        _fail("someone working at 本店 cannot also be hired at the 2号店")
+        return false
+    if not simulation.try_set_price_policy(-10) or simulation.store_field(0, "price_change_pct") != 0:
+        _fail("the 2号店's prices are its own")
+        return false
+    for minute in 1440:
+        simulation.tick()
+    if simulation.active_store != 1:
+        _fail("ticking keeps the store being looked at")
+        return false
+    if simulation.store_field(0, "_store_sales_yen") <= 0 or simulation.store_field(1, "_store_sales_yen") <= 0:
+        _fail("both stores must trade")
+        return false
+    if not simulation.try_buy_store_site(Vector2i(3, 3), "small_top") or simulation.store_count() != 3:
+        _fail("a new store can be opened on land picked on the map")
+        return false
+    var data: Dictionary = JSON.parse_string(JSON.stringify(simulation.save_state()))
+    if (data["branches"] as Array).size() != 2 or str(data["store_name"]) != "本店":
+        _fail("the save holds 本店 at the top and the two other stores")
+        return false
+    var copy = _real_game_simulation()
+    if not copy.load_state(data) or copy.store_count() != 3:
+        _fail("a load must bring back all three stores")
+        return false
+    if copy.store_field(1, "price_change_pct") != -10 or copy.store_field(2, "store_name") != "3号店":
+        _fail("each store keeps its own state through a load")
+        return false
+    for minute in 60:
+        copy.tick()
+    # A schema 9 save (bought branches only counted) opens them as stores.
+    var old: Dictionary = data.duplicate(true)
+    old["save_schema_version"] = 9
+    old.erase("branches")
+    var migrated = _real_game_simulation()
+    if not migrated.load_state(old) or migrated.store_count() != 2:
+        _fail("an older save's bought branch must open as a store")
+        return false
+    return true
+
+
+# Task #121: the customers who have left are not kept for ever.
+func _check_customer_roster_stays_small() -> bool:
+    var simulation = _real_game_simulation()
+    for minute in 1440 * 6:
+        simulation.tick()
+    var started: int = simulation.customers.started_count()
+    if started <= simulation.customers.KEPT_DONE_CUSTOMERS + 20:
+        _fail("six days bring more visits than are kept: %d" % started)
+        return false
+    if simulation.customers.customers.size() > simulation.customers.KEPT_DONE_CUSTOMERS + int(simulation.customers.active_customers().size()) + 1:
+        _fail("only the latest departed customers are kept")
+        return false
+    if simulation.customers.completed_count() + simulation.customers.active_customers().size() != started:
+        _fail("the visit totals must still count everyone")
+        return false
+    return true
+
+
+# Task #129: a store's 評価 and 人気 follow the PS program (CONFIRMED_BINARY):
+# a new store starts at 評価 10 / 人気 20, 人気 moves daily by ★, never below
+# the 評価 score; the score stays in 5..100; the manager may advise; an
+# advert needs five times its cost in hand.
+func _check_store_standing() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var rules: Dictionary = fresh["guide_starting_store"]["store_rules"]
+    if "Task #129, REMAKE_BALANCED_DEFAULT" not in str(rules["evidence_note"]):
+        _fail("the advice chance and the bought store's standing must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var rating = StoreRatingScript.new()
+    if rating.next_day_popularity(20, 10) != 10 or rating.next_day_popularity(60, 45) != 55:
+        _fail("人気 moves -15 at ★0 and -5 at ★2, never below the 評価 score")
+        return false
+    if rating.next_day_popularity(50, 85) != 85 or rating.next_day_popularity(98, 100) != 100:
+        _fail("人気 is raised to the 評価 score and stops at 100")
+        return false
+    var weak: Dictionary = rating.evaluate_monthly_rating_change(5, 10, 0.0, 0.0, 0.0, 0)
+    if int(weak["next_internal_value"]) != 5 or (weak["not_good_items"] as Array).size() != 5:
+        _fail("the 評価 score never drops below 5, and every weak item is noted")
+        return false
+    var advice_rng := RandomNumberGenerator.new()
+    advice_rng.seed = 7
+    var advised := ""
+    for attempt in 20:
+        if not rating.manager_advice(weak, 0, advice_rng).is_empty():
+            _fail("a manager with no ability never advises")
+            return false
+        advised = rating.manager_advice(weak, 100, advice_rng)
+        if not advised.is_empty():
+            break
+    if not advised.ends_with("ランクが上がるでしょう") or not advised.contains("もっと"):
+        _fail("the manager's advice is the original's line: %s" % advised)
+        return false
+    var simulation = _real_game_simulation()
+    if simulation.popularity != 20 or simulation.internal_rating_value != 10 or simulation.star_rating != 0:
+        _fail("a new store opens at 評価 10 and 人気 20")
+        return false
+    for minute in 1440:
+        simulation.tick()
+    if simulation.popularity != 10:
+        _fail("after a day at ★0, 人気 falls 15 but not below the 評価 score: %d" % simulation.popularity)
+        return false
+    var copy = _real_game_simulation()
+    if not copy.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))) or copy.popularity != 10:
+        _fail("人気 survives a load")
+        return false
+    var cost := int(simulation._promotion_catalog["direct_mail"]["cost_yen"])
+    simulation.economy.cash_yen = cost * 5 - 1
+    simulation._fire_promotion({"promotion_id": "direct_mail"})
+    if simulation.event_log.count_type("promotion_cancelled") != 1 or simulation.popularity != 10 or simulation.economy.cash_yen != cost * 5 - 1:
+        _fail("an advert without five times its cost in hand is called off, free")
+        return false
+    simulation.economy.cash_yen = cost * 5
+    simulation._fire_promotion({"promotion_id": "direct_mail"})
+    if simulation.event_log.count_type("promotion_fired") != 1 or simulation.popularity <= 10:
+        _fail("an advert with five times its cost in hand runs")
+        return false
+    simulation.economy.cash_yen = 500_000_000
+    if not simulation.try_buy_out_rival("rival-02") or int(simulation.store_field(1, "popularity")) != 20 or int(simulation.store_field(1, "internal_rating_value")) != 10:
+        _fail("a bought store starts with a new store's 評価 and 人気")
+        return false
+    return true
+
+
+# Task #125: editing a small store -- a fixture's front finds a free side,
+# fixtures can be put in storage for free, and a refusal says why.
+func _check_layout_editing() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var rules: Dictionary = fresh["guide_starting_store"]["store_rules"]
+    if not bool(rules["edit_front_search"]) or "Task #125" not in str(rules["evidence_note"]):
+        _fail("the front search must stay on and tagged (Task #125)")
+        return false
+    var simulation = _real_game_simulation()
+    var shelf_id := "shelf-vegetables-1"
+    var origin: Vector2i = simulation.layout.fixture_origin(shelf_id)
+    var product_id: String = simulation.inventory.product_on_fixture(shelf_id)
+    var cash: int = simulation.economy.cash_yen
+    if not simulation.try_store_fixture(shelf_id) or simulation.stored_fixtures.size() != 1:
+        _fail("a stocked shelf can be put in storage")
+        return false
+    if simulation.layout.fixtures_by_id.has(shelf_id) or simulation.inventory.products.has(product_id):
+        _fail("a stored shelf leaves the floor, its goods go back")
+        return false
+    if simulation.economy.cash_yen < cash:
+        _fail("storing costs nothing (the goods are refunded at cost)")
+        return false
+    if simulation.try_store_fixture(str(simulation.config["simulation"]["checkout_fixture_id"])):
+        _fail("the register stays on the floor")
+        return false
+    cash = simulation.economy.cash_yen
+    if not simulation.try_place_stored_fixture(0, origin) or not simulation.stored_fixtures.is_empty():
+        _fail("a stored fixture can be set down again")
+        return false
+    if simulation.economy.cash_yen != cash:
+        _fail("setting a stored fixture down is free")
+        return false
+    # Turning a wall shelf: its front goes to whichever side is open.
+    for turn in 4:
+        if not simulation.try_rotate_fixture_clockwise(shelf_id):
+            _fail("a shelf against the wall still turns (turn %d)" % turn)
+            return false
+    var other: Vector2i = simulation.layout.fixture_origin("shelf-vegetables-2")
+    if simulation.try_relocate_fixture(shelf_id, other) or simulation.edit_refusal != "occupied":
+        _fail("moving onto another fixture is refused as occupied")
+        return false
+    if simulation._unreachable_goal() != "":
+        _fail("after the edits every shelf is still reachable")
+        return false
+    var data: Dictionary = JSON.parse_string(JSON.stringify(simulation.save_state()))
+    simulation.try_store_fixture("shelf-vegetables-2")
+    data = JSON.parse_string(JSON.stringify(simulation.save_state()))
+    var copy = _real_game_simulation()
+    if not copy.load_state(data) or copy.stored_fixtures.size() != 1:
+        _fail("the storage survives a load")
+        return false
+    return true
+
+
+# Task #126: 改装 -- an open store changes size or orientation; its fixtures
+# and goods move to the new floor, what does not fit goes to storage
+# (REMAKE_BALANCED_DEFAULT, see guide_store_types.evidence_note).
+func _check_renovation() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var note := str(fresh["guide_store_types"]["evidence_note"])
+    if "Task #126" not in note or "REMAKE_BALANCED_DEFAULT" not in note:
+        _fail("the renovation rules must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    for entry in fresh["guide_store_types"]["types"]:
+        if not (entry as Dictionary).has("layout"):
+            _fail("every store type has a floor to renovate into: " + str(entry["id"]))
+            return false
+    var simulation = _real_game_simulation()
+    for minute in 600:
+        simulation.tick()
+    if simulation.try_renovate_store("small_top"):
+        _fail("renovating into the same store does nothing")
+        return false
+    var shelves_before: int = simulation.inventory.product_order.size()
+    var cash: int = simulation.economy.cash_yen
+    var price: int = simulation.renovation_price_yen("medium_top")
+    if price != 12000000 - 6000000 / 2:
+        _fail("renovating costs the new store less half the old one: %d" % price)
+        return false
+    if not simulation.try_renovate_store("medium_top"):
+        _fail("a small store can be renovated into a medium one")
+        return false
+    if simulation.economy.cash_yen != cash - price or simulation.store_type_id != "medium_top":
+        _fail("the renovation is paid and the store is the new type")
+        return false
+    if simulation.layout.width_subcells != 14 or simulation.layout.height_subcells != 20:
+        _fail("the medium store's floor is 7x10 tiles")
+        return false
+    if simulation.inventory.product_order.size() != shelves_before or not simulation.stored_fixtures.is_empty():
+        _fail("every shelf fits into the bigger store with its goods")
+        return false
+    if not simulation.customers.active_customers().is_empty() or simulation._unreachable_goal() != "":
+        _fail("the customers left during the renovation and every shelf is reachable")
+        return false
+    if simulation.customers._max_concurrent_customers <= 3 or simulation._store_size_tier != "medium":
+        _fail("a bigger store holds more customers")
+        return false
+    # Fill the bigger floor's free shelf spots, then shrink and turn it
+    # into the wide (横長) small store: what does not fit is stored.
+    var extras := 0
+    for spot in simulation.config["fixtures"]:
+        var spot_origin := Vector2i(int(spot["origin_subcell"][0]), int(spot["origin_subcell"][1]))
+        if str(spot["kind"]) == "shelf" and simulation.layout.is_walkable(spot_origin):
+            if simulation.try_purchase_fixture_at("small_ambient_shelf", "extra-%d" % extras, spot_origin):
+                extras += 1
+    if extras < 3:
+        _fail("the medium store has room for more shelves: %d" % extras)
+        return false
+    if not simulation.try_renovate_store("small_bottom") or simulation.layout.width_subcells != 16:
+        _fail("the store can be turned into the wide (横長) small store")
+        return false
+    if simulation.stored_fixtures.is_empty():
+        _fail("fixtures that do not fit the smaller floor go to storage")
+        return false
+    if simulation.layout.fixture_snapshot().size() - 2 + simulation.stored_fixtures.size() != shelves_before + extras:
+        _fail("no fixture is lost in a renovation")
+        return false
+    for stored in simulation.stored_fixtures:
+        if simulation.inventory.product_on_fixture(str(stored["id"])) != "":
+            _fail("a stored fixture's goods went back")
+            return false
+    if not simulation._all_staff_are_walkable() or simulation._unreachable_goal() != "":
+        _fail("after renovating, the staff stand on the floor and the shelves are reachable")
+        return false
+    var sales: int = simulation._store_sales_yen
+    for minute in 900:
+        simulation.tick()
+    if simulation._store_sales_yen <= sales:
+        _fail("the renovated store trades")
+        return false
+    var copy = _real_game_simulation()
+    if not copy.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))) or copy.store_type_id != "small_bottom":
+        _fail("a renovated store loads as its new type")
+        return false
+    if copy.layout.fixture_snapshot().size() != simulation.layout.fixture_snapshot().size():
+        _fail("a renovated store's fixtures survive a load")
+        return false
+    var code := FileAccess.get_file_as_string("res://scripts/vertical_slice_simulation.gd")
+    if "REMAKE_BALANCED_DEFAULT: what the original's 改築 does" not in code:
+        _fail("try_renovate_store() must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    return true

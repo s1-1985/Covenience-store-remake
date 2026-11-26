@@ -77,6 +77,9 @@ func expected_arrivals_per_minute() -> float:
             MAX_RIVAL_DILUTION, RIVAL_DILUTION_PER_COMPETITOR * rival_store_count
         )
         expected_daily_visitors *= 1.0 - dilution
+    # Task #103: a closed day (臨時休業) has no opening minutes.
+    if opening_minutes_per_day <= 0:
+        return 0.0
     return expected_daily_visitors / opening_minutes_per_day
 
 

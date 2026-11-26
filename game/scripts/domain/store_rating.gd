@@ -14,6 +14,37 @@ extends RefCounted
 # thresholds and star breakpoints below are not this project's own guess:
 # they are the guide's own numbers.
 
+# Task #129, CONFIRMED_BINARY (PS program SLPS_007.82, docs/research/
+# ps1-executable-formulas-2026-09-26.md): the program keeps the score in
+# 5..100 after each month's evaluation (0x80028A50), starts a new store at
+# 10 (0x8001B120), and an angry customer only takes a point from a score of
+# 6 or more (0x8003600C) -- so the score never drops below 5. It also uses
+# the same table as the guide below (the 値段 column as 99/95/90/85/80/70 %
+# of the list price, i.e. the guide's -1..-30 %), cell for cell.
+const RATING_FLOOR := 5
+const RATING_CAP := 100
+const NEW_STORE_RATING := 10
+# Each day at 0:00 the store's 人気 moves by this much for its current ★
+# count (0x80028E60), never below the rating score, at most 100.
+const DAILY_POPULARITY_CHANGE_BY_STARS := [-15, -10, -5, -3, 0, 5]
+# The manager's advice when fewer than 3 items were good (0x80028800): the
+# items in the order the program checks them, the advice lines (msg
+# 251-255) and 「ランクが上がるでしょう」(msg 258).
+const ADVICE_ITEMS := ["price", "service", "security", "cleaning", "sales"]
+const ADVICE_TEXT := {
+    "price": "もっと商品の値段を安くすると",
+    "service": "もっとサービスを良くすると",
+    "security": "もっとセキュリティを良くすると",
+    "cleaning": "もっと店内を清潔にすると",
+    "sales": "もっと売り上げを伸ばすと",
+}
+const ADVICE_TAIL := "ランクが上がるでしょう"
+# Half the サービス advice names a service fixture (msg 256), half the
+# セキュリティ advice a facility to induce nearby (msg 257); the program
+# picks one of these at random (0x8009968C / 0x800CD6EC).
+const ADVICE_SERVICE_FIXTURES := ["観葉植物", "ベンチ", "噴水"]
+const ADVICE_SECURITY_FACILITIES := ["交番", "消防署"]
+
 const UPGRADE_MIN_CRITERIA_MET := 3
 const UPGRADE_POINTS := 5
 const DOWNGRADE_POINTS_PER_CRITERION := -1
@@ -82,16 +113,21 @@ func evaluate_monthly_rating_change(
     var downgrade: Dictionary = DOWNGRADE_THRESHOLDS_BY_CURRENT_STARS[current_stars]
 
     var criteria_met := 0
-    if price_change_pct <= int(upgrade["max_price_change_pct"]):
-        criteria_met += 1
-    if service_value >= float(upgrade["min_service"]):
-        criteria_met += 1
-    if security_value >= float(upgrade["min_security"]):
-        criteria_met += 1
-    if cleaning_value >= float(upgrade["min_cleaning"]):
-        criteria_met += 1
-    if monthly_sales_yen >= int(upgrade["min_sales_yen"]):
-        criteria_met += 1
+    # Task #129: which items were not good, in ADVICE_ITEMS order (the
+    # program's bit mask for the manager's advice).
+    var not_good: Array[String] = []
+    var good_flags := [
+        price_change_pct <= int(upgrade["max_price_change_pct"]),
+        service_value >= float(upgrade["min_service"]),
+        security_value >= float(upgrade["min_security"]),
+        cleaning_value >= float(upgrade["min_cleaning"]),
+        monthly_sales_yen >= int(upgrade["min_sales_yen"]),
+    ]
+    for index in range(good_flags.size()):
+        if good_flags[index]:
+            criteria_met += 1
+        else:
+            not_good.append(ADVICE_ITEMS[index])
     var upgrade_applies: bool = criteria_met >= UPGRADE_MIN_CRITERIA_MET
 
     var criteria_failed := 0
@@ -110,7 +146,7 @@ func evaluate_monthly_rating_change(
     var net_point_change := downgrade_points
     if upgrade_applies:
         net_point_change += UPGRADE_POINTS
-    var next_internal_value: int = max(0, min(100, current_internal_value + net_point_change))
+    var next_internal_value: int = clampi(current_internal_value + net_point_change, RATING_FLOOR, RATING_CAP)
 
     return {
         "current_stars": current_stars,
@@ -119,4 +155,34 @@ func evaluate_monthly_rating_change(
         "downgrade_points": downgrade_points,
         "net_point_change": net_point_change,
         "next_internal_value": next_internal_value,
+        "not_good_items": not_good,
     }
+
+
+# Task #129: the day's change in 人気 (CONFIRMED_BINARY, see
+# DAILY_POPULARITY_CHANGE_BY_STARS).
+func next_day_popularity(popularity: int, internal_value: int) -> int:
+    var stars := star_rank_for_internal_value(internal_value)
+    var next: int = popularity + int(DAILY_POPULARITY_CHANGE_BY_STARS[stars])
+    return mini(RATING_CAP, maxi(next, internal_value))
+
+
+# Task #129: the manager's advice after a month with fewer than 3 good
+# items (CONFIRMED_BINARY, 0x80028800): with a chance of the manager's
+# ability out of 100, one of the five items is drawn at random; if that
+# item was not good, the advice for it is given (else nothing). Returns ""
+# when no advice is given.
+func manager_advice(evaluation: Dictionary, manager_ability: int, rng: RandomNumberGenerator) -> String:
+    if bool(evaluation["upgrade_applies"]):
+        return ""
+    if rng.randi_range(1, 100) > manager_ability:
+        return ""
+    var item: String = ADVICE_ITEMS[rng.randi_range(0, ADVICE_ITEMS.size() - 1)]
+    if not (evaluation["not_good_items"] as Array).has(item):
+        return ""
+    var text := ""
+    if item == "service" and rng.randi_range(0, 1) == 0:
+        text = "%sなどを置いて\n" % ADVICE_SERVICE_FIXTURES[rng.randi_range(0, ADVICE_SERVICE_FIXTURES.size() - 1)]
+    elif item == "security" and rng.randi_range(0, 1) == 0:
+        text = "%sなどを近くに誘致して\n" % ADVICE_SECURITY_FACILITIES[rng.randi_range(0, ADVICE_SECURITY_FACILITIES.size() - 1)]
+    return text + str(ADVICE_TEXT[item]) + "\n" + ADVICE_TAIL
