@@ -112,8 +112,12 @@ func _build_background() -> void:
     background.get_parent().move_child(field, background.get_index() + 1)
 
 func layout_screen() -> void:
+    # The inherited phone layout writes a fitted store transform on every
+    # refresh. Once the mobile camera owns the view, retain its transform.
+    var camera_transform: Transform2D = main.store_view.transform
     super.layout_screen()
     if store_camera != null:
+        main.store_view.transform = camera_transform
         store_camera.layout()
     main.town_view.position = Vector2(160, 96)
     main.town_view.view_size = Vector2(960, 624)

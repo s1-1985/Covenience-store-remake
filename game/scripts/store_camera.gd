@@ -29,7 +29,10 @@ func content_rect() -> Rect2:
     var lot: float = main.store_view.lot_pixel_height()
     return Rect2(0,-lot,int(store["width_tiles"])*tile,int(store["height_tiles"])*tile+lot)
 func layout() -> void:
-    var key := str(main.simulation.viewed_store)+str(main.config["store"])
+    # Store config also contains live dirt/cleaning clocks. Those updates do
+    # not change camera geometry and must not reset zoom, pan or held fingers.
+    var uid: int = main.simulation.store_field(main.simulation.viewed_store, "_store_uid")
+    var key := "%s:%s:%s" % [main.simulation.get_instance_id(), uid, content_rect()]
     if key != _identity:
         _identity = key
         reset_view()
