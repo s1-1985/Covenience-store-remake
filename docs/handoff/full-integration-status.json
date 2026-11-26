@@ -67,7 +67,7 @@
     "save_io": "real JSON in unique test path; repeated UI results, rejected title/continue, valid continue and cleared save",
     "menu_context": "viewport native touch: old screen, same-name reopen, store switch and hours-choice change rejected; fresh input works"
   },
-  "latest_runtime_checkpoint": "934e5eba16ca036c2cf8197c195c7ce790349fd7",
+  "latest_runtime_checkpoint": "c948ad6a2fe798373d5a09fb785e9681f35c8b09",
   "latest_pr": 286,
   "muse_instructions": {
     "source_commit": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
