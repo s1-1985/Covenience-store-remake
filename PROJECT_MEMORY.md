@@ -2659,3 +2659,6 @@ ce51a5a基点から、原作の50枠予約／消費／表示計画を移植し�
 **2026-11-23 / decision0248（CSRM-005、Godot UI）**: 調査メニューのラベルを原作マニュアル p.10 の表記「店舗別収支グラフ」へ一致させた（ps1_ui.gd、1行）。phone 層は出荷フローで到達不可能なことを静的確認と `--android-preview` 起動実測の両面で確認し、コード変更なしで確定した。UI 関連 smoke は成功（ps1_menu_dispatch_smoke の既存失敗1件は無関係で、原因特定のうえ CSRM-008 として切り出し済み）。既存未解決6件（U-1〜U-6）は維持。詳細は docs/implementation/CSRM-005.md。
 
 **2026-11-23 / decision0250（CSRM-008、Godot）**: レールボタンの重なり配送を是正した。実効高さ114px（2行ラベルの最小サイズ由来）と80px間隔の重なり帯では、中心が最も近いボタンを選ぶよう touch_controls の手動配送を変更し、最下段ボタン（SELECT/START）を y=606 へ移して画面内に収めた。ps1_menu_dispatch_smoke が成功に転じ、関連 smoke と全体 headless（SCRIPT ERROR 0件）、Python 804件全成功を確認。既存未解決6件（U-1〜U-6）は維持。詳細は docs/implementation/CSRM-008.md。
+
+
+**2026-11-26 / 0.8.14 (PLAY-0251, decision0251)**: ユーザーの完成時期/優先順位の指摘を受け通常操作を優先。最新採用ラインとPR284を確認し、そのHEADへ差分を積んだ。床更新でカメラが戻る症状を変更前に再現、設定全体の店舗キーと旧phone配置のtransform上書きを修正。指追跡/ズーム/位置は保持し、店舗/寸法変更でfitする。操作/営業Godot9本、全体headless1205stepエラー0、Python804成功。旧カタログエラーは採用済CSRM-007で解消済み。APK0.8.14/code94従来署名、PR284レール修正も収録、実機未確認。RELEASE_ACCEPTANCEへ完成確認を集約。既存未解決6件（U-1〜U-6）と原作完全一致の未完項目は維持。詳細docs/handoff/2026-11-26-playability.md。
