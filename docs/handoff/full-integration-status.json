@@ -66,7 +66,7 @@
     "apk_updated": false,
     "save_io": "real JSON file in unique test path; system-menu callback exercised"
   },
-  "latest_runtime_checkpoint": "e99db8d7638a338efe3e7a4c6c96fe2d376bb277",
+  "latest_runtime_checkpoint": "96ce750aa4b0d6ca6e87eaf05ab0c36adedae8e1",
   "latest_pr": 286,
   "muse_instructions": {
     "source_commit": "2b3e990aacf69487520ca1ffd7b6519df7285fdb",
