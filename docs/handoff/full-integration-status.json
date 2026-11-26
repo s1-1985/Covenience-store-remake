@@ -1,7 +1,7 @@
 {
   "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
   "branch": "chatgpt/mobile-resume-20261126",
-  "base": "050c4122a4157c0983e95f5d3a91f6763e091bfe",
+  "base": "5f60c233d6c01666b7f1cff5a8c3d283e68fe412",
   "updated": "2026-11-26",
   "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
   "checkpoints": "通常操作を妨げる問題を優先し、必要な回帰確認とGit保存をまとめて行う。ユーザーの2026-11-26指示により毎回APKを作成せず、まとまった変更または明示指示時にビルドする。",
@@ -51,9 +51,9 @@
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
   "latest_build": "2026-11-26-v0814-build.json",
-  "latest_handoff": "2026-11-26-load-ui.md",
+  "latest_handoff": "2026-11-26-save-flow.md",
   "latest_validation": {
-    "base_commit": "050c4122a4157c0983e95f5d3a91f6763e091bfe",
+    "base_commit": "5f60c233d6c01666b7f1cff5a8c3d283e68fe412",
     "godot_version": "4.6.3",
     "focused_godot_passed": 10,
     "python_success": 804,
@@ -64,7 +64,7 @@
     "full_headless_pass": true,
     "full_headless_errors": 0,
     "apk_updated": false,
-    "save_io": "real JSON file in unique test path; system-menu callback exercised"
+    "save_io": "real JSON in unique test path; repeated UI results, rejected title/continue, valid continue and cleared save"
   },
   "latest_runtime_checkpoint": "96ce750aa4b0d6ca6e87eaf05ab0c36adedae8e1",
   "latest_pr": 286,
@@ -85,6 +85,7 @@
   },
   "unbuilt_changes": [
     "PLAY-0252: pause/focus independent state and cancel unfinished gestures; not in APK0.8.14",
-    "PLAY-0253: reset old site/menu state after load and resume saved renovation; not in APK0.8.14"
+    "PLAY-0253: reset old site/menu state after load and resume saved renovation; not in APK0.8.14",
+    "PLAY-0254: repeated save/load result feedback and failed continue returns to title; not in APK0.8.14"
   ]
 }

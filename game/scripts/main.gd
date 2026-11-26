@@ -176,7 +176,8 @@ func _ready() -> void:
     # change when it is built, so the UI reads the simulation's own config.
     config = simulation.config
     tick_seconds = float(config["simulation"]["tick_seconds"])
-    _save_service = SaveGameServiceScript.new()
+    if _save_service == null:
+        _save_service = SaveGameServiceScript.new()
     # GameLaunchState is an autoload (project.godot [autoload]); it is only
     # ever set by main_menu.gd's Continue button, so this is a no-op (and
     # every field above stays exactly the fresh-game state) whenever this
@@ -184,8 +185,12 @@ func _ready() -> void:
     # instantiate-and-free check.
     if GameLaunchState.continue_from_save:
         GameLaunchState.continue_from_save = false
-        if _save_service.load_from_path(simulation):
-            SoundManager.set_source_settings(int(simulation.config.get("source_settings_bits", 0)))
+        if not _save_service.load_from_path(simulation):
+            GameLaunchState.continue_error = tr("No compatible save found")
+            set_process(false)
+            get_tree().call_deferred("change_scene_to_file", MAIN_MENU_SCENE_PATH)
+            return
+        SoundManager.set_source_settings(int(simulation.config.get("source_settings_bits", 0)))
     store_view.bind(config, simulation)
     town_view.bind(simulation)
     _fit_store_view()

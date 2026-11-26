@@ -57,6 +57,13 @@ func _ready() -> void:
     new_game_button.pressed.connect(_on_new_game_pressed)
     continue_button.pressed.connect(_on_continue_pressed)
     quit_button.pressed.connect(_on_quit_pressed)
+    if not GameLaunchState.continue_error.is_empty():
+        status_label.text = GameLaunchState.continue_error
+        if ps_title != null:
+            ps_title.phase = "menu"
+            ps_title.selected = 1
+            ps_title.message = GameLaunchState.continue_error
+        GameLaunchState.continue_error = ""
 
 
 func _on_new_game_pressed() -> void:
@@ -69,22 +76,24 @@ func _on_continue_pressed() -> void:
         status_label.text = tr("No save file found.")
         continue_button.disabled = true
         return
-    var saved = JSON.parse_string(FileAccess.get_file_as_string(SaveGameServiceScript.DEFAULT_SAVE_PATH))
-    if saved is Dictionary:
-        if not saved.get("source_progress", {}) is Dictionary:
-            status_label.text = tr("No compatible save found")
-            return
-        var progress: Dictionary = saved.get("source_progress", {})
-        if int(progress.get("save_finished", 0)) == 255:
-            GameLaunchState.progress_flags = int(progress.get("flags", 0)) & 255
-            var choices = find_child("ScenarioChoice", true, false)
-            choices.set_item_disabled(3, preload("res://scripts/domain/program_progression.gd").menu_limit(GameLaunchState.progress_flags) < 4)
-            status_label.text = "クリア結果を読み込みました。"
-            return
-        var ids := ["town0001", "town0002", "town0003", "townps"]
-        for index in ids.size():
-            if str(saved.get("scenario_id", "")) == "ps1-%s-recovered" % ids[index]:
-                GameLaunchState.scenario_index = index
+    var saved: Dictionary = _save_service.read_from_path()
+    if saved.is_empty():
+        status_label.text = tr("No compatible save found")
+        return
+    if not saved.get("source_progress", {}) is Dictionary:
+        status_label.text = tr("No compatible save found")
+        return
+    var progress: Dictionary = saved.get("source_progress", {})
+    if int(progress.get("save_finished", 0)) == 255:
+        GameLaunchState.progress_flags = int(progress.get("flags", 0)) & 255
+        var choices = find_child("ScenarioChoice", true, false)
+        choices.set_item_disabled(3, preload("res://scripts/domain/program_progression.gd").menu_limit(GameLaunchState.progress_flags) < 4)
+        status_label.text = "クリア結果を読み込みました。"
+        return
+    var ids := ["town0001", "town0002", "town0003", "townps"]
+    for index in ids.size():
+        if str(saved.get("scenario_id", "")) == "ps1-%s-recovered" % ids[index]:
+            GameLaunchState.scenario_index = index
     GameLaunchState.continue_from_save = true
     get_tree().change_scene_to_file(GAMEPLAY_SCENE_PATH)
 

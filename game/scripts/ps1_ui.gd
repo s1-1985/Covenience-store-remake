@@ -1516,8 +1516,12 @@ func _survey() -> void:
 func _system() -> void:
     var bits: int = SoundManager.source_settings_bits
     _paper(Rect2(60,70,198,102))
-    _option(Rect2(112,75,112,16),"データをセーブ",func(): main._on_save_pressed(),0)
-    _option(Rect2(112,91,112,16),"データをロード",func(): main._on_load_pressed(),1)
+    _option(Rect2(112,75,112,16),"データをセーブ",func():
+        _last_message = ""
+        main._on_save_pressed(),0)
+    _option(Rect2(112,91,112,16),"データをロード",func():
+        _last_message = ""
+        main._on_load_pressed(),1)
     _ink(Vector2(65,107),"SE (効果音)")
     _option(Rect2(177,107,16,16),"ON",func(): SoundManager.set_source_settings(bits&~1),2)
     _ink(Vector2(193,107),"/")
